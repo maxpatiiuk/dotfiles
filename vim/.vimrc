@@ -9,9 +9,10 @@ autocmd BufWinEnter *.* silent loadview
 
 "change tabsize to 4
 filetype plugin indent on
-set tabstop=4
-set softtabstop=0 noexpandtab
-set shiftwidth=4
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 
 "higlight search results
 set hls
@@ -19,16 +20,14 @@ set hls
 "set default file encoding
 set encoding=UTF-8
 
-"dont insert line breaks in newly entered text
-set textwidth=0
-set wrapmargin=0
-"this is just a very long line that should not be wrapped by vim unless I explicitly tell it do do that
-
 "show that char on line breaks
 set showbreak=…
 
 "show vertial line past 72 chars
 set colorcolumn=72
+
+"hard wrap text at 72 chars
+set textwidth=72
 
 "set the directory of the current file as path
 autocmd BufEnter * lcd %:p:h 
@@ -42,7 +41,11 @@ set viminfo+=n~/.vim/.viminfo
 "wrap lines between words
 set linebreak
 
+"softwrap beyond 72 characters
+set wrap
 
+"map "insert single character" to the space key
+nnoremap <Space> i_<Esc>r
 
 "INSTALL PLUGINS
 call plug#begin('~/.vim/plugged')
