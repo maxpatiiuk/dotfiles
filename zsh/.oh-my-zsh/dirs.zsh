@@ -1,0 +1,5 @@
+alias s="cd /Users/mambo/site"
+alias sp="cd /Users/mambo/site/python"
+alias sj="cd /Users/mambo/site/javascript"
+alias sg="cd /Users/mambo/site/git"
+alias d="cd /Users/mambo/Downloads/"

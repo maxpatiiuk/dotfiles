@@ -1,0 +1,6 @@
+alias spotify="python3 /Users/mambo/site/python/spotify_todo/main.py"
+alias vv="python3 /Users/mambo/site/archive_backup/programs/vv.py"
+alias clipboard="python3 /Users/mambo/site/archive_backup/programs/from_clipboard.py"
+alias tts="python3 /Users/mambo/site/python/tts/run.py"
+alias yt="youtube-dl --exec \"afplay /System/Library/Sounds/Funk.aiff #\""
+alias g="python3 ~/site/archive_backup/programs/github.py"
