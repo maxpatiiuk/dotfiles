@@ -37,4 +37,6 @@ Other tasks:
    Tampermonkey's settings
  * Terminal's custom key bindings
  * Backup files not in git (Downloads, Desktop, ~/, etc)
+ * Check that checked out repositories have clean trees, no unpushed
+   commits and no stashed code. Also check files ignored by Git
 
