@@ -1,7 +1,7 @@
 # .dotfiles
-A random collection of my `.dotfiles` and `.*rc` files
+A collection of my `.dotfiles` and `.*rc` files
 
-All of this files were tested to work on macOS Big Sur
+All of these files were tested to work on macOS Big Sur
 
 # Installation
 
@@ -19,7 +19,7 @@ Programs to install:
  * ffmpeg
  * youtube-dl
  * Python
- * docker
+ * docker & docker mysql container
  * Chrome Beta
  * OBS
  * TeamViewer
@@ -29,5 +29,12 @@ Programs to install:
  * VLC
  * Android File Transfer
  * OpenVPN Connect
- * docker mysql container
  * Specify 6
+
+Other tasks:
+ * Backup the private keys in `~/.ssh`
+ * Backup Google Chrome custom flags along with Stylebot and
+   Tampermonkey's settings
+ * Terminal's custom key bindings
+ * Backup files not in git (Downloads, Desktop, ~/, etc)
+

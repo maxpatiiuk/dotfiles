@@ -52,3 +52,9 @@ ln ./zsh/.oh-my-zsh/dirhistory.plugin.zsh "${USER}/.oh-my-zsh/custom/"
 	git clone https://github.com/maxxxxxdlp/code_share &&
 	git clone https://github.com/maxxxxxdlp/TTS_King
 )
+
+# Hardlink for common files from `code_share`
+ln "${USER}/site/git/code_share/Images/logos/mambo.jpg" "${USER}/Documents/mambo.jpg"
+ln "${USER}/site/git/code_share/Images/logos/wallpaper.jpg" "${USER}/Documents/wallpaper.jpg"
+ln "${USER}/site/git/code_share/Images/logos/maksym_patiiuk.jpg" "${USER}/Documents/maksym_patiiuk.jpg"
+
