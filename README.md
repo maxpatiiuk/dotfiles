@@ -16,6 +16,8 @@ Read the contents of that file carefully before running it
 Programs to install:
  * xcode devtools
  * macvim
+ * ffmpeg
+ * youtube-dl
  * Python
  * docker
  * Chrome Beta
@@ -27,3 +29,5 @@ Programs to install:
  * VLC
  * Android File Transfer
  * OpenVPN Connect
+ * docker mysql container
+ * Specify 6

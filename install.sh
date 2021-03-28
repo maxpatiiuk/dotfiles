@@ -40,3 +40,15 @@ ln ./zsh/.oh-my-zsh/specify.zsh "${USER}/.oh-my-zsh/custom/"
 ln ./zsh/.oh-my-zsh/programs.zsh "${USER}/.oh-my-zsh/custom/"
 ln ./zsh/.oh-my-zsh/dirhistory.plugin.zsh "${USER}/.oh-my-zsh/custom/"
 
+# Clonning git repos
+(
+	cd "${USER}/site/python" &&
+	git clone https://github.com/specify/specify7
+)
+(
+	cd "${USER}/site/git/" &&
+	git clone https://github.com/specify/specify6 &&
+	git clone https://github.com/specify/specify_tools &&
+	git clone https://github.com/maxxxxxdlp/code_share &&
+	git clone https://github.com/maxxxxxdlp/TTS_King
+)
