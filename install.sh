@@ -50,11 +50,19 @@ ln ./zsh/.oh-my-zsh/dirhistory.plugin.zsh "${USER}/.oh-my-zsh/custom/"
 	git clone https://github.com/specify/specify6 &&
 	git clone https://github.com/specify/specify_tools &&
 	git clone https://github.com/maxxxxxdlp/code_share &&
-	git clone https://github.com/maxxxxxdlp/TTS_King
+	git clone https://github.com/maxxxxxdlp/TTS_King &&
+	# this is a private repository, so you should probably comment out
+	# this line:
+	git clone https://github.com/maxxxxxdlp/private-dotfiles
 )
 
-# Hardlink for common files from `code_share`
+# Hardlink common files from `code_share`
 ln "${USER}/site/git/code_share/Images/logos/mambo.jpg" "${USER}/Documents/mambo.jpg"
 ln "${USER}/site/git/code_share/Images/logos/wallpaper.jpg" "${USER}/Documents/wallpaper.jpg"
 ln "${USER}/site/git/code_share/Images/logos/maksym_patiiuk.jpg" "${USER}/Documents/maksym_patiiuk.jpg"
+
+# This relies on the `private-dotfiles`. You shou probably comment i
+# out
+# Running the install script for `private-dotfiles`
+../private-dotfiles/install.sh
 

@@ -6,4 +6,7 @@ alias gr="git status && git pull --rebase && git status"
 alias gf="git fetch && git status"
 alias gd="git diff"
 alias gdc="git diff --cached"
+alias gi="git add --interactive"
+alias gc="git commit"
+alias gca="git commit --amend"
 

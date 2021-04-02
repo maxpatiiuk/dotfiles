@@ -50,6 +50,11 @@ nnoremap <Space> i_<Esc>r
 " INSTALL PLUGINS
 call plug#begin('~/.vim/plugged')
 
+" synonymize uppercase varians of common commands
+command W w
+command Wq wq
+command Q q
+
 " start screen
 Plug 'mhinz/vim-startify'
 
@@ -98,7 +103,7 @@ colorscheme monokai
 let g:startify_session_persistence=1
 
 " bookmark commonly used files
-let g:startify_bookmarks = [ {'s':'~/Documents/SPECIFY.md'}, {'k':'~/Documents/KU.md'}, {'t':'~/Documents/TEMP'} ]
+let g:startify_bookmarks = [ {'s':'~/site/git/private-dotfiles/notes/SPECIFY.md'}, {'k':'~/site/git/private-dotfiles/notes/KU.md'}, {'t':'~/site/git/private-dotfiles/notes/TEMP'} ]
 
 " show only 5 files in Startify
 let g:startify_files_number = 5

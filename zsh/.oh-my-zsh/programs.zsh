@@ -1,4 +1,3 @@
-alias spotify="python3 ~/site/python/spotify_todo/main.py"
 alias vv="python3 ~/site/git/code_share/Python/vv/vv.py"
 alias clipboard="python3 ~/site/git/code_share/Python/clipboard/clip_board.py"
 alias tts="python3 ~/site/python/tts/run.py"
