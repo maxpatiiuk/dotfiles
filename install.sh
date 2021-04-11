@@ -1,8 +1,14 @@
 # WARNING!
 # Read the contents of this file carefully before running it
 
+
 # Config
 USER="/Users/mambo"
+
+# replace git config
+rm "${USER}/.gitconfig"
+ln ./git/.gitconfig "${USER}/.gitconfig"
+git config --global core.excludesfile "${USER}/site/git/dotfiles/git/.gitignore_global"
 
 # Create directories
 mkdir "${USER}/site/"

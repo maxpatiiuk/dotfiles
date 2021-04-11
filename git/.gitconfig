@@ -1,0 +1,60 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = Maksym Patiiuk
+	email = 40512816+maxxxxxdlp@users.noreply.github.com
+	signingkey = C946D1EA8E19B414
+[core]
+	autocrlf = input
+	editor = vim
+	whitespace = tab-in-indent,blank-at-eol,-blank-at-eof
+[commit]
+	gpgsign = true
+[diff]
+	tool = vimdiff
+	mnemonicPrefix = true
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[merge]
+	tool = vimdiff
+[rerere]
+	enabled = true
+[blame]
+	date = relative
+	coloring = highlightRecent
+[submodule]
+	recurse = true
+[credential]
+	helper = osxkeychain
+[help]
+	autocorrect = 1
+[color "status"]
+	header = cyan
+	untracked = white bold red
+[color "branch"]
+	upstream = cyan
+[core "whitespace"]
+	tabwidth = 2
+[fetch]
+	recurseSubmodules = on-demand
+[log]
+	abbrevCommit = true
+[push]
+	followTags = true
+[status]
+	submoduleSummary = true
+[tag]
+	sort = version:refname
+[versionsort]
+	prereleaseSuffix = -pre
+	prereleaseSuffix = .pre
+	prereleaseSuffix = -beta
+	prereleaseSuffix = .beta
+	prereleaseSuffix = -rc
+	prereleaseSuffix = .rc
+
