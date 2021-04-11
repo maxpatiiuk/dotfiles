@@ -48,18 +48,18 @@ ln ./zsh/.oh-my-zsh/dirhistory.plugin.zsh "${USER}/.oh-my-zsh/custom/"
 
 # Clonning git repos
 (
-	cd "${USER}/site/python" &&
-	git clone https://github.com/specify/specify7
+  cd "${USER}/site/python" &&
+  git clone https://github.com/specify/specify7
 )
 (
-	cd "${USER}/site/git/" &&
-	git clone https://github.com/specify/specify6 &&
-	git clone https://github.com/specify/specify_tools &&
-	git clone https://github.com/maxxxxxdlp/code_share &&
-	git clone https://github.com/maxxxxxdlp/TTS_King &&
-	# this is a private repository, so you should probably comment out
-	# this line:
-	git clone https://github.com/maxxxxxdlp/private-dotfiles
+  cd "${USER}/site/git/" &&
+  git clone https://github.com/specify/specify6 &&
+  git clone https://github.com/specify/specify_tools &&
+  git clone https://github.com/maxxxxxdlp/code_share &&
+  git clone https://github.com/maxxxxxdlp/TTS_King &&
+  # this is a private repository, so you should probably comment out
+  # this line:
+  git clone https://github.com/maxxxxxdlp/private-dotfiles
 )
 
 # Hardlink common files from `code_share`
@@ -71,4 +71,3 @@ ln "${USER}/site/git/code_share/Images/logos/maksym_patiiuk.jpg" "${USER}/Docume
 # out
 # Running the install script for `private-dotfiles`
 ../private-dotfiles/install.sh
-

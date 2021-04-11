@@ -62,4 +62,3 @@
   prereleaseSuffix = .rc
 [filter "t2s"]
   clean = expand -t 2
-

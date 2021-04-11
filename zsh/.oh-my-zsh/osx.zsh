@@ -19,4 +19,3 @@ function cdf() {
 function preview() {
   (( $# > 0 )) && qlmanage -p $* &>/dev/null &
 }
-

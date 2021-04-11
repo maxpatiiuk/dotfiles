@@ -30,7 +30,7 @@ set colorcolumn=72
 set textwidth=72
 
 " set the directory of the current file as path
-autocmd BufEnter * lcd %:p:h 
+autocmd BufEnter * lcd %:p:h
 
 " change the swap files location
 set directory^=$HOME/.vim/tmp//

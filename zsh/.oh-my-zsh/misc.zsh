@@ -10,20 +10,20 @@ alias l="ls -GahlFT%"
 
 ### cd && l/ls
 function cl {
-	DIR="$*";
-	# if no DIR given, go home
-	if [ $# -lt 1 ]; then
-		DIR=$HOME;
-	fi;
-	builtin cd "${DIR}" && l
+  DIR="$*";
+  # if no DIR given, go home
+  if [ $# -lt 1 ]; then
+    DIR=$HOME;
+  fi;
+  builtin cd "${DIR}" && l
 }
 function cls {
-	DIR="$*";
-	# if no DIR given, go home
-	if [ $# -lt 1 ]; then
-		DIR=$HOME;
-	fi;
-	builtin cd "${DIR}" && ls
+  DIR="$*";
+  # if no DIR given, go home
+  if [ $# -lt 1 ]; then
+    DIR=$HOME;
+  fi;
+  builtin cd "${DIR}" && ls
 }
 
 
