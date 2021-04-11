@@ -77,11 +77,11 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	docker
-	docker-compose
-	colored-man-pages
-	command-not-found
-	zsh-vim-mode
+  docker
+  docker-compose
+  colored-man-pages
+  command-not-found
+  zsh-vim-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -117,9 +117,9 @@ export EDITOR='v'
 
 
 if [ -f ~/.shrc ]; then
-    source ~/.shrc
+  source ~/.shrc
 else
-    print "404: ~/.shrc not found."
+  print "404: ~/.shrc not found."
 fi
 source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
