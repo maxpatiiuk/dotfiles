@@ -12,6 +12,7 @@
   editor = vim
   whitespace = tab-in-indent,blank-at-eol,-blank-at-eof
   attributesfile = /Users/mambo/site/git/dotfiles/git/.gitattributes
+  excludesfile = /Users/mambo/site/git/dotfiles/git/.gitignore_global
 [commit]
   gpgsign = true
 [diff]
