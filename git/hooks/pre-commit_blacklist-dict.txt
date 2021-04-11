@@ -1,0 +1,3 @@
+const IS_DEVELOPMENT = true;
+const DEVELOPMENT = true;
+const DEBUG = true;

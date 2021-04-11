@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# if repository contains any file from blacklisted files, throw an error
+
+changed_files=`git diff --name-only HEAD`
+for file in $changed_files; do
+  if (grep "${ROOT_DIR}/$file" -E -n --color -f "${HOOKS_PATH}pre-commit_blacklist-dict.txt");
+  then
+    echo -e "${RED} Found blacklisted matches in ${ROOT_DIR}/$file"
+    exit 1
+  fi
+done
+

@@ -13,6 +13,7 @@
   whitespace = tab-in-indent,blank-at-eol,-blank-at-eof
   attributesfile = /Users/mambo/site/git/dotfiles/git/.gitattributes
   excludesfile = /Users/mambo/site/git/dotfiles/git/.gitignore_global
+  hooksPath = /Users/mambo/site/git/dotfiles/git/hooks/
 [commit]
   gpgsign = true
 [diff]
