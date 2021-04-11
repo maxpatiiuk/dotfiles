@@ -19,4 +19,5 @@ alias gc="git commit"
 alias gca="git commit --amend"
 alias gb="git branch -vv"
 alias gba="git branch -vv --all"
-
+alias gp="pre-commit run --config ~/site/git/dotfiles/git/.pre-commit-config.yaml"
+alias gpa="pre-commit run --config ~/site/git/dotfiles/git/.pre-commit-config.yaml --all-files"
