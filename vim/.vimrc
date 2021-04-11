@@ -47,13 +47,16 @@ set wrap
 " map "insert single character" to the space key
 nnoremap <Space> i_<Esc>r
 
-" INSTALL PLUGINS
-call plug#begin('~/.vim/plugged')
-
 " synonymize uppercase varians of common commands
 command W w
 command Wq wq
 command Q q
+
+" return to `normal` mode on idle
+autocmd CursorHoldI * stopinsert
+
+" INSTALL PLUGINS
+call plug#begin('~/.vim/plugged')
 
 " start screen
 Plug 'mhinz/vim-startify'
