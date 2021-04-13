@@ -33,7 +33,8 @@ ln ./python/.pylintrc "${USER}/site/"
 ln ./vim/.vimrc "${USER}/"
 
 # Hardlink other files
-ln ./.gitconfig "${USER}/"
+ln ./git/.gitconfig "${USER}/"
+ln ./misc/.editorconfig "${USER}/site/.editorconfig"
 
 # Hardlink Zsh files
 ln ./zsh/.zshrc "${USER}/"
