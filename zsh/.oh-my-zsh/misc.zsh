@@ -29,7 +29,6 @@ function cls {
 
 
 ### one line servers
-#alias php_server="sudo php -S localhost:80"
 alias python_server="sudo python3 -m http.server 80"
 
 

@@ -1,8 +1,9 @@
 # potentially destructive commands like rm, reset, merge, rebase and
 # push do not have aliases to prevent accidents
 
-# also, I know that git has a native support for aliases, but those
-# aren't short enough for me
+# also, I know that git has a native support for aliases, but I don't
+# like having to type `git s` when I can just type `gs` and be done
+# with it
 
 alias gg="git log --graph --oneline --pretty=format:\"%C(yellow)%h %Cgreen%an %Cblue%ar %Cred%s%Creset %C(auto)%d%Creset\""
 alias gl="git log --graph --stat"
@@ -19,6 +20,5 @@ alias gc="git commit"
 alias gca="git commit --amend"
 alias gb="git branch -vv"
 alias gba="git branch -vv --all"
-alias gpi="ln -s ~/site/git/dotfiles/git/.pre-commit-config.yaml \"\`git rev-parse --show-toplevel\`/.pre-commit-config.yaml\""
-alias gp="pre-commit run --config ~/site/git/dotfiles/git/.pre-commit-config.yaml"
-alias gpa="pre-commit run --config ~/site/git/dotfiles/git/.pre-commit-config.yaml --all-files"
+alias gp="pre-commit run"
+alias gpa="pre-commit run --all-files"
