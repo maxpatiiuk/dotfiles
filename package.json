@@ -1,0 +1,19 @@
+{
+  "name": "@maxxxxxdlp/dotfiles",
+  "description": "A monorepo of my .dotfiles and .*rc files",
+  "author": "Max Patiiuk",
+  "version": "0.1.0",
+  "workspaces": [
+    "npm/*"
+  ],
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/maxxxxxdlp/dotfiles"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/maxxxxxdlp/dotfiles/#readme",
+  "bugs": {
+    "url": "https://github.com/maxxxxxdlp/dotfiles/issues"
+  }
+}
