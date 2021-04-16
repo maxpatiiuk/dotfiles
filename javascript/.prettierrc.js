@@ -1,15 +1,6 @@
 module.exports = {
-	tabWidth: 4,
-	useTabs: true,
-	semi: true,
-	singleQuote: true,
-	quoteProps: 'as-needed',
-	jsxBracketSameLine: false,
-	proseWrap: 'always',
-	overrides: [
-		{
-			files: '*.js',
-			useTabs: false,
-		},
-	],
+  // single qoute is more popular among JS libriaries
+  singleQuote: true,
+  // GitHub renders Markdown properly, so we can wrap it safely
+  proseWrap: 'always',
 };

@@ -1,3 +1,2 @@
-bower_components
-**/*.js
-*.js
+/bower_components
+/testBuild

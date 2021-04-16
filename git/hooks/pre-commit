@@ -13,7 +13,7 @@ GLOBAL_PRE_COMMIT_CONFIG_LOCATION = os.path.join(
 
 repos_keyword = "repos:"
 repo_keyword = "repo: "
-stop_keyword = "# global hooks:"
+stop_keyword = "  # global hooks:"
 local_repo = "local"
 
 

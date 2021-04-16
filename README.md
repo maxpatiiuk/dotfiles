@@ -1,6 +1,6 @@
 # .dotfiles
 
-A collection of my `.dotfiles` and `.*rc` files
+a monorepo containing my `.dotfiles` and `*.rc` files
 
 All of these files were tested to work on macOS Big Sur
 
