@@ -1,7 +1,7 @@
 {
   "name": "@maxxxxxdlp/eslint-config",
   "description": "A very strict ESLint config with support for TypeScript, React and Prettier",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "keywords": [
     "eslint",
@@ -31,6 +31,9 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-unicorn": "^29.0.0",
     "prettier-eslint": "^12.0.0"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.2.0"
   },
   "license": "MIT",
   "homepage": "https://github.com/maxxxxxdlp/dotfiles/tree/main/npm/eslintrc/#readme",

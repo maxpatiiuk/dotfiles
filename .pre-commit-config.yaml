@@ -32,6 +32,9 @@ default_stages:
   - merge-commit
 exclude: ^(lib|.idea)
 repos:
+  #- repo: https://github.com/awebdeveloper/pre-commit-stylelint
+  #- repo: https://github.com/pre-commit/mirrors-eslint
+
   # global hooks:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.4.0
@@ -101,30 +104,6 @@ repos:
     hooks:
       - id: prettier
         files: \.(js|jsx|ts|tsx|json|json5|yaml|css|scc|sass|html|less)?$
-
-  - repo: https://github.com/awebdeveloper/pre-commit-stylelint
-    rev: 0.0.2
-    hooks:
-      - id: stylelint
-        files: \.(css|scss|sass|js|jsx|ts|tsx)$
-        additional_dependencies:
-          - stylelint@^13.8.0
-          - stylelint-config-prettier@^8.0.2
-          - stylelint-config-standard@^20.0.0
-
-  - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v7.24.0
-    hooks:
-      - id: eslint
-        files: \.(js|jsx|ts|tsx)?$
-        additional_dependencies:
-          - '@typescript-eslint/eslint-plugin@^4.22.0'
-          - '@typescript-eslint/parser@^4.22.0'
-          - eslint-config-prettier@^8.2.0
-          - eslint-plugin-prettier@^3.3.1
-          - eslint-plugin-react@^7.23.2
-          - eslint-plugin-unicorn@^29.0.0
-          - prettier-eslint@^12.0.0
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks-nodejs
     rev: v1.1.1

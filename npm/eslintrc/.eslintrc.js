@@ -140,6 +140,12 @@ module.exports = {
       ERROR,
       {
         min: 3,
+        exceptions: [
+          "$", // jQuery
+          "L", // Leaflet
+          "_", // Underscore
+          "R", // Ramda
+        ],
       },
     ],
     //'id-match': [
@@ -436,6 +442,16 @@ module.exports = {
       },
 
       {
+        // Allow PascalCase for Actions and States
+        selector: "objectLiteralMethod",
+        filter: {
+          regex: "(Action|State)$",
+          match: true,
+        },
+        format: ["PascalCase"],
+      },
+
+      {
         // relax restrictions for keys like `en-US` and etc.
         selector: "objectLiteralProperty",
         modifiers: ["requiresQuotes"],
@@ -463,7 +479,8 @@ module.exports = {
     "@typescript-eslint/no-invalid-void-type": ERROR,
     "@typescript-eslint/no-require-imports": ERROR,
     "@typescript-eslint/no-unnecessary-boolean-literal-compare": ERROR,
-    "@typescript-eslint/no-unnecessary-condition": ERROR,
+    // this rule seems to be buggy
+    "@typescript-eslint/no-unnecessary-condition": OFF,
     "@typescript-eslint/no-unnecessary-qualifier": ERROR,
     "@typescript-eslint/no-unnecessary-type-arguments": ERROR,
     "@typescript-eslint/no-unnecessary-type-constraint": ERROR,
@@ -510,7 +527,10 @@ module.exports = {
       ERROR,
       {
         ignore: [
-          0, // don't know why 0 is not ignored by default
+          // don't know why these aren't ignored by default
+          -1,
+          0,
+          1,
         ],
       },
     ],
@@ -578,7 +598,17 @@ module.exports = {
             // `props` are used by React
             properties: false,
           },
+          ref: {
+            // `ref` is used by React
+            reference: false,
+          },
         },
+      },
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        argsIgnorePattern: "^_", // Allow vars that begin with _
       },
     ],
   },
