@@ -1,7 +1,7 @@
 {
   "name": "@maxxxxxdlp/stylelint-config",
   "description": "A very strict configuration for Stylelint with support for CSS-in-JS and Prettier",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": false,
   "keywords": [
     "stylelint",
@@ -26,6 +26,9 @@
   "dependencies": {
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^20.0.0"
+  },
+  "devDependencies": {
+    "stylelint-config-prettier": "^8.0.2"
   },
   "license": "MIT",
   "homepage": "https://github.com/maxxxxxdlp/dotfiles/tree/main/npm/stylelintrc/#readme",

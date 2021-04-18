@@ -21,7 +21,8 @@ Then, create `.stylelintrc.js` at the root of your project:
 module.exports = {
   'extends': [
     '@maxxxxxdlp/stylelintrc'
-  ]
+  ],
+  rules: {},
 };
 ```
 
