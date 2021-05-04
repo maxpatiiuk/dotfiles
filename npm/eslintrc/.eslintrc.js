@@ -145,6 +145,10 @@ module.exports = {
           "L", // Leaflet
           "_", // Underscore
           "R", // Ramda
+          "el",
+          "on",
+          "no",
+          "id",
         ],
       },
     ],
@@ -493,7 +497,12 @@ module.exports = {
     "@typescript-eslint/prefer-nullish-coalescing": ERROR,
     "@typescript-eslint/prefer-optional-chain": ERROR,
     "@typescript-eslint/prefer-readonly": ERROR,
-    "@typescript-eslint/prefer-readonly-parameter-types": ERROR,
+    "@typescript-eslint/prefer-readonly-parameter-types": [
+      ERROR,
+      {
+        ignoreInferredTypes: true,
+      }
+    ],
     "@typescript-eslint/prefer-reduce-type-parameter": ERROR,
     "@typescript-eslint/prefer-string-starts-ends-with": ERROR,
     "@typescript-eslint/prefer-ts-expect-error": ERROR,
@@ -547,6 +556,7 @@ module.exports = {
     "no-return-await": OFF,
     "@typescript-eslint/return-await": ERROR,
 
+    "react/prop-types": OFF,
     "react/display-name": WARN,
     "react/button-has-type": ERROR,
     "react/no-access-state-in-setstate": ERROR,
