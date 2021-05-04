@@ -1,61 +1,61 @@
 " PLUGIN INDEPENDENT
 
-" enable line numeration
+" Enable line numeration
 set number
 
-" make file folding persistent
+" Make file folding persistent
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
-" change tabsize to 4
+" Change tabsize to 4
 filetype plugin indent on
 set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 
-" higlight search results
+" Higlight search results
 set hls
 
-" set default file encoding
+" Set default file encoding
 set encoding=UTF-8
 
-" show that char on line breaks
+" Show that char on line breaks
 set showbreak=…
 
-" show vertial line past 72 chars
+" Show vertial line past 72 chars
 set colorcolumn=72
 
-" hard wrap text at 72 chars
+" Hard wrap text at 72 chars
 set textwidth=72
 
-" set the directory of the current file as path
+" Set the directory of the current file as path
 autocmd BufEnter * lcd %:p:h
 
-" change the swap files location
+" Change the swap files location
 set directory^=$HOME/.vim/tmp//
 
-" change the viminfo file location
+" Change the viminfo file location
 set viminfo+=n~/.vim/.viminfo
 
-" wrap lines between words
+" Wrap lines between words
 set linebreak
 
-" softwrap beyond 72 characters
+" Softwrap beyond 72 characters
 set wrap
 
-" map "insert single character" to the space key
+" Map "insert single character" to the space key
 nnoremap <Space> i_<Esc>r
 
-" synonymize uppercase varians of common commands
+" Synonymize uppercase varians of common commands
 command W w
 command Wq wq
 command Q q
 
-" return to `normal` mode on idle
+" Return to `normal` mode on idle
 autocmd CursorHoldI * stopinsert
 
-" use ctrl+shift+6 as a "caps lock" toggle
+" Use ctrl+shift+6 as a "caps lock" toggle
 " Execute 'lnoremap x X' and 'lnoremap X x' for each letter a-z.
 for c in range(char2nr('A'), char2nr('Z'))
   execute 'lnoremap ' . nr2char(c+32) . ' ' . nr2char(c)
@@ -68,40 +68,40 @@ autocmd InsertLeave * set iminsert=0
 " INSTALL PLUGINS
 call plug#begin('~/.vim/plugged')
 
-" start screen
+" Start screen
 Plug 'mhinz/vim-startify'
 
-" theme
+" Theme
 Plug 'crusoexia/vim-monokai'
 
-" javascript syntax
+" Javascript syntax
 Plug 'pangloss/vim-javascript'
 
-" json syntax
+" Json syntax
 Plug 'elzr/vim-json'
 
-" markdown syntax
+" Markdown syntax
 Plug 'plasticboy/vim-markdown'
 
-" file system explorere
+" File system explorere
 Plug 'preservim/nerdtree'
 
-" git integration for nerdtree
+" Git integration for nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" nerdtree improvments
+" Nerdtree improvments
 Plug 'jistr/vim-nerdtree-tabs'
 
-" nerdtree file type colors
+" Nerdtree file type colors
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-" nerdtree file icons
+" Nerdtree file icons
 Plug 'ryanoasis/vim-devicons'
 
-" add typescript syntax highlighting
+" Add typescript syntax highlighting
 Plug 'leafgarland/typescript-vim'
 
-" tabnine
+" Tabnine
 Plug 'zxqfl/tabnine-vim'
 
 call plug#end()
@@ -111,67 +111,67 @@ call plug#end()
 
 " PLUGIN DEPENDENT
 
-" set theme
+" Set theme
 syntax on
 colorscheme monokai
 
-" make previous session open automatically
+" Make previous session open automatically
 let g:startify_session_persistence=1
 
-" bookmark commonly used files
+" Bookmark commonly used files
 let g:startify_bookmarks = [ {'s':'~/site/git/private-dotfiles/notes/SPECIFY.md'}, {'k':'~/site/git/private-dotfiles/notes/KU.md'}, {'t':'~/site/git/private-dotfiles/notes/TEMP'} ]
 
-" show only 5 files in Startify
+" Show only 5 files in Startify
 let g:startify_files_number = 5
 
-" disable Startify header
+" Disable Startify header
 let g:startify_custom_header = []
 
-" toggle nerdtree
+" Toggle nerdtree
 map <C-n> :NERDTreeTabsToggle<CR>
 
-" find currently opened file in nerdtree
+" Find currently opened file in nerdtree
 map <C-s> :NERDTreeFind<CR>
 
-" disable folding in .md files
+" Disable folding in .md files
 let g:vim_markdown_folding_disabled = 1
 
 " Disable syntax conceal
 set conceallevel=0
 
-" enable yaml front matter in .md files
+" Enable yaml front matter in .md files
 let g:vim_markdown_frontmatter = 1
 
-" enable json front matter in .md files
+" Enable json front matter in .md files
 let g:vim_markdown_json_frontmatter = 1
 
-" disable vim_markdown's key mappings
+" Disable vim_markdown's key mappings
 let g:vim_markdown_no_default_key_mappings = 1
 
-" pring `#` in markdown headings in red
+" Pring `#` in markdown headings in red
 autocmd FileType markdown highlight mkdHeading cterm=none ctermfg=9
 
-" print markdown headings in orange
+" Print markdown headings in orange
 autocmd FileType markdown highlight htmlH1 cterm=none ctermfg=220
 
-" enable file explorer file higlighting only for some files
+" Enable file explorer file higlighting only for some files
 let g:NERDTreeSyntaxDisableDefaultExtensions = 1
 let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
 let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
 let g:NERDTreeSyntaxEnabledExtensions = ['html', 'css', 'py', 'js', 'ts', 'tsx', 'json', 'xml', 'md', 'csv', 'tsv', 'sql', 'yaml']
 let g:NERDTreeSyntaxEnabledExactMatches = ['favicon.ico', 'Makefile', '.git', '.idea']
 
-" higligh full filename rather than just icon
+" Higligh full filename rather than just icon
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
 
-" let nerdtree's git integration use nerdfonts
+" Let nerdtree's git integration use nerdfonts
 let g:NERDTreeGitStatusUseNerdFonts = 1
 
-" allow nerdtree to delete files
+" Allow nerdtree to delete files
 let NERDTreeAutoDeleteBuffer = 1
 
-" remove help? message from nerdtree
+" Remove help? message from nerdtree
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
