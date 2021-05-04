@@ -53,7 +53,7 @@ repos:
       - id: requirements-txt-fixer
 
   - repo: https://github.com/maxxxxxdlp/pre-commit
-    rev: v1.0.4
+    rev: v1.0.5
     hooks:
       - id: tsc
       - id: regex-blacklist

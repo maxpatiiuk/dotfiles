@@ -49,7 +49,7 @@ repos:
       - id: requirements-txt-fixer
 
   - repo: https://github.com/maxxxxxdlp/pre-commit
-    rev: v1.0.4
+    rev: v1.0.5
     hooks:
       - id: tsc
       - id: regex-blacklist
@@ -124,8 +124,8 @@ repos:
       - id: eslint
         files: \.(js|jsx|ts|tsx)?$
         additional_dependencies:
-          - "@typescript-eslint/eslint-plugin@^4.22.0"
-          - "@typescript-eslint/parser@^4.22.0"
+          - '@typescript-eslint/eslint-plugin@^4.22.0'
+          - '@typescript-eslint/parser@^4.22.0'
           - eslint-config-prettier@^8.2.0
           - eslint-plugin-prettier@^3.3.1
           - eslint-plugin-react@^7.23.2
