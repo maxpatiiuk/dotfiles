@@ -18,14 +18,13 @@ Read the contents of that file carefully before running it
 
 Programs to install:
 
+* Chrome Beta
 * xcode devtools
 * macvim
 * oh-my-zsh and Power10k
-* ffmpeg
-* youtube-dl
-* Python
 * docker & docker mysql container
-* Chrome Beta
+* ffmpeg (container)
+* Python
 * OBS
 * TeamViewer
 * PyCharm
@@ -33,7 +32,7 @@ Programs to install:
 * Adobe Photoshop
 * VLC
 * Android File Transfer
-* OpenVPN Connect
+* OpenVPN Connect (brew + keys)
 * Specify 6
 
 Other tasks:

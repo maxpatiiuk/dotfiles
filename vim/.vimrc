@@ -55,6 +55,16 @@ command Q q
 " return to `normal` mode on idle
 autocmd CursorHoldI * stopinsert
 
+" use ctrl+shift+6 as a "caps lock" toggle
+" Execute 'lnoremap x X' and 'lnoremap X x' for each letter a-z.
+for c in range(char2nr('A'), char2nr('Z'))
+  execute 'lnoremap ' . nr2char(c+32) . ' ' . nr2char(c)
+  execute 'lnoremap ' . nr2char(c) . ' ' . nr2char(c+32)
+endfor
+
+" Kill the capslock when leaving insert mode.
+autocmd InsertLeave * set iminsert=0
+
 " INSTALL PLUGINS
 call plug#begin('~/.vim/plugged')
 
@@ -67,8 +77,11 @@ Plug 'crusoexia/vim-monokai'
 " javascript syntax
 Plug 'pangloss/vim-javascript'
 
+" json syntax
+Plug 'elzr/vim-json'
+
 " markdown syntax
-Plug 'tpope/vim-markdown'
+Plug 'plasticboy/vim-markdown'
 
 " file system explorere
 Plug 'preservim/nerdtree'
@@ -120,17 +133,32 @@ map <C-n> :NERDTreeTabsToggle<CR>
 " find currently opened file in nerdtree
 map <C-s> :NERDTreeFind<CR>
 
-" provide syntax for the following languages in markdown
-let g:markdown_fenced_languages = ['python', 'js', 'json', 'html', 'bash']
+" disable folding in .md files
+let g:vim_markdown_folding_disabled = 1
 
-" look ahead 200 chars when syntax highligting
-let g:markdown_minlines = 200
+" Disable syntax conceal
+set conceallevel=0
+
+" enable yaml front matter in .md files
+let g:vim_markdown_frontmatter = 1
+
+" enable json front matter in .md files
+let g:vim_markdown_json_frontmatter = 1
+
+" disable vim_markdown's key mappings
+let g:vim_markdown_no_default_key_mappings = 1
+
+" pring `#` in markdown headings in red
+autocmd FileType markdown highlight mkdHeading cterm=none ctermfg=9
+
+" print markdown headings in orange
+autocmd FileType markdown highlight htmlH1 cterm=none ctermfg=220
 
 " enable file explorer file higlighting only for some files
 let g:NERDTreeSyntaxDisableDefaultExtensions = 1
 let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
 let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
-let g:NERDTreeSyntaxEnabledExtensions = ['html', 'css', 'py', 'js', 'ts', 'tsx', 'json', 'xml', 'md', 'csv', 'tsv', 'sql']
+let g:NERDTreeSyntaxEnabledExtensions = ['html', 'css', 'py', 'js', 'ts', 'tsx', 'json', 'xml', 'md', 'csv', 'tsv', 'sql', 'yaml']
 let g:NERDTreeSyntaxEnabledExactMatches = ['favicon.ico', 'Makefile', '.git', '.idea']
 
 " higligh full filename rather than just icon
@@ -147,18 +175,3 @@ let NERDTreeAutoDeleteBuffer = 1
 " remove help? message from nerdtree
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
-
-
-
-" OLD CONFIG THAD DID SOME MAGIG)
-" set runtimepath+=~/.vim_runtime
-
-" source ~/.vim_runtime/vimrcs/basic.vim
-" source ~/.vim_runtime/vimrcs/filetypes.vim
-" source ~/.vim_runtime/vimrcs/plugins_config.vim
-" source ~/.vim_runtime/vimrcs/extended.vim
-
-" try
-" source ~/.vim_runtime/my_configs.vim
-" catch
-" endtry
