@@ -22,8 +22,8 @@ Programs to install:
 * xcode devtools
 * macvim
 * oh-my-zsh and Power10k
-* docker & docker mysql container
-* ffmpeg (container)
+* docker (change dockerd config)
+* docker mariadb container
 * Python
 * OBS
 * TeamViewer
@@ -32,8 +32,8 @@ Programs to install:
 * Adobe Photoshop
 * VLC
 * Android File Transfer
-* OpenVPN Connect (brew + keys)
-* Specify 6
+* OpenVPN Connect (cli + keys)
+* OpenConnect (cli)
 
 Other tasks:
 
