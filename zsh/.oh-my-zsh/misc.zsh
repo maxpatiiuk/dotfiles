@@ -4,7 +4,9 @@ export PATH="/Users/mambo/.local/bin:$PATH"
 
 ### basic
 alias ls="ls -G1"
-alias l="ls -GahlFT%"
+alias ll="ls -GahlFT%"
+alias l="python3 ~/site/python/dir_explorer/dir_explorer/list_files.py"
+alias clean="clear"
 
 
 

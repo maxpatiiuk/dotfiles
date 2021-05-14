@@ -175,3 +175,6 @@ let NERDTreeAutoDeleteBuffer = 1
 " Remove help? message from nerdtree
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+
+" Show hidden files in nerdtree
+let NERDTreeShowHidden=1

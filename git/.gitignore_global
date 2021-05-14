@@ -1,7 +1,6 @@
 *~
-.*.swp
+*.swp
 .DS_Store
 .idea
 *.orig
 *.bak
-.mypy_cache
