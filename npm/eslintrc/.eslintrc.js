@@ -117,7 +117,7 @@ module.exports = {
     //    'allowSingleLine': false,
     //  }
     //],
-    camelcase: ERROR,
+    camelcase: OFF,
     'capitalized-comments': ERROR,
     //'comma-dangle': [
     //  ERROR,
@@ -397,6 +397,12 @@ module.exports = {
       },
 
       {
+        // typeLike must be in StrictPascalCase
+        selector: 'typeLike',
+        format: ['StrictPascalCase'],
+      },
+
+      {
         // React Contexts must be in StrictPascalCase
         selector: 'variable',
         modifiers: ['const'],
@@ -405,20 +411,6 @@ module.exports = {
           match: true,
         },
         format: ['StrictPascalCase'],
-      },
-
-      {
-        // typeLike must be in StrictPascalCase
-        selector: 'typeLike',
-        format: ['StrictPascalCase'],
-      },
-
-      {
-        // React Components can be in StrictPascalCase
-        selector: 'variable',
-        modifiers: ['const'],
-        types: ['function'],
-        format: ['StrictPascalCase', 'strictCamelCase'],
       },
 
       {
@@ -456,14 +448,14 @@ module.exports = {
       },
 
       {
-        // relax restrictions for keys like `en-US` and etc.
+        // Relax restrictions for keys like `en-US` and etc.
         selector: 'objectLiteralProperty',
         modifiers: ['requiresQuotes'],
         format: null,
       },
 
       {
-        // force generics into UPPER_CASE
+        // Force generics into UPPER_CASE
         selector: 'typeParameter',
         format: ['UPPER_CASE'],
       },
