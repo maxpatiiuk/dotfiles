@@ -48,3 +48,18 @@ alias brewup='brew update; \
   brew prune; \
   brew cleanup; \
   brew doctor'
+
+alias openconnect="sudo openconnect \
+  --user=m001p596 \
+  --authgroup=Default \
+  --servercert pin-sha256:vOh3aObKrNH9gFqFNWCmj/Km0Z5v8WvLzr4AAtHLjHQ= \
+  https://kuanywhere.ku.edu"
+
+ovpn(){
+  sudo /usr/local/opt/openvpn/sbin/openvpn --config "${HOME}/Documents/ovpn/$1"
+}
+# Define autocomplete
+_ovpn(){
+  reply=(`(cd ~/Documents/ovpn/ && ls *.ovpn)`);
+}
+compctl -K _ovpn ovpn

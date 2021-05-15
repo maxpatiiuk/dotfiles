@@ -1,7 +1,3 @@
-### Path
-export PATH="/Users/mambo/.local/bin:$PATH"
-
-
 ### basic
 alias ls="ls -G1"
 alias ll="ls -GahlFT%"
@@ -37,8 +33,7 @@ alias python_server="sudo python3 -m http.server 80"
 
 ### shortcuts
 alias v="mvim -v"
-alias pip="pip3"
-alias p="python3"
+alias p="python"
 
 
 

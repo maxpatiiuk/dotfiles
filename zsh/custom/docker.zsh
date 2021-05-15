@@ -21,7 +21,7 @@ ds_format='table {{"\033[35m"}}{{.ID}} {{if eq .State "exited"}}{{"\033[31m"}}{{
 alias ds='docker ps --format "${ds_format}"'
 alias dsa='docker ps -a --format "${ds_format}"'
 dcu(){
- python3 ~/site/git/specify_tools/docker_container/up.py $@ | /bin/zsh
+  python3 ~/site/git/specify_tools/docker_container/up.py $@ | /bin/zsh
 }
 alias dl="docker logs -f"
 alias dcl="docker compose logs -f"

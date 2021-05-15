@@ -6,6 +6,12 @@
 #   ALT-UP moves to higher hierarchy (cd ..)
 #   ALT-DOWN moves into the first directory found in alphabetical order
 #
+#
+
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushdminus
+
 
 dirhistory_past=($PWD)
 dirhistory_future=()
