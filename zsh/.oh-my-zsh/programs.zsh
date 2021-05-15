@@ -6,7 +6,7 @@ alias clipboard="python3 ~/site/git/code_share/Python/clipboard/clip_board.py"
 
 # Run text to speech on piped text or on the file provided as first
 # argument or on the default file
-alias tts="python3 ~/site/python/tts/run.py"
+alias tts="python3 ~/site/python/python_tts/run.py"
 
 # Open the current repository or one of it's files/directories in git
 # on the current or provided branch
@@ -33,13 +33,18 @@ alias yt='docker run \
 # Run a dockerized version of ffmpeg
 alias ffmpeg='docker run \
   --rm
-  -v $(pwd):$(pwd)
-  -w $(pwd)
-  jrottenberg/ffmpeg:scratch'
+-v $(pwd):$(pwd)
+-w $(pwd)
+jrottenberg/ffmpeg:scratch'
 
 # Find the `.idea/` directory among parent dirs and open that
 # project in PyCharm
 pycharm(){
-	open -na "PyCharm.app" --args `python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo ""` $@
+  open -na "PyCharm.app" --args `python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo ""` $@
 }
 
+alias brewup='brew update; \
+  brew upgrade; \
+  brew prune; \
+  brew cleanup; \
+  brew doctor'
