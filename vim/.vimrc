@@ -145,6 +145,9 @@ let g:vim_markdown_folding_disabled = 1
 
 " Disable syntax conceal
 set conceallevel=0
+let g:vim_markdown_conceak=0
+let g:vim_markdown_conceal_code_blocks=0
+let g:vim_json_syntax_conceal=0
 
 " Enable yaml front matter in .md files
 let g:vim_markdown_frontmatter = 1
