@@ -58,7 +58,7 @@ repos:
       - id: tsc
       - id: regex-blacklist
         args:
-          - /Users/mambo/site/git/dotfiles/git/regex-blacklist.txt
+          - /Users/maxxxxxdlp/site/git/dotfiles/git/regex-blacklist.txt
 
   - repo: https://github.com/psf/black
     rev: 20.8b1

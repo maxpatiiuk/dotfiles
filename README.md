@@ -33,11 +33,12 @@ Read the contents of that file carefully before running it
 source <(curl -s https://raw.githubusercontent.com/maxxxxxdlp/dotfiles/main/install.sh)
 ```
 
-Manually merge the following files:
+Add `\033[1;2B` and `\033[1;2A` to the termial's keyboard settings for
+Shift+Up Arrow and Shift+Down Arrow respectively.
 
-* ./zsh/.zshrc ~/.zshrc
-* ./zsh/.p10k.zsh and ~/.p10k.zsh
-* ./zsh/oh-my-zsh.sh ~/.oh-my-zsh/oh-my-zsh.sh
+Install [this font
+](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/RobotoMono/Regular/complete/Roboto%20Mono%20Nerd%20Font%20Complete.ttf)
+and set it as default in the terminal:
 
 Manually import the following extension into Chrome:
 
