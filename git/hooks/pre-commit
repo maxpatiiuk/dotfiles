@@ -7,7 +7,7 @@ from typing import List
 # CONFIG:
 pre_commit_config_name = ".pre-commit-config.yaml"
 GLOBAL_PRE_COMMIT_CONFIG_LOCATION = os.path.join(
-    "/Users/mambo/site/git/dotfiles/git/", pre_commit_config_name
+    "/Users/maxxxxxdlp/site/git/dotfiles/git/", pre_commit_config_name
 )
 
 

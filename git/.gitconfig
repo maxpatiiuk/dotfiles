@@ -6,14 +6,14 @@
 [user]
   name = Maksym Patiiuk
   email = 40512816+maxxxxxdlp@users.noreply.github.com
-  signingkey = C946D1EA8E19B414
+  signingkey = 446EFFF9D86ADA79
 [core]
   autocrlf = input
   editor = vim
   whitespace = tab-in-indent,blank-at-eol,-blank-at-eof
-  attributesfile = /Users/mambo/site/git/dotfiles/git/.gitattributes
-  excludesfile = /Users/mambo/site/git/dotfiles/git/.gitignore_global
-  hooksPath = /Users/mambo/site/git/dotfiles/git/hooks/
+  attributesfile = ~/site/git/dotfiles/git/.gitattributes
+  excludesfile = ~/site/git/dotfiles/git/.gitignore_global
+  hooksPath = ~/site/git/dotfiles/git/hooks/
 [commit]
   gpgsign = true
 [diff]
@@ -63,3 +63,5 @@
   prereleaseSuffix = .rc
 [filter "t2s"]
   clean = expand -t 2
+[gpg]
+  program = /usr/local/bin/gpg
