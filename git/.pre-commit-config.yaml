@@ -56,6 +56,11 @@ repos:
         args:
           - /Users/maxxxxxdlp/site/git/dotfiles/git/regex-blacklist.txt
 
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.0.0
+    hooks:
+      - id: codespell
+
   - repo: https://github.com/psf/black
     rev: 20.8b1
     hooks:

@@ -32,6 +32,7 @@ brew install --cask vlc
 brew install --cask obs
 brew install --cask teamviewer
 brew install --cask android-file-transfer
+brew install --cask zoom
 
 echo Install GNU PGP
 brew install gnupg
@@ -45,6 +46,8 @@ echo Install Python 3.9
 pyenv install 3.9.0
 pyenv global 3.9.0
 pyenv version
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 echo Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -91,17 +94,18 @@ ln -s "${PWD}/git/.gitconfig" "${HOME}"
 
 echo Configure Vim
 rm -f "${HOME}/.vimrc"
-ln "${PWD}/vim/.vimrc" "${HOME}"
-mkdir -p "${HOME}/vim/tmp/"
+ln "${PWD}/.vim/.vimrc" "${HOME}"
+mkdir -p "${HOME}/.vim/tmp/"
+ln -s "${PWD}/.vim/spell/" "${HOME}/.vim/spell"
 
-echo Hardlink Misc files
+echo Hard link Misc files
 ln "${PWD}/misc/.editorconfig" "${HOME}/site"
 rm -f "${HOME}/.zshrc"
 ln "${PWD}/zsh/.zshrc" "${HOME}"
 rm -f "${HOME}/.p10k.zsh"
 ln "${PWD}/zsh/.p10k.zsh" "${HOME}"
 
-echo Hardlink common files from \`code_share\`
+echo Hard link common files from \`code_share\`
 ln "${HOME}/site/git/code_share/Images/logos/mambo.jpg" "${HOME}/Documents/mambo.jpg"
 ln "${HOME}/site/git/code_share/Images/logos/wallpaper.jpg" "${HOME}/Documents/wallpaper.jpg"
 ln "${HOME}/site/git/code_share/Images/logos/maksym_patiiuk.jpg" "${HOME}/Documents/maksym_patiiuk.jpg"
