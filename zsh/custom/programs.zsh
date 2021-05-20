@@ -6,14 +6,14 @@ alias clipboard="python3 ~/site/git/code_share/Python/clipboard/clip_board.py"
 
 # Run text to speech on piped text or on the file provided as first
 # argument or on the default file
-alias tts="python3 ~/site/python/python_tts/run.py"
+alias tts="~/site/python/python_tts/venv/bin/python ~/site/python/python_tts/run.py"
 
 # Open the current repository or one of it's files/directories in git
 # on the current or provided branch
 alias g="python3 ~/site/git/code_share/Python/github/github.py"
 
 # `f` because `cc`, `dc`, `dd` and `ss` is already taken :)
-alias f="python3 ~/site/git/dir-explorer/dir-explorer/main.py"
+alias f="/bin/zsh ~/site/python/dir_explorer/dir_explorer/list_view"
 
 # Play a notification sound. Useful when chained at the end of another
 # program
