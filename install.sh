@@ -110,6 +110,9 @@ ln "${HOME}/site/git/code_share/Images/logos/mambo.jpg" "${HOME}/Documents/mambo
 ln "${HOME}/site/git/code_share/Images/logos/wallpaper.jpg" "${HOME}/Documents/wallpaper.jpg"
 ln "${HOME}/site/git/code_share/Images/logos/maksym_patiiuk.jpg" "${HOME}/Documents/maksym_patiiuk.jpg"
 
+echo Hard link launchctl .plist file
+ln "${PWD}/scripts/ua.in.mambo.task.plist" "${HOME}/Library/LaunchAgents/"
+
 
 echo \#\#\# Private part \#\#\#
 echo This relies on a private \`maxxxxxdlp/private-dotfiles\` repository

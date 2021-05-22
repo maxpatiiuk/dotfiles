@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>ua.in.mambo.task</string>
+  <key>WorkingDirectory</key>
+  <string>/Users/maxxxxxdlp/site/git/dotfiles/</string>
+	<key>ProgramArguments</key>
+	<array>
+    <string>/bin/zsh</string>
+    <string>-c</string>
+    <string>/Users/maxxxxxdlp/site/git/dotfiles/scripts/bi-monthly.sh</string>
+	</array>
+  <key>StandardOutPath</key>
+  <string>/Users/maxxxxxdlp/.logs/launchctl.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/maxxxxxdlp/.logs/launchctl.error.log</string>
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Minute</key>
+		<integer>0</integer>
+		<key>Hour</key>
+		<integer>10</integer>
+		<key>Weekday</key>
+		<integer>3</integer>
+	</dict>
+</dict>
+</plist>
