@@ -7,15 +7,38 @@ set number
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
-" Change tabsize to 4
+" Change tabSize to 4
 filetype plugin indent on
 set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 
-" Higlight search results
-set hls
+" Automatically toggle case sensitivity for search
+set ignorecase smartcase
+
+" Have at least 5 characters between the cursor and screen's boundary
+set scrolloff=5
+
+" Show current mode
+set showmode
+
+" Search wraps around the file
+set wrapscan
+
+" Live update search results
+set incsearch
+
+" Preserve undo/redo history
+set undodir=~/.vim/undodir
+set undofile
+set history=10000
+set undolevels=1000
+set undoreload=10000
+
+
+" Highlight search results
+set hlsearch
 
 " Set default file encoding
 set encoding=UTF-8
@@ -23,7 +46,7 @@ set encoding=UTF-8
 " Show that char on line breaks
 set showbreak=…
 
-" Show vertial line past 72 chars
+" Show vertical line past 72 chars
 set colorcolumn=72
 
 " Hard wrap text at 72 chars
@@ -41,13 +64,21 @@ set viminfo+=n~/.vim/.viminfo
 " Wrap lines between words
 set linebreak
 
-" Softwrap beyond 72 characters
+" Soft wrap beyond 72 characters
 set wrap
 
 " Map "insert single character" to the space key
-nnoremap <Space> i_<Esc>r
+noremap <space>i i_<esc>r
 
-" Synonymize uppercase varians of common commands
+" Don't overwrite register when pasting over selection
+vnoremap p pgvy
+
+" Don't lose selection when indenting
+vnoremap < <gv
+vnoremap > >gv
+vnoremap = =gv
+
+" Synonymise uppercase variants of common commands
 command W w
 command Wq wq
 command Q q
@@ -64,6 +95,21 @@ endfor
 
 " Kill the capslock when leaving insert mode.
 autocmd InsertLeave * set iminsert=0
+
+" Turn off vim's spell checker as I have a plugin for that
+set nospell
+
+
+" Turn on "verymagic" for regex
+nnoremap / /\v
+vnoremap / /\v
+cnoremap %s/ %smagic/
+cnoremap \>s/ \>smagic/
+nnoremap :g/ :g/\v
+nnoremap :g// :g//
+
+
+
 
 " Install Plug if not installed
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -90,7 +136,7 @@ Plug 'elzr/vim-json'
 " Markdown syntax
 Plug 'plasticboy/vim-markdown'
 
-" File system explorere
+" File system explorer
 Plug 'preservim/nerdtree'
 
 " Git integration for nerdtree
@@ -108,8 +154,14 @@ Plug 'ryanoasis/vim-devicons'
 " Add typescript syntax highlighting
 Plug 'leafgarland/typescript-vim'
 
-" Tabnine
+" TabbNine
 Plug 'zxqfl/tabnine-vim'
+
+" Spell checker
+Plug 'kamykn/spelunker.vim'
+
+" Pop-up menu for spell checker
+Plug 'kamykn/popup-menu.nvim'
 
 call plug#end()
 
@@ -145,7 +197,7 @@ let g:vim_markdown_folding_disabled = 1
 
 " Disable syntax conceal
 set conceallevel=0
-let g:vim_markdown_conceak=0
+let g:vim_markdown_conceal=0
 let g:vim_markdown_conceal_code_blocks=0
 let g:vim_json_syntax_conceal=0
 
@@ -158,25 +210,25 @@ let g:vim_markdown_json_frontmatter = 1
 " Disable vim_markdown's key mappings
 let g:vim_markdown_no_default_key_mappings = 1
 
-" Pring `#` in markdown headings in red
+" Print `#` in markdown headings in red
 autocmd FileType markdown highlight mkdHeading cterm=none ctermfg=9
 
 " Print markdown headings in orange
 autocmd FileType markdown highlight htmlH1 cterm=none ctermfg=220
 
-" Enable file explorer file higlighting only for some files
+" Enable file explorer file highlighting only for some files
 let g:NERDTreeSyntaxDisableDefaultExtensions = 1
 let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
 let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
 let g:NERDTreeSyntaxEnabledExtensions = ['html', 'css', 'py', 'js', 'ts', 'tsx', 'json', 'xml', 'md', 'csv', 'tsv', 'sql', 'yaml']
 let g:NERDTreeSyntaxEnabledExactMatches = ['favicon.ico', 'Makefile', '.git', '.idea']
 
-" Higligh full filename rather than just icon
+" Highlight full filename rather than just icon
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
 
-" Let nerdtree's git integration use nerdfonts
+" Let nerdtree's git integration use NerdFonts
 let g:NERDTreeGitStatusUseNerdFonts = 1
 
 " Allow nerdtree to delete files
@@ -188,3 +240,18 @@ let NERDTreeDirArrows = 1
 
 " Show hidden files in nerdtree
 let NERDTreeShowHidden=1
+
+" Enable spell checker on read only files
+let g:enable_spelunker_vim_on_readonly = 1
+
+" Detect large files (over 40kb)
+let g:LargeFile = 40 * 1024
+augroup LargeFile
+ autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
+augroup END
+
+" Use default spell checker for large files
+function LargeFile()
+ let g:enable_spelunker_vim = 0
+ set spell
+endfunction
