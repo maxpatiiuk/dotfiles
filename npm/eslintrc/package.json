@@ -1,7 +1,7 @@
 {
   "name": "@maxxxxxdlp/eslint-config",
   "description": "A very strict ESLint config with support for TypeScript, React and Prettier",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "keywords": [
     "eslint",

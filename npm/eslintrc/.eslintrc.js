@@ -19,7 +19,6 @@ module.exports = {
   plugins: [
     '@typescript-eslint',
     'markdown',
-    'optimize-regex',
     'promise',
     'sonarjs',
     'simple-import-sort',
@@ -33,7 +32,6 @@ module.exports = {
     'plugin:unicorn/recommended',
     'plugin:array-func/all',
     'plugin:eslint-comments/recommended',
-    'optimize-regex/all',
     'plugin:regexp/recommended',
     'prettier',
     'plugin:prettier/recommended',
