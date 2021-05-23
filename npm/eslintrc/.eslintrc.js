@@ -1,8 +1,8 @@
 'use strict';
 
-const OFF = 0;
-const WARN = 1;
-const ERROR = 1;
+const OFF = 'off';
+const WARN = 'warn';
+const ERROR = 'error';
 
 module.exports = {
   parser: '@typescript-eslint/parser',
@@ -14,16 +14,45 @@ module.exports = {
       impliedStrict: true,
     },
   },
+  env: { es6: true },
   reportUnusedDisableDirectives: true,
-  plugins: ['@typescript-eslint'],
+  plugins: [
+    '@typescript-eslint',
+    'markdown',
+    'optimize-regex',
+    'promise',
+    'sonarjs',
+    'simple-import-sort',
+    'regexp',
+  ],
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:unicorn/recommended',
+    'plugin:array-func/all',
+    'plugin:eslint-comments/recommended',
+    'optimize-regex/all',
+    'plugin:regexp/recommended',
     'prettier',
     'plugin:prettier/recommended',
+    'plugin:markdown/recommended',
+  ],
+  overrides: [
+    {
+      files: ['**/*.md'],
+      processor: 'markdown/markdown',
+    },
+    {
+      files: ['**/*.{md}/*.{js,ts,tsx}'],
+      rules: {
+        'no-undef': 'off',
+        'no-unused-expression': 'off',
+        'no-unused-var': 'off',
+        'no-console': 'off',
+      },
+    },
   ],
   rules: {
     // Some rules are disabled as they conflict with `prettier`
@@ -403,11 +432,12 @@ module.exports = {
       },
 
       {
-        // React Contexts must be in StrictPascalCase
+        // React Contexts and Context Providers must be in
+        // StrictPascalCase
         selector: 'variable',
         modifiers: ['const'],
         filter: {
-          regex: 'Context$',
+          regex: '(Context|Provider)$',
           match: true,
         },
         format: ['StrictPascalCase'],
@@ -529,9 +559,7 @@ module.exports = {
       {
         ignore: [
           // don't know why these aren't ignored by default
-          -1,
-          0,
-          1,
+          -1, 0, 1,
         ],
       },
     ],
@@ -572,6 +600,10 @@ module.exports = {
     //'react/jsx-props-no-multi-spaces': ERROR,
     'react/react-in-jsx-scope': OFF,
 
+    // This rule is a subset of unicorn/new-for-builtins
+    'unicorn/throw-new-error': OFF,
+    // eslint-plugin-regexp is superious to this rule
+    'unicorn/better-regex': OFF,
     'unicorn/empty-brace-spaces': OFF,
     'unicorn/custom-error-definition': ERROR,
     'unicorn/filename-case': OFF,
@@ -604,6 +636,14 @@ module.exports = {
             // `ref` is used by React
             reference: false,
           },
+          i: {
+            // in for loops, i is more commonly used then index
+            index: false,
+          },
+          args: {
+            // `arguments` is a reserved variable name
+            arguments: false,
+          },
         },
       },
     ],
@@ -613,6 +653,76 @@ module.exports = {
         argsIgnorePattern: '^_', // Allow vars that begin with _
       },
     ],
+
+    'eslint-comments/no-unused-disable': ERROR,
+
+    'promise/no-return-wrap': ERROR,
+    'promise/param-names': ERROR,
+    'promise/always-return': ERROR,
+    'promise/no-return-in-finally': ERROR,
+
+    'simple-import-sort/imports': ERROR,
+    'simple-import-sort/exports': ERROR,
+
+    'sonarjs/no-all-duplicated-branches': ERROR,
+    'sonarjs/no-extra-arguments': ERROR,
+    'sonarjs/no-identical-conditions': ERROR,
+    'sonarjs/no-identical-expressions': ERROR,
+    'sonarjs/no-one-iteration-loop': ERROR,
+    'sonarjs/no-collapsible-if': ERROR,
+    'sonarjs/no-collection-size-mischeck': ERROR,
+    'sonarjs/no-duplicate-string': ERROR,
+    'sonarjs/no-duplicated-branches': ERROR,
+    'sonarjs/no-identical-functions': ERROR,
+    'sonarjs/no-redundant-boolean': ERROR,
+    'sonarjs/no-redundant-jump': ERROR,
+    'sonarjs/no-unused-collection': ERROR,
+    'sonarjs/no-useless-catch': ERROR,
+    'sonarjs/prefer-immediate-return': ERROR,
+    'sonarjs/prefer-object-literal': ERROR,
+    'sonarjs/prefer-single-boolean-return': ERROR,
+    'sonarjs/prefer-while': ERROR,
+
+    'regexp/no-dupe-disjunctions': ERROR,
+    'regexp/no-empty-alternative': ERROR,
+    'regexp/no-lazy-ends': ERROR,
+    'regexp/no-optional-assertion': ERROR,
+    'regexp/no-potentially-useless-backreference': ERROR,
+    'regexp/no-useless-assertions': ERROR,
+    'regexp/no-useless-dollar-replacements': ERROR,
+    'regexp/confusing-quantifier': ERROR,
+    'regexp/control-character-escape': ERROR,
+    'regexp/negation': ERROR,
+    'regexp/no-legacy-features': ERROR,
+    'regexp/no-non-standard-flag': ERROR,
+    'regexp/no-obscure-range': ERROR,
+    'regexp/no-standalone-backslash': ERROR,
+    'regexp/no-trivially-nested-assertion': ERROR,
+    'regexp/no-trivially-nested-quantifier': ERROR,
+    'regexp/no-unused-capturing-group': ERROR,
+    'regexp/no-useless-flag': ERROR,
+    'regexp/no-useless-lazy': ERROR,
+    'regexp/no-useless-non-greedy': ERROR,
+    'regexp/no-useless-quantifier': ERROR,
+    'regexp/no-useless-range': ERROR,
+    'regexp/no-zero-quantifier': ERROR,
+    'regexp/optimal-lookaround-quantifier': ERROR,
+    'regexp/prefer-escape-replacement-dollar-char': ERROR,
+    'regexp/prefer-predefined-assertion': ERROR,
+    'regexp/prefer-quantifier': ERROR,
+    'regexp/prefer-range': ERROR,
+    'regexp/prefer-regexp-exec': ERROR,
+    'regexp/prefer-regexp-test': ERROR,
+    'regexp/hexadecimal-escape': ERROR,
+    'regexp/letter-case': ERROR,
+    'regexp/no-useless-escape': ERROR,
+    'regexp/no-useless-non-capturing-group': ERROR,
+    'regexp/order-in-character-class': ERROR,
+    'regexp/prefer-character-class': ERROR,
+    'regexp/prefer-named-backreference': ERROR,
+    'regexp/prefer-unicode-codepoint-escapes': ERROR,
+    'regexp/sort-flags': ERROR,
+    'regexp/unicode-escape': ERROR,
   },
   settings: {
     react: {
