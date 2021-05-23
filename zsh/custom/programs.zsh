@@ -12,8 +12,41 @@ alias tts="~/site/python/python_tts/venv/bin/python ~/site/python/python_tts/run
 # on the current or provided branch
 alias g="python3 ~/site/git/code_share/Python/github/github.py"
 
+
 # `f` because `cc`, `dc`, `dd` and `ss` is already taken :)
-alias f="/bin/zsh ~/site/python/dir_explorer/dir_explorer/list_view"
+f(){
+  script_dir="/Users/maxxxxxdlp/site/python/dir_explorer/dir_explorer"
+
+  # Create a temp file
+  export tempfile="/tmp/list_view_$RANDOM"
+
+  # Call the python script
+  "${script_dir}/../venv/bin/python3" "${script_dir}/list_view.py" "$@"
+
+  # Capture the output
+  if [[ -f "$tempfile" ]]; then
+    OUTPUT=($(cat $tempfile))
+    # Clean up the temp file
+    rm $tempfile
+    unset tempfile
+
+  else
+    return 0
+  fi
+
+
+  echo "${OUTPUT[1]}/${OUTPUT[2]}"
+  cd "${OUTPUT[1]}"
+
+  l
+
+  # If script returned a file name
+  if [[ -f "${OUTPUT[1]}/${OUTPUT[2]}" ]]; then
+    # Open the file in the default editor
+    eval "${EDITOR:-vi}" "${OUTPUT[2]}"
+  fi
+
+}
 
 # Play a notification sound. Useful when chained at the end of another
 # program

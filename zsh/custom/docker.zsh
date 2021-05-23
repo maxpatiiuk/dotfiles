@@ -35,7 +35,9 @@ dcu(){
     return 1
   fi
   cd $compose_location
-  nohup /bin/zsh -c '${scripts_location}venv/bin/python ${scripts_location}watch.py' &
+  echo "" > nohup.out
+  watcher=(bash -c "${scripts_location}venv/bin/python ${scripts_location}watch.py")
+  nohup $watcher &
   docker compose up $@
   cd -
 }

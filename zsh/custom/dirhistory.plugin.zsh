@@ -1,17 +1,5 @@
-##
-#   Navigate directory history using ALT-LEFT and ALT-RIGHT. ALT-LEFT moves back to directories
-#   that the user has changed to in the past, and ALT-RIGHT undoes ALT-LEFT.
-#
-#   Navigate directory hierarchy using ALT-UP and ALT-DOWN. (mac keybindings not yet implemented)
-#   ALT-UP moves to higher hierarchy (cd ..)
-#   ALT-DOWN moves into the first directory found in alphabetical order
-#
-#
-
-setopt auto_pushd
-setopt pushd_ignore_dups
-setopt pushdminus
-
+# Original source:
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dirhistory
 
 dirhistory_past=($PWD)
 dirhistory_future=()
@@ -114,28 +102,24 @@ function dirhistory_forward() {
 # Bind keys to history navigation
 function dirhistory_zle_dirhistory_back() {
   # Erase current line in buffer
-  zle kill-buffer
+  zle .kill-buffer
   dirhistory_back
-  zle accept-line
+  zle .accept-line
 }
 
 function dirhistory_zle_dirhistory_future() {
   # Erase current line in buffer
-  zle kill-buffer
+  zle .kill-buffer
   dirhistory_forward
-  zle accept-line
+  zle .accept-line
 }
+
 
 zle -N dirhistory_zle_dirhistory_back
 bindkey "^[[1;2B" dirhistory_zle_dirhistory_back
 
 zle -N dirhistory_zle_dirhistory_future
 bindkey "^[[1;2A" dirhistory_zle_dirhistory_future
-
-
-#
-# HIERARCHY Implemented in this section, in case someone wants to split it to another plugin if it clashes bindings
-#
 
 # Move up in hierarchy
 function dirhistory_up() {
@@ -150,15 +134,15 @@ function dirhistory_down() {
 
 # Bind keys to hierarchy navigation
 function dirhistory_zle_dirhistory_up() {
-  zle kill-buffer   # Erase current line in buffer
+  zle .kill-buffer   # Erase current line in buffer
   dirhistory_up
-  zle accept-line
+  zle .accept-line
 }
 
 function dirhistory_zle_dirhistory_down() {
-  zle kill-buffer   # Erase current line in buffer
+  zle .kill-buffer   # Erase current line in buffer
   dirhistory_down
-  zle accept-line
+  zle .accept-line
 }
 
 zle -N dirhistory_zle_dirhistory_up

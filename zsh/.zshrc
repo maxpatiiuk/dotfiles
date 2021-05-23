@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/usr/local/bin:$PATH"
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -81,8 +81,8 @@ plugins=(
   docker-compose
   colored-man-pages
   command-not-found
+  zsh-vi-mode
 )
-
 
 ZSH_CUSTOM="${HOME}/site/git/dotfiles/zsh/custom"
 source $ZSH/oh-my-zsh.sh
@@ -95,7 +95,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR='mvim -v'
+export EDITOR='/usr/local/bin/vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

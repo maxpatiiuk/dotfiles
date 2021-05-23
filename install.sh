@@ -51,9 +51,18 @@ eval "$(pyenv virtualenv-init -)"
 
 echo Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+echo Deleting default oh-my-zsh configs
+rm "${HOME}/.oh-my-zsh/lib/bzr.zsh"
+rm "${HOME}/.oh-my-zsh/lib/diagnostics.zsh"
+rm "${HOME}/.oh-my-zsh/lib/directories.zsh"
+rm "${HOME}/.oh-my-zsh/lib/key-bindings.zsh"
 
 echo Install Powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+echo Install zsh-vi-mode
+git clone https://github.com/jeffreytse/zsh-vi-mode "${PWD}/zsh/custom/plugins/zsh-vi-mode"
+
 
 echo Create directories
 mkdir "${HOME}/site"
@@ -94,14 +103,17 @@ ln -s "${PWD}/git/.gitconfig" "${HOME}"
 
 echo Configure Vim
 rm -f "${HOME}/.vimrc"
-ln "${PWD}/.vim/.vimrc" "${HOME}"
 mkdir -p "${HOME}/.vim/tmp/"
+mkdir -p "${HOME}/.vim/undodirr/"
+mkdir -p "${HOME}/.vim/spell/"
+ln "${PWD}/.vim/.vimrc" "${HOME}"
+ln "${PWD}/.vim/.ideavimrc" "${HOME}"
 ln -s "${PWD}/.vim/spell/" "${HOME}/.vim/spell"
 
 echo Hard link Misc files
 ln "${PWD}/misc/.editorconfig" "${HOME}/site"
 rm -f "${HOME}/.zshrc"
-ln "${PWD}/zsh/.zshrc" "${HOME}"
+ln -s "${PWD}/zsh/.zshrc" "${HOME}"
 rm -f "${HOME}/.p10k.zsh"
 ln "${PWD}/zsh/.p10k.zsh" "${HOME}"
 
