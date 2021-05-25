@@ -1,5 +1,5 @@
 # Vim
 
-My macVim setup
+My vim setup
 
 I used `Plug` for plugin management

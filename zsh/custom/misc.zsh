@@ -32,7 +32,7 @@ alias python_server="sudo python3 -m http.server 80"
 
 
 ### shortcuts
-alias v="mvim -v"
+alias v="vim"
 alias p="python"
 
 

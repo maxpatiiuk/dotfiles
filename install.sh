@@ -17,8 +17,8 @@ brew install curl
 brew install wget
 brew install git
 brew install node
-brew install macvim
-brew link macvim
+brew install vim
+brew link vim
 brew install pre-commit
 brew install openconnect
 brew install openvpn
