@@ -103,7 +103,7 @@ repos:
         exclude: ^docs/
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.18.1
+    rev: v2.18.3
     hooks:
       - id: pyupgrade
 
@@ -129,7 +129,7 @@ repos:
           - stylelint-config-standard@^20.0.0
 
   - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v7.26.0
+    rev: v7.27.0
     hooks:
       - id: eslint
         files: \.(js|jsx|ts|tsx)?$
