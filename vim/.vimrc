@@ -36,6 +36,10 @@ set history=10000
 set undolevels=1000
 set undoreload=10000
 
+" Make backspace work like in a regular text editor
+" (convenient when writing prose)
+set backspace=indent,eol,start
+
 
 " Highlight search results
 set hlsearch

@@ -10,5 +10,9 @@ function zvm_after_init() {
 
   bindkey "^[[A" history-beginning-search-backward
   bindkey "^[[B" history-beginning-search-forward
+  bindkey "^[b^" backward-word
+  bindkey "^[f^" forward-word
+  bindkey '^[a^' beginning-of-line
+  bindkey '^[c^' end-of-line
 
 }
