@@ -7,18 +7,40 @@ set number
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
-" Change tabSize to 4
+" Change tabSize to 2
 filetype plugin indent on
 set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 
+" Make Vim more useful
+set nocompatible
+
+" Enhance command-line completion
+set wildmenu
+
+" Optimize for fast terminal connections
+set ttyfast
+
+" Add the g flag to search/replace by default
+set gdefault
+
 " Automatically toggle case sensitivity for search
 set ignorecase smartcase
 
 " Have at least 5 characters between the cursor and screen's boundary
 set scrolloff=5
+
+" Don’t reset cursor to start of line when moving around.
+set nostartofline
+
+" Show 'invisible' characters
+set list
+" Set characters used to indicate 'invisible' characters
+set listchars=tab:▸\
+set listchars+=trail:·
+set listchars+=nbsp:_
 
 " Show current mode
 set showmode
@@ -59,11 +81,14 @@ set textwidth=72
 " Set the directory of the current file as path
 autocmd BufEnter * lcd %:p:h
 
-" Change the swap files location
-set directory^=$HOME/.vim/tmp//
-
-" Change the viminfo file location
+" Change misc directories
+set backupdir=~/.vim/backups
+set directory=~/.vim/swaps
+set undodir=~/.vim/undo
 set viminfo+=n~/.vim/.viminfo
+
+" Show the filename in the window titlebar
+set title
 
 " Wrap lines between words
 set linebreak
@@ -86,6 +111,13 @@ vnoremap = =gv
 command W w
 command Wq wq
 command Q q
+
+" Enable file type detection
+filetype on
+" Treat .json files as .js
+autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+" Treat .md files as Markdown
+autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 
 " Return to `normal` mode on idle
 autocmd CursorHoldI * stopinsert

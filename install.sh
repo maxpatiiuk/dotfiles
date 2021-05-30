@@ -71,8 +71,7 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install wget
   brew install git
   brew install node
-  brew install vim
-  brew link vim
+  brew install vim --with-override-system-vi
   brew install pre-commit
   brew install openconnect
   brew install openvpn
@@ -81,6 +80,10 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install pycharm
   brew install gnupg
   brew install pinentry-mac
+  brew install coreutils
+  brew install grep
+  brew install openssh
+  brew install screen
   brew install --cask docker
   brew install --cask google-chrome-beta
   brew install --cask firefox-developer-edition
@@ -90,8 +93,8 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install --cask android-file-transfer
   brew install --cask zoom
 
-  # Save to disk (not to iCloud) by default
-  defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+  # Set macOS defaults
+  "${PWD}./macos.sh"
 
   PINETRY_LOCATION="/usr/local/bin/pinentry-mac"
 
@@ -161,19 +164,19 @@ echo Cloning Git repos
 )
 
 echo Replacing the default Git Config
-# Need an "-f" flag to not error-out if the file does not exist
 rm -f "${HOME}/.gitconfig"
-# Need to create a symbolic link because of how git misbehaves
 ln -s "${PWD}/git/.gitconfig" "${HOME}"
 
 echo Configuring Vim
 rm -f "${HOME}/.vimrc"
-mkdir -p "${HOME}/.vim/tmp/"
-mkdir -p "${HOME}/.vim/undodirr/"
-mkdir -p "${HOME}/.vim/spell/"
+mkdir -p "${HOME}/.vim/undo"
+mkdir -p "${HOME}/.vim/spell"
+mkdir -p "${HOME}/.vim/backups"
+mkdir -p "${HOME}/.vim/swaps"
 ln "${PWD}/vim/.vimrc" "${HOME}"
 ln "${PWD}/vim/.ideavimrc" "${HOME}"
 ln -s "${PWD}/vim/spell" "${HOME}/.vim/"
+
 
 echo Hard linking misc files
 rm -f "${HOME}/.zshrc"

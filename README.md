@@ -19,11 +19,14 @@ Should do these things before reinstalling the system:
 
 ## Installation
 
-Run the main installatioon script:
+Run the main installation script:
 
 ```
 WARNING:
-Read the contents of that file carefully before running it
+If you want to give these dotfiles a try, you should first fork this
+repository, review the code, and remove things you don’t want or need.
+Don’t blindly use my settings unless you know what that entails. Use
+at your own risk!
 ```
 
 ```zsh
