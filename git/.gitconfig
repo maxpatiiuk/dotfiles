@@ -34,7 +34,7 @@
 [submodule]
   recurse = true
 [credential]
-  helper = osxkeychain
+  helper = ![ "$(uname 2> /dev/null)" = "Darwin" ] && "git credential-osxkeychain" || "git credential-store"
 [help]
   autocorrect = 1
 [color "status"]

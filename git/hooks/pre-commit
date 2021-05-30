@@ -1,4 +1,5 @@
 #!/usr/bin/env python3.9
+# -*- coding: utf-8 -*-
 import os
 import sys
 from typing import List
@@ -7,7 +8,8 @@ from typing import List
 # CONFIG:
 pre_commit_config_name = ".pre-commit-config.yaml"
 GLOBAL_PRE_COMMIT_CONFIG_LOCATION = os.path.join(
-    "/Users/maxxxxxdlp/site/git/dotfiles/git/", pre_commit_config_name
+    f"{os.getenv('HOME')}/site/git/dotfiles/git/",
+    pre_commit_config_name,
 )
 
 
