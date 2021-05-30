@@ -14,12 +14,18 @@
   attributesfile = ~/site/git/dotfiles/git/.gitattributes
   excludesfile = ~/site/git/dotfiles/git/.gitignore_global
   hooksPath = ~/site/git/dotfiles/git/hooks/
+  untrackedCache = true
+[apply]
+  whitespace = fix
+[branch]
+  sort = -committerdate
 [commit]
   gpgsign = true
 [diff]
   tool = vimdiff
   mnemonicPrefix = true
   colorMoved = default
+  renames = copies
 [init]
   defaultBranch = main
 [pull]
@@ -34,7 +40,7 @@
 [submodule]
   recurse = true
 [credential]
-  helper = ![ "$(uname 2> /dev/null)" = "Darwin" ] && "git credential-osxkeychain" || "git credential-store"
+  helper = !git credential-`[ "$(uname 2> /dev/null)" = "Darwin" ] && echo "osxkeychain" || echo "store"` "$@"
 [help]
   autocorrect = 1
 [color "status"]

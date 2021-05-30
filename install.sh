@@ -90,6 +90,9 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install --cask android-file-transfer
   brew install --cask zoom
 
+  # Save to disk (not to iCloud) by default
+  defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
   PINETRY_LOCATION="/usr/local/bin/pinentry-mac"
 
 else
