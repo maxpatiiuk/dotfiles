@@ -22,6 +22,7 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
     vim-gtk3 \
     pre-commit \
     openvpn \
+    openssh-server \
     pinentry-curses \
     libreadline6 \
     libreadline6-dev \
@@ -46,6 +47,11 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
     $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   sudo apt-get update
   sudo apt-get install docker-ce docker-ce-cli containerd.io
+  sudo groupadd docker
+  sudo usermod -aG docker $USER
+  newgrp docker
+  sudo systemctl enable docker.service
+  sudo systemctl enable containerd.service
 
   echo Installing ZSH
   sudo apt install zsh
@@ -184,6 +190,7 @@ ln -s "${PWD}/zsh/.zshrc" "${HOME}"
 rm -f "${HOME}/.p10k.zsh"
 ln "${PWD}/zsh/.p10k.zsh" "${HOME}"
 ln "${PWD}/misc/.editorconfig" "${HOME}/site"
+sudo ln "${PWD}/docker/daemon.json" "/etc/docker/"
 
 echo Hard linking common files from \`code_share\`
 ln "${HOME}/site/git/code_share/misc/images/mambo.jpg" "${HOME}/Documents/mambo.jpg"
