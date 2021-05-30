@@ -2,7 +2,6 @@
 alias ls="ls -G1"
 alias ll="ls -GahlFT%"
 alias l="python3 ~/site/python/dir_explorer/dir_explorer/list_files.py"
-alias clean="clear"
 
 
 

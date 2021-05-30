@@ -15,7 +15,7 @@ alias g="python3 ~/site/git/code_share/Python/github/github.py"
 
 # `f` because `cc`, `dc`, `dd` and `ss` is already taken :)
 f(){
-  script_dir="/Users/maxxxxxdlp/site/python/dir_explorer/dir_explorer"
+  script_dir="${HOME}/site/python/dir_explorer/dir_explorer"
 
   # Create a temp file
   export tempfile="/tmp/list_view_$RANDOM"

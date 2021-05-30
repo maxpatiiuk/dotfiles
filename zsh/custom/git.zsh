@@ -30,3 +30,5 @@ alias ghs="git stash push"
 alias ghh="git stash show"
 alias ghp="git stash pop"
 alias ghl="git stash list"
+
+export GPG_TTY=$TTY
