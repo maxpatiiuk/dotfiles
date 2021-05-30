@@ -3,53 +3,115 @@ echo Read the contents of this file carefully before running it
 
 PWD="${HOME}/site/git/dotfiles"
 
-echo Install xcode Developer Tools
-xcode-select --install
+if [ "$(uname 2> /dev/null)" = "Linux" ]; then
+  echo Clearing desktop wallpaper
+  gsettings set org.gnome.desktop.background picture-uri ""
+  gsettings set org.gnome.desktop.background primary-color "#222222"
 
-echo Install Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew update
-brew doctor
-brew tap homebrew/cask-versions
+  echo Installing essential dependencies
+  sudo apt-get upgrade
+  sudo apt-get autoremove
+  sudo apt-get autoclean
+  sudo apt-get install \
+    curl \
+    git \
+    build-essential \
+    wget \
+    nodejs \
+    npm \
+    vim-gtk3 \
+    pre-commit \
+    openvpn \
+    pinentry-curses \
+    libreadline6 \
+    libreadline6-dev \
+    libreadline-dev \
+    bzip2 \
+    ruby-rubygems
 
-echo Install Homebrew Formulae and Casks
-brew install curl
-brew install wget
-brew install git
-brew install node
-brew install vim
-brew link vim
-brew install pre-commit
-brew install openconnect
-brew install openvpn
-brew install pyenv
-brew install pyenv-virtualenv
-brew install pycharm
-brew install --cask docker
-brew install --cask google-chrome-beta
-brew install --cask firefox-developer-edition
-brew install --cask vlc
-brew install --cask obs
-brew install --cask teamviewer
-brew install --cask android-file-transfer
-brew install --cask zoom
+  echo Installing pyenv
+  curl https://pyenv.run | bash
+  exec $SHELL
 
-echo Install GNU PGP
-brew install gnupg
-brew install pinentry-mac
+  echo Installing Docker
+  sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  echo \
+    "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  sudo apt-get update
+  sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+  echo Installing ZSH
+  sudo apt install zsh
+
+  echo Hard linking misc files
+  sudo ln /usr/bin/gpg /usr/local/bin/gpg
+  sudo ln /usr/bin/vim /usr/local/bin/vim
+  PINETRY_LOCATION=`which pinentry-curses`
+
+elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
+
+  echo Install xcode Developer Tools
+  xcode-select --install
+
+  echo Install Homebrew
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  brew update
+  brew doctor
+  brew tap homebrew/cask-versions
+
+  echo Install Homebrew Formulae and Casks
+  brew install curl
+  brew install wget
+  brew install git
+  brew install node
+  brew install vim
+  brew link vim
+  brew install pre-commit
+  brew install openconnect
+  brew install openvpn
+  brew install pyenv
+  brew install pyenv-virtualenv
+  brew install pycharm
+  brew install gnupg
+  brew install pinentry-mac
+  brew install --cask docker
+  brew install --cask google-chrome-beta
+  brew install --cask firefox-developer-edition
+  brew install --cask vlc
+  brew install --cask obs
+  brew install --cask teamviewer
+  brew install --cask android-file-transfer
+  brew install --cask zoom
+
+  PINETRY_LOCATION="/usr/local/bin/pinentry-mac"
+
+else
+  echo "Invalid system name"
+  exit 1
+fi
+
+echo Configure GNU PGP
 echo 'use-agent' > ~/.gnupg/gpg.conf
 chmod -R 700 ~/.gnupg
-echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
+echo "pinentry-program ${PINETRY_LOCATION}" >> ~/.gnupg/gpg-agent.conf
 killall gpg-agent
 
-echo Install Python 3.9
+echo Installing Python 3.9
 pyenv install 3.9.0
 pyenv global 3.9.0
 pyenv version
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-echo Install oh-my-zsh
+
+echo Installing oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 echo Deleting default oh-my-zsh configs
 rm "${HOME}/.oh-my-zsh/lib/bzr.zsh"
@@ -57,22 +119,22 @@ rm "${HOME}/.oh-my-zsh/lib/diagnostics.zsh"
 rm "${HOME}/.oh-my-zsh/lib/directories.zsh"
 rm "${HOME}/.oh-my-zsh/lib/key-bindings.zsh"
 
-echo Install Powerlevel10k
+echo Installing Powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-echo Install zsh-vi-mode
+echo Installing zsh-vi-mode
 git clone https://github.com/jeffreytse/zsh-vi-mode "${PWD}/zsh/custom/plugins/zsh-vi-mode"
 
 
-echo Create directories
+echo Creating directories
 mkdir "${HOME}/site"
 mkdir "${HOME}/site/git"
 mkdir "${HOME}/site/python"
 mkdir "${HOME}/site/javascript"
 
-echo Clone Git repos
+echo Cloning Git repos
 (
-  cd "${HOME}/site/python" &&
+  cd "${HOME}/site/python"
   git clone https://github.com/specify/specify7.git
   git clone https://github.com/specify/open_api_tools.git
   git clone https://github.com/lifemapper/lm_test.git
@@ -80,50 +142,52 @@ echo Clone Git repos
   git clone https://github.com/maxxxxxdlp/python_tts.git
 )
 (
-  cd "${HOME}/site/git" &&
-  git clone https://github.com/specify/specify6.git &&
-  git clone https://github.com/specify/specify_tools.git &&
-  git clone https://github.com/maxxxxxdlp/custom_new_tab_page.git &&
-  git clone https://github.com/maxxxxxdlp/code_share.git &&
-  git clone https://github.com/maxxxxxdlp/pre-commit.git &&
-  git clone https://github.com/maxxxxxdlp/dotfiles.git &&
+  cd "${HOME}/site/git"
+  git clone https://github.com/specify/specify6.git
+  git clone https://github.com/specify/specify_tools.git
+  git clone https://github.com/maxxxxxdlp/custom_new_tab_page.git
+  git clone https://github.com/maxxxxxdlp/code_share.git
+  git clone https://github.com/maxxxxxdlp/pre-commit.git
+  git clone https://github.com/maxxxxxdlp/dotfiles.git
 )
 (
-  cd "${HOME}/site/javascript" &&
+  cd "${HOME}/site/javascript"
   git clone https://github.com/maxxxxxdlp/TTS_King.git
   git clone https://github.com/maxxxxxdlp/mambo.in.ua.git
   git clone https://github.com/maxxxxxdlp/typesafe-reducer.git
 )
 
-echo Replace the default Git Config
+echo Replacing the default Git Config
 # Need an "-f" flag to not error-out if the file does not exist
 rm -f "${HOME}/.gitconfig"
 # Need to create a symbolic link because of how git misbehaves
 ln -s "${PWD}/git/.gitconfig" "${HOME}"
 
-echo Configure Vim
+echo Configuring Vim
 rm -f "${HOME}/.vimrc"
 mkdir -p "${HOME}/.vim/tmp/"
 mkdir -p "${HOME}/.vim/undodirr/"
 mkdir -p "${HOME}/.vim/spell/"
-ln "${PWD}/.vim/.vimrc" "${HOME}"
-ln "${PWD}/.vim/.ideavimrc" "${HOME}"
-ln -s "${PWD}/.vim/spell/" "${HOME}/.vim/spell"
+ln "${PWD}/vim/.vimrc" "${HOME}"
+ln "${PWD}/vim/.ideavimrc" "${HOME}"
+ln -s "${PWD}/vim/spell" "${HOME}/.vim/"
 
-echo Hard link Misc files
-ln "${PWD}/misc/.editorconfig" "${HOME}/site"
+echo Hard linking misc files
 rm -f "${HOME}/.zshrc"
 ln -s "${PWD}/zsh/.zshrc" "${HOME}"
 rm -f "${HOME}/.p10k.zsh"
 ln "${PWD}/zsh/.p10k.zsh" "${HOME}"
+ln "${PWD}/misc/.editorconfig" "${HOME}/site"
 
-echo Hard link common files from \`code_share\`
-ln "${HOME}/site/git/code_share/Images/logos/mambo.jpg" "${HOME}/Documents/mambo.jpg"
-ln "${HOME}/site/git/code_share/Images/logos/wallpaper.jpg" "${HOME}/Documents/wallpaper.jpg"
-ln "${HOME}/site/git/code_share/Images/logos/maksym_patiiuk.jpg" "${HOME}/Documents/maksym_patiiuk.jpg"
+echo Hard linking common files from \`code_share\`
+ln "${HOME}/site/git/code_share/misc/images/mambo.jpg" "${HOME}/Documents/mambo.jpg"
+ln "${HOME}/site/git/code_share/misc/images/maksym_patiiuk.jpg" "${HOME}/Documents/maksym_patiiuk.jpg"
 
-echo Hard link launchctl .plist file
-ln "${PWD}/scripts/ua.in.mambo.task.plist" "${HOME}/Library/LaunchAgents/"
+
+if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
+  echo Hard linking launchctl .plist file
+  ln "${PWD}/scripts/ua.in.mambo.task.plist" "${HOME}/Library/LaunchAgents/"
+fi
 
 
 echo \#\#\# Private part \#\#\#
@@ -132,8 +196,8 @@ echo You should comment out this part or replace it with your own
 echo private repository
 
 (
-  cd "${HOME}/site/git/" &&
-  git clone https://github.com/maxxxxxdlp/private-dotfiles.git &&
+  cd "${HOME}/site/git/"
+  git clone https://github.com/maxxxxxdlp/private-dotfiles.git
   cd private-dotfiles
   ./install.sh
 )
