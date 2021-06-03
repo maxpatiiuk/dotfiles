@@ -58,7 +58,7 @@ module.exports = {
 
     'no-non-null-assertion': OFF,
     //'no-extra-parens': ERROR,
-    'no-console': ERROR,
+    'no-console': [ERROR, {allow:['error','warn']}],
     'no-promise-executor-return': ERROR,
     'no-template-curly-in-string': ERROR,
     'no-unsafe-optional-chaining': ERROR,
@@ -176,6 +176,8 @@ module.exports = {
           'on',
           'no',
           'id',
+          'x',  // coordinates
+          'y',  // coordinates
         ],
       },
     ],
@@ -242,6 +244,7 @@ module.exports = {
     'no-continue': ERROR,
     'no-inline-comments': ERROR,
     //'no-mixed-operators': ERROR,
+    'no-extra-boolean-cast': OFF,
     'no-multi-assign': ERROR,
     //'no-multiple-empty-lines': [
     //  ERROR,
@@ -430,7 +433,7 @@ module.exports = {
       },
 
       {
-        // React Contexts and Context Providers must be in
+        // React Contexts and Context Providers can be in
         // StrictPascalCase
         selector: 'variable',
         modifiers: ['const'],
@@ -438,7 +441,7 @@ module.exports = {
           regex: '(Context|Provider)$',
           match: true,
         },
-        format: ['StrictPascalCase'],
+        format: ['StrictPascalCase', 'strictCamelCase'],
       },
 
       {
@@ -557,7 +560,7 @@ module.exports = {
       {
         ignore: [
           // don't know why these aren't ignored by default
-          -1, 0, 1,
+          -1, 0, 1, 2
         ],
       },
     ],
@@ -600,7 +603,8 @@ module.exports = {
 
     // This rule is a subset of unicorn/new-for-builtins
     'unicorn/throw-new-error': OFF,
-    // eslint-plugin-regexp is superious to this rule
+    // eslint-plugin-regexp is superior to this rule
+    'unicorn/prefer-spread': OFF,
     'unicorn/better-regex': OFF,
     'unicorn/empty-brace-spaces': OFF,
     'unicorn/custom-error-definition': ERROR,

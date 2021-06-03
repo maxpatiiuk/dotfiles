@@ -1,0 +1,36 @@
+{
+  "name": "@maxxxxxdlp/prettier-config",
+  "description": "A mostly default prettier configuration with support for `package.json`, `.xml` and shell files",
+  "version": "1.0.0",
+  "private": false,
+  "keywords": [
+    "prettier",
+    "prettierconfig",
+    "prettier-config"
+  ],
+  "main": ".prettierrc.js",
+  "files": [
+    "README.md",
+    "LICENCE",
+    ".prettierrc.js",
+    "package.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/maxxxxxdlp/dotfiles",
+    "directory": "npm/prettierrc"
+  },
+  "peerDependencies": {
+    "prettier": ">= 2"
+  },
+  "dependencies": {
+    "prettier-plugin-sh": "^0.6.1",
+    "prettier-plugin-pkg": "^0.9.0",
+    "@prettier/plugin-xml": "^0.13.1"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/maxxxxxdlp/dotfiles/tree/main/npm/prettierrc/#readme",
+  "bugs": {
+    "url": "https://github.com/maxxxxxdlp/dotfiles/issues"
+  }
+}

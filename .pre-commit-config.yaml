@@ -71,7 +71,7 @@ repos:
       - id: codespell
 
   - repo: https://github.com/psf/black
-    rev: 21.5b1
+    rev: 21.5b2
     hooks:
       - id: black
         args:
@@ -107,7 +107,7 @@ repos:
         exclude: ^docs/
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.18.3
+    rev: v2.19.1
     hooks:
       - id: pyupgrade
 
@@ -120,24 +120,12 @@ repos:
     rev: v2.3.0
     hooks:
       - id: prettier
-        files: \.(js|jsx|ts|tsx|json|json5|yaml|css|scss|sass|html|less|md)?$
-
-  - repo: https://github.com/Lucas-C/pre-commit-hooks-nodejs
-    rev: v1.1.1
-    hooks:
-      - id: dockerfile_lint
+        files: \.(js|jsx|ts|tsx|json|json5|yaml|css|scss|sass|html|less|md|xml|sh|bash|zsh,vue)?$
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
     rev: v1.2.1
     hooks:
       - id: python-safety-dependencies-check
-
-  - repo: https://github.com/lovesegfault/beautysh
-    rev: v6.1.0
-    hooks:
-      - id: beautysh
-        args:
-          - --indent-size=2
 
   - repo: https://github.com/jorisroovers/gitlint
     rev: v0.15.1
