@@ -19,14 +19,12 @@ Then, create `.stylelintrc.js` at the root of your project:
 
 ```js
 module.exports = {
-  'extends': [
-    '@maxxxxxdlp/stylelintrc'
-  ],
+  extends: ['@maxxxxxdlp/stylelintrc'],
   rules: {},
 };
 ```
 
-You can optionally extend this config or overwrite some rules by
-extending your `.stylelintrc.js`. See [official
-documentation](https://stylelint.io/user-guide/configure) for more
+You can optionally extend this config or overwrite some rules by extending your
+`.stylelintrc.js`. See
+[official documentation](https://stylelint.io/user-guide/configure) for more
 information.

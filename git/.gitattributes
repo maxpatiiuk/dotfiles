@@ -2,7 +2,6 @@
 * text=auto
 .* filter=t2s
 
-
 # Misc
 *.gitattributes text
 .gitignore text
@@ -14,26 +13,21 @@ Makefile text
 *.*rc text
 *.*ignore text
 
-
-
 # Python
 *.py text diff=python
 *.pyc binary
 *.ipynb text
-
 
 # Shell
 *.bash text eol=lf
 *.zsh text eol=lf
 *.sh text eol=lf
 
-
 # Data
 *.json text
 *.xml text
 *.yaml text
 *.yml text
-
 
 # Windows
 *.bat text eol=crlf

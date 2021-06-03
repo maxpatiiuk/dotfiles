@@ -17,5 +17,5 @@ function cdf() {
 
 # preview file
 function preview() {
-  (( $# > 0 )) && qlmanage -p $* &>/dev/null &
+  (($# > 0)) && qlmanage -p $* &>/dev/null &
 }

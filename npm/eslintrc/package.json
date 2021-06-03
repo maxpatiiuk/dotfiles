@@ -1,25 +1,30 @@
 {
   "name": "@maxxxxxdlp/eslint-config",
-  "description": "A very strict ESLint config with support for TypeScript, React and Prettier",
   "version": "1.0.1",
   "private": false,
-  "keywords": [
-    "eslint",
-    "eslintconfig",
-    "eslint-config"
-  ],
-  "main": ".eslintrc.js",
-  "files": [
-    "README.md",
-    "LICENCE",
-    ".eslintrc.js",
-    "package.json"
-  ],
+  "description": "A very strict ESLint config with support for TypeScript, React and Prettier",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/maxxxxxdlp/dotfiles",
     "directory": "npm/eslintrc"
   },
+  "homepage": "https://github.com/maxxxxxdlp/dotfiles/tree/main/npm/eslintrc/#readme",
+  "bugs": {
+    "url": "https://github.com/maxxxxxdlp/dotfiles/issues"
+  },
+  "main": ".eslintrc.js",
+  "files": [
+    ".eslintrc.js",
+    "LICENCE",
+    "package.json",
+    "README.md"
+  ],
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "eslint-config"
+  ],
   "peerDependencies": {
     "eslint": ">= 7"
   },
@@ -27,25 +32,20 @@
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-react": "^7.23.2",
-    "eslint-plugin-unicorn": "^32.0.1",
-    "eslint-plugin-markdown": "2.1.0",
     "eslint-plugin-array-func": "3.1.7",
     "eslint-plugin-eslint-comments": "3.2.0",
+    "eslint-plugin-markdown": "2.1.0",
     "eslint-plugin-optimize-regex": "1.2.0",
+    "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-promise": "5.1.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-regexp": "0.10.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
     "eslint-plugin-sonarjs": "0.7.0",
-    "eslint-plugin-regexp": "0.10.0",
+    "eslint-plugin-unicorn": "^32.0.1",
     "prettier-eslint": "^12.0.0"
   },
   "devDependencies": {
     "eslint-config-prettier": "^8.3.0"
-  },
-  "license": "MIT",
-  "homepage": "https://github.com/maxxxxxdlp/dotfiles/tree/main/npm/eslintrc/#readme",
-  "bugs": {
-    "url": "https://github.com/maxxxxxdlp/dotfiles/issues"
   }
 }

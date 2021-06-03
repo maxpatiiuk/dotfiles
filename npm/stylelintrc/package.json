@@ -1,25 +1,30 @@
 {
   "name": "@maxxxxxdlp/stylelint-config",
-  "description": "A very strict configuration for Stylelint with support for CSS-in-JS and Prettier",
   "version": "0.1.2",
   "private": false,
-  "keywords": [
-    "stylelint",
-    "stylelintconfig",
-    "stylelint-config"
-  ],
-  "main": ".stylelintrc.js",
-  "files": [
-    "README.md",
-    "LICENCE",
-    ".stylelintrc.js",
-    "package.json"
-  ],
+  "description": "A very strict configuration for Stylelint with support for CSS-in-JS and Prettier",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/maxxxxxdlp/dotfiles",
     "directory": "npm/stylelintrc"
   },
+  "homepage": "https://github.com/maxxxxxdlp/dotfiles/tree/main/npm/stylelintrc/#readme",
+  "bugs": {
+    "url": "https://github.com/maxxxxxdlp/dotfiles/issues"
+  },
+  "main": ".stylelintrc.js",
+  "files": [
+    ".stylelintrc.js",
+    "LICENCE",
+    "package.json",
+    "README.md"
+  ],
+  "keywords": [
+    "stylelint",
+    "stylelintconfig",
+    "stylelint-config"
+  ],
   "peerDependencies": {
     "stylelint": "> 13.0.0"
   },
@@ -29,10 +34,5 @@
   },
   "devDependencies": {
     "stylelint-config-prettier": "^8.0.2"
-  },
-  "license": "MIT",
-  "homepage": "https://github.com/maxxxxxdlp/dotfiles/tree/main/npm/stylelintrc/#readme",
-  "bugs": {
-    "url": "https://github.com/maxxxxxdlp/dotfiles/issues"
   }
 }

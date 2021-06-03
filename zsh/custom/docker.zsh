@@ -1,5 +1,5 @@
 # Open container's shell. Available shells are found automatically
-dsh(){
+dsh() {
   for shell in \
     "script -q -c /bin/bash /dev/null" \
     "script -q -c /bin/sh /dev/null" \
@@ -8,8 +8,7 @@ dsh(){
     "/bin/bash/" \
     "/bin/sh" \
     "/bin/zsh" \
-    "/bin/ash"
-  do
+    "/bin/ash"; do
     echo $shell
     docker exec -it "$1" env TERM=xterm-256color $shell
     if [ $? -eq 0 ]; then
@@ -27,15 +26,15 @@ alias dsa='docker ps -a --format "${ds_format}"'
 # Run the containers with the watcher script
 # More info:
 # https://github.com/specify/specify_tools/tree/main/docker_container
-dcu(){
+dcu() {
   scripts_location="~/site/git/specify_tools/docker_container/"
-  compose_location=`python3 ~/site/git/code_share/Python/finder/finder.py docker-compose.yml`
+  compose_location=$(python3 ~/site/git/code_share/Python/finder/finder.py docker-compose.yml)
   if [ $? -ne 0 ]; then
     echo "Unable to find 'docker-compose.yml"
     return 1
   fi
   cd $compose_location
-  echo "" > nohup.out
+  echo "" >nohup.out
   watcher=(bash -c "${scripts_location}venv/bin/python ${scripts_location}watch.py")
   nohup $watcher &
   docker compose up $@

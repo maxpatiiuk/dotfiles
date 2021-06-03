@@ -12,9 +12,8 @@ alias tts="~/site/python/python_tts/venv/bin/python ~/site/python/python_tts/run
 # on the current or provided branch
 alias g="python3 ~/site/git/code_share/Python/github/github.py"
 
-
 # `f` because `cc`, `dc`, `dd` and `ss` is already taken :)
-f(){
+f() {
   script_dir="${HOME}/site/python/dir_explorer/dir_explorer"
 
   # Create a temp file
@@ -33,7 +32,6 @@ f(){
   else
     return 0
   fi
-
 
   echo "${OUTPUT[1]}/${OUTPUT[2]}"
   cd "${OUTPUT[1]}"
@@ -72,8 +70,8 @@ jrottenberg/ffmpeg:scratch'
 
 # Find the `.idea/` directory among parent dirs and open that
 # project in PyCharm
-pycharm(){
-  open -na "PyCharm.app" --args `python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo ""` $@
+pycharm() {
+  open -na "PyCharm.app" --args $(python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo "") $@
 }
 
 alias brewup='brew update; \
@@ -87,11 +85,11 @@ alias openconnect="sudo openconnect \
   --authgroup=Default \
   https://kuanywhere.ku.edu"
 
-ovpn(){
+ovpn() {
   sudo /usr/local/opt/openvpn/sbin/openvpn --config "${HOME}/Documents/ovpn/$1"
 }
 # Define autocomplete
-_ovpn(){
-  reply=(`(cd ~/Documents/ovpn/ && ls *.ovpn)`);
+_ovpn() {
+  reply=($( (cd ~/Documents/ovpn/ && ls *.ovpn)))
 }
 compctl -K _ovpn ovpn
