@@ -69,6 +69,8 @@ repos:
     rev: v2.0.0
     hooks:
       - id: codespell
+        args:
+          - --skip="./node_modules/,package-lock.json,./.idea/"
 
   - repo: https://github.com/psf/black
     rev: 21.5b2
@@ -120,7 +122,10 @@ repos:
     rev: v2.3.0
     hooks:
       - id: prettier
-        files: \.(js|jsx|ts|tsx|json|json5|yaml|css|scss|sass|html|less|md|xml|sh|bash|zsh,vue)?$
+        additional_dependencies:
+          - '@prettier/plugin-xml@^0.13.1'
+          - prettier-plugin-package@^1.3.0
+          - prettier-plugin-sh@^0.6.1
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
     rev: v1.2.1

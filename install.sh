@@ -3,7 +3,7 @@ echo Read the contents of this file carefully before running it
 
 PWD="${HOME}/site/git/dotfiles"
 
-if [ "$(uname 2> /dev/null)" = "Linux" ]; then
+if [ "$(uname 2>/dev/null)" = "Linux" ]; then
   echo Clearing desktop wallpaper
   gsettings set org.gnome.desktop.background picture-uri ""
   gsettings set org.gnome.desktop.background primary-color "#222222"
@@ -44,7 +44,7 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
   echo \
     "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
   sudo apt-get update
   sudo apt-get install docker-ce docker-ce-cli containerd.io
   sudo groupadd docker
@@ -59,9 +59,9 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   echo Hard linking misc files
   sudo ln /usr/bin/gpg /usr/local/bin/gpg
   sudo ln /usr/bin/vim /usr/local/bin/vim
-  PINETRY_LOCATION=`which pinentry-curses`
+  PINETRY_LOCATION=$(which pinentry-curses)
 
-elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
+elif [ "$(uname 2>/dev/null)" = "Darwin" ]; then
 
   echo Install xcode Developer Tools
   xcode-select --install
@@ -95,9 +95,9 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install --cask firefox-developer-edition
   brew install --cask vlc
   brew install --cask obs
-  brew install --cask teamviewer
   brew install --cask android-file-transfer
   brew install --cask zoom
+  brew install --cask vnc-viewer
 
   # Set macOS defaults
   "${PWD}./macos.sh"
@@ -110,9 +110,9 @@ else
 fi
 
 echo Configure GNU PGP
-echo 'use-agent' > ~/.gnupg/gpg.conf
+echo 'use-agent' >~/.gnupg/gpg.conf
 chmod -R 700 ~/.gnupg
-echo "pinentry-program ${PINETRY_LOCATION}" >> ~/.gnupg/gpg-agent.conf
+echo "pinentry-program ${PINETRY_LOCATION}" >>~/.gnupg/gpg-agent.conf
 killall gpg-agent
 
 echo Installing Python 3.9
@@ -121,7 +121,6 @@ pyenv global 3.9.0
 pyenv version
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-
 
 echo Installing oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -136,7 +135,6 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 echo Installing zsh-vi-mode
 git clone https://github.com/jeffreytse/zsh-vi-mode "${PWD}/zsh/custom/plugins/zsh-vi-mode"
-
 
 echo Creating directories
 mkdir "${HOME}/site"
@@ -183,7 +181,6 @@ ln "${PWD}/vim/.vimrc" "${HOME}"
 ln "${PWD}/vim/.ideavimrc" "${HOME}"
 ln -s "${PWD}/vim/spell" "${HOME}/.vim/"
 
-
 echo Hard linking misc files
 rm -f "${HOME}/.zshrc"
 ln -s "${PWD}/zsh/.zshrc" "${HOME}"
@@ -196,12 +193,10 @@ echo Hard linking common files from \`code_share\`
 ln "${HOME}/site/git/code_share/misc/images/mambo.jpg" "${HOME}/Documents/mambo.jpg"
 ln "${HOME}/site/git/code_share/misc/images/maksym_patiiuk.jpg" "${HOME}/Documents/maksym_patiiuk.jpg"
 
-
-if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
+if [ "$(uname 2>/dev/null)" = "Darwin" ]; then
   echo Hard linking launchctl .plist file
   ln "${PWD}/scripts/ua.in.mambo.task.plist" "${HOME}/Library/LaunchAgents/"
 fi
-
 
 echo \#\#\# Private part \#\#\#
 echo This relies on a private \`maxxxxxdlp/private-dotfiles\` repository

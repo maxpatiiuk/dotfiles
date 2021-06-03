@@ -58,7 +58,7 @@ module.exports = {
 
     'no-non-null-assertion': OFF,
     //'no-extra-parens': ERROR,
-    'no-console': [ERROR, {allow:['error','warn']}],
+    'no-console': [ERROR, { allow: ['error', 'warn'] }],
     'no-promise-executor-return': ERROR,
     'no-template-curly-in-string': ERROR,
     'no-unsafe-optional-chaining': ERROR,
@@ -176,8 +176,8 @@ module.exports = {
           'on',
           'no',
           'id',
-          'x',  // coordinates
-          'y',  // coordinates
+          'x', // coordinates
+          'y', // coordinates
         ],
       },
     ],
@@ -560,7 +560,7 @@ module.exports = {
       {
         ignore: [
           // don't know why these aren't ignored by default
-          -1, 0, 1, 2
+          -1, 0, 1, 2,
         ],
       },
     ],
