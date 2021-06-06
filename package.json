@@ -14,7 +14,7 @@
     "url": "https://github.com/maxxxxxdlp/dotfiles/issues"
   },
   "devDependencies": {
-    "@maxxxxxdlp/prettier-config": "^1.0.0"
+    "@maxxxxxdlp/prettier-config": "^1.0.2"
   },
   "prettier": "@maxxxxxdlp/prettier-config",
   "workspaces": [
