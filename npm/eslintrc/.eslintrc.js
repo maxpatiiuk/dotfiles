@@ -27,6 +27,7 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:unicorn/recommended',
@@ -178,6 +179,7 @@ module.exports = {
           'id',
           'x', // coordinates
           'y', // coordinates
+          '__', // unused function argument
         ],
       },
     ],
@@ -604,8 +606,9 @@ module.exports = {
     // This rule is a subset of unicorn/new-for-builtins
     'unicorn/throw-new-error': OFF,
     // eslint-plugin-regexp is superior to this rule
-    'unicorn/prefer-spread': OFF,
     'unicorn/better-regex': OFF,
+    // Conflicts with array-func/prefer-array-from
+    'unicorn/prefer-spread': OFF,
     'unicorn/empty-brace-spaces': OFF,
     'unicorn/custom-error-definition': ERROR,
     'unicorn/filename-case': OFF,
