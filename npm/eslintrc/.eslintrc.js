@@ -23,6 +23,7 @@ module.exports = {
     'sonarjs',
     'simple-import-sort',
     'regexp',
+    'jsx-a11y',
   ],
   extends: [
     'eslint:recommended',
@@ -34,6 +35,7 @@ module.exports = {
     'plugin:array-func/all',
     'plugin:eslint-comments/recommended',
     'plugin:regexp/recommended',
+    'plugin:jsx-a11y/recommended',
     'prettier',
     'plugin:prettier/recommended',
     'plugin:markdown/recommended',
