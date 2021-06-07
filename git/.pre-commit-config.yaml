@@ -24,6 +24,11 @@
 # Finally, you can disable some hooks by listing them in the `SKIP`
 # variable. Example:
 # SKIP=flake8,black git commit -m "foo"
+#
+#
+# WARNING:
+# Parts of this file are auto-generated
+# For more info, see https://github.com/maxxxxxdlp/pre-commit-tools
 
 default_language_version:
   python: python3
@@ -77,7 +82,8 @@ repos:
     rev: 3.9.2
     hooks:
       - id: flake8
-        additional_dependencies: [flake8-bugbear]
+        additional_dependencies:
+          - flake8-bugbear
         args:
           # these settings are needed to make flake8 compatible with black
           - --max-line-length=88
@@ -129,23 +135,18 @@ repos:
       - id: stylelint
         files: \.(css|scss|sass|js|jsx|ts|tsx)$
         additional_dependencies:
-          - stylelint@^13.8.0
+          - stylelint@^13.13.1
           - stylelint-config-prettier@^8.0.2
-          - stylelint-config-standard@^20.0.0
+          - stylelint-config-standard@^22.0.0
 
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: v7.27.0
     hooks:
       - id: eslint
-        files: \.(js|jsx|ts|tsx)?$
+        types: [text]
+        types_or: [javascript, jsx, ts, tsx]
         additional_dependencies:
-          - '@typescript-eslint/eslint-plugin@^4.22.0'
-          - '@typescript-eslint/parser@^4.22.0'
-          - eslint-config-prettier@^8.2.0
-          - eslint-plugin-prettier@^3.3.1
-          - eslint-plugin-react@^7.23.2
-          - eslint-plugin-unicorn@^29.0.0
-          - prettier-eslint@^12.0.0
+          - '@maxxxxxdlp/eslint-config@^1.0.2'
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
     rev: v1.2.1

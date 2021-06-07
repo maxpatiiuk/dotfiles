@@ -81,7 +81,8 @@ repos:
     rev: 3.9.2
     hooks:
       - id: flake8
-        additional_dependencies: [flake8-bugbear]
+        additional_dependencies:
+          - flake8-bugbear
         args:
           # these settings are needed to make flake8 compatible with black
           - --max-line-length=88

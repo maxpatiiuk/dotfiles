@@ -13,7 +13,7 @@ editor = vim
 whitespace = tab-in-indent,blank-at-eol,-blank-at-eof
 attributesfile = ~/site/git/dotfiles/git/.gitattributes
 excludesfile = ~/site/git/dotfiles/git/.gitignore_global
-hooksPath = ~/site/git/dotfiles/git/hooks/
+hooksPath = ~/site/git/pre-commit-tools/pre-commit-tools
 untrackedCache = true
 [apply]
 whitespace = fix
