@@ -48,19 +48,15 @@ module.exports = {
     {
       files: ['**/*.{md}/*.{js,ts,tsx}'],
       rules: {
-        'no-undef': 'off',
-        'no-unused-expression': 'off',
-        'no-unused-var': 'off',
-        'no-console': 'off',
+        'no-undef': OFF,
+        'no-unused-expression': OFF,
+        'no-unused-var': OFF,
+        'no-console': OFF,
       },
     },
   ],
   rules: {
-    // Some rules are disabled as they conflict with `prettier`
-    // They should be enabled if you don't use `prettier`
-
     'no-non-null-assertion': OFF,
-    //'no-extra-parens': ERROR,
     'no-console': [ERROR, { allow: ['error', 'warn'] }],
     'no-promise-executor-return': ERROR,
     'no-template-curly-in-string': ERROR,
@@ -71,7 +67,6 @@ module.exports = {
     'consistent-return': ERROR,
     'default-case': ERROR,
     'default-case-last': ERROR,
-    //'default-param-last': ERROR,
     'guard-for-in': ERROR,
     'no-restricted-syntax': [
       ERROR,
@@ -93,14 +88,11 @@ module.exports = {
     'no-eval': ERROR,
     'no-extend-native': ERROR,
     'no-extra-bind': ERROR,
-    //'no-floating-decimal': ERROR,
     'no-implicit-coercion': ERROR,
     'no-implied-eval': ERROR,
     'no-iterator': ERROR,
     'no-labels': ERROR,
     'no-lone-blocks': ERROR,
-    //'no-multi-str': ERROR,
-    //'no-multi-spaces': ERROR,
     'no-new': WARN,
     'no-new-func': ERROR,
     'no-new-wrappers': ERROR,
@@ -125,47 +117,11 @@ module.exports = {
     'prefer-named-capture-group': WARN,
     'prefer-promise-reject-errors': ERROR,
     'prefer-regex-literals': ERROR,
-    //'wrap-iife': [
-    //  ERROR,
-    //  'inside'
-    //],
     yoda: ERROR,
     'no-undefined': OFF,
-    //'array-bracket-newline': [
-    //  ERROR,
-    //  'consistent',
-    //],
-    //'array-element-newline': [
-    //  ERROR,
-    //  'consistent',
-    //],
-    //'block-spacing': ERROR,
-    //'brace-style': [
-    //  ERROR,
-    //  'stroustrup',
-    //  {
-    //    'allowSingleLine': false,
-    //  }
-    //],
     camelcase: OFF,
     'capitalized-comments': ERROR,
-    //'comma-dangle': [
-    //  ERROR,
-    //  'always-multiline'
-    //],
-    //'comma-spacing': ERROR,
-    //'comma-style': ERROR,
     'consistent-this': ERROR,
-    //'eol-last': ERROR,
-    //'func-call-spacing': ERROR,
-    //'function-call-argument-newline': [
-    //  ERROR,
-    //  'consistent',
-    //],
-    //'function-paren-newline': [
-    //  ERROR,
-    //  'consistent',
-    //],
     'id-length': [
       ERROR,
       {
@@ -185,43 +141,12 @@ module.exports = {
         ],
       },
     ],
-    //'id-match': [
-    //  ERROR,
-    //  '^($_)?[A-Za-z]*$',
-    //    {
-    //    'onlyDeclarations': false,
-    //  },
-    //],
-    //'arrow-body-style': ERROR,
-    //'implicit-arrow-linebreak': ERROR,
-    //'indent': [
-    //  WARN,
-    //  2
-    //],
-    //'jsx-quotes': [
-    //  ERROR,
-    //  'prefer-single',
-    //],
-    //'key-spacing': ERROR,
-    //'keyword-spacing': ERROR,
-    //'linebreak-style': ERROR,
-    //'lines-around-comment': ERROR,
     'max-depth': [
       ERROR,
       {
         max: 6,
       },
     ],
-    //'max-len': [
-    //  ERROR,
-    //  {
-    //    'code': 80,
-    //    'tabWidth': 2,
-    //    'ignoreUrls': true,
-    //    'ignoreTemplateLiterals': true,
-    //    'ignoreRegExpLiterals': true,
-    //  },
-    //],
     'max-lines': ERROR,
     'max-lines-per-function': [
       ERROR,
@@ -241,130 +166,30 @@ module.exports = {
     ],
     'max-statements-per-line': ERROR,
     'multiline-comment-style': ERROR,
-    //'multiline-ternary': ERROR,
     'new-cap': ERROR,
-    //'new-parens': ERROR,
     'no-bitwise': ERROR,
     'no-continue': ERROR,
     'no-inline-comments': ERROR,
-    //'no-mixed-operators': ERROR,
     'no-extra-boolean-cast': OFF,
     'no-multi-assign': ERROR,
-    //'no-multiple-empty-lines': [
-    //  ERROR,
-    //  {
-    //    'max': 2,
-    //    'maxEOF': 1,
-    //    'maxBOF': 0,
-    //  },
-    //],
     'no-negated-condition': ERROR,
     'no-new-object': ERROR,
     'no-plusplus': ERROR,
-    //'no-tabs': ERROR,
-    //'no-trailing-spaces': ERROR,
-    'no-underscore-dangle': ERROR,
     'no-unneeded-ternary': ERROR,
-    //'no-whitespace-before-property': ERROR,
-    //'nonblock-statement-body-position': [
-    //  ERROR,
-    //  'below',
-    //],
-    //'object-curly-newline': [
-    //  ERROR,
-    //  {
-    //    'multiline': true,
-    //  },
-    //],
-    //'object-property-newline': ERROR,
     'one-var': [ERROR, 'never'],
-    //'operator-linebreak': [
-    //  ERROR,
-    //  'after',
-    //],
     'prefer-exponentiation-operator': ERROR,
     'prefer-object-spread': ERROR,
-    //'quote-props': [
-    //  ERROR,
-    //  'consistent-as-needed',
-    //],
-    //'semi': ERROR,
-    //'semi-spacing': [
-    //  ERROR,
-    //  {
-    //    'before': false,
-    //    'after': true,
-    //  },
-    //],
-    //'semi-style': ERROR,
-    //'space-before-blocks': [
-    //  ERROR,
-    //  {
-    //    'functions': 'never',
-    //    'keywords': 'always',
-    //    'classes': 'always',
-    //  },
-    //],
-    //'space-before-function-paren': [
-    //  ERROR,
-    //  'never',
-    //],
-    //'space-infix-ops': ERROR,
-    //'space-unary-ops': [
-    //  ERROR,
-    //  {
-    //    'words': true,
-    //    'nonwords': false,
-    //  },
-    //],
     'spaced-comment': ERROR,
-    //'template-tag-spacing': ERROR,
-    //'wrap-regex': ERROR,
-    //'arrow-parens': ERROR,
-    //'arrow-spacing': [
-    //  ERROR,
-    //  {
-    //    'before': true,
-    //    'after': true,
-    //  },
-    //],
-    //'generator-star-spacing': [
-    //  ERROR,
-    //  {
-    //    'before': true,
-    //    'after': false,
-    //  },
-    //],
-    //'no-confusing-arrow': ERROR,
     'no-useless-computed-key': ERROR,
     'no-useless-rename': ERROR,
     'no-var': ERROR,
     'object-shorthand': ERROR,
-    //'prefer-arrow-callback': ERROR,
     'prefer-const': ERROR,
     'prefer-numeric-literals': ERROR,
     'prefer-rest-params': ERROR,
     'prefer-spread': ERROR,
     'prefer-template': ERROR,
-    //'rest-spread-spacing': ERROR,
-    //'sort-imports': ERROR,
     'symbol-description': ERROR,
-    //'template-curly-spacing': ERROR,
-    //'yield-star-spacing': [
-    //  ERROR,
-    //  {
-    //    'before': true,
-    //    'after': false,
-    //  },
-    //],
-    //'quotes': [
-    //  ERROR,
-    //  'single',
-    //  {
-    //    'avoidEscape': true,
-    //    'allowTemplateLiterals': true,
-    //  },
-    //],
 
     '@typescript-eslint/ban-ts-comment': WARN,
     '@typescript-eslint/explicit-module-boundary-types': [
@@ -393,14 +218,6 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': ERROR,
     '@typescript-eslint/explicit-function-return-type': ERROR,
     '@typescript-eslint/explicit-member-accessibility': ERROR,
-    //'@typescript-eslint/member-delimiter-style': [
-    //  ERROR,
-    //  {
-    //    'singleline': {
-    //      'requireLast': true,
-    //  },
-    //  },
-    //],
     '@typescript-eslint/method-signature-style': ERROR,
     '@typescript-eslint/naming-convention': [
       ERROR,
@@ -542,7 +359,6 @@ module.exports = {
     ],
     '@typescript-eslint/strict-boolean-expressions': ERROR,
     '@typescript-eslint/switch-exhaustiveness-check': ERROR,
-    //'@typescript-eslint/type-annotation-spacing': ERROR,
     '@typescript-eslint/unified-signatures': ERROR,
     'default-param-last': OFF,
     '@typescript-eslint/default-param-last': ERROR,
@@ -576,8 +392,6 @@ module.exports = {
     '@typescript-eslint/no-unused-expressions': ERROR,
     'no-useless-constructor': OFF,
     '@typescript-eslint/no-useless-constructor': ERROR,
-    //'object-curly-spacing': OFF,
-    //'@typescript-eslint/object-curly-spacing': ERROR,
     'no-return-await': OFF,
     '@typescript-eslint/return-await': ERROR,
 
@@ -602,7 +416,6 @@ module.exports = {
     'react/jsx-handler-names': ERROR,
     'react/jsx-no-useless-fragment': ERROR,
     'react/jsx-pascal-case': ERROR,
-    //'react/jsx-props-no-multi-spaces': ERROR,
     'react/react-in-jsx-scope': OFF,
 
     // This rule is a subset of unicorn/new-for-builtins
