@@ -119,7 +119,7 @@ repos:
       - id: setup-cfg-fmt
 
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v2.3.0
+    rev: v2.3.1
     hooks:
       - id: prettier
         additional_dependencies:
@@ -140,13 +140,13 @@ repos:
           - stylelint-config-standard@^22.0.0
 
   - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v7.27.0
+    rev: v7.28.0
     hooks:
       - id: eslint
         types: [text]
         types_or: [javascript, jsx, ts, tsx]
         additional_dependencies:
-          - '@maxxxxxdlp/eslint-config@^1.0.2'
+          - '@maxxxxxdlp/eslint-config@^1.0.3'
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
     rev: v1.2.1
