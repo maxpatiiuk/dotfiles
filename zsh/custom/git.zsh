@@ -7,6 +7,7 @@
 
 alias gg="git log --graph --oneline --pretty=format:\"%C(yellow)%h %Cgreen%an %Cblue%ar %Cred%s%Creset %C(auto)%d%Creset\""
 alias gl="git log --graph --stat"
+alias gll="git log --graph --stat --no-abbrev-commit"
 alias g-="git switch -"
 alias g--="git switch"
 alias gs="git status"

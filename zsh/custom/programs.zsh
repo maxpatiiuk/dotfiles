@@ -1,14 +1,11 @@
 # Detailed documentation for some of these tools can be found here:
 # https://github.com/maxxxxxdlp/code_share/tree/main/Python/
 
-# Copy to clipboard from pipe or echo current clipboard's value
-alias clipboard="python3 ~/site/git/code_share/Python/clipboard/clip_board.py"
-
 # Run text to speech on piped text or on the file provided as first
 # argument or on the default file
 alias tts="~/site/python/python_tts/venv/bin/python ~/site/python/python_tts/run.py"
 
-# Open the current repository or one of it's files/directories in git
+# Open the current repository or one of it's files/directories in GitHub
 # on the current or provided branch
 alias g="python3 ~/site/git/code_share/Python/github/github.py"
 
@@ -48,10 +45,10 @@ f() {
 
 # Play a notification sound. Useful when chained at the end of another
 # program
-alias notify="afplay /System/Library/Sounds/Funk.aiff"
+alias notify="afplay /System/Library/Sounds/Funk.aiff &>/dev/null &"
 
 # Run a dockerized youtube-dl with some default parameters
-# Also, can be called like `yt <URL> && notify` to received a
+# Also, can be called like `yt <URL> && notify` to receive a
 # completion notification
 alias yt='docker run \
   --rm -i \
@@ -68,17 +65,11 @@ alias ffmpeg='docker run \
 -w $(pwd)
 jrottenberg/ffmpeg:scratch'
 
-# Find the `.idea/` directory among parent dirs and open that
+# Find the `.idea/` directory among parent directories and open that
 # project in PyCharm
 pycharm() {
   open -na "PyCharm.app" --args $(python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo "") $@
 }
-
-alias brewup='brew update; \
-  brew upgrade; \
-  brew prune; \
-  brew cleanup; \
-  brew doctor'
 
 alias openconnect="sudo openconnect \
   --user=m001p596 \
