@@ -291,3 +291,7 @@ function LargeFile()
  let g:enable_spelunker_vim = 0
  set spell
 endfunction
+
+" Make `listchars` grey instead of red
+highlight SpecialKey ctermfg=DarkGrey ctermbg=black guifg=grey70 guibg=black
+
