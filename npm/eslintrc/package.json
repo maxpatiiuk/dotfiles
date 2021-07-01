@@ -1,6 +1,6 @@
 {
   "name": "@maxxxxxdlp/eslint-config",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": false,
   "description": "A very strict ESLint config with support for TypeScript, React and Prettier",
   "license": "MIT",
@@ -32,6 +32,7 @@
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-config-next": "^11.0.1",
     "eslint-plugin-array-func": "3.1.7",
     "eslint-plugin-eslint-comments": "3.2.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",

@@ -36,6 +36,7 @@ module.exports = {
     'plugin:eslint-comments/recommended',
     'plugin:regexp/recommended',
     'plugin:jsx-a11y/recommended',
+    'next',
     'prettier',
     'plugin:prettier/recommended',
     'plugin:markdown/recommended',
