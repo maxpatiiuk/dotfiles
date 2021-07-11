@@ -4,7 +4,7 @@ smudge = git-lfs smudge -- %f
 process = git-lfs filter-process
 required = true
 [user]
-name = Maksym Patiiuk
+name = Max Patiiuk
 email = 40512816+maxxxxxdlp@users.noreply.github.com
 signingkey = 446EFFF9D86ADA79
 [core]
