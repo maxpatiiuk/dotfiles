@@ -1,10 +1,14 @@
 # macOS specific defaults
 
+# Disable caret blinking system-wide
+defaults write -g NSTextInsertionPointBlinkPeriodOff -float 1
+defaults write -g NSTextInsertionPointBlinkPeriodOn -float 99999999
+
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # Stop iTunes from responding to the keyboard media keys
-launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2>/dev/null
+launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
 
 # Save screenshots to the desktop
 defaults write com.apple.screencapture location -string "${HOME}/Desktop"
@@ -249,11 +253,11 @@ defaults write com.apple.spotlight orderedItems -array \
   '{"enabled" = 1;"name" = "MENU_WEBSEARCH";}' \
   '{"enabled" = 1;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
 # Load new settings before rebuilding the index
-killall mds >/dev/null 2>&1
+killall mds > /dev/null 2>&1
 # Make sure indexing is enabled for the main volume
-sudo mdutil -i on / >/dev/null
+sudo mdutil -i on / > /dev/null
 # Rebuild the index from scratch
-sudo mdutil -E / >/dev/null
+sudo mdutil -E / > /dev/null
 
 ###############################################################################
 # Terminal & iTerm 2                                                          #
@@ -282,7 +286,7 @@ defaults write com.apple.Terminal ShowLineMarks -int 0
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Disable local Time Machine backups
-hash tmutil &>/dev/null && sudo tmutil disablelocal
+hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 ###############################################################################
 # Activity Monitor                                                            #
@@ -342,6 +346,6 @@ for app in "Activity Monitor" \
   "Safari" \
   "SystemUIServer" \
   "Terminal"; do
-  killall "${app}" &>/dev/null
+  killall "${app}" &> /dev/null
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."

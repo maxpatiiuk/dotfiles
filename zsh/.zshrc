@@ -82,6 +82,7 @@ plugins=(
   colored-man-pages
   command-not-found
   zsh-vi-mode
+  zsh-autosuggestions
 )
 
 ZSH_CUSTOM="${HOME}/site/git/dotfiles/zsh/custom"

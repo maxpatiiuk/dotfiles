@@ -50,8 +50,9 @@ Manually import the following extension into Chrome:
 
 ### [macOS only]
 
-Configure `~/site/git/code_share/misc/vim_macos_associator` Associate `vim` with
-the files located in `common_plaintext_files`
+Configure `~/site/git/code_share/misc/vim_macos_associator`
+
+Associate `vim` with the files located in `common_plaintext_files`
 
 Download high quality TTS voices
 
@@ -63,4 +64,5 @@ Manually download the following programs:
 ### [Ubuntu only]
 
 Configure the terminal to use the same keyboard shortcuts and theme as macOS
+
 Configure Gnome to use a theme/icons/cursors like in macOS
