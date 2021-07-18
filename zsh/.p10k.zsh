@@ -48,18 +48,18 @@
 
   # Left prompt segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-    # context                 # user@host
+    context                 # user@host
     dir                       # current directory
     vcs                       # git status
     # command_execution_time  # previous command duration
-    virtualenv                # python virtual environment
+    #virtualenv                # python virtual environment
     prompt_char               # prompt symbol
   )
 
   # Right prompt segments.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     command_execution_time    # previous command duration
-    virtualenv                # python virtual environment
+    #virtualenv                # python virtual environment
     # context                   # user@host
     # time                    # current time
   )
@@ -127,7 +127,7 @@
   # Cyan ahead/behind arrows.
   typeset -g POWERLEVEL9K_VCS_{INCOMING,OUTGOING}_CHANGESFORMAT_FOREGROUND=$cyan
   # Don't show remote branch, current tag or stashes.
-  typeset -g POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind)
+  typeset -g POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind git-stash)
   # Don't show the branch icon.
   typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=
   # When in detached HEAD state, show @commit where branch normally goes.
@@ -136,6 +136,7 @@
   typeset -g POWERLEVEL9K_VCS_{STAGED,UNSTAGED,UNTRACKED}_ICON=
   # Show '*' when there are staged, unstaged or untracked files.
   typeset -g POWERLEVEL9K_VCS_DIRTY_ICON='*'
+  typeset -g POWERLEVEL9K_VCS_STASH_ICON=','
   # Show '⇣' if local branch is behind remote.
   typeset -g POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=':⇣'
   # Show '⇡' if local branch is ahead of remote.
