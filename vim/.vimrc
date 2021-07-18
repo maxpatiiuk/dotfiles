@@ -222,6 +222,9 @@ let g:startify_files_number = 5
 " Disable Startify header
 let g:startify_custom_header = []
 
+" Make Startify reopen last session
+let g:startify_session_persistence = 1
+
 " Toggle nerdtree
 map <C-n> :NERDTreeTabsToggle<CR>
 
@@ -294,4 +297,3 @@ endfunction
 
 " Make `listchars` grey instead of red
 highlight SpecialKey ctermfg=DarkGrey ctermbg=black guifg=grey70 guibg=black
-

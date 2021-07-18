@@ -34,7 +34,7 @@ dcu() {
     return 1
   fi
   cd $compose_location
-  echo "" >nohup.out
+  echo "" > nohup.out
   watcher=(bash -c "${scripts_location}venv/bin/python ${scripts_location}watch.py")
   nohup $watcher &
   docker compose up $@
@@ -43,3 +43,16 @@ dcu() {
 
 alias dl="docker logs -f"
 alias dcl="docker compose logs -f"
+
+dd() {
+  DOCKER_CONTEXT=maxxxxxdlp-pc $@
+}
+
+alias sync_client='docker run --rm --init -it -u $(id -u):$(id -g) -v $(pwd):/data \
+  quay.io/stephenh/mirror client \
+  --local-root /data \
+  --remote-root /data \
+  --host 192.168.50.165'
+alias sync_server='docker run \
+  --rm --init -it -u $(id -u):$(id -g) -v $(pwd):/data -p 49172:49172 \
+  quay.io/stephenh/mirror server'

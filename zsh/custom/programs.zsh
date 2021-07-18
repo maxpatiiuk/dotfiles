@@ -59,11 +59,14 @@ alias yt='docker run \
   -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4"'
 
 # Run a dockerized version of ffmpeg
-alias ffmpeg='docker run \
-  --rm
--v $(pwd):$(pwd)
--w $(pwd)
-jrottenberg/ffmpeg:scratch'
+ffmpeg() {
+  docker run \
+    --rm \
+    -v $(pwd):$(pwd) \
+    -w $(pwd) \
+    jrottenberg/ffmpeg:scratch \
+    $@
+}
 
 # Find the `.idea/` directory among parent directories and open that
 # project in PyCharm
