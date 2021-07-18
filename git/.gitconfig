@@ -40,7 +40,7 @@ coloring = highlightRecent
 [submodule]
 recurse = true
 [credential]
-helper = !git credential-$([ "$(uname 2>/dev/null)" = "Darwin" ] && echo "osxkeychain" || echo "store") "$@"
+helper = !git credential-$([ "$(uname 2> /dev/null)" = "Darwin" ] && echo "osxkeychain" || echo "store") "$@"
 [help]
 autocorrect = 1
 [color "status"]
