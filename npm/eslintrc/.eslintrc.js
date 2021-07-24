@@ -136,9 +136,11 @@ module.exports = {
           'on',
           'no',
           'id',
+          'at',
           'x', // coordinates
           'y', // coordinates
           '__', // unused function argument
+          'fs', // NPM module
         ],
       },
     ],
@@ -217,7 +219,15 @@ module.exports = {
       },
     ],
     '@typescript-eslint/consistent-type-imports': ERROR,
-    '@typescript-eslint/explicit-function-return-type': ERROR,
+    '@typescript-eslint/explicit-function-return-type': [
+      ERROR,
+      {
+        allowTypedFunctionExpressions: true,
+        allowHigherOrderFunctions: true,
+        allowDirectConstAssertionInArrowFunctions: true,
+        allowConciseArrowFunctionExpressionsStartingWithVoid: true,
+      },
+    ],
     '@typescript-eslint/explicit-member-accessibility': ERROR,
     '@typescript-eslint/method-signature-style': ERROR,
     '@typescript-eslint/naming-convention': [
@@ -310,6 +320,12 @@ module.exports = {
       {
         // Force generics into UPPER_CASE
         selector: 'typeParameter',
+        format: ['UPPER_CASE'],
+      },
+
+      {
+        // Enum members should be in upper case
+        selector: 'enumMember',
         format: ['UPPER_CASE'],
       },
     ],
@@ -415,7 +431,12 @@ module.exports = {
       },
     ],
     'react/jsx-handler-names': ERROR,
-    'react/jsx-no-useless-fragment': ERROR,
+    'react/jsx-no-useless-fragment': [
+      ERROR,
+      {
+        allowExpressions: true,
+      },
+    ],
     'react/jsx-pascal-case': ERROR,
     'react/react-in-jsx-scope': OFF,
 
@@ -472,6 +493,7 @@ module.exports = {
       'error',
       {
         argsIgnorePattern: '^_', // Allow vars that begin with _
+        varsIgnorePattern: '^_', // Allow vars that begin with _
       },
     ],
 
@@ -544,6 +566,9 @@ module.exports = {
     'regexp/prefer-unicode-codepoint-escapes': ERROR,
     'regexp/sort-flags': ERROR,
     'regexp/unicode-escape': ERROR,
+
+    // Deprecated rule
+    'a11y/no-onchange': OFF,
   },
   settings: {
     react: {

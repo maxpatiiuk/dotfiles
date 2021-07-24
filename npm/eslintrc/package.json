@@ -1,6 +1,6 @@
 {
   "name": "@maxxxxxdlp/eslint-config",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "private": false,
   "description": "A very strict ESLint config with support for TypeScript, React and Prettier",
   "license": "MIT",
