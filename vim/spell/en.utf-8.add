@@ -114,3 +114,5 @@ dockerfile
 workdir
 mariadb
 timestamp
+patii
+webmanifest
