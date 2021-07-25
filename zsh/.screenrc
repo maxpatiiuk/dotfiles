@@ -1,0 +1,20 @@
+# Disabled default startup message
+startup_message off
+
+# Enable enhanced color support
+term "screen-256color"
+
+# Allow bold colors - necessary for some reason
+attrcolor b ".I"
+
+# Tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+# Erase background with current bg color
+defbce "on"
+
+# Fix for vim-in-screen behaviour
+altscreen on
+
+# Increase scrollback size
+defscrollback 10000

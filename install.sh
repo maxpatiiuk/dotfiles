@@ -21,6 +21,7 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
     npm \
     vim-gtk3 \
     pre-commit \
+    screen \
     openvpn \
     openssh-server \
     pinentry-curses \
@@ -54,7 +55,6 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   sudo systemctl enable containerd.service
   curl -L https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
   docker plugin install --grant-all-permissions vieux/sshfs
-
 
   echo Configuring SSH
   sudo ufw allow ssh
@@ -197,6 +197,7 @@ rm -f "${HOME}/.zshrc"
 ln -s "${PWD}/zsh/.zshrc" "${HOME}"
 rm -f "${HOME}/.p10k.zsh"
 ln "${PWD}/zsh/.p10k.zsh" "${HOME}"
+ln "${PWD}/zsh/.screenrc" "${HOME}"
 ln "${PWD}/misc/.editorconfig" "${HOME}/site"
 sudo ln "${PWD}/docker/daemon.json" "/etc/docker/"
 
