@@ -5,7 +5,7 @@ process = git-lfs filter-process
 required = true
 [user]
 name = Max Patiiuk
-email = 40512816+maxxxxxdlp@users.noreply.github.com
+email = max@patii.uk
 signingkey = 446EFFF9D86ADA79
 [core]
 autocrlf = input
