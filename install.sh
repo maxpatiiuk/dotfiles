@@ -97,6 +97,7 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install grep
   brew install openssh
   brew install screen
+  # WARNING: this would install an Intel version of Docker
   brew install --cask docker
   brew install --cask google-chrome-beta
   brew install --cask firefox-developer-edition
@@ -106,6 +107,9 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install --cask android-file-transfer
   brew install --cask zoom
   brew install --cask vnc-viewer
+  
+  # These are needed to make pyenv work on m1 macs
+  brew install openssl readline sqlite3 xz zlib
 
   # Set macOS defaults
   "${PWD}./macos.sh"
@@ -118,6 +122,7 @@ else
 fi
 
 echo Configure GNU PGP
+mkdir -p ~/.gnupg
 echo 'use-agent' > ~/.gnupg/gpg.conf
 chmod -R 700 ~/.gnupg
 echo "pinentry-program ${PINETRY_LOCATION}" >> ~/.gnupg/gpg-agent.conf
@@ -142,7 +147,7 @@ echo Installing Powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 echo Installing other ZSH plugins
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 echo Installing zsh-vi-mode
 git clone https://github.com/jeffreytse/zsh-vi-mode "${PWD}/zsh/custom/plugins/zsh-vi-mode"
@@ -207,6 +212,7 @@ ln "${HOME}/site/git/code_share/misc/images/maksym_patiiuk.jpg" "${HOME}/Documen
 
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   echo Hard linking launchctl .plist file
+  mkdir -p ${HOME}/Library/LaunchAgents/
   ln "${PWD}/scripts/ua.in.mambo.task.plist" "${HOME}/Library/LaunchAgents/"
 fi
 
