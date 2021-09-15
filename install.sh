@@ -54,7 +54,6 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   sudo systemctl enable docker.service
   sudo systemctl enable containerd.service
   curl -L https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
-  docker plugin install --grant-all-permissions vieux/sshfs
 
   echo Configuring SSH
   sudo ufw allow ssh
