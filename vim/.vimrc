@@ -17,6 +17,16 @@ set softtabstop=2
 " Make Vim more useful
 set nocompatible
 
+" Enable syntax and plugins (for netrw)
+syntax enable
+filetype plugin on
+
+" Provide tab-completion for file-related tasks
+set path+=**
+
+" Display matching files on tab
+set wildmenu
+
 " Enhance command-line completion
 set wildmenu
 
