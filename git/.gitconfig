@@ -20,7 +20,7 @@ whitespace = fix
 [branch]
 sort = -committerdate
 [commit]
-gpgsign = true
+  gpgsign = true
 [diff]
 tool = vimdiff
 mnemonicPrefix = true
@@ -70,4 +70,4 @@ prereleaseSuffix = .rc
 [filter "t2s"]
 clean = expand -t 2
 [gpg]
-program = /usr/local/bin/gpg
+  program = gpg

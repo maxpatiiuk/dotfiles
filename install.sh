@@ -206,8 +206,10 @@ ln "${PWD}/misc/.editorconfig" "${HOME}/site"
 sudo ln "${PWD}/docker/daemon.json" "/etc/docker/"
 
 echo Hard linking common files from \`code_share\`
-ln "${HOME}/site/git/code_share/misc/images/mambo.jpg" "${HOME}/Documents/mambo.jpg"
-ln "${HOME}/site/git/code_share/misc/images/maksym_patiiuk.jpg" "${HOME}/Documents/maksym_patiiuk.jpg"
+ln "${HOME}/site/git/code_share/misc/images/mambo.jpg" "${HOME}/Documents/"
+ln "${HOME}/site/git/code_share/misc/images/max_patiiuk_old.jpg" "${HOME}/Documents/"
+ln "${HOME}/site/git/code_share/misc/images/max_patiiuk_1x1.jpg" "${HOME}/Documents/"
+ln "${HOME}/site/git/code_share/misc/images/max_patiiuk.jpg" "${HOME}/Documents/"
 
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   echo Hard linking launchctl .plist file
