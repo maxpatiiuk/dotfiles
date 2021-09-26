@@ -57,6 +57,7 @@ alias yt='docker run \
   -v "$(pwd)":/workdir:rw \
   mikenye/youtube-dl \
   -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4"'
+alias yta='yt -f "bestaudio[ext=m4a]"'
 
 # Run a dockerized version of ffmpeg
 ffmpeg() {
@@ -73,6 +74,15 @@ ffmpeg() {
 pycharm() {
   open -na "PyCharm.app" --args $(python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo "") $@
 }
+
+alias mariadb="docker run \
+  -p 127.0.0.1:3306:3306 \
+  -v test-db:/var/lib/mysql \
+  -v ${HOME}/Downloads/:/sql/ \
+  -e MARIADB_ROOT_PASSWORD=root \
+  --name test \
+  --rm \
+  mariadb"
 
 alias openconnect="sudo openconnect \
   --user=m001p596 \

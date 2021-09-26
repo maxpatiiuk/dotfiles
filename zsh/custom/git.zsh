@@ -6,8 +6,9 @@
 # with it
 
 alias gg="git log --graph --oneline --pretty=format:\"%C(yellow)%h %Cgreen%an %Cblue%ar %Cred%s%Creset %C(auto)%d%Creset\""
-alias gl="git log --graph --stat"
-alias gll="git log --graph --stat --no-abbrev-commit"
+alias gl="git log --graph --stat --all"
+alias glc="git log --graph --stat -1 -p"
+alias gll="git log --graph --stat --all --no-abbrev-commit"
 alias g-="git switch -"
 alias g--="git switch"
 alias gs="git status"
@@ -23,7 +24,6 @@ alias gri="git rebase -i"
 alias gc="git commit -v"
 alias gcae="git commit -v --amend"
 alias gca="git commit -v --amend --no-edit"
-alias gb="git branch -vv"
 alias gba="git branch -vv --all"
 alias gp="pre-commit run"
 alias gpa="pre-commit run --all-files"
@@ -32,4 +32,34 @@ alias ghh="git stash show -p"
 alias ghp="git stash pop"
 alias ghl="git stash list"
 
+# Fix GPG not working on Ubuntu
 export GPG_TTY=$TTY
+
+# Adapted from:
+# https://github.com/paulirish/git-recent/blob/master/git-recent
+branch='%(color:yellow)%(refname:short)%(color:reset)'
+spacer='%(color:black) %(color:reset)'
+format="\
+%(HEAD) \
+$branch|\
+%(color:bold red)%(objectname:short)%(color:reset) \
+%(color:bold green)(%(committerdate:relative))%(color:reset) \
+%(color:bold blue)%(authorname)%(color:reset) \
+%(color:yellow)%(upstream:track)%(color:reset)
+$spacer|\
+%(contents:subject)
+$spacer|"
+
+
+alias gb='git for-each-ref \
+    --color=always \
+    --count=0 \
+    --sort=-committerdate \
+    "refs/heads/"  \
+    --format="$format" \
+  | column -ts "|" \
+  | less \
+    --tabs=4 \
+    --quit-if-one-screen \
+    --RAW-CONTROL-CHARS \
+    --no-init'
