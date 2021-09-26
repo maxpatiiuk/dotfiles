@@ -18,3 +18,7 @@ altscreen on
 
 # Increase scrollback size
 defscrollback 10000
+
+# Unbind the lock screen command
+bind ^x
+bind x
