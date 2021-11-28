@@ -136,8 +136,9 @@ module.exports = {
           'el',
           'on',
           'no',
-          'id',
+          'id', // identifier
           'at',
+          'ui', // user interface
           'x', // coordinates
           'y', // coordinates
           '__', // unused function argument
@@ -439,6 +440,7 @@ module.exports = {
       },
     ],
     'react/jsx-pascal-case': ERROR,
+    // Next.js does not require having React in scope
     'react/react-in-jsx-scope': OFF,
 
     // This rule is a subset of unicorn/new-for-builtins
@@ -447,26 +449,37 @@ module.exports = {
     'unicorn/better-regex': OFF,
     // Conflicts with array-func/prefer-array-from
     'unicorn/prefer-spread': OFF,
+    /* Switch statements are confusing and it is easy to forget
+     * to break;
+     * Prefer object literal */
+    'unicorn/prefer-switch': OFF,
+    // This conflicts with prettier
     'unicorn/empty-brace-spaces': OFF,
     'unicorn/custom-error-definition': ERROR,
     'unicorn/filename-case': OFF,
     'unicorn/import-style': OFF,
+    // This goes against functional programming
     'unicorn/no-array-callback-reference': OFF,
+    // This goes against functional programming
     'unicorn/no-array-for-each': OFF,
-    'unicorn/no-array-push-push': OFF,
+    // This goes against functional programming
     'unicorn/no-array-reduce': OFF,
+    // A useless rule
     'unicorn/no-console-spaces': OFF,
+    // Conflicts with consistent-return
     'unicorn/no-useless-undefined': OFF,
     'no-lonely-if': OFF,
     'unicorn/no-lonely-if': ERROR,
     'no-array-constructor': OFF,
     'unicorn/no-new-array': ERROR,
-    'unicorn/no-unreadable-array-destructuring': OFF,
     'unicorn/no-unsafe-regex': ERROR,
     'unicorn/numeric-separators-style': ERROR,
     'unicorn/prefer-array-flat-map': ERROR,
+    // Query selector has worse performance and is less explicit
     'unicorn/prefer-query-selector': OFF,
     'unicorn/prefer-string-replace-all': ERROR,
+    // While using "undefined" is prefered, React relies on null values
+    'unicorn/no-null': OFF,
     'unicorn/prevent-abbreviations': [
       ERROR,
       {
@@ -571,7 +584,13 @@ module.exports = {
     'regexp/unicode-escape': ERROR,
 
     // Deprecated rule
-    'a11y/no-onchange': OFF,
+    'jsx-a11y/no-onchange': OFF,
+    'jsx-a11y/no-noninteractive-element-to-interactive-role': [
+      ERROR,
+      {
+        'label': ['row'],
+      },
+    ],
   },
   settings: {
     react: {
