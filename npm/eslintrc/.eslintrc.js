@@ -24,6 +24,7 @@ module.exports = {
     'simple-import-sort',
     'regexp',
     'jsx-a11y',
+    'tsdoc',
   ],
   extends: [
     'eslint:recommended',
@@ -498,6 +499,8 @@ module.exports = {
     ],
 
     'eslint-comments/no-unused-disable': ERROR,
+
+    'tsdoc/syntax': ERROR,
 
     'promise/no-return-wrap': ERROR,
     'promise/param-names': ERROR,
