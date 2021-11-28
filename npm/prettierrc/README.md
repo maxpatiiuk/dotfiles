@@ -1,7 +1,7 @@
 # Prettier Configuration
 
 A mostly-default prettier configuration with additional plugins for formatting
-`package.json`, `.xml` and shell files.
+`package.json`, `.xml`, shell files and Firebase Realtime Database Rules
 
 ## Usage
 
