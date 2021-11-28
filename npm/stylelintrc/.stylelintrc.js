@@ -17,8 +17,6 @@ module.exports = {
     'unit-no-unknown': true,
     'property-no-unknown': true,
     'keyframe-declaration-no-important': true,
-    // seems to not exits
-    //'declaration-block-no-duplicate-custom-properties': true,
     'declaration-block-no-duplicate-properties': true,
     'declaration-block-no-shorthand-property-overrides': true,
     'block-no-empty': true,
@@ -68,7 +66,7 @@ module.exports = {
     //'value-list-comma-space-after': true,
     //'value-list-comma-space-before': false,
     //'value-list-max-empty-lines': 0,
-    'custom-property-empty-line-before': 'always',
+    'custom-property-empty-line-before': 'never',
     //'property-case': 'lower',
     'declaration-bang-space-after': 'never',
     'declaration-bang-space-before': 'always',
