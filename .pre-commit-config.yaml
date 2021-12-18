@@ -71,7 +71,7 @@ repos:
           - --skip="./node_modules/,package-lock.json,./.idea/"
 
   - repo: https://github.com/psf/black
-    rev: 21.11b1
+    rev: 21.12b0
     hooks:
       - id: black
         args:
@@ -118,10 +118,11 @@ repos:
       - id: setup-cfg-fmt
 
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v2.4.1
+    rev: v2.5.1
     hooks:
       - id: prettier
         additional_dependencies:
+          - prettier@^2.5.1
           - '@prettier/plugin-xml@^0.13.1'
           - prettier-plugin-package@^1.3.0
           - prettier-plugin-sh@^0.8.1
@@ -134,7 +135,7 @@ repos:
       - id: python-safety-dependencies-check
 
   - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.16.0
+    rev: v0.17.0
     hooks:
       - id: gitlint
 
