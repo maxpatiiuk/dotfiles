@@ -13,8 +13,11 @@ Should do these things before reinstalling the system:
 
 - Back up Google Chrome custom flags along with Stylebot's settings
 - Back up files not in git (Downloads, Desktop, ~/, etc)
-- Check that checked out repositories have clean trees, no unpushed commits and
-  no stashed code. Also check files ignored by Git
+- Check checkout out git repositories. Make sure:
+  - working tree is clean
+  - there are no unpushed commits
+  - there is no stashed code
+  - files that are ignored by git are not important
 - Check the content of docker containers and docker volumes
 
 ## Installation
