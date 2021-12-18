@@ -303,13 +303,24 @@ module.exports = {
       },
 
       {
-        // Allow PascalCase for Actions and States
+        // Allow StrictPascalCase for Actions and States
         selector: 'objectLiteralMethod',
         filter: {
           regex: '(Action|State)$',
           match: true,
         },
-        format: ['PascalCase'],
+        format: ['StrictPascalCase'],
+      },
+
+      {
+        // Allow StrictPascalCase for Actions and States
+        selector: 'objectLiteralProperty',
+        filter: {
+          regex: '(Action|State)$',
+          match: true,
+        },
+        types: ['function'],
+        format: ['StrictPascalCase'],
       },
 
       {
@@ -413,6 +424,14 @@ module.exports = {
     '@typescript-eslint/no-useless-constructor': ERROR,
     'no-return-await': OFF,
     '@typescript-eslint/return-await': ERROR,
+    '@typescript-eslint/no-unused-vars': [
+      ERROR,
+      {
+        // Allow args and vars that begin with _
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+      },
+    ],
 
     'react/prop-types': OFF,
     'react/display-name': WARN,
@@ -501,13 +520,6 @@ module.exports = {
             arguments: false,
           },
         },
-      },
-    ],
-    '@typescript-eslint/no-unused-vars': [
-      'error',
-      {
-        argsIgnorePattern: '^_', // Allow vars that begin with _
-        varsIgnorePattern: '^_', // Allow vars that begin with _
       },
     ],
 
