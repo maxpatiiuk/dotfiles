@@ -106,6 +106,7 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install --cask android-file-transfer
   brew install --cask zoom
   brew install --cask vnc-viewer
+  brew install --cask transmission
   
   # These are needed to make pyenv work on m1 macs
   brew install openssl readline sqlite3 xz zlib
@@ -148,10 +149,10 @@ rm "${HOME}/.oh-my-zsh/lib/directories.zsh"
 rm "${HOME}/.oh-my-zsh/lib/key-bindings.zsh"
 
 echo Installing Powerlevel10k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${PWD}/zsh/custom/themes/powerlevel10k
 
 echo Installing other ZSH plugins
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${PWD}/zsh/custom/plugins/zsh-autosuggestions
 
 echo Installing zsh-vi-mode
 git clone https://github.com/jeffreytse/zsh-vi-mode "${PWD}/zsh/custom/plugins/zsh-vi-mode"
@@ -182,7 +183,6 @@ echo Cloning Git repos
 )
 (
   cd "${HOME}/site/javascript"
-  git clone https://github.com/maxxxxxdlp/TTS_King.git
   git clone https://github.com/maxxxxxdlp/mambo.in.ua.git
   git clone https://github.com/maxxxxxdlp/typesafe-reducer.git
 )
@@ -193,6 +193,7 @@ ln -s "${PWD}/git/.gitconfig" "${HOME}"
 
 echo Configuring Vim
 rm -f "${HOME}/.vimrc"
+rm -rf "${HOME}/.vim"
 mkdir -p "${HOME}/.vim/undo"
 mkdir -p "${HOME}/.vim/spell"
 mkdir -p "${HOME}/.vim/backups"
@@ -208,6 +209,7 @@ rm -f "${HOME}/.p10k.zsh"
 ln "${PWD}/zsh/.p10k.zsh" "${HOME}"
 ln "${PWD}/zsh/.screenrc" "${HOME}"
 ln "${PWD}/misc/.editorconfig" "${HOME}/site"
+sudo mkdir -p "/etc/docker/"
 sudo ln "${PWD}/docker/daemon.json" "/etc/docker/"
 
 echo Hard linking common files from \`code_share\`
