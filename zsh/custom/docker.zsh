@@ -3,12 +3,8 @@ dsh() {
   for shell in \
     "script -q -c /bin/bash /dev/null" \
     "script -q -c /bin/sh /dev/null" \
-    "script -q -c /bin/zsh /dev/null" \
-    "script -q -c /bin/ash /dev/null" \
     "/bin/bash/" \
-    "/bin/sh" \
-    "/bin/zsh" \
-    "/bin/ash"; do
+    "/bin/sh"; do
     echo $shell
     docker exec -it "$1" env TERM=xterm-256color $shell
     if [ $? -eq 0 ]; then

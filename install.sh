@@ -127,6 +127,11 @@ chmod -R 700 ~/.gnupg
 echo "pinentry-program ${PINETRY_LOCATION}" >> ~/.gnupg/gpg-agent.conf
 killall gpg-agent
 
+echo Install global NPM dependencies
+npm install -g npm-check-updates
+npm install -g clipboardy
+npm install -g typescript-language-server
+
 echo Installing Python 3.9
 pyenv install 3.9.0
 pyenv global 3.9.0

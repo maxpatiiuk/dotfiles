@@ -7,9 +7,19 @@ alias tts="~/site/python/python_tts/venv/bin/python ~/site/python/python_tts/run
 
 # Open the current repository or one of it's files/directories in GitHub
 # on the current or provided branch
-alias g="python3 ~/site/git/code_share/Python/github/github.py"
+# OR open local file/directory based on GitHub URL
+g() {
+  output=`python3 ~/site/git/code_share/Python/github/github.py $@`
+  if [[ "${output}" =~ "^cd " ]]; then
+    # Running in Github URL to CLI mode
+    eval ${output}
+  else
+    # Running in CLI to GitHub mode
+    echo ${output}
+  fi
+}
 
-# `f` because `cc`, `dc`, `dd` and `ss` is already taken :)
+# Curses-based CLI file explorer
 f() {
   script_dir="${HOME}/site/python/dir_explorer/dir_explorer"
 
@@ -43,6 +53,9 @@ f() {
 
 }
 
+export BROWSE_FILES='f';
+export LIST_FILES='l';
+
 # Play a notification sound. Useful when chained at the end of another
 # program
 alias notify="afplay /System/Library/Sounds/Funk.aiff &>/dev/null &"
@@ -60,6 +73,9 @@ alias yt='docker run \
 alias yta='yt -f "bestaudio[ext=m4a]"'
 
 # Run a dockerized version of ffmpeg
+# NOTE: it mounts current directory and thus all paths
+# passed as arguments must be relative to current directory
+# Container won't have access to parent directories
 ffmpeg() {
   docker run \
     --rm \
@@ -83,6 +99,9 @@ alias mariadb="docker run \
   --name test \
   --rm \
   mariadb"
+
+# Run Alpine Docker container with node
+alias dn="docker run --name test --rm -it -p 80:80 node:17.2.0-alpine3.14 /bin/sh"
 
 alias openconnect="sudo openconnect \
   --user=m001p596 \

@@ -2,7 +2,7 @@
 
 These files should be placed into `~/.oh-my-zsh/custom/`
 
-Addiitiona plugins I have installed:
+Additional plugins I have installed:
 
 - `zsh-vi-mode`
 

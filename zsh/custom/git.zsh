@@ -2,8 +2,8 @@
 # rebase, mv and push do not have aliases to prevent accidents
 
 # Also, I know that git has a native support for aliases, but I don't
-# like having to type `git s` when I can just type `gs` and be done
-# with it
+# like having to type `git s` when I can just type `gs` and save
+# thousands of keystokes yearly
 
 alias gg="git log --graph --oneline --pretty=format:\"%C(yellow)%h %Cgreen%an %Cblue%ar %Cred%s%Creset %C(auto)%d%Creset\""
 alias gl="git log --graph --stat --all"
@@ -63,3 +63,18 @@ alias gb='git for-each-ref \
     --quit-if-one-screen \
     --RAW-CONTROL-CHARS \
     --no-init'
+
+# Like "git show" but opens the file in editor with syntax highlighting
+gh() {
+  ARG=$1
+  FILE_NAME="${ARG##*:}"
+  FILE_EXTENSION="${FILE_NAME##*.}"
+  BARE_TEMP_FILE=`mktemp`
+  TEMP_FILE="${BARE_TEMP_FILE}.${FILE_EXTENSION}"
+  mv ${BARE_TEMP_FILE} ${TEMP_FILE}
+
+  git show $1 > $TEMP_FILE
+  ${EDITOR} ${TEMP_FILE}
+  rm ${TEMP_FILE}
+}
+
