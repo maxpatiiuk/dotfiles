@@ -1,9 +1,9 @@
-name: Update pre-commit hooks
+name: Sync pre-commit hooks
 
 on:
   schedule:
   # Twice a month, on the 15th and the 29th
-  - cron: "23 17 15,29 * *"
+  - cron: "23 23 15,29 * *"
 
 jobs:
   update:
@@ -30,14 +30,16 @@ jobs:
         working-directory: ./pre-commit-tools
         run: npm install
 
-      - name: Update the hooks
-        working-directory: ./pre-commit-tools/pre-commit-tools
-        run: node updateHooks.js ../../git/.pre-commit-config.yaml
+      - name: Sync Local and Global pre-commit configs
+        run: node ./pre-commit-tools/pre-commit-tools/syncConfig.js https://raw.githubusercontent.com/maxxxxxdlp/dotfiles/main/git/.pre-commit-config.yaml
+
+      - name: Update Local hooks
+        run: node ./pre-commit-tools/pre-commit-tools/updateHooks.js .pre-commit-config.yaml
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v7.5.0
         with:
-          add: git/.pre-commit-config.yaml
+          add: .pre-commit-config.yaml
           branch: main
           committer_name: Max Patiiuk
           committer_email: max@patii.uk
