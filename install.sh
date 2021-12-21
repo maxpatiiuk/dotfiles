@@ -128,17 +128,20 @@ chmod -R 700 ~/.gnupg
 echo "pinentry-program ${PINETRY_LOCATION}" >> ~/.gnupg/gpg-agent.conf
 killall gpg-agent
 
-echo Install global NPM dependencies
-npm install -g npm-check-updates
-npm install -g clipboardy
-npm install -g typescript-language-server
-
 echo Installing Python 3.9
 pyenv install 3.9.0
 pyenv global 3.9.0
 pyenv version
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+echo Install global NPM dependencies
+npm install -g npm-check-updates
+npm install -g clipboardy
+npm install -g typescript-language-server
+
+echo Install global Python dependencies
+pip install wheel
 
 echo Installing oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -205,6 +208,7 @@ ln -s "${PWD}/vim/spell" "${HOME}/.vim/"
 echo Hard linking misc files
 rm -f "${HOME}/.zshrc"
 ln -s "${PWD}/zsh/.zshrc" "${HOME}"
+ln -s "${PWD}/zsh/.zprofile" "${HOME}"
 rm -f "${HOME}/.p10k.zsh"
 ln "${PWD}/zsh/.p10k.zsh" "${HOME}"
 ln "${PWD}/zsh/.screenrc" "${HOME}"
@@ -217,6 +221,20 @@ ln "${HOME}/site/git/code_share/misc/images/mambo.jpg" "${HOME}/Documents/"
 ln "${HOME}/site/git/code_share/misc/images/max_patiiuk_old.jpg" "${HOME}/Documents/"
 ln "${HOME}/site/git/code_share/misc/images/max_patiiuk_1x1.jpg" "${HOME}/Documents/"
 ln "${HOME}/site/git/code_share/misc/images/max_patiiuk.jpg" "${HOME}/Documents/"
+
+echo Initializing Dir Explorer
+(
+  cd "${HOME}/site/python/dir_explorer"
+  python -m venv venv
+  venv/bin/pip install -r requirements.txt
+)
+
+echo Initializing TTS Utility
+(
+  cd "${HOME}/site/python/python_tts"
+  python -m venv venv
+  venv/bin/pip install -r requirements.txt
+)
 
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   echo Hard linking launchctl .plist file

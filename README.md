@@ -38,10 +38,8 @@ source <(curl -s https://raw.githubusercontent.com/maxxxxxdlp/dotfiles/main/inst
 
 Configure the following terminal shortcuts:
 
-- `Shift+Up` `\033[1;2A`
-- `Shift+Down` `\033[1;2B`
-- `Option+Up` `\033[1;3A`
-- `Option+Down` `\033[1;3B`
+- `Shift+Up` `\033[1;2B`
+- `Shift+Down` `\033[1;2A`
 
 Install
 [this font](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/RobotoMono/Regular/complete/Roboto%20Mono%20Nerd%20Font%20Complete.ttf)

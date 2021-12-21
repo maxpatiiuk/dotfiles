@@ -116,6 +116,4 @@ export EDITOR='/usr/local/bin/vim'
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source "${HOME}/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel9k.zsh-theme"
 
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+eval "$(pyenv init -)"
