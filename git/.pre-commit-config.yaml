@@ -38,7 +38,7 @@ default_stages:
 exclude: ^(lib|.idea)
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+    rev: v4.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -78,7 +78,7 @@ repos:
         args:
           - --line-length=72
 
-  - repo: https://gitlab.com/pycqa/flake8
+  - repo: https://github.com/PyCQA/flake8
     rev: 3.9.2
     hooks:
       - id: flake8
