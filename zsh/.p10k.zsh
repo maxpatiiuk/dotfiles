@@ -46,11 +46,31 @@
   local cyan='6'
   local white='7'
 
+  function prompt_docker() {
+    # Based on:
+    # https://github.com/spaceship-prompt/spaceship-prompt/blob/master/sections/docker_context.zsh
+    local docker_remote_context
+
+    if [[ -n $DOCKER_HOST ]]; then
+      # Remove protocol (tcp://) and port number from displayed Docker host
+      docker_remote_context="$(basename $DOCKER_HOST | cut -d':' -f1)"
+    else
+      docker_remote_context=$(docker context show)
+      docker_remote_context=$(echo $docker_remote_context | tr -d '\n')
+    fi
+
+    [[ -z $docker_remote_context ]] && return
+    [[ $docker_remote_context == 'default' ]] && return
+
+    p10k segment -f 208 -t "(${docker_remote_context})"
+  }
+
   # Left prompt segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     context                 # user@host
     dir                       # current directory
     vcs                       # git status
+    docker                    # docker context
     # command_execution_time  # previous command duration
     #virtualenv                # python virtual environment
     prompt_char               # prompt symbol
