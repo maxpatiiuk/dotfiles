@@ -133,16 +133,23 @@ module.exports = {
           'L', // Leaflet
           '_', // Underscore
           'R', // Ramda
-          'el',
-          'on',
-          'no',
-          'id', // identifier
-          'at',
-          'ui', // user interface
           'x', // coordinates
           'y', // coordinates
-          '__', // unused function argument
+          'z', // coordinates
+          'id', // identifier
+          'at', // jQuery dialog position
+          'my', // jQuery dialog position
+          'of', // jQuery dialog position
+          'ui', // user interface
+          '__', // 2nd unused function argument
           'fs', // NPM module
+          'el', // element
+          // Common words:
+          'on',
+          'ok',
+          'no',
+          'go',
+          'up',
         ],
       },
     ],
@@ -152,9 +159,14 @@ module.exports = {
         max: 6,
       },
     ],
-    'max-lines': ERROR,
+    'max-lines': [
+      WARN,
+      {
+        max: 350,
+      },
+    ],
     'max-lines-per-function': [
-      ERROR,
+      WARN,
       {
         max: 100,
         skipBlankLines: true,
@@ -267,12 +279,12 @@ module.exports = {
       },
 
       {
-        // React Contexts and Context Providers can be in
+        // React Contexts, Context Providers and Backbone Views can be in
         // StrictPascalCase
         selector: 'variable',
         modifiers: ['const'],
         filter: {
-          regex: '(Context|Provider)$',
+          regex: '(Context|Provider|View)$',
           match: true,
         },
         format: ['StrictPascalCase', 'strictCamelCase'],
@@ -542,7 +554,7 @@ module.exports = {
     'sonarjs/no-one-iteration-loop': ERROR,
     'sonarjs/no-collapsible-if': ERROR,
     'sonarjs/no-collection-size-mischeck': ERROR,
-    'sonarjs/no-duplicate-string': ERROR,
+    'sonarjs/no-duplicate-string': WARN,
     'sonarjs/no-duplicated-branches': ERROR,
     'sonarjs/no-identical-functions': ERROR,
     'sonarjs/no-redundant-boolean': ERROR,
@@ -600,7 +612,7 @@ module.exports = {
     'jsx-a11y/no-noninteractive-element-to-interactive-role': [
       ERROR,
       {
-        'label': ['row'],
+        label: ['row'],
       },
     ],
   },
@@ -611,3 +623,4 @@ module.exports = {
     'import/core-modules': ['styled-jsx/css'],
   },
 };
+
