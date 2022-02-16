@@ -12,7 +12,8 @@ set ideamarks
 
 " Basics
 nmap g_ :action RenameElement<cr>
-nmap ge :action ReformatCode<CR>
+nmap ge :action Javascript.Linters.EsLint.Fix<CR>
+nmap gr :action ReformatCode<CR>
 
 " Search
 nmap gh :action SearchEverywhere<CR>
@@ -20,7 +21,8 @@ nmap gc :action RecentFiles<cr>
 
 " Navigation
 nmap gf :action GotoFile<CR>
-nmap gv :action GotoAction<CR>
+nmap gv :action GotoSymbol<CR>
+nmap gb :action GotoAction<CR>
 nmap ga :action GotoDeclaration<CR>
 nmap gn :action GotoNextError<CR>
 nmap gp :action GotoPreviousError<CR>
