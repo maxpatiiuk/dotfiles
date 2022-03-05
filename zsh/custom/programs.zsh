@@ -91,6 +91,12 @@ pycharm() {
   open -na "PyCharm.app" --args $(python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo "") $@
 }
 
+# Find the `.idea/` directory among parent directories and open that
+# project in CLion
+clion() {
+  open -na "CLion.app" --args $(python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo "") $@
+}
+
 alias mariadb="docker run \
   -p 127.0.0.1:3306:3306 \
   -v test-db:/var/lib/mysql \
