@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
-export PATH="/usr/local/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="/usr/local/bin:$PYENV_ROOT:/opt/homebrew/bin:$PATH"
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -96,7 +97,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR='/usr/local/bin/vim'
+export EDITOR='/usr/bin/vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -115,5 +116,5 @@ export EDITOR='/usr/local/bin/vim'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source "${HOME}/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel9k.zsh-theme"
-
+eval "$(pyenv init --path)"
 eval "$(pyenv init -)"

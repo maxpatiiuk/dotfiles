@@ -107,14 +107,19 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install --cask zoom
   brew install --cask vnc-viewer
   brew install --cask transmission
-  
+  brew install --cask expressvpn
+ 
   # These are needed to make pyenv work on m1 macs
   brew install openssl readline sqlite3 xz zlib
 
   # Set macOS defaults
   "${PWD}./macos.sh"
 
-  PINETRY_LOCATION="/usr/local/bin/pinentry-mac"
+  # For silicon macs
+  PINETRY_LOCATION="/opt/homebrew/bin/pinentry-mac"
+
+  # For Intel macs
+  # PINETRY_LOCATION="/usr/local/bin/pinentry-mac"
 
 else
   echo "Invalid system name"
@@ -129,8 +134,8 @@ echo "pinentry-program ${PINETRY_LOCATION}" >> ~/.gnupg/gpg-agent.conf
 killall gpg-agent
 
 echo Installing Python 3.9
-pyenv install 3.9.0
-pyenv global 3.9.0
+pyenv install 3.9.4
+pyenv global 3.9.4
 pyenv version
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
@@ -197,8 +202,8 @@ ln -s "${PWD}/git/.gitconfig" "${HOME}"
 echo Configuring Vim
 rm -f "${HOME}/.vimrc"
 rm -rf "${HOME}/.vim"
+rm -rf "${HOME}/.vim/spell"
 mkdir -p "${HOME}/.vim/undo"
-mkdir -p "${HOME}/.vim/spell"
 mkdir -p "${HOME}/.vim/backups"
 mkdir -p "${HOME}/.vim/swaps"
 ln "${PWD}/vim/.vimrc" "${HOME}"
@@ -208,6 +213,7 @@ ln -s "${PWD}/vim/spell" "${HOME}/.vim/"
 echo Hard linking misc files
 rm -f "${HOME}/.zshrc"
 ln -s "${PWD}/zsh/.zshrc" "${HOME}"
+rm -f "${HOME}/zsh/.zprofile"
 ln -s "${PWD}/zsh/.zprofile" "${HOME}"
 rm -f "${HOME}/.p10k.zsh"
 ln "${PWD}/zsh/.p10k.zsh" "${HOME}"
@@ -232,6 +238,13 @@ echo Initializing Dir Explorer
 echo Initializing TTS Utility
 (
   cd "${HOME}/site/python/python_tts"
+  python -m venv venv
+  venv/bin/pip install -r requirements.txt
+)
+
+echo Installing Docker Watcher
+(
+  cd "${HOME}/site/git/specify_tools/docker_container"
   python -m venv venv
   venv/bin/pip install -r requirements.txt
 )
