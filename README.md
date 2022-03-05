@@ -35,12 +35,6 @@ at your own risk!
 ```zsh
 source <(curl -s https://raw.githubusercontent.com/maxxxxxdlp/dotfiles/main/install.sh)
 ```
-
-Configure the following terminal shortcuts:
-
-- `Shift+Up` `\033[1;2B`
-- `Shift+Down` `\033[1;2A`
-
 Install
 [this font](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/RobotoMono/Regular/complete/Roboto%20Mono%20Nerd%20Font%20Complete.ttf)
 and set it as default in the terminal:
@@ -62,8 +56,16 @@ Manually download the following programs:
 - Davinchi Resolve
 - Adobe Photoshop
 
+Import terminal profile config from ./Basic.terminal
+
 ### [Ubuntu only]
 
 Configure the terminal to use the same keyboard shortcuts and theme as macOS
 
 Configure Gnome to use a theme/icons/cursors like in macOS
+
+Configure the following terminal shortcuts:
+
+- `Shift+Up` `\033[1;2B`
+- `Shift+Down` `\033[1;2A`
+
