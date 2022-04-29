@@ -71,3 +71,5 @@ prereleaseSuffix = .rc
 clean = expand -t 2
 [gpg]
   program = gpg
+[advice]
+  statusHints = false

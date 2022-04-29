@@ -1,0 +1,38 @@
+{
+  "name": "@maxxxxxdlp/eslint-react-config",
+  "version": "2.0.0",
+  "private": false,
+  "description": "A very strict ESLint config with support for TypeScript, React and Prettier",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/maxxxxxdlp/dotfiles",
+    "directory": "npm/eslintrc-react"
+  },
+  "homepage": "https://github.com/maxxxxxdlp/dotfiles/tree/main/npm/eslintrc-react/#readme",
+  "bugs": {
+    "url": "https://github.com/maxxxxxdlp/dotfiles/issues"
+  },
+  "main": ".eslintrc.js",
+  "files": [
+    ".eslintrc.js",
+    "LICENCE",
+    "package.json",
+    "README.md"
+  ],
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "eslint-config"
+  ],
+  "peerDependencies": {
+    "eslint": ">= 7",
+    "@rushstack/eslint-patch": "^1.1.0"
+  },
+  "dependencies": {
+    "@maxxxxxdlp/eslint-config": "^2.0.0",
+    "eslint-config-next": "^12.1.5",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.5.0"
+  }
+}

@@ -28,8 +28,6 @@ module.exports = {
   ],
   extends: [
     'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:unicorn/recommended',
@@ -37,7 +35,6 @@ module.exports = {
     'plugin:eslint-comments/recommended',
     'plugin:regexp/recommended',
     'plugin:jsx-a11y/recommended',
-    'next',
     'prettier',
     'plugin:prettier/recommended',
     'plugin:markdown/recommended',
@@ -124,35 +121,6 @@ module.exports = {
     camelcase: OFF,
     'capitalized-comments': ERROR,
     'consistent-this': ERROR,
-    'id-length': [
-      ERROR,
-      {
-        min: 3,
-        exceptions: [
-          '$', // jQuery
-          'L', // Leaflet
-          '_', // Underscore
-          'R', // Ramda
-          'x', // coordinates
-          'y', // coordinates
-          'z', // coordinates
-          'id', // identifier
-          'at', // jQuery dialog position
-          'my', // jQuery dialog position
-          'of', // jQuery dialog position
-          'ui', // user interface
-          '__', // 2nd unused function argument
-          'fs', // NPM module
-          'el', // element
-          // Common words:
-          'on',
-          'ok',
-          'no',
-          'go',
-          'up',
-        ],
-      },
-    ],
     'max-depth': [
       ERROR,
       {
@@ -445,35 +413,6 @@ module.exports = {
       },
     ],
 
-    'react/prop-types': OFF,
-    'react/display-name': WARN,
-    'react/button-has-type': ERROR,
-    'react/no-access-state-in-setstate': ERROR,
-    'react/no-danger': ERROR,
-    'react/no-this-in-sfc': ERROR,
-    'react/no-unstable-nested-components': ERROR,
-    'react/no-unused-prop-types': ERROR,
-    'react/prefer-read-only-props': ERROR,
-    'react/self-closing-comp': ERROR,
-    'react/style-prop-object': ERROR,
-    'react/void-dom-elements-no-children': ERROR,
-    'react/jsx-filename-extension': [
-      ERROR,
-      {
-        extensions: ['tsx'],
-      },
-    ],
-    'react/jsx-handler-names': ERROR,
-    'react/jsx-no-useless-fragment': [
-      ERROR,
-      {
-        allowExpressions: true,
-      },
-    ],
-    'react/jsx-pascal-case': ERROR,
-    // Next.js does not require having React in scope
-    'react/react-in-jsx-scope': OFF,
-
     // This rule is a subset of unicorn/new-for-builtins
     'unicorn/throw-new-error': OFF,
     // eslint-plugin-regexp is superior to this rule
@@ -617,9 +556,6 @@ module.exports = {
     ],
   },
   settings: {
-    react: {
-      version: 'detect',
-    },
     'import/core-modules': ['styled-jsx/css'],
   },
 };

@@ -1,12 +1,7 @@
-# ESLint Configuration
+# ESLint-React Configuration
 
-A very strict configuration for ESLint with support for TypeScript and
+A very strict configuration for ESLint with support for TypeScript, React and
 Prettier.
-
-> NOTE:
-This config does not provide React rules. There is a [separate
-configuration](../eslintrc-react) that is a superset of this one, with
-React rules added.
 
 ## Usage
 
@@ -15,19 +10,19 @@ Add this to your `package.json`:
 ```json
 {
   "devDependencies": {
-    "@maxxxxxdlp/eslintrc": "^0.1.8",
+    "@maxxxxxdlp/eslintrc-react": "^0.1.8",
     "@rushstack/eslint-patch": "^1.1.0"
   }
 }
 ```
 
-Then, create `.eslintrc.js` at the root of your project:
+Then, create `.eslintrc.js` at the root directory of your project:
 
 ```js
 require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
-  extends: ['plugin:@maxxxxxdlp/eslintrc'],
+  extends: ['plugin:@maxxxxxdlp/eslintrc-react'],
 };
 ```
 

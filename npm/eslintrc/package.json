@@ -1,8 +1,8 @@
 {
   "name": "@maxxxxxdlp/eslint-config",
-  "version": "1.0.10",
+  "version": "2.0.0",
   "private": false,
-  "description": "A very strict ESLint config with support for TypeScript, React and Prettier",
+  "description": "A very strict ESLint config with support for TypeScript and Prettier",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -30,10 +30,9 @@
     "@rushstack/eslint-patch": "^1.1.0"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.8.1",
-    "@typescript-eslint/parser": "^5.8.1",
-    "eslint-config-next": "^12.0.7",
-    "eslint-config-prettier": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.21.0",
+    "@typescript-eslint/parser": "^5.21.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-array-func": "^3.1.7",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
@@ -41,16 +40,14 @@
     "eslint-plugin-optimize-regex": "^1.2.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "eslint-plugin-regexp": "^1.5.1",
+    "eslint-plugin-regexp": "^1.7.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-sonarjs": "^0.11.0",
+    "eslint-plugin-sonarjs": "^0.13.0",
     "eslint-plugin-unicorn": "^40.0.0",
-    "eslint-plugin-tsdoc": "0.2.14",
-    "prettier-eslint": "^13.0.0"
+    "eslint-plugin-tsdoc": "0.2.16",
+    "prettier-eslint": "^14.0.2"
   },
   "devDependencies": {
-    "eslint-config-prettier": "^8.3.0"
+    "eslint-config-prettier": "^8.5.0"
   }
 }
