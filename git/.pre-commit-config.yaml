@@ -82,7 +82,7 @@ repos:
         exclude: ^docs/
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.32.0
+    rev: v2.32.1
     hooks:
       - id: pyupgrade
 
@@ -114,7 +114,7 @@ repos:
           - stylelint-config-standard@24.0.0
 
   - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v8.14.0
+    rev: v8.15.0
     hooks:
       - id: eslint
         types: [text]
