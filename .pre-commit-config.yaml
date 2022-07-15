@@ -108,7 +108,7 @@ repos:
         exclude: ^docs/
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.34.0
+    rev: v2.37.1
     hooks:
       - id: pyupgrade
 
@@ -130,7 +130,7 @@ repos:
           - prettier-plugin-firebase-database@1.0.1
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
-    rev: v1.2.4
+    rev: v1.3.0
     hooks:
       - id: python-safety-dependencies-check
 
