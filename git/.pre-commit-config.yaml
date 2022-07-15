@@ -82,7 +82,7 @@ repos:
         exclude: ^docs/
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.34.0
+    rev: v2.37.1
     hooks:
       - id: pyupgrade
 
@@ -114,7 +114,7 @@ repos:
           - stylelint-config-standard@24.0.0
 
   - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v8.18.0
+    rev: v8.19.0
     hooks:
       - id: eslint
         types: [text]
@@ -123,7 +123,7 @@ repos:
           - '@maxxxxxdlp/eslint-config@^1.0.9'
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
-    rev: v1.2.4
+    rev: v1.3.0
     hooks:
       - id: python-safety-dependencies-check
 
