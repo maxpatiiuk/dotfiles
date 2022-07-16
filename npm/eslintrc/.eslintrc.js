@@ -1,5 +1,7 @@
 'use strict';
 
+const restrictedGlobals = require('confusing-browser-globals');
+
 const OFF = 'off';
 const WARN = 'warn';
 const ERROR = 'error';
@@ -17,7 +19,7 @@ module.exports = {
   env: { es6: true },
   reportUnusedDisableDirectives: true,
   plugins: [
-    '@typescript-eslint',
+    '@typescript-eslint/eslint-plugin',
     'markdown',
     'promise',
     'sonarjs',
@@ -25,26 +27,47 @@ module.exports = {
     'regexp',
     'jsx-a11y',
     'tsdoc',
+    'import',
+    'write-good-comments',
+    'functional',
   ],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:@typescript-eslint/strict',
     'plugin:unicorn/recommended',
     'plugin:array-func/all',
     'plugin:eslint-comments/recommended',
     'plugin:regexp/recommended',
-    'plugin:jsx-a11y/recommended',
+    'plugin:jsx-a11y/strict',
+    'optimize-regex/all',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    "plugin:functional/external-recommended",
+    "plugin:functional/recommended",
+    "plugin:functional/no-object-orientation",
+    "plugin:functional/no-statements",
+    "plugin:functional/no-exceptions",
+    "plugin:functional/currying",
+    "plugin:functional/stylistic",
+    'plugin:promise/recommended',
+    'plugin:sonarjs/recommended',
     'prettier',
     'plugin:prettier/recommended',
     'plugin:markdown/recommended',
   ],
   overrides: [
     {
+      // Enable the Markdown processor for all .md files.
       files: ['**/*.md'],
       processor: 'markdown/markdown',
     },
     {
+      /*
+       * Customize the configuration ESLint uses for ```js
+       * fenced code blocks inside .md files.
+       */
       files: ['**/*.{md}/*.{js,ts,tsx}'],
       rules: {
         'no-undef': OFF,
@@ -69,26 +92,29 @@ module.exports = {
     'guard-for-in': ERROR,
     'no-restricted-syntax': [
       ERROR,
-      'WithStatement',
-      'SwitchStatement',
-      'SwitchCase',
+      'CatchClause',
+      'Class',
+      'ContinueStaement',
+      'DoWhileStatementView',
       'ForInStatement',
+      'ForStatement',
+      'LabeledStatement',
+      'ContinueStaement',
+      'SwitchCase',
+      'SwitchStatement',
+      'ForInStatement',
+      'Tools.Generator',
+      'TryStatement',
+      'WithStatement',
     ],
     'no-alert': ERROR,
     'no-caller': ERROR,
     'no-constructor-return': ERROR,
-    'no-empty-function': [
-      ERROR,
-      {
-        allow: ['arrowFunctions'],
-      },
-    ],
     'no-eq-null': ERROR,
     'no-eval': ERROR,
     'no-extend-native': ERROR,
     'no-extra-bind': ERROR,
     'no-implicit-coercion': ERROR,
-    'no-implied-eval': ERROR,
     'no-iterator': ERROR,
     'no-labels': ERROR,
     'no-lone-blocks': ERROR,
@@ -99,7 +125,7 @@ module.exports = {
     'no-octal-escape': ERROR,
     'no-param-reassign': ERROR,
     'no-proto': ERROR,
-    'no-return-assign': WARN,
+    'no-return-assign': ERROR,
     'no-script-url': ERROR,
     'no-self-compare': ERROR,
     'no-sequences': ERROR,
@@ -109,15 +135,22 @@ module.exports = {
     'no-warning-comments': [
       ERROR,
       {
+        /*
+         * I use "FIXME" comment to indicate things that must be
+         * fixed before committing. Thus, this ESLint rule helps
+         * catch such usages by throwwing an error, and thus causing
+         * the pre-commit hooks to fail.
+         */
         terms: ['fixme'],
         location: 'anywhere',
       },
     ],
-    'prefer-named-capture-group': WARN,
+    'prefer-named-capture-group': ERROR,
     'prefer-promise-reject-errors': ERROR,
     'prefer-regex-literals': ERROR,
     yoda: ERROR,
-    'no-undefined': OFF,
+    'no-undefined': ERROR,
+    // This is handled by @typescript-eslint/naming-convention
     camelcase: OFF,
     'capitalized-comments': ERROR,
     'consistent-this': ERROR,
@@ -130,7 +163,9 @@ module.exports = {
     'max-lines': [
       WARN,
       {
-        max: 350,
+        max: 300,
+        skipBlankLines: true,
+        skipComments: true,
       },
     ],
     'max-lines-per-function': [
@@ -142,7 +177,7 @@ module.exports = {
       },
     ],
     'max-nested-callbacks': ERROR,
-    'max-params': ERROR,
+    'max-params': WARN,
     'max-statements': [
       ERROR,
       {
@@ -155,13 +190,14 @@ module.exports = {
     'no-bitwise': ERROR,
     'no-continue': ERROR,
     'no-inline-comments': ERROR,
+    // This makes code more explicit and catches potential bugs
     'no-extra-boolean-cast': OFF,
     'no-multi-assign': ERROR,
     'no-negated-condition': ERROR,
     'no-new-object': ERROR,
     'no-plusplus': ERROR,
     'no-unneeded-ternary': ERROR,
-    'one-var': [ERROR, 'never'],
+    'one-var': [ERROR, 'always'],
     'prefer-exponentiation-operator': ERROR,
     'prefer-object-spread': ERROR,
     'spaced-comment': ERROR,
@@ -175,6 +211,37 @@ module.exports = {
     'prefer-spread': ERROR,
     'prefer-template': ERROR,
     'symbol-description': ERROR,
+    'no-await-in-loop': ERROR,
+    'no-constant-binary-expression': ERROR,
+    'no-unreachable-loop': ERROR,
+    'no-unused-private-class-members': ERROR,
+    'require-atomic-updates': ERROR,
+    'accessor-pairs': ERROR,
+    'arrow-body-style': ERROR,
+    'class-methods-use-this': ERROR,
+    'eqeqeq': ERROR,
+    'func-name-matching': ERROR,
+    'func-style': [ERROR,'declaration',{allowArrowFunctions:true}],
+    'grouped-accessor-pairs': ERROR,
+    'max-depth': [WARN, {max:6}],
+    'max-nested-callbacks': WARN,
+    'no-confusing-arrow': ERROR,
+    'no-floating-decimal': ERROR,
+    'no-lone-blocks': ERROR,
+    'no-mixed-operators': ERROR,
+    'no-multi-str': ERROR,
+    'no-nested-ternary': WARN,
+    /*
+     * Prevent accidental usages of global when forgot to declare a
+     * variable
+     */
+    'no-restricted-globals': [ERROR,...restrictedGlobals,"event",'name','closed','i','index','length','parent','self','status','stop','toolbar','top','Infinity','NaN','isNaN','isFinite','parseFloat','parseInt','keys'],
+    'no-void': ERROR,
+    'prefer-arrow-callback': [ERROR,{ "allowNamedFunctions": true }],
+    'prefer-object-has-own': ERROR,
+    'radix': [ERROR, 'as-needed'],
+    'require-unicode-regexp': ERROR,
+    'new-parens': ERROR,
 
     '@typescript-eslint/ban-ts-comment': WARN,
     '@typescript-eslint/explicit-module-boundary-types': [
@@ -184,12 +251,7 @@ module.exports = {
         allowDirectConstAssertionInArrowFunctions: true,
       },
     ],
-    '@typescript-eslint/array-type': [
-      ERROR,
-      {
-        default: 'array',
-      },
-    ],
+    '@typescript-eslint/array-type': ERROR,
     '@typescript-eslint/ban-tslint-comment': ERROR,
     '@typescript-eslint/class-literal-property-style': [ERROR, 'fields'],
     '@typescript-eslint/consistent-indexed-object-style': [ERROR, 'record'],
@@ -352,7 +414,7 @@ module.exports = {
     '@typescript-eslint/prefer-optional-chain': ERROR,
     '@typescript-eslint/prefer-readonly': ERROR,
     '@typescript-eslint/prefer-readonly-parameter-types': [
-      ERROR,
+      WARN,
       {
         ignoreInferredTypes: true,
       },
@@ -404,6 +466,7 @@ module.exports = {
     '@typescript-eslint/no-useless-constructor': ERROR,
     'no-return-await': OFF,
     '@typescript-eslint/return-await': ERROR,
+    'no-unused-vars': OFF,
     '@typescript-eslint/no-unused-vars': [
       ERROR,
       {
@@ -412,6 +475,59 @@ module.exports = {
         varsIgnorePattern: '^_',
       },
     ],
+    '@typescript-eslint/consistent-type-exports': [ERROR, {
+      fixMixedExportsWithInlineTypeSpecifier:true}],
+    '@typescript-eslint/member-ordering': ERROR,
+    '@typescript-eslint/no-redundant-type-constituents': ERROR,
+    '@typescript-eslint/no-useless-empty-export': ERROR,
+    '@typescript-eslint/sort-type-union-intersection-members': ERROR,
+    'no-array-constructor': OFF,
+    '@typescript-eslint/no-array-constructor': ERROR,
+    'no-empty-function': OFF,
+    '@typescript-eslint/no-empty-function': [
+      ERROR,
+      {
+        allow: ['arrowFunctions'],
+      },
+    ],
+    'no-implied-eval': OFF,
+    '@typescript-eslint/no-implied-eval': ERROR,
+    'no-use-before-define': OFF,
+    '@typescript-eslint/no-use-before-define': ERROR,
+    'require-await': OFF,
+    /*
+     * If passing function as a prop, and the function is expected to
+     * return a promise, making function async is cleaner than
+     * returning Promise.resolve()
+     */
+    '@typescript-eslint/require-await': ERROR,
+    /*
+_    * While overusing non-null assertions can be harmful, there are
+     * cases when it is the best solution.
+     * For example, if you have a function that may return undefined,
+     * but you are absolutely sure that it won't return undefined in
+     * this context, the non-null assertion is helpful.
+     * An alternative is to create a `defined()` helper function that
+     * would throw a runtime error if value turns out to be undefined.
+     * While that aligns the runtime and compile type behaviours, it
+     * would mask the error message.
+     * For example, if for some reason the value would turn out to
+     * be undefined, `defined` helper might throw an error like
+     * `Value is not defined` in a case like this:
+     * `defined(maybeStyle).color.
+     * However, if we don't catch this error, the browser is going to
+     * catch it and report it as `Can't read property "color" of
+     * undefined", which is a more helpful error message.
+     *
+     * This rule recommends to use `?.` instead, but that is a bad idea
+     * in some cases. I am only going to use `!.` if I am absolutely
+     * sure that the value would be defined. If it turns out to be
+     * undefined, then my assumption was incorrect and I want to find
+     * that out as soon as possible. Where as `?.` would hide this
+     * from me and prevent me from finding out that my assumption is
+     * incorrect.
+     */
+    '@typescript-eslint/no-non-null-assertion': OFF,
 
     // This rule is a subset of unicorn/new-for-builtins
     'unicorn/throw-new-error': OFF,
@@ -419,9 +535,11 @@ module.exports = {
     'unicorn/better-regex': OFF,
     // Conflicts with array-func/prefer-array-from
     'unicorn/prefer-spread': OFF,
-    /* Switch statements are confusing and it is easy to forget
+    /*
+     * Switch statements are confusing and it is easy to forget
      * to break;
-     * Prefer object literal */
+     * Prefer object literal
+     */
     'unicorn/prefer-switch': OFF,
     // This conflicts with prettier
     'unicorn/empty-brace-spaces': OFF,
@@ -438,9 +556,9 @@ module.exports = {
     'unicorn/no-console-spaces': OFF,
     // Conflicts with consistent-return
     'unicorn/no-useless-undefined': OFF,
+    // Lonely if has different behavior than else if
     'no-lonely-if': OFF,
     'unicorn/no-lonely-if': ERROR,
-    'no-array-constructor': OFF,
     'unicorn/no-new-array': ERROR,
     'unicorn/no-unsafe-regex': ERROR,
     'unicorn/numeric-separators-style': ERROR,
@@ -473,37 +591,26 @@ module.exports = {
         },
       },
     ],
+    /*
+     * While this improves readability, it makes it way harder to
+     * find all usages of the attribute as \.dataset translates all
+     * attribute names to camelCase
+     */
+    'unicorn/prefer-dom-node-dataset': OFF,
+    'unicorn/prefer-at': ERROR,
+    'unicorn/prefer-json-parse-buffer': ERROR,
+    'unicorn/require-post-message-target-origin': ERROR,
 
     'eslint-comments/no-unused-disable': ERROR,
+    'eslint-comments/no-use': ERROR,
 
     'tsdoc/syntax': ERROR,
-
-    'promise/no-return-wrap': ERROR,
-    'promise/param-names': ERROR,
-    'promise/always-return': ERROR,
-    'promise/no-return-in-finally': ERROR,
 
     'simple-import-sort/imports': ERROR,
     'simple-import-sort/exports': ERROR,
 
-    'sonarjs/no-all-duplicated-branches': ERROR,
-    'sonarjs/no-extra-arguments': ERROR,
-    'sonarjs/no-identical-conditions': ERROR,
-    'sonarjs/no-identical-expressions': ERROR,
-    'sonarjs/no-one-iteration-loop': ERROR,
-    'sonarjs/no-collapsible-if': ERROR,
-    'sonarjs/no-collection-size-mischeck': ERROR,
     'sonarjs/no-duplicate-string': WARN,
-    'sonarjs/no-duplicated-branches': ERROR,
-    'sonarjs/no-identical-functions': ERROR,
-    'sonarjs/no-redundant-boolean': ERROR,
-    'sonarjs/no-redundant-jump': ERROR,
-    'sonarjs/no-unused-collection': ERROR,
-    'sonarjs/no-useless-catch': ERROR,
-    'sonarjs/prefer-immediate-return': ERROR,
-    'sonarjs/prefer-object-literal': ERROR,
-    'sonarjs/prefer-single-boolean-return': ERROR,
-    'sonarjs/prefer-while': ERROR,
+    'sonarjs/no-inverted-boolean-check': ERROR,
 
     'regexp/no-dupe-disjunctions': ERROR,
     'regexp/no-empty-alternative': ERROR,
@@ -548,15 +655,42 @@ module.exports = {
 
     // Deprecated rule
     'jsx-a11y/no-onchange': OFF,
-    'jsx-a11y/no-noninteractive-element-to-interactive-role': [
-      ERROR,
-      {
-        label: ['row'],
-      },
-    ],
+    'jsx-a11y/no-noninteractive-element-to-interactive-role': ERROR,
+
+    'write-good-comments/write-good-comments': ERROR,
+
+    // I have an ESLint rule that enforces "readonly" types everywhere
+    'functional/immutable-data': OFF,
+    /*
+     * I have an ESLint that detects usages of "let" that are not
+     * reassigned
+     */
+    'functional/no-let': OFF,
+    // There are many use cases for this
+    'functional/no-mixed-type': OFF,
+    // This is not always possible due to readability concerns
+    'functional/no-conditional-statement': OFF,
+    // This is less useful when working with reaDOnly types
+    'functional/no-expression-statement': OFF,
+    // Callbacks need to return void
+    'functional/no-return-void': OFF,
+    // Promise reject can be handled in a generic way (.catch(error))
+    'functional/no-promise-reject': OFF,
+    // Partially covered by other rules
+    'functional/functional-parameters': OFF,
+    'functional/prefer-tacit': [ERROR,{assumeTypes:true}],
   },
   settings: {
     'import/core-modules': ['styled-jsx/css'],
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+        "alwaysTryTypes": true,
+      }
+    }
   },
 };
 
