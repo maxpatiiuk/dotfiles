@@ -16,6 +16,7 @@ module.exports = {
   },
   env: { es6: true },
   reportUnusedDisableDirectives: true,
+  plugins: ['react'],
   extends: [
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
@@ -30,8 +31,6 @@ module.exports = {
     'react/no-danger': ERROR,
     'react/no-this-in-sfc': ERROR,
     'react/no-unstable-nested-components': ERROR,
-    'react/no-unused-prop-types': ERROR,
-    'react/prefer-read-only-props': ERROR,
     'react/self-closing-comp': ERROR,
     'react/style-prop-object': ERROR,
     'react/void-dom-elements-no-children': ERROR,
@@ -49,10 +48,26 @@ module.exports = {
       },
     ],
     'react/jsx-pascal-case': ERROR,
-    // Next.js does not require having React in scope
-    'react/react-in-jsx-scope': OFF,
+    'react/boolean-prop-naming': ERROR,
+    'react/function-component-definition': ERROR,
+    'react/hook-use-state': ERROR,
+    'react/iframe-missing-sandbox': ERROR,
+    'react/no-adjacent-inline-elements': ERROR,
+    'react/no-invalid-html-attribute': ERROR,
+    'react/jsx-boolean-value': ERROR,
+    'react/jsx-child-element-spacing': ERROR,
+    'react/jsx-curly-brace-presence': [ERROR,{propElementValues:'always'}],
+    'react/jsx-fragments': ERROR,
+    'react/jsx-no-constructed-context-values': ERROR,
+    'react/jsx-no-leaked-render': ERROR,
+    'react/jsx-no-literals': ERROR,
+    'react/jsx-sort-props': [ERROR,{
+      ignoreCase: true,
+      callbacksLast: true,
 
-    'react-hooks/exhaustive-deps': ERROR,
+    }],
+    'react/jsx-uses-vars': ERROR,
+    'react/react/jsx-uses-react': ERROR,
   },
   settings: {
     react: {

@@ -3,6 +3,9 @@
 A very strict configuration for ESLint with support for TypeScript, React and
 Prettier.
 
+This config is based on
+[@maxxxxxdlp/eslint-config](https://www.npmjs.com/package/@maxxxxxdlp/eslint-config).
+
 ## Usage
 
 Add this to your `package.json`:
