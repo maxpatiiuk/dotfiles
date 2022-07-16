@@ -27,8 +27,22 @@ Then, create `.eslintrc.js` at the root of your project:
 require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
-  extends: ['plugin:@maxxxxxdlp/eslintrc'],
+  root: true,
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    // Your TSConfig file
+    project: './tsconfig.json',
+  },
+  env: {
+    browser: true,
+    node: true,
+  },
+  extends: ['@maxxxxxdlp/eslint-config'],
+  rules: {
+    // Manual overrides
+  },
 };
+
 ```
 
 You can optionally extend this config or overwrite some rules by extending your
