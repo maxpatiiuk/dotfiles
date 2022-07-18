@@ -1,6 +1,6 @@
 {
   "name": "@maxxxxxdlp/eslint-config",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": false,
   "author": "Max Patiiuk",
   "description": "A very strict ESLint config with support for TypeScript and Prettier",
@@ -28,13 +28,16 @@
   ],
   "peerDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",
-    "eslint": ">= 7"
+    "eslint": ">= 8"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "confusing-browser-globals": "^1.0.11",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-array-func": "^3.1.7",
     "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-functional": "^4.2.1",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.0",
     "eslint-plugin-markdown": "^3.0.0",
     "eslint-plugin-optimize-regex": "^1.2.1",
@@ -43,16 +46,13 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-sonarjs": "^0.13.0",
     "eslint-plugin-tsdoc": "0.2.16",
-    "eslint-plugin-unicorn": "^43.0.1"
+    "eslint-plugin-unicorn": "^43.0.1",
+    "eslint-plugin-write-good-comments": "^0.1.4"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^5.30.6",
-    "confusing-browser-globals": "^1.0.11",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^3.2.6",
-    "eslint-plugin-functional": "^4.2.1",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-write-good-comments": "^0.1.4",
     "tsutils": "^3.21.0"
   }
 }

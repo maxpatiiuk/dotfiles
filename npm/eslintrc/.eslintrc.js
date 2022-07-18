@@ -30,6 +30,7 @@ module.exports = {
     'import',
     'write-good-comments',
     'functional',
+    'optimize-regex',
   ],
   extends: [
     'eslint:recommended',
@@ -41,7 +42,6 @@ module.exports = {
     'plugin:eslint-comments/recommended',
     'plugin:regexp/recommended',
     'plugin:jsx-a11y/strict',
-    'optimize-regex/all',
     'plugin:import/recommended',
     'plugin:import/typescript',
     "plugin:functional/external-recommended",
@@ -53,8 +53,6 @@ module.exports = {
     "plugin:functional/stylistic",
     'plugin:promise/recommended',
     'plugin:sonarjs/recommended',
-    'prettier',
-    'plugin:prettier/recommended',
     'plugin:markdown/recommended',
   ],
   overrides: [
@@ -96,10 +94,8 @@ module.exports = {
       'Class',
       'ContinueStaement',
       'DoWhileStatementView',
-      'ForInStatement',
       'ForStatement',
       'LabeledStatement',
-      'ContinueStaement',
       'SwitchCase',
       'SwitchStatement',
       'ForInStatement',
@@ -235,7 +231,10 @@ module.exports = {
      * Prevent accidental usages of global when forgot to declare a
      * variable
      */
-    'no-restricted-globals': [ERROR,...restrictedGlobals,"event",'name','closed','i','index','length','parent','self','status','stop','toolbar','top','Infinity','NaN','isNaN','isFinite','parseFloat','parseInt','keys'],
+    'no-restricted-globals': [
+      ERROR,
+      ...new Set([...restrictedGlobals,"event",'name','closed','i','index','length','parent','self','status','stop','toolbar','top','Infinity','NaN','isNaN','isFinite','parseFloat','parseInt','keys'])
+    ],
     'no-void': ERROR,
     'prefer-arrow-callback': [ERROR,{ "allowNamedFunctions": true }],
     'prefer-object-has-own': ERROR,
@@ -678,7 +677,9 @@ _    * While overusing non-null assertions can be harmful, there are
     'functional/no-promise-reject': OFF,
     // Partially covered by other rules
     'functional/functional-parameters': OFF,
-    'functional/prefer-tacit': [ERROR,{assumeTypes:true}],
+    'functional/prefer-tacit': [ERROR,{assumeTypes:{allowFixer:false}}],
+
+    'optimize-regex/optimize-regex': ERROR,
   },
   settings: {
     'import/core-modules': ['styled-jsx/css'],
