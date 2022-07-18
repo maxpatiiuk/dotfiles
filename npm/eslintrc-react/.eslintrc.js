@@ -20,8 +20,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:@maxxxxxdlp/eslint-config',
-    'next',
+    '@maxxxxxdlp/eslint-config',
   ],
   rules: {
     'react/prop-types': OFF,

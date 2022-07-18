@@ -25,7 +25,7 @@ Then, create `.eslintrc.js` at the root directory of your project:
 require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
-  extends: ['plugin:@maxxxxxdlp/eslintrc-react'],
+  extends: [ '@maxxxxxdlp/eslint-config-react' ],
 };
 ```
 
