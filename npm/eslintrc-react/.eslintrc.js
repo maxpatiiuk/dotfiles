@@ -58,15 +58,15 @@ module.exports = {
     'react/jsx-curly-brace-presence': [ERROR,{propElementValues:'always'}],
     'react/jsx-fragments': ERROR,
     'react/jsx-no-constructed-context-values': ERROR,
-    'react/jsx-no-leaked-render': ERROR,
+    'react/jsx-no-leaked-render': OFF,
     'react/jsx-no-literals': ERROR,
-    'react/jsx-sort-props': [ERROR,{
+    'react/jsx-sort-props': [WARN,{
       ignoreCase: true,
       callbacksLast: true,
 
     }],
     'react/jsx-uses-vars': ERROR,
-    'react/react/jsx-uses-react': ERROR,
+    'react/jsx-uses-react': ERROR,
   },
   settings: {
     react: {
