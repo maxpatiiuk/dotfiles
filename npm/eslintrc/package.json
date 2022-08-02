@@ -1,6 +1,6 @@
 {
   "name": "@maxxxxxdlp/eslint-config",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "private": false,
   "author": "Max Patiiuk",
   "description": "A very strict ESLint config with support for TypeScript and Prettier",
@@ -32,12 +32,12 @@
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
     "confusing-browser-globals": "^1.0.11",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-array-func": "^3.1.7",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-functional": "^4.2.1",
-    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.0",
     "eslint-plugin-markdown": "^3.0.0",
     "eslint-plugin-optimize-regex": "^1.2.1",

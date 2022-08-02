@@ -27,7 +27,6 @@ module.exports = {
     'regexp',
     'jsx-a11y',
     'tsdoc',
-    'import',
     'write-good-comments',
     'functional',
     'optimize-regex',
@@ -42,8 +41,6 @@ module.exports = {
     'plugin:eslint-comments/recommended',
     'plugin:regexp/recommended',
     'plugin:jsx-a11y/strict',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
     "plugin:functional/external-recommended",
     "plugin:functional/recommended",
     "plugin:functional/no-object-orientation",
@@ -78,7 +75,8 @@ module.exports = {
   rules: {
     'no-non-null-assertion': OFF,
     'no-console': [ERROR, { allow: ['error', 'warn'] }],
-    'no-promise-executor-return': ERROR,
+    // This fires for anonymous functions when not wrapped in {}
+    'no-promise-executor-return': OFF,
     'no-template-curly-in-string': ERROR,
     'no-unsafe-optional-chaining': ERROR,
     'no-useless-backreference': ERROR,
@@ -145,7 +143,6 @@ module.exports = {
     'prefer-promise-reject-errors': ERROR,
     'prefer-regex-literals': ERROR,
     yoda: ERROR,
-    'no-undefined': ERROR,
     // This is handled by @typescript-eslint/naming-convention
     camelcase: OFF,
     'capitalized-comments': ERROR,
@@ -193,7 +190,7 @@ module.exports = {
     'no-new-object': ERROR,
     'no-plusplus': ERROR,
     'no-unneeded-ternary': ERROR,
-    'one-var': [ERROR, 'always'],
+    'one-var': [ERROR, 'never'],
     'prefer-exponentiation-operator': ERROR,
     'prefer-object-spread': ERROR,
     'spaced-comment': ERROR,
@@ -221,7 +218,8 @@ module.exports = {
     'grouped-accessor-pairs': ERROR,
     'max-depth': [WARN, {max:6}],
     'max-nested-callbacks': WARN,
-    'no-confusing-arrow': ERROR,
+    // Pretiter forces lambdas to have () around argument list
+    'no-confusing-arrow': OFF,
     'no-floating-decimal': ERROR,
     'no-lone-blocks': ERROR,
     'no-mixed-operators': ERROR,
@@ -242,6 +240,8 @@ module.exports = {
     'require-unicode-regexp': ERROR,
     'new-parens': ERROR,
 
+    // This rule crashes for me. TODO: reEnable in the future
+    '@typescript-eslint/no-unsafe-return': OFF,
     '@typescript-eslint/ban-ts-comment': WARN,
     '@typescript-eslint/explicit-module-boundary-types': [
       ERROR,
@@ -261,6 +261,7 @@ module.exports = {
         objectLiteralTypeAssertions: 'allow-as-parameter',
       },
     ],
+    '@typescript-eslint/consistent-type-definitions': ['ERROR','type'],
     '@typescript-eslint/consistent-type-imports': ERROR,
     '@typescript-eslint/explicit-function-return-type': [
       ERROR,
@@ -491,8 +492,6 @@ module.exports = {
     ],
     'no-implied-eval': OFF,
     '@typescript-eslint/no-implied-eval': ERROR,
-    'no-use-before-define': OFF,
-    '@typescript-eslint/no-use-before-define': ERROR,
     'require-await': OFF,
     /*
      * If passing function as a prop, and the function is expected to
@@ -544,6 +543,11 @@ _    * While overusing non-null assertions can be harmful, there are
     'unicorn/empty-brace-spaces': OFF,
     'unicorn/custom-error-definition': ERROR,
     'unicorn/filename-case': OFF,
+    /*
+     * This rule fires anytime you create a global promise, even
+     * if you are not awaiting it
+     */
+    'unicorn/prefer-top-level-await': OFF,
     'unicorn/import-style': OFF,
     // This goes against functional programming
     'unicorn/no-array-callback-reference': OFF,
@@ -601,7 +605,6 @@ _    * While overusing non-null assertions can be harmful, there are
     'unicorn/require-post-message-target-origin': ERROR,
 
     'eslint-comments/no-unused-disable': ERROR,
-    'eslint-comments/no-use': ERROR,
 
     'tsdoc/syntax': ERROR,
 
@@ -656,7 +659,7 @@ _    * While overusing non-null assertions can be harmful, there are
     'jsx-a11y/no-onchange': OFF,
     'jsx-a11y/no-noninteractive-element-to-interactive-role': ERROR,
 
-    'write-good-comments/write-good-comments': ERROR,
+    'write-good-comments/write-good-comments': WARN,
 
     // I have an ESLint rule that enforces "readonly" types everywhere
     'functional/immutable-data': OFF,
@@ -680,18 +683,6 @@ _    * While overusing non-null assertions can be harmful, there are
     'functional/prefer-tacit': [ERROR,{assumeTypes:{allowFixer:false}}],
 
     'optimize-regex/optimize-regex': ERROR,
-  },
-  settings: {
-    'import/core-modules': ['styled-jsx/css'],
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
-    },
-    "import/resolver": {
-      "typescript": {
-        // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
-        "alwaysTryTypes": true,
-      }
-    }
   },
 };
 
