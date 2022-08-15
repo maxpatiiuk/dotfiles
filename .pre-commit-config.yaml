@@ -78,7 +78,7 @@ repos:
           - --line-length=72
 
   - repo: https://github.com/PyCQA/flake8
-    rev: 4.0.1
+    rev: 5.0.4
     hooks:
       - id: flake8
         additional_dependencies:
@@ -113,7 +113,7 @@ repos:
       - id: pyupgrade
 
   - repo: https://github.com/asottile/setup-cfg-fmt
-    rev: v1.20.2
+    rev: v2.0.0
     hooks:
       - id: setup-cfg-fmt
 
