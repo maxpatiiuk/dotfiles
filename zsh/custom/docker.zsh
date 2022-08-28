@@ -52,3 +52,5 @@ alias sync_client='docker run --rm --init -it -u $(id -u):$(id -g) -v $(pwd):/da
 alias sync_server='docker run \
   --rm --init -it -u $(id -u):$(id -g) -v $(pwd):/data -p 49172:49172 \
   quay.io/stephenh/mirror server'
+
+alias dr="docker container restart"
