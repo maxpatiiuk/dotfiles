@@ -55,16 +55,18 @@ module.exports = {
     'react/no-invalid-html-attribute': ERROR,
     'react/jsx-boolean-value': ERROR,
     'react/jsx-child-element-spacing': ERROR,
-    'react/jsx-curly-brace-presence': [ERROR,{propElementValues:'always'}],
+    'react/jsx-curly-brace-presence': [ERROR, { propElementValues: 'always' }],
     'react/jsx-fragments': ERROR,
     'react/jsx-no-constructed-context-values': ERROR,
     'react/jsx-no-leaked-render': OFF,
     'react/jsx-no-literals': ERROR,
-    'react/jsx-sort-props': [WARN,{
-      ignoreCase: true,
-      callbacksLast: true,
-
-    }],
+    'react/jsx-sort-props': [
+      WARN,
+      {
+        ignoreCase: true,
+        callbacksLast: true,
+      },
+    ],
     'react/jsx-uses-vars': ERROR,
     'react/jsx-uses-react': ERROR,
   },
