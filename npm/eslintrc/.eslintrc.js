@@ -96,6 +96,20 @@ module.exports = {
         'jest/require-hook': WARN,
         'jest/require-to-throw-message': WARN,
         'jest/no-large-snapshots': [WARN, { maxSize: 50, inlineMaxSize: 25 }],
+        /*
+         * This rule needs to know Jest version.
+         * Autodetection of Jest version does not always work, thus
+         * this had to be disabled.
+         * Additionally, this rule wasn't that useful, as the same
+         * functionally is built in in most IDEs
+         */
+        'jest/no-deprecated-functions': OFF,
+        /*
+         * This rule highlights using a string variable as a test name
+         * as an error (probably because it is not integrated
+         * with TypeScript type checking)
+         */
+        'jest/valid-title': OFF,
       },
     },
   ],
