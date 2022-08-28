@@ -30,6 +30,7 @@ module.exports = {
     'write-good-comments',
     'functional',
     'optimize-regex',
+    'jest',
   ],
   extends: [
     'eslint:recommended',
@@ -71,6 +72,31 @@ module.exports = {
         'no-console': OFF,
       },
     },
+    overrides: [
+      {
+        files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
+        plugins: ['jest'],
+        extends: ['plugin:jest/recommended', 'plugin:jest/style'],
+        rules: {
+          'jest/consistent-test-it': [ERROR, {"fn": "test", "withinDescribe": "test"}],
+          'jest/max-expects': WARN,
+          'jest/max-nested-describe': ERROR,
+          'jest/no-test-return-statement': ERROR,
+          'jest/prefer-called-with': WARN,
+          'jest/prefer-comparison-matcher': ERROR,
+          'jest/prefer-equality-matcher': ERROR,
+          'jest/prefer-expect-resolves': WARN,
+          'jest/prefer-hooks-in-order': ERROR,
+          'jest/prefer-hooks-on-top': ERROR,
+          'jest/prefer-mock-promise-shorthand': WARN,
+          'jest/prefer-spy-on': WARN,
+          'jest/prefer-todo': ERROR,
+          'jest/require-hook': WARN,
+          'jest/require-to-throw-message': WARN,
+          'jest/no-large-snapshots': [WARN, { "maxSize": 50, "inlineMaxSize": 25 }],
+        }
+      }
+    ],
   ],
   rules: {
     'no-non-null-assertion': OFF,
@@ -233,7 +259,7 @@ module.exports = {
       ERROR,
       ...new Set([...restrictedGlobals,"event",'name','closed','i','index','length','parent','self','status','stop','toolbar','top','Infinity','NaN','isNaN','isFinite','parseFloat','parseInt','keys'])
     ],
-    'no-void': ERROR,
+    'no-void': [ERROR, { "allowAsStatement": true }],
     'prefer-arrow-callback': [ERROR,{ "allowNamedFunctions": true }],
     'prefer-object-has-own': ERROR,
     'radix': [ERROR, 'as-needed'],
@@ -613,6 +639,7 @@ _    * While overusing non-null assertions can be harmful, there are
 
     'sonarjs/no-duplicate-string': WARN,
     'sonarjs/no-inverted-boolean-check': ERROR,
+    'sonarjs/no-nested-template-literals': WARN,
 
     'regexp/no-dupe-disjunctions': ERROR,
     'regexp/no-empty-alternative': ERROR,
