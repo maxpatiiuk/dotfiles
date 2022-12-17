@@ -118,3 +118,5 @@ export EDITOR='/usr/bin/vim'
 source "${HOME}/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel9k.zsh-theme"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
+
+

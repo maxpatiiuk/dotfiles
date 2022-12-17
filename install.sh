@@ -87,6 +87,7 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install pre-commit
   brew install openconnect
   brew install openvpn
+  brew install ffmpeg
   brew install pyenv
   brew install pyenv-virtualenv
   brew install pycharm

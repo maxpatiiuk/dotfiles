@@ -34,6 +34,13 @@ alias ghh="git stash show -p"
 alias ghp="git stash pop"
 alias ghl="git stash list"
 
+# I found myself accidentally running `git restore -W` when I meant to
+# call `git restore -S`. Thus, separate aliases that more explicitly
+# explain action of each command have been added
+alias gunstage="git restore -S"
+alias gdelete="git restore -W"
+alias gunstagedelete="git restore -SW"
+
 # Fix GPG not working on Ubuntu
 export GPG_TTY=$TTY
 
