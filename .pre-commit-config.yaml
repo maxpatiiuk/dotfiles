@@ -71,7 +71,7 @@ repos:
           - --skip="./node_modules/,package-lock.json,./.idea/"
 
   - repo: https://github.com/psf/black
-    rev: 22.12.0
+    rev: 23.1a1
     hooks:
       - id: black
         args:
