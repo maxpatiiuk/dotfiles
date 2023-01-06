@@ -20,7 +20,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    '@maxxxxxdlp/eslint-config',
+    '/Users/maxpatiiuk/site/python/temp/specify7/specifyweb/frontend/js_src/node_modules/@maxxxxxdlp/eslint-config/.eslintrc.js',
     'plugin:testing-library/react',
   ],
   overrides: [{
