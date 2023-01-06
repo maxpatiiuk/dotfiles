@@ -648,7 +648,7 @@ _    * While overusing non-null assertions can be harmful, there are
     'unicorn/prefer-string-replace-all': ERROR,
     // While using "undefined" is prefered, React relies on null values
     'unicorn/no-null': OFF,
-    'unicorn/prevent-abbreviations': [
+    'unicorn/prevent-abbreviations': OFF,/*[
       OFF,
       {
         replacements: {
@@ -676,11 +676,11 @@ _    * While overusing non-null assertions can be harmful, there are
          *
          * Instead, the function should be renamed in the place where
          * it was defined
-         */
+         *\/
         checkShorthandImports: false,
         checkShorthandProperties: false,
       },
-    ],
+    ],*/
     /*
      * While this improves readability, it makes it way harder to
      * find all usages of the attribute as \.dataset translates all
