@@ -231,7 +231,6 @@ module.exports = {
     // This makes code more explicit and catches potential bugs
     'no-extra-boolean-cast': OFF,
     'no-multi-assign': ERROR,
-    'no-negated-condition': ERROR,
     'no-new-object': ERROR,
     'no-plusplus': ERROR,
     'no-unneeded-ternary': ERROR,
@@ -305,9 +304,15 @@ module.exports = {
     radix: [ERROR, 'as-needed'],
     'require-unicode-regexp': ERROR,
     'new-parens': ERROR,
+    'logical-assignment-operators': [ERROR, {
+      "enforceForIfStatements": true,
+    }],
+    'no-new-native-nonconstructor': ERROR,
 
     // This rule crashes for me. TODO: reEnable in the future
     '@typescript-eslint/no-unsafe-return': OFF,
+    // Lots of false positives
+    '@typescript-eslint/no-base-to-string': OFF,
     '@typescript-eslint/ban-ts-comment': WARN,
     '@typescript-eslint/explicit-module-boundary-types': [
       ERROR,
@@ -632,6 +637,8 @@ _    * While overusing non-null assertions can be harmful, there are
     // Lonely if has different behavior than else if
     'no-lonely-if': OFF,
     'unicorn/no-lonely-if': ERROR,
+    'no-negated-condition': OFF,
+    'unicorn/no-negated-condition': ERROR,
     'unicorn/no-new-array': ERROR,
     'unicorn/no-unsafe-regex': ERROR,
     'unicorn/numeric-separators-style': ERROR,
@@ -642,7 +649,7 @@ _    * While overusing non-null assertions can be harmful, there are
     // While using "undefined" is prefered, React relies on null values
     'unicorn/no-null': OFF,
     'unicorn/prevent-abbreviations': [
-      ERROR,
+      OFF,
       {
         replacements: {
           props: {
@@ -671,6 +678,7 @@ _    * While overusing non-null assertions can be harmful, there are
          * it was defined
          */
         checkShorthandImports: false,
+        checkShorthandProperties: false,
       },
     ],
     /*
@@ -682,6 +690,9 @@ _    * While overusing non-null assertions can be harmful, there are
     'unicorn/prefer-at': ERROR,
     'unicorn/prefer-json-parse-buffer': ERROR,
     'unicorn/require-post-message-target-origin': ERROR,
+    'unicorn/prefer-array-find': [ERROR, {
+      checkFromLast: true,
+    }],
 
     'eslint-comments/no-unused-disable': ERROR,
 
@@ -734,6 +745,8 @@ _    * While overusing non-null assertions can be harmful, there are
     'regexp/prefer-unicode-codepoint-escapes': ERROR,
     'regexp/sort-flags': ERROR,
     'regexp/unicode-escape': ERROR,
+    'regexp/no-missing-g-flag': ERROR,
+    'regexp/no-extra-lookaround-assertions': ERROR,
 
     // Deprecated rule
     'jsx-a11y/no-onchange': OFF,
