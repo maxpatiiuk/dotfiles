@@ -60,7 +60,15 @@ module.exports = {
     'react/jsx-pascal-case': ERROR,
     'react/boolean-prop-naming': ERROR,
     'react/function-component-definition': ERROR,
-    'react/hook-use-state': ERROR,
+    /*
+     * Seemed like a good idea at first, but now I am struggling to
+     * find a reason for this rule to exist. IF you accidentally
+     * forgot to unpack a useState, TypeScript will tell you.
+     * Otherwise, I don't want this rule to fire when I intentionally
+     * didn't unpack (because I want to easily pass on both getter
+     * and setter to a child component)
+     */
+    'react/hook-use-state': OFF,
     'react/iframe-missing-sandbox': ERROR,
     'react/no-adjacent-inline-elements': ERROR,
     'react/no-invalid-html-attribute': ERROR,
@@ -80,6 +88,7 @@ module.exports = {
     ],
     'react/jsx-uses-vars': ERROR,
     'react/jsx-uses-react': ERROR,
+    'react/no-object-type-as-default-prop': ERROR,
   },
   settings: {
     react: {
