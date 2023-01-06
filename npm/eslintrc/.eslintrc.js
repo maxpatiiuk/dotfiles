@@ -74,8 +74,12 @@ module.exports = {
     },
     {
       files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
-      plugins: ['jest'],
-      extends: ['plugin:jest/recommended', 'plugin:jest/style'],
+      plugins: ['jest', 'jest-dom'],
+      extends: [
+        'plugin:jest/recommended',
+        'plugin:jest/style',
+        'plugin:jest-dom/recommended'
+      ],
       rules: {
         'jest/consistent-test-it': [
           ERROR,
@@ -658,6 +662,15 @@ _    * While overusing non-null assertions can be harmful, there are
             arguments: false,
           },
         },
+        /*
+         * Renaming imports is a bad idea, is bug prone and causes
+         * confusion (when the same function is called differently
+         * in different files)
+         *
+         * Instead, the function should be renamed in the place where
+         * it was defined
+         */
+        checkShorthandImports: false,
       },
     ],
     /*

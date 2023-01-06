@@ -21,7 +21,18 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     '@maxxxxxdlp/eslint-config',
+    'plugin:testing-library/react',
   ],
+  overrides: [{
+    files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
+    rules: {
+      'testing-library/no-await-sync-events': ERROR,
+      'testing-library/no-global-regexp-flag-in-query': WARN,
+      'testing-library/no-manual-cleanup': ERROR,
+      'testing-library/prefer-user-event': ERROR,
+      'testing-library/prefer-wait-for': ERROR,
+    },
+  }],
   rules: {
     'react/prop-types': OFF,
     'react/display-name': WARN,
