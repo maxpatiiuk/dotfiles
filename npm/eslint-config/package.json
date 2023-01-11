@@ -8,15 +8,16 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/maxxxxxdlp/dotfiles",
-    "directory": "npm/eslintrc"
+    "directory": "npm/eslint-config"
   },
   "homepage": "https://github.com/maxxxxxdlp/dotfiles/tree/main/npm/eslintrc/#readme",
   "bugs": {
     "url": "https://github.com/maxxxxxdlp/dotfiles/issues"
   },
-  "main": ".eslintrc.js",
+  "type": "module",
+  "main": "eslint.config.js",
   "files": [
-    ".eslintrc.js",
+    "eslint.config.js",
     "LICENCE",
     "package.json",
     "README.md"
@@ -31,6 +32,7 @@
     "eslint": ">= 8"
   },
   "dependencies": {
+    "@eslint/eslintrc": "^1.4.1",
     "@typescript-eslint/eslint-plugin": "^5.48.0",
     "@typescript-eslint/parser": "^5.48.0",
     "confusing-browser-globals": "^1.0.11",
@@ -48,12 +50,21 @@
     "eslint-plugin-sonarjs": "^0.17.0",
     "eslint-plugin-tsdoc": "0.2.17",
     "eslint-plugin-unicorn": "^45.0.2",
-    "eslint-plugin-write-good-comments": "^0.1.4"
+    "eslint-plugin-write-good-comments": "^0.1.4",
+    "globals": "^13.19.0"
   },
   "devDependencies": {
+    "@maxxxxxdlp/prettier-config": "^1.0.4",
+    "@types/confusing-browser-globals": "^1.0.0",
+    "@types/eslint-plugin-markdown": "^2.0.0",
     "@typescript-eslint/parser": "^5.48.0",
+    "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.6.0",
+    "eslint-define-config": "^1.14.0",
     "eslint-import-resolver-typescript": "^3.5.2",
-    "tsutils": "^3.21.0"
-  }
+    "prettier": "^2.7.1",
+    "tsutils": "^3.21.0",
+    "typescript": "^4.9.4"
+  },
+  "prettier": "@maxxxxxdlp/prettier-config"
 }

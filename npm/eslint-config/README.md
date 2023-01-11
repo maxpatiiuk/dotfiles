@@ -4,9 +4,9 @@ A very strict configuration for ESLint with support for TypeScript and
 Prettier.
 
 > NOTE:
-This config does not provide React rules. There is a [separate
-configuration](../eslintrc-react) that is a superset of this one, with
-React rules added.
+> This config does not provide React rules. There is a [separate
+configuration](../eslint-config-react) that is a superset of this one, with
+> React rules added.
 
 ## Usage
 
