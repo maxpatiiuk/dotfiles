@@ -29,7 +29,12 @@ module.exports = {
     'tsdoc',
     'write-good-comments',
     'functional',
-    'optimize-regex',
+    /**
+     * An awesome rule, but have to temporary disable it until
+     * https://github.com/BrainMaestro/eslint-plugin-optimize-regex/issues/66
+     * is fixed - until then, this rule breaks regular expressions!
+     */
+    //'optimize-regex',
     'jest',
   ],
   extends: [
@@ -715,9 +720,8 @@ _    * While overusing non-null assertions can be harmful, there are
     'unicorn/prefer-at': ERROR,
     'unicorn/prefer-json-parse-buffer': ERROR,
     'unicorn/require-post-message-target-origin': ERROR,
-    'unicorn/prefer-array-find': [ERROR, {
-      checkFromLast: true,
-    }],
+    // TODO: enable checkFromLast:true. Seems to not work yet
+    'unicorn/prefer-array-find': ERROR,
 
     'eslint-comments/no-unused-disable': ERROR,
 

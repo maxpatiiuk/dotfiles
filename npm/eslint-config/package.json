@@ -1,6 +1,6 @@
 {
   "name": "@maxxxxxdlp/eslint-config",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "private": false,
   "author": "Max Patiiuk",
   "description": "A very strict ESLint config with support for TypeScript and Prettier",
