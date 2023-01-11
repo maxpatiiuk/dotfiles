@@ -20,7 +20,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    '/Users/maxpatiiuk/site/python/temp/specify7/specifyweb/frontend/js_src/node_modules/@maxxxxxdlp/eslint-config/.eslintrc.js',
+    '@maxxxxxdlp/eslint-config',
     'plugin:testing-library/react',
   ],
   overrides: [{
@@ -88,7 +88,15 @@ module.exports = {
     ],
     'react/jsx-uses-vars': ERROR,
     'react/jsx-uses-react': ERROR,
-    'react/no-object-type-as-default-prop': ERROR,
+
+    /*
+     * This is a super important rule. Not sure why it's not an ERROR
+     * by default
+     */
+    'react-hooks/exhaustive-deps': ERROR,
+
+    // An important rule, but not released yet. TODO: uncomment
+    //'react/no-object-type-as-default-prop': ERROR,
   },
   settings: {
     react: {
