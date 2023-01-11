@@ -9,7 +9,7 @@ const ERROR = 'error';
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2021,
+    ecmaVersion: 2022,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
@@ -119,7 +119,8 @@ module.exports = {
   ],
   rules: {
     'no-non-null-assertion': OFF,
-    'no-console': [ERROR, { allow: ['error', 'warn'] }],
+    // I intercept the calls to console and display them in the UI
+    'no-console': OFF,
     // This fires for anonymous functions when not wrapped in {}
     'no-promise-executor-return': OFF,
     'no-template-curly-in-string': ERROR,
@@ -268,7 +269,6 @@ module.exports = {
     'no-lone-blocks': ERROR,
     'no-mixed-operators': ERROR,
     'no-multi-str': ERROR,
-    'no-nested-ternary': WARN,
     /*
      * Prevent accidental usages of global when forgot to declare a
      * variable
@@ -298,13 +298,18 @@ module.exports = {
         'keys',
       ]),
     ],
-    'no-void': [ERROR, { allowAsStatement: true }],
+    /*
+     * This conflicts with TypeScript when lambda function is expected
+     * to return void, but instead returns null due to optional chaining
+     * and "void" was added to "cast" undefined into void.
+     **/
+    'no-void': OFF,
     'prefer-arrow-callback': [ERROR, { allowNamedFunctions: true }],
     'prefer-object-has-own': ERROR,
     radix: [ERROR, 'as-needed'],
     'require-unicode-regexp': ERROR,
     'new-parens': ERROR,
-    'logical-assignment-operators': [ERROR, {
+    'logical-assignment-operators': [ERROR, "always", {
       "enforceForIfStatements": true,
     }],
     'no-new-native-nonconstructor': ERROR,
@@ -601,6 +606,18 @@ _    * While overusing non-null assertions can be harmful, there are
      * incorrect.
      */
     '@typescript-eslint/no-non-null-assertion': OFF,
+    /**
+     * There was a bug where explicit type was required for 
+     * @typescript-eslint/strict-boolean-expressions to infer the type
+     * correctly. Even though that bug is fixed, it's still useful
+     * to be explicit about the types of function arguments
+     */
+    '@typescript-eslint/no-inferrable-types': OFF,
+    /**
+     * If function returns void but the expected return type is
+     * undefined, this rule causes a type error
+     */
+    '@typescript-eslint/no-meaningless-void-operator': OFF,
 
     // This rule is a subset of unicorn/new-for-builtins
     'unicorn/throw-new-error': OFF,
@@ -636,6 +653,14 @@ _    * While overusing non-null assertions can be harmful, there are
     'unicorn/no-useless-undefined': OFF,
     // Lonely if has different behavior than else if
     'no-lonely-if': OFF,
+    /**
+     * Unicorn's rule automatically adds parenthesis to nested
+     * ternaries. I don't think that improves readability. What is
+     * worse, it conflicts with Prettier (Prettier removes redundant
+     * parenthesis)
+     */
+    'no-nested-ternary': WARN,
+    'unicorn/no-nested-ternary': OFF,
     'unicorn/no-lonely-if': ERROR,
     'no-negated-condition': OFF,
     'unicorn/no-negated-condition': ERROR,
@@ -648,8 +673,8 @@ _    * While overusing non-null assertions can be harmful, there are
     'unicorn/prefer-string-replace-all': ERROR,
     // While using "undefined" is prefered, React relies on null values
     'unicorn/no-null': OFF,
-    'unicorn/prevent-abbreviations': OFF,/*[
-      OFF,
+    'unicorn/prevent-abbreviations':[
+      ERROR,
       {
         replacements: {
           props: {
@@ -676,11 +701,11 @@ _    * While overusing non-null assertions can be harmful, there are
          *
          * Instead, the function should be renamed in the place where
          * it was defined
-         *\/
+         */
         checkShorthandImports: false,
         checkShorthandProperties: false,
       },
-    ],*/
+    ],
     /*
      * While this improves readability, it makes it way harder to
      * find all usages of the attribute as \.dataset translates all
@@ -775,7 +800,12 @@ _    * While overusing non-null assertions can be harmful, there are
     'functional/functional-parameters': OFF,
     'functional/prefer-tacit': [ERROR, { assumeTypes: { allowFixer: false } }],
 
-    'optimize-regex/optimize-regex': ERROR,
+    /**
+     * An awesome rule, but have to temporary disable it until
+     * https://github.com/BrainMaestro/eslint-plugin-optimize-regex/issues/66
+     * is fixed - until then, this rule breaks regular expressions!
+     */
+    // 'optimize-regex/optimize-regex': ERROR,
   },
 };
 
