@@ -21,6 +21,10 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     '@maxxxxxdlp/eslint-config',
+    // When editing the ESLint config, I found it advantageous to directly link to
+    // the local .eslintrc file instead of the npm package:
+    //'/Users/maxpatiiuk/site/git/dotfiles/npm/eslint-config/.eslintrc.js',
+
     'plugin:testing-library/react',
   ],
   overrides: [{

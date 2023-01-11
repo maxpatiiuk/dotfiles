@@ -1,13 +1,13 @@
 {
   "name": "@maxxxxxdlp/eslint-config-react",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": false,
   "description": "A very strict ESLint config with support for TypeScript, React and Prettier",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/maxxxxxdlp/dotfiles",
-    "directory": "npm/eslintrc-react"
+    "directory": "npm/eslint-config-react"
   },
   "homepage": "https://github.com/maxxxxxdlp/dotfiles/tree/main/npm/eslintrc-react/#readme",
   "bugs": {
@@ -30,7 +30,7 @@
     "eslint": ">= 7"
   },
   "dependencies": {
-    "@maxxxxxdlp/eslint-config": "^4.0.0",
+    "@maxxxxxdlp/eslint-config": "^4.0.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-testing-library": "^5.9.1"
