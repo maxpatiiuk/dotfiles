@@ -5,47 +5,44 @@ Prettier.
 
 > NOTE:
 > This config does not provide React rules. There is a [separate
-configuration](../eslint-config-react) that is a superset of this one, with
-> React rules added.
+configuration](https://www.npmjs.com/package/@maxxxxxdlp/eslint-react-config)
+> that complements this one with React-specific rules
 
 ## Usage
 
-Add this to your `package.json`:
+Install dependencies:
 
-```json
-{
-  "devDependencies": {
-    "@maxxxxxdlp/eslintrc": "^0.1.8",
-    "@rushstack/eslint-patch": "^1.1.0"
-  }
-}
+```sh
+npm install --save-dev @maxxxxxdlp/eslintrc globals
 ```
 
-Then, create `.eslintrc.js` at the root of your project:
+Then, create `eslint.config.js` at the root directory of your project:
 
 ```js
-require('@rushstack/eslint-patch/modern-module-resolution');
+import eslintConfig from '@maxxxxxdlp/eslint-config';
+import globals from 'globals';
 
-module.exports = {
-  root: true,
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    // Your TSConfig file
-    project: './tsconfig.json',
+export default [
+  ...eslintConfig,
+  {
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.json',
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
+    rules: {
+      // Example of overriding the configuration:
+      '@typescript-eslint/no-empty-interface': 'off',
+    },
   },
-  env: {
-    browser: true,
-    node: true,
-  },
-  extends: ['@maxxxxxdlp/eslint-config'],
-  rules: {
-    // Manual overrides
-  },
-};
+];
 
 ```
 
-You can optionally extend this config or overwrite some rules by extending your
-`.eslintrc.js`. See
-[official documentation](https://eslint.org/docs/user-guide/configuring/) for
-more information.
+The config is using
+[Flat Config](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new)
+style.

@@ -1,30 +1,27 @@
-// @ts-check
 'use strict';
 
-import parser from '@typescript-eslint/parser';
-import restrictedGlobals from 'confusing-browser-globals';
-import globals from 'globals';
-import typescript from '@typescript-eslint/eslint-plugin';
-import markdown from 'eslint-plugin-markdown';
-import promise from 'eslint-plugin-promise';
-import sonarjs from 'eslint-plugin-sonarjs';
-import simpleImportSort from 'eslint-plugin-simple-import-sort';
-import regexp from 'eslint-plugin-regexp';
-import accessibility from 'eslint-plugin-jsx-a11y';
-import tsdoc from 'eslint-plugin-tsdoc';
-import comments from 'eslint-plugin-write-good-comments';
-import functional from 'eslint-plugin-functional';
-import jest from 'eslint-plugin-jest';
-import jestDom from 'eslint-plugin-jest-dom';
-import arrayFunc from 'eslint-plugin-array-func';
-import { FlatCompat } from '@eslint/eslintrc';
-import typescriptEslint from '@typescript-eslint/eslint-plugin/dist/configs/eslint-recommended.js';
-import typescriptRecommended from '@typescript-eslint/eslint-plugin/dist/configs/recommended.js';
-import typescriptRecommendedTyped from '@typescript-eslint/eslint-plugin/dist/configs/recommended-requiring-type-checking.js';
-import typescriptStrict from '@typescript-eslint/eslint-plugin/dist/configs/strict.js';
-import unicornRecommended from 'eslint-plugin-unicorn/configs/recommended.js';
-import eslintComments from 'eslint-plugin-eslint-comments/lib/configs/recommended.js';
-import { defineFlatConfig } from 'eslint-define-config';
+const parser = require('@typescript-eslint/parser');
+const restrictedGlobals = require('confusing-browser-globals');
+const typescript = require('@typescript-eslint/eslint-plugin');
+const markdown = require('eslint-plugin-markdown');
+const promise = require('eslint-plugin-promise');
+const sonarjs = require('eslint-plugin-sonarjs');
+const simpleImportSort = require('eslint-plugin-simple-import-sort');
+const regexp = require('eslint-plugin-regexp');
+const accessibility = require('eslint-plugin-jsx-a11y');
+const tsdoc = require('eslint-plugin-tsdoc');
+const comments = require('eslint-plugin-write-good-comments');
+const functional = require('eslint-plugin-functional');
+const jest = require('eslint-plugin-jest');
+const jestDom = require('eslint-plugin-jest-dom');
+const arrayFunc = require('eslint-plugin-array-func');
+const { FlatCompat } = require('@eslint/eslintrc');
+const typescriptEslint = require('@typescript-eslint/eslint-plugin/dist/configs/eslint-recommended.js');
+const typescriptRecommended = require('@typescript-eslint/eslint-plugin/dist/configs/recommended.js');
+const typescriptRecommendedTyped = require('@typescript-eslint/eslint-plugin/dist/configs/recommended-requiring-type-checking.js');
+const typescriptStrict = require('@typescript-eslint/eslint-plugin/dist/configs/strict.js');
+const unicornRecommended = require('eslint-plugin-unicorn/configs/recommended.js');
+const eslintComments = require('eslint-plugin-eslint-comments/lib/configs/recommended.js');
 
 const OFF = 'off';
 const WARN = 'warn';
@@ -32,7 +29,7 @@ const ERROR = 'error';
 
 const compat = new FlatCompat();
 
-const config = defineFlatConfig([
+module.exports = [
   'eslint:recommended',
   ...typescriptEslint.overrides,
   ...compat.config(unicornRecommended),
@@ -254,6 +251,12 @@ const config = defineFlatConfig([
        * and "void" was added to "cast" undefined into void.
        **/
       'no-void': OFF,
+      /*
+       * This is already checked by TypeScript
+       * TODO: potential use case for this is to forbid access to jest's globals
+       *  outside of test files. TypeScript can't yet be fine tuned like that
+       */
+      'no-undef': OFF,
       'prefer-arrow-callback': [ERROR, { allowNamedFunctions: true }],
       'prefer-object-has-own': ERROR,
       radix: [ERROR, 'as-needed'],
@@ -291,7 +294,7 @@ const config = defineFlatConfig([
           objectLiteralTypeAssertions: 'allow-as-parameter',
         },
       ],
-      '@typescript-eslint/consistent-type-definitions': ['ERROR', 'type'],
+      '@typescript-eslint/consistent-type-definitions': [ERROR, 'type'],
       '@typescript-eslint/consistent-type-imports': ERROR,
       '@typescript-eslint/explicit-function-return-type': [
         ERROR,
@@ -763,7 +766,7 @@ _    * While overusing non-null assertions can be harmful, there are
       // 'optimize-regex/optimize-regex': ERROR,
     },
   },
-  compat.config(markdown.configs.recommended),
+  ...compat.config(markdown.configs.recommended),
   {
     /*
      * Customize the configuration ESLint uses for ```js
@@ -777,18 +780,11 @@ _    * While overusing non-null assertions can be harmful, there are
       'no-console': OFF,
     },
   },
-  jest.configs.recommended,
-  jest.configs.style,
-  jestDom.configs.recommended,
+  ...compat.config(jest.configs.recommended),
+  ...compat.config(jest.configs.style),
+  ...compat.config(jestDom.configs.recommended),
   {
     files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
-    globals: {
-      ...globals.jest,
-    },
-    plugins: {
-      jest,
-      'jest-dom': jestDom,
-    },
     rules: {
       'jest/consistent-test-it': [
         ERROR,
@@ -825,6 +821,4 @@ _    * While overusing non-null assertions can be harmful, there are
       'jest/valid-title': OFF,
     },
   },
-]);
-
-export default config;
+];
