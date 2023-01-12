@@ -1,35 +1,33 @@
 # ESLint-React Configuration
 
-A very strict configuration for ESLint with support for TypeScript, React and
-Prettier.
+A very strict ESLInt configuration for React.
 
-This config is based on
+Note, this config includes only React-specific rules. It's recommended to use
+this config alongside
 [@maxxxxxdlp/eslint-config](https://www.npmjs.com/package/@maxxxxxdlp/eslint-config).
 
 ## Usage
 
-Add this to your `package.json`:
+Install dependencies:
 
-```json
-{
-  "devDependencies": {
-    "@maxxxxxdlp/eslintrc-react": "^0.1.8",
-    "@rushstack/eslint-patch": "^1.1.0"
-  }
-}
+```sh
+npm install --save-dev @maxxxxxdlp/eslint-config-react
 ```
 
-Then, create `.eslintrc.js` at the root directory of your project:
+Then, create `eslint.config.js` at the root directory of your project:
 
 ```js
-require('@rushstack/eslint-patch/modern-module-resolution');
+import eslintConfigReact from '@maxxxxxdlp/eslint-config-react';
 
-module.exports = {
-  extends: [ '@maxxxxxdlp/eslint-config-react' ],
-};
+export default [
+  ...eslintReactConfig,
+  {
+    // Your custom rules and overrides here
+  },
+];
+
 ```
 
-You can optionally extend this config or overwrite some rules by extending your
-`.eslintrc.js`. See
-[official documentation](https://eslint.org/docs/user-guide/configuring/) for
-more information.
+The config is using
+[Flat Config](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new)
+style.
