@@ -97,7 +97,7 @@ repos:
           - -v 2
 
   - repo: https://github.com/PyCQA/pydocstyle
-    rev: 6.2.3
+    rev: 6.3.0
     hooks:
       - id: pydocstyle
 
@@ -135,7 +135,7 @@ repos:
       - id: python-safety-dependencies-check
 
   - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.18.0
+    rev: v0.19.0dev
     hooks:
       - id: gitlint
 
