@@ -71,7 +71,7 @@ repos:
           - --skip="./node_modules/,package-lock.json,./.idea/"
 
   - repo: https://github.com/psf/black
-    rev: 23.1.0
+    rev: 23.3.0
     hooks:
       - id: black
         args:
@@ -135,7 +135,7 @@ repos:
       - id: python-safety-dependencies-check
 
   - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.20.0dev
+    rev: v0.19.1
     hooks:
       - id: gitlint
 
