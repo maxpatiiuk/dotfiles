@@ -76,13 +76,13 @@ repos:
       - id: pydocstyle
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.2.0
+    rev: v1.3.0
     hooks:
       - id: mypy
         exclude: ^docs/
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.3.2
+    rev: v3.4.0
     hooks:
       - id: pyupgrade
 
@@ -114,7 +114,7 @@ repos:
           - stylelint-config-standard@24.0.0
 
   - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v8.39.0
+    rev: v8.41.0
     hooks:
       - id: eslint
         types: [text]
