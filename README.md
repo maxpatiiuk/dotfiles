@@ -11,14 +11,30 @@ All of these files were tested to work on macOS Big Sur and Ubuntu Linux.
 
 Should do these things before reinstalling the system:
 
-- Back up Google Chrome custom flags along with Stylebot's settings
+- Google Chrome
+  - Flags
+  - Extensions
+    - Stylebot
+    - Tampermonkey
+    - Calendar Plus
+    - others?
 - Back up files not in git (Downloads, Desktop, ~/, etc)
+- Copy ~/site/git/custom_new_tab_page/imgs
+- Back up .idea directory for main projects
+- Check if PyCharm settings are being backed up correctly
 - Check checkout out git repositories. Make sure:
   - working tree is clean
   - there are no unpushed commits
   - there is no stashed code
   - files that are ignored by git are not important
 - Check the content of docker containers and docker volumes
+- Screenshot system preferences
+- Back up iTerm settings
+  - Make sure it is setup to auto back up to private-dotfiles
+- Back up Raycast settings
+- Go though all installed apps to check if
+  - they are in install.sh
+  - they have custom settings that need to be exported
 
 ## Installation
 
@@ -35,6 +51,7 @@ at your own risk!
 ```zsh
 source <(curl -s https://raw.githubusercontent.com/maxxxxxdlp/dotfiles/main/install.sh)
 ```
+
 Install
 [this font](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/RobotoMono/Regular/complete/Roboto%20Mono%20Nerd%20Font%20Complete.ttf)
 and set it as default in the terminal:
@@ -53,10 +70,13 @@ Download high quality TTS voices
 
 Manually download the following programs:
 
-- Davinchi Resolve
-- Adobe Photoshop
+- DaVinci Resolve - via App Store (not available in Homebrew)
+- Adobe Photoshop (not available in Homebrew)
+- ExpressVPN (Homebrew version crashes)
 
-Import terminal profile config from ./Basic.terminal
+Import iTerm terminal config
+
+Import Raycast config
 
 ### [Ubuntu only]
 

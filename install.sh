@@ -90,25 +90,32 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install ffmpeg
   brew install pyenv
   brew install pyenv-virtualenv
-  brew install pycharm
   brew install gnupg
   brew install pinentry-mac
   brew install coreutils
   brew install grep
   brew install openssh
   brew install screen
+  brew install terminal-notifier
+  # Used by Raycast
+  brew install bitwarden-cli
   # WARNING: this would install an Intel version of Docker
   brew install --cask docker
+  brew install --cask bitwarden
   brew install --cask google-chrome-beta
   brew install --cask firefox-developer-edition
   brew install --cask vlc
   brew install --cask obs
-  brew install --cask expressvpn
-  brew install --cask android-file-transfer
+  # This keeps on crashing, needed to install directly from website
+  # brew install --cask expressvpn
   brew install --cask zoom
+  brew install --cask jetbrains-toolbox
   brew install --cask vnc-viewer
   brew install --cask transmission
   brew install --cask expressvpn
+  brew install --cask raycast
+  brew install --cask spotify
+  brew install --cask warp
  
   # These are needed to make pyenv work on m1 macs
   brew install openssl readline sqlite3 xz zlib
@@ -176,14 +183,10 @@ echo Cloning Git repos
 (
   cd "${HOME}/site/python"
   git clone https://github.com/specify/specify7.git
-  git clone https://github.com/specify/open_api_tools.git
-  git clone https://github.com/lifemapper/lm_test.git
   git clone https://github.com/maxxxxxdlp/dir_explorer.git
-  git clone https://github.com/maxxxxxdlp/python_tts.git
 )
 (
   cd "${HOME}/site/git"
-  git clone https://github.com/specify/specify6.git
   git clone https://github.com/specify/specify_tools.git
   git clone https://github.com/maxxxxxdlp/custom_new_tab_page.git
   git clone https://github.com/maxxxxxdlp/code_share.git
@@ -192,8 +195,8 @@ echo Cloning Git repos
 )
 (
   cd "${HOME}/site/javascript"
-  git clone https://github.com/maxxxxxdlp/mambo.in.ua.git
-  git clone https://github.com/maxxxxxdlp/typesafe-reducer.git
+  git clone https://github.com/maxxxxxdlp/max.patii.uk.git
+  git clone https://github.com/maxxxxxdlp/tts-reader.git
 )
 
 echo Replacing the default Git Config
@@ -217,7 +220,7 @@ ln -s "${PWD}/zsh/.zshrc" "${HOME}"
 rm -f "${HOME}/zsh/.zprofile"
 ln -s "${PWD}/zsh/.zprofile" "${HOME}"
 rm -f "${HOME}/.p10k.zsh"
-ln "${PWD}/zsh/.p10k.zsh" "${HOME}"
+ln -s "${PWD}/zsh/.p10k.zsh" "${HOME}"
 ln "${PWD}/zsh/.screenrc" "${HOME}"
 ln "${PWD}/misc/.editorconfig" "${HOME}/site"
 sudo mkdir -p "/etc/docker/"
@@ -228,6 +231,7 @@ ln "${HOME}/site/git/code_share/misc/images/mambo.jpg" "${HOME}/Documents/"
 ln "${HOME}/site/git/code_share/misc/images/max_patiiuk_old.jpg" "${HOME}/Documents/"
 ln "${HOME}/site/git/code_share/misc/images/max_patiiuk_1x1.jpg" "${HOME}/Documents/"
 ln "${HOME}/site/git/code_share/misc/images/max_patiiuk.jpg" "${HOME}/Documents/"
+ln "${HOME}/site/git/code_share/misc/images/wolf.jpg" "${HOME}/Documents/"
 
 echo Initializing Dir Explorer
 (
