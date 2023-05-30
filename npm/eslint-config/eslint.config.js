@@ -8,7 +8,6 @@ const promise = require('eslint-plugin-promise');
 const sonarjs = require('eslint-plugin-sonarjs');
 const simpleImportSort = require('eslint-plugin-simple-import-sort');
 const regexp = require('eslint-plugin-regexp');
-const accessibility = require('eslint-plugin-jsx-a11y');
 const tsdoc = require('eslint-plugin-tsdoc');
 const comments = require('eslint-plugin-write-good-comments');
 const functional = require('eslint-plugin-functional');
@@ -29,15 +28,83 @@ const ERROR = 'error';
 
 const compat = new FlatCompat();
 
-module.exports = [
+/*
+ * Config for unicorn/prevent-abbreviations
+ *
+ * Exporting this separately in case someone would want to use this
+ * as a base but extend it
+ */
+const replacementsConfig = {
+  props: {
+    // `props` are used by React
+    properties: false,
+  },
+  Props: {
+    // `props` are used by React
+    properties: false,
+  },
+  ref: {
+    // `ref` is used by React
+    reference: false,
+  },
+  i: {
+    // in for loops, i is more commonly used then index
+    index: false,
+  },
+  args: {
+    // `arguments` is a reserved variable name
+    arguments: false,
+  },
+};
+
+const testFiles = [
+  '**/__tests__/**/*.[jt]s?(x)',
+  '**/?(*.)+(spec|test).[tj]s?(x)',
+];
+
+const testRules = {
+  'jest/consistent-test-it': [ERROR, { fn: 'test', withinDescribe: 'test' }],
+  'jest/max-expects': WARN,
+  'jest/max-nested-describe': ERROR,
+  'jest/no-test-return-statement': ERROR,
+  'jest/prefer-called-with': WARN,
+  'jest/prefer-comparison-matcher': ERROR,
+  'jest/prefer-equality-matcher': ERROR,
+  'jest/prefer-expect-resolves': WARN,
+  'jest/prefer-hooks-in-order': ERROR,
+  'jest/prefer-hooks-on-top': ERROR,
+  'jest/prefer-mock-promise-shorthand': WARN,
+  'jest/prefer-spy-on': WARN,
+  'jest/prefer-todo': ERROR,
+  'jest/require-hook': WARN,
+  'jest/require-to-throw-message': WARN,
+  'jest/no-large-snapshots': [WARN, { maxSize: 50, inlineMaxSize: 25 }],
+  /*
+   * This rule needs to know Jest version.
+   * Autodetection of Jest version does not always work, thus
+   * this had to be disabled.
+   * Additionally, this rule wasn't that useful, as the same
+   * functionally is built in in most IDEs
+   */
+  'jest/no-deprecated-functions': OFF,
+  /*
+   * This rule highlights using a string variable as a test name
+   * as an error (probably because it is not integrated
+   * with TypeScript type checking)
+   */
+  'jest/valid-title': OFF,
+
+  '@typescript-eslint/no-magic-numbers': WARN,
+};
+
+const config = [
   'eslint:recommended',
   ...typescriptEslint.overrides,
   ...compat.config(unicornRecommended),
   ...compat.config(arrayFunc.configs.all),
   ...compat.config(eslintComments),
   ...compat.config(regexp.configs.recommended),
-  ...compat.config(accessibility.configs.strict),
-  ...compat.config(functional.configs['external-recommended']),
+  ...compat.config(functional.configs['external-typescript-recommended']),
   ...compat.config(functional.configs.recommended),
   ...compat.config(functional.configs['no-object-orientation']),
   ...compat.config(functional.configs['no-statements']),
@@ -83,7 +150,8 @@ module.exports = [
       'no-useless-backreference': ERROR,
       'array-callback-return': ERROR,
       complexity: [WARN, { max: 10 }],
-      'consistent-return': ERROR,
+      // Somewhat redundant thanks to TypeScript
+      'consistent-return': OFF,
       'default-case': ERROR,
       'default-case-last': ERROR,
       'guard-for-in': ERROR,
@@ -125,7 +193,8 @@ module.exports = [
       'no-sequences': ERROR,
       'no-useless-call': ERROR,
       'no-useless-concat': ERROR,
-      'no-useless-return': ERROR,
+      // These could be useful for writing cleaner code
+      'no-useless-return': OFF,
       'no-warning-comments': [
         ERROR,
         {
@@ -165,7 +234,7 @@ module.exports = [
       ],
       'max-params': WARN,
       'max-statements': [
-        ERROR,
+        WARN,
         {
           max: 20,
         },
@@ -271,22 +340,28 @@ module.exports = [
       ],
       'no-new-native-nonconstructor': ERROR,
 
+      /*
+       * Potentially super useful rules, but lot's of false positives (report
+       * type as "any", even when TypeScript and IDE infer it correctly)
+       */
+      // '@typescript-eslint/no-unsafe-assignment': WARN,
+      // '@typescript-eslint/no-unsafe-argument': WARN,
+      // '@typescript-eslint/no-unsafe-member-access': WARN,
+      // '@typescript-eslint/no-unsafe-call': WARN,
+
       // This rule crashes for me. TODO: reEnable in the future
       '@typescript-eslint/no-unsafe-return': OFF,
+      // This rule crashes for me. TODO: reEnable in the future
+      '@typescript-eslint/no-extra-semi': OFF,
       // Lots of false positives
       '@typescript-eslint/no-base-to-string': OFF,
       '@typescript-eslint/ban-ts-comment': WARN,
-      '@typescript-eslint/explicit-module-boundary-types': [
-        ERROR,
-        {
-          allowArgumentsExplicitlyTypedAsAny: true,
-          allowDirectConstAssertionInArrowFunctions: true,
-        },
-      ],
       '@typescript-eslint/array-type': ERROR,
       '@typescript-eslint/ban-tslint-comment': ERROR,
       '@typescript-eslint/class-literal-property-style': [ERROR, 'fields'],
       '@typescript-eslint/consistent-indexed-object-style': [ERROR, 'record'],
+      // This is from a future version. TODO: reEnable in the future
+      // '@typescript-eslint/no-duplicate-type-constituents': ERROR,
       '@typescript-eslint/consistent-type-assertions': [
         ERROR,
         {
@@ -305,102 +380,47 @@ module.exports = [
           allowConciseArrowFunctionExpressionsStartingWithVoid: true,
         },
       ],
+      // Redundant with '@typescript-eslint/explicit-function-return-type'
+      '@typescript-eslint/explicit-module-boundary-types': OFF,
       '@typescript-eslint/explicit-member-accessibility': ERROR,
       '@typescript-eslint/method-signature-style': ERROR,
       '@typescript-eslint/naming-convention': [
         ERROR,
 
         {
-          // use strictCamelCase by default
+          /*
+           * Use strictCamelCase and StrictPascalCase by default
+           * Pascal case is allowed because, despite variable names
+           * commonly starting with lower case, there are use cases for
+           * capital letter:
+           *  - React Components
+           *  - React Contexts
+           *  - Constructors/dynamic classes
+           *  - Enum-like config objects
+           */
           selector: 'default',
-          format: ['strictCamelCase'],
-          leadingUnderscore: 'forbid',
-          trailingUnderscore: 'forbid',
-        },
-
-        {
-          // function parameters can start with underscore if unused
-          selector: 'parameter',
-          format: ['strictCamelCase'],
-          modifiers: ['unused'],
+          format: ['strictCamelCase', 'StrictPascalCase'],
           leadingUnderscore: 'allow',
           trailingUnderscore: 'forbid',
         },
 
         {
-          // constants can be in UPPER_CASE
+          // Constants can be in UPPER_CASE
           selector: 'variable',
           modifiers: ['const'],
           types: ['boolean', 'string', 'number', 'array'],
-          format: ['strictCamelCase', 'UPPER_CASE'],
+          format: ['strictCamelCase', 'StrictPascalCase', 'UPPER_CASE'],
         },
 
         {
-          // typeLike must be in StrictPascalCase
+          // TypeLike must be in StrictPascalCase
           selector: 'typeLike',
           format: ['StrictPascalCase'],
         },
 
         {
-          // React Contexts, Context Providers and Backbone Views can be in
-          // StrictPascalCase
-          selector: 'variable',
-          modifiers: ['const'],
-          filter: {
-            regex: '(Context|Provider|View)$',
-            match: true,
-          },
-          format: ['StrictPascalCase', 'strictCamelCase'],
-        },
-
-        {
-          // React Components can be in StrictPascalCase
-          selector: 'parameter',
-          modifiers: ['destructured'],
-          types: ['function'],
-          format: ['StrictPascalCase', 'strictCamelCase'],
-        },
-
-        {
-          // React Components must be in StrictPascalCase
-          selector: 'parameter',
-          filter: {
-            regex: 'Component$',
-            match: true,
-          },
-          format: ['StrictPascalCase'],
-        },
-
-        {
-          // React Components can be in StrictPascalCase
-          selector: 'function',
-          format: ['StrictPascalCase', 'strictCamelCase'],
-        },
-
-        {
-          // Allow StrictPascalCase for Actions and States
-          selector: 'objectLiteralMethod',
-          filter: {
-            regex: '(Action|State)$',
-            match: true,
-          },
-          format: ['StrictPascalCase'],
-        },
-
-        {
-          // Allow StrictPascalCase for Actions and States
-          selector: 'objectLiteralProperty',
-          filter: {
-            regex: '(Action|State)$',
-            match: true,
-          },
-          types: ['function'],
-          format: ['StrictPascalCase'],
-        },
-
-        {
           // Relax restrictions for keys like `en-US` and etc.
-          selector: 'objectLiteralProperty',
+          selector: 'default',
           modifiers: ['requiresQuotes'],
           format: null,
         },
@@ -428,7 +448,13 @@ module.exports = [
       '@typescript-eslint/no-dynamic-delete': ERROR,
       '@typescript-eslint/no-extraneous-class': ERROR,
       '@typescript-eslint/no-implicit-any-catch': ERROR,
-      '@typescript-eslint/no-invalid-void-type': ERROR,
+      '@typescript-eslint/no-invalid-void-type': [
+        ERROR,
+        {
+          allowInGenericTypeArguments: true,
+          allowAsThisParameter: true,
+        },
+      ],
       '@typescript-eslint/no-require-imports': ERROR,
       '@typescript-eslint/no-unnecessary-boolean-literal-compare': ERROR,
       // this rule seems to be buggy
@@ -469,13 +495,14 @@ module.exports = [
       'dot-notation': OFF,
       '@typescript-eslint/dot-notation': ERROR,
       'lines-between-class-members': OFF,
-      '@typescript-eslint/lines-between-class-members': ERROR,
+      // This rule crashes for me. TODO: reEnable in the future
+      '@typescript-eslint/lines-between-class-members': OFF,
       'no-dupe-class-members': OFF,
       '@typescript-eslint/no-dupe-class-members': ERROR,
       'no-duplicate-imports': OFF,
       '@typescript-eslint/no-duplicate-imports': ERROR,
       'no-invalid-this': OFF,
-      '@typescript-eslint/no-invalid-this': ERROR,
+      '@typescript-eslint/no-invalid-this': OFF,
       'no-loss-of-precision': OFF,
       '@typescript-eslint/no-loss-of-precision': ERROR,
       'no-magic-numbers': OFF,
@@ -483,9 +510,15 @@ module.exports = [
         ERROR,
         {
           ignore: [
-            // don't know why these aren't ignored by default
+            // Don't know why these aren't ignored by default
             -1, 0, 1, 2,
           ],
+          ignoreDefaultValues: true,
+          ignoreClassFieldInitialValues: true,
+          // Ignore seems to not be working for these
+          ignoreEnums: true,
+          ignoreNumericLiteralTypes: true,
+          ignoreTypeIndexes: true,
         },
       ],
       'no-redeclare': OFF,
@@ -514,14 +547,20 @@ module.exports = [
         },
       ],
       '@typescript-eslint/member-ordering': ERROR,
-      '@typescript-eslint/no-redundant-type-constituents': ERROR,
+      /**
+       * Redundancy could be useful for documentation purposes
+       * (i.e, unknown | undefined)
+       * But also, some other ESLint rules are confused if
+       * this rule is fixed
+       */
+      '@typescript-eslint/no-redundant-type-constituents': WARN,
       '@typescript-eslint/no-useless-empty-export': ERROR,
       '@typescript-eslint/sort-type-union-intersection-members': ERROR,
       'no-array-constructor': OFF,
       '@typescript-eslint/no-array-constructor': ERROR,
       'no-empty-function': OFF,
       '@typescript-eslint/no-empty-function': [
-        ERROR,
+        OFF,
         {
           allow: ['arrowFunctions'],
         },
@@ -574,6 +613,11 @@ _    * While overusing non-null assertions can be harmful, there are
        * undefined, this rule causes a type error
        */
       '@typescript-eslint/no-meaningless-void-operator': OFF,
+      /*
+       * Lot's of false positives on pure functions that don't use
+       * "this"
+       */
+      '@typescript-eslint/unbound-method': OFF,
 
       // This rule is a subset of unicorn/new-for-builtins
       'unicorn/throw-new-error': OFF,
@@ -632,24 +676,7 @@ _    * While overusing non-null assertions can be harmful, there are
       'unicorn/prevent-abbreviations': [
         ERROR,
         {
-          replacements: {
-            props: {
-              // `props` are used by React
-              properties: false,
-            },
-            ref: {
-              // `ref` is used by React
-              reference: false,
-            },
-            i: {
-              // in for loops, i is more commonly used then index
-              index: false,
-            },
-            args: {
-              // `arguments` is a reserved variable name
-              arguments: false,
-            },
-          },
+          replacements: replacementsConfig,
           /*
            * Renaming imports is a bad idea, is bug prone and causes
            * confusion (when the same function is called differently
@@ -676,14 +703,20 @@ _    * While overusing non-null assertions can be harmful, there are
 
       'eslint-comments/no-unused-disable': ERROR,
 
-      'tsdoc/syntax': ERROR,
+      'tsdoc/syntax': WARN,
 
-      'simple-import-sort/imports': ERROR,
-      'simple-import-sort/exports': ERROR,
+      /*
+       * While these are super important for consistency and minimizing
+       * merge conflicts, they have excellent auto fixes, thus
+       * no need to show them as errors
+       */
+      'simple-import-sort/imports': WARN,
+      'simple-import-sort/exports': WARN,
 
       'sonarjs/no-duplicate-string': WARN,
       'sonarjs/no-inverted-boolean-check': ERROR,
       'sonarjs/no-nested-template-literals': WARN,
+      'sonarjs/cognitive-complexity': [WARN, 30],
 
       'regexp/no-dupe-disjunctions': ERROR,
       'regexp/no-empty-alternative': ERROR,
@@ -728,10 +761,6 @@ _    * While overusing non-null assertions can be harmful, there are
       'regexp/no-missing-g-flag': ERROR,
       'regexp/no-extra-lookaround-assertions': ERROR,
 
-      // Deprecated rule
-      'jsx-a11y/no-onchange': OFF,
-      'jsx-a11y/no-noninteractive-element-to-interactive-role': ERROR,
-
       'write-good-comments/write-good-comments': WARN,
 
       // I have an ESLint rule that enforces "readonly" types everywhere
@@ -745,7 +774,7 @@ _    * While overusing non-null assertions can be harmful, there are
       'functional/no-mixed-type': OFF,
       // This is not always possible due to readability concerns
       'functional/no-conditional-statement': OFF,
-      // This is less useful when working with reaDOnly types
+      // This is less useful when working with readOnly types
       'functional/no-expression-statement': OFF,
       // Callbacks need to return void
       'functional/no-return-void': OFF,
@@ -753,6 +782,8 @@ _    * While overusing non-null assertions can be harmful, there are
       'functional/no-promise-reject': OFF,
       // Partially covered by other rules
       'functional/functional-parameters': OFF,
+      // Redundant with functional/no-class
+      'functional/no-this-expression': OFF,
       'functional/prefer-tacit': [
         ERROR,
         { assumeTypes: { allowFixer: false } },
@@ -764,6 +795,14 @@ _    * While overusing non-null assertions can be harmful, there are
        * is fixed - until then, this rule breaks regular expressions!
        */
       // 'optimize-regex/optimize-regex': ERROR,
+
+      /**
+       * Partially obsolete, partially redundant with TypeScript and
+       * other ESLint rules
+       */
+      'promise/always-return': OFF,
+
+      'regexp/no-misleading-capturing-group': ERROR,
     },
   },
   ...compat.config(markdown.configs.recommended),
@@ -784,41 +823,12 @@ _    * While overusing non-null assertions can be harmful, there are
   ...compat.config(jest.configs.style),
   ...compat.config(jestDom.configs.recommended),
   {
-    files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
-    rules: {
-      'jest/consistent-test-it': [
-        ERROR,
-        { fn: 'test', withinDescribe: 'test' },
-      ],
-      'jest/max-expects': WARN,
-      'jest/max-nested-describe': ERROR,
-      'jest/no-test-return-statement': ERROR,
-      'jest/prefer-called-with': WARN,
-      'jest/prefer-comparison-matcher': ERROR,
-      'jest/prefer-equality-matcher': ERROR,
-      'jest/prefer-expect-resolves': WARN,
-      'jest/prefer-hooks-in-order': ERROR,
-      'jest/prefer-hooks-on-top': ERROR,
-      'jest/prefer-mock-promise-shorthand': WARN,
-      'jest/prefer-spy-on': WARN,
-      'jest/prefer-todo': ERROR,
-      'jest/require-hook': WARN,
-      'jest/require-to-throw-message': WARN,
-      'jest/no-large-snapshots': [WARN, { maxSize: 50, inlineMaxSize: 25 }],
-      /*
-       * This rule needs to know Jest version.
-       * Autodetection of Jest version does not always work, thus
-       * this had to be disabled.
-       * Additionally, this rule wasn't that useful, as the same
-       * functionally is built in in most IDEs
-       */
-      'jest/no-deprecated-functions': OFF,
-      /*
-       * This rule highlights using a string variable as a test name
-       * as an error (probably because it is not integrated
-       * with TypeScript type checking)
-       */
-      'jest/valid-title': OFF,
-    },
+    files: testFiles,
+    rules: testRules,
   },
 ];
+
+module.exports = config;
+module.exports.replacementsConfig = replacementsConfig;
+module.exports.testRules = testRules;
+module.exports.testFiles = testFiles;
