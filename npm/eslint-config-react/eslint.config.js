@@ -2,6 +2,7 @@
 
 const react = require('eslint-plugin-react');
 const reactHooks = require('eslint-plugin-react-hooks');
+const accessibility = require('eslint-plugin-jsx-a11y');
 const testingLibrary = require('eslint-plugin-testing-library');
 const { FlatCompat } = require('@eslint/eslintrc');
 
@@ -14,6 +15,7 @@ const compat = new FlatCompat();
 module.exports = [
   ...compat.config(react.configs.recommended),
   ...compat.config(reactHooks.configs.recommended),
+  ...compat.config(accessibility.configs.strict),
   ...compat.config(testingLibrary.configs.react),
   {
     rules: {
@@ -81,6 +83,10 @@ module.exports = [
        * by default
        */
       'react-hooks/exhaustive-deps': ERROR,
+
+      // Deprecated rule
+      'jsx-a11y/no-onchange': OFF,
+      'jsx-a11y/no-noninteractive-element-to-interactive-role': ERROR,
     },
     settings: {
       react: {
