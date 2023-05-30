@@ -120,3 +120,5 @@ eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
 
+
+source /Users/maxpatiiuk/.docker/init-zsh.sh || true # Added by Docker Desktop

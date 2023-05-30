@@ -129,9 +129,6 @@ autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 " Treat .md files as Markdown
 autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 
-" Return to `normal` mode on idle
-autocmd CursorHoldI * stopinsert
-
 " Use ctrl+shift+6 as a "caps lock" toggle
 " Execute 'lnoremap x X' and 'lnoremap X x' for each letter a-z.
 for c in range(char2nr('A'), char2nr('Z'))
@@ -154,7 +151,13 @@ cnoremap \>s/ \>smagic/
 nnoremap :g/ :g/\v
 nnoremap :g// :g//
 
-
+if has('nvim')
+  " Make scroll wheel behave like in Vim
+  nnoremap <ScrollWheelUp> k
+  nnoremap <ScrollWheelDown> j
+  vnoremap <ScrollWheelUp> k
+  vnoremap <ScrollWheelDown> j
+endif
 
 
 " Install Plug if not installed
@@ -209,6 +212,9 @@ Plug 'kamykn/spelunker.vim'
 " Pop-up menu for spell checker
 Plug 'kamykn/popup-menu.nvim'
 
+" Highlight current search match
+Plug 'PeterRincker/vim-searchlight'
+
 call plug#end()
 
 
@@ -224,7 +230,11 @@ colorscheme monokai
 let g:startify_session_persistence=1
 
 " Bookmark commonly used files
-let g:startify_bookmarks = [ {'s':'~/site/git/private-dotfiles/notes/SPECIFY.md'}, {'k':'~/site/git/private-dotfiles/notes/KU.md'}, {'t':'~/site/git/private-dotfiles/notes/TEMP'} ]
+let g:startify_bookmarks = [
+\ {'s':'~/site/git/private-dotfiles/notes/SPECIFY.md'},
+\ {'t':'~/site/git/private-dotfiles/notes/TEMP'},
+\ ]
+
 
 " Show only 5 files in Startify
 let g:startify_files_number = 5

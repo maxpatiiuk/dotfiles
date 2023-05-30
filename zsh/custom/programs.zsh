@@ -61,11 +61,24 @@ alias notify="afplay /System/Library/Sounds/Funk.aiff &>/dev/null &"
 # completion notification
 alias yt='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4"'
 alias yta='yt -f "bestaudio[ext=m4a]"'
+alias t='npm run test'
 
 # Find the `.idea/` directory among parent directories and open that
 # project in PyCharm
 pycharm() {
   open -na "PyCharm.app" --args $(python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo "") $@
+}
+
+# Find the `.idea/` directory among parent directories and open that
+# project in PhpStorm
+phpstorm() {
+  open -na "PhpStorm.app" --args $(python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo "") $@
+}
+
+# Find the `.idea/` directory among parent directories and open that
+# project in IntelliJ
+intellij() {
+  open -na "IntelliJ IDEA Ultimate.app" --args $(python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo "") $@
 }
 
 # Find the `.idea/` directory among parent directories and open that
@@ -83,8 +96,7 @@ alias mariadb="docker run \
   --rm \
   mariadb"
 
-# Run Alpine Docker container with node
-alias dn="docker run --name test --rm -it -p 80:80 node:17.2.0-alpine3.14 /bin/sh"
+alias tts="/Users/maxpatiiuk/site/javascript/tts-reader/node_modules/.bin/ts-node-esm /Users/maxpatiiuk/site/javascript/tts-reader/src/run.ts --input "
 
 alias openconnect="sudo openconnect \
   --user=m001p596 \

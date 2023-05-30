@@ -42,6 +42,9 @@ alias dcl="docker compose logs -f"
 
 alias dd="DOCKER_CONTEXT=maxxxxxdlp-pc "
 
+# Run Alpine Docker container with node
+alias dn="docker run --name test --rm -it -p 80:80 node:17.2.0-alpine3.14 /bin/sh"
+
 alias sync_client='docker run --rm --init -it -u $(id -u):$(id -g) -v $(pwd):/data \
   -p 49172:49172 \
   quay.io/stephenh/mirror client \

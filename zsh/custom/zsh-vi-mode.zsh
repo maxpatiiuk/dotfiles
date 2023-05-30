@@ -7,17 +7,19 @@ ZVM_VI_HIGHLIGHT_BACKGROUND=green
 function zvm_after_init() {
   source ~/site/git/dotfiles/zsh/custom/dirhistory.plugin.zsh
 
-  bindkey "^[[A" history-beginning-search-backward
-  bindkey "^[[B" history-beginning-search-forward
-  bindkey '^[[1;3A' beginning-of-line
-  bindkey '^[[1;3B' end-of-line
+    bindkey "^[[A" history-beginning-search-backward
+    bindkey "^[[B" history-beginning-search-forward
 
   if [ "$(uname 2>/dev/null)" = "Linux" ]; then
     bindkey "^[[1;3D" backward-word
     bindkey "^[[1;3C" forward-word
+    bindkey '^[[1;3A' beginning-of-line
+    bindkey '^[[1;3B' end-of-line
   elif [ "$(uname 2>/dev/null)" = "Darwin" ]; then
-    bindkey "^[b^" backward-word
-    bindkey "^[f^" forward-word
+    bindkey "\e\e[C" backward-word
+    bindkey "\e\e[D" forward-word
+    bindkey "\e\e[A" beginning-of-line
+    bindkey "\e\e[B" end-of-line
   fi
 
 }

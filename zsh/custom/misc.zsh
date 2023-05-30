@@ -17,7 +17,9 @@ function cl() {
 alias python_server="sudo python3 -m http.server 80"
 
 ### shortcuts
-alias v="vim"
+alias v="nvim"
+alias neovim="nvim"
+alias vim="nvim"
 alias p="python"
 alias n="node"
 
