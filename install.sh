@@ -83,9 +83,8 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install wget
   brew install git
   brew install node
-  brew install vim --with-override-system-vi
+  brew install neovim
   brew install pre-commit
-  brew install openconnect
   brew install openvpn
   brew install ffmpeg
   brew install pyenv
@@ -97,10 +96,14 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install openssh
   brew install screen
   brew install terminal-notifier
+  brew install youtube-dl
   # Used by Raycast
   brew install bitwarden-cli
   # WARNING: this would install an Intel version of Docker
+  brew install --cask iterm2
   brew install --cask docker
+  # NOTE: at one point browser integration was only available in the
+  # App Store version of bitwarden - check if that's still the case
   brew install --cask bitwarden
   brew install --cask google-chrome-beta
   brew install --cask firefox-developer-edition
@@ -114,9 +117,7 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install --cask transmission
   brew install --cask expressvpn
   brew install --cask raycast
-  brew install --cask spotify
-  brew install --cask warp
- 
+
   # These are needed to make pyenv work on m1 macs
   brew install openssl readline sqlite3 xz zlib
 
@@ -134,6 +135,31 @@ else
   exit 1
 fi
 
+echo Creating directories
+mkdir -p "${HOME}/site/git"
+mkdir -p "${HOME}/site/python"
+mkdir -p "${HOME}/site/javascript"
+
+echo Cloning Git repos
+(
+  cd "${HOME}/site/python"
+  git clone https://github.com/specify/specify7.git
+  git clone https://github.com/maxxxxxdlp/dir_explorer.git
+)
+(
+  cd "${HOME}/site/git"
+  git clone https://github.com/specify/specify_tools.git
+  git clone https://github.com/maxxxxxdlp/custom_new_tab_page.git
+  git clone https://github.com/maxxxxxdlp/code_share.git
+  git clone https://github.com/maxxxxxdlp/pre-commit.git
+  git clone https://github.com/maxxxxxdlp/dotfiles.git
+)
+(
+  cd "${HOME}/site/javascript"
+  git clone https://github.com/maxxxxxdlp/max.patii.uk.git
+  git clone https://github.com/maxxxxxdlp/tts-reader.git
+)
+
 echo Configure GNU PGP
 mkdir -p ~/.gnupg
 echo 'use-agent' > ~/.gnupg/gpg.conf
@@ -141,9 +167,9 @@ chmod -R 700 ~/.gnupg
 echo "pinentry-program ${PINETRY_LOCATION}" >> ~/.gnupg/gpg-agent.conf
 killall gpg-agent
 
-echo Installing Python 3.9
-pyenv install 3.9.4
-pyenv global 3.9.4
+echo Installing Python 3.11
+pyenv install 3.11
+pyenv global 3.11
 pyenv version
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
@@ -172,32 +198,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${PWD}/zsh/custom/plu
 
 echo Installing zsh-vi-mode
 git clone https://github.com/jeffreytse/zsh-vi-mode "${PWD}/zsh/custom/plugins/zsh-vi-mode"
-
-echo Creating directories
-mkdir "${HOME}/site"
-mkdir "${HOME}/site/git"
-mkdir "${HOME}/site/python"
-mkdir "${HOME}/site/javascript"
-
-echo Cloning Git repos
-(
-  cd "${HOME}/site/python"
-  git clone https://github.com/specify/specify7.git
-  git clone https://github.com/maxxxxxdlp/dir_explorer.git
-)
-(
-  cd "${HOME}/site/git"
-  git clone https://github.com/specify/specify_tools.git
-  git clone https://github.com/maxxxxxdlp/custom_new_tab_page.git
-  git clone https://github.com/maxxxxxdlp/code_share.git
-  git clone https://github.com/maxxxxxdlp/pre-commit.git
-  git clone https://github.com/maxxxxxdlp/dotfiles.git
-)
-(
-  cd "${HOME}/site/javascript"
-  git clone https://github.com/maxxxxxdlp/max.patii.uk.git
-  git clone https://github.com/maxxxxxdlp/tts-reader.git
-)
 
 echo Replacing the default Git Config
 rm -f "${HOME}/.gitconfig"
@@ -242,9 +242,8 @@ echo Initializing Dir Explorer
 
 echo Initializing TTS Utility
 (
-  cd "${HOME}/site/python/python_tts"
-  python -m venv venv
-  venv/bin/pip install -r requirements.txt
+  cd "${HOME}/site/javascript/tts-reader"
+  npm i
 )
 
 echo Installing Docker Watcher

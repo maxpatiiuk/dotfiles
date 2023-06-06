@@ -186,25 +186,25 @@ Plug 'elzr/vim-json'
 Plug 'plasticboy/vim-markdown'
 
 " File system explorer
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
 
 " Git integration for nerdtree
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Nerdtree improvments
-Plug 'jistr/vim-nerdtree-tabs'
+" Plug 'jistr/vim-nerdtree-tabs'
 
 " Nerdtree file type colors
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " Nerdtree file icons
-Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
 
 " Add typescript syntax highlighting
 Plug 'leafgarland/typescript-vim'
 
 " TabbNine
-Plug 'zxqfl/tabnine-vim'
+"Plug 'zxqfl/tabnine-vim'
 
 " Spell checker
 Plug 'kamykn/spelunker.vim'
@@ -276,29 +276,29 @@ autocmd FileType markdown highlight mkdHeading cterm=none ctermfg=9
 autocmd FileType markdown highlight htmlH1 cterm=none ctermfg=220
 
 " Enable file explorer file highlighting only for some files
-let g:NERDTreeSyntaxDisableDefaultExtensions = 1
-let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
-let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
-let g:NERDTreeSyntaxEnabledExtensions = ['html', 'css', 'py', 'js', 'ts', 'tsx', 'json', 'xml', 'md', 'csv', 'tsv', 'sql', 'yaml']
-let g:NERDTreeSyntaxEnabledExactMatches = ['favicon.ico', 'Makefile', '.git', '.idea']
+" let g:NERDTreeSyntaxDisableDefaultExtensions = 1
+" let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
+" let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
+" let g:NERDTreeSyntaxEnabledExtensions = ['html', 'css', 'py', 'js', 'ts', 'tsx', 'json', 'xml', 'md', 'csv', 'tsv', 'sql', 'yaml']
+" let g:NERDTreeSyntaxEnabledExactMatches = ['favicon.ico', 'Makefile', '.git', '.idea']
 
 " Highlight full filename rather than just icon
-let g:NERDTreeFileExtensionHighlightFullName = 1
-let g:NERDTreeExactMatchHighlightFullName = 1
-let g:NERDTreePatternMatchHighlightFullName = 1
+" let g:NERDTreeFileExtensionHighlightFullName = 1
+" let g:NERDTreeExactMatchHighlightFullName = 1
+" let g:NERDTreePatternMatchHighlightFullName = 1
 
 " Let nerdtree's git integration use NerdFonts
-let g:NERDTreeGitStatusUseNerdFonts = 1
+" let g:NERDTreeGitStatusUseNerdFonts = 1
 
 " Allow nerdtree to delete files
-let NERDTreeAutoDeleteBuffer = 1
+" let NERDTreeAutoDeleteBuffer = 1
 
 " Remove help? message from nerdtree
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
+" let NERDTreeMinimalUI = 1
+" let NERDTreeDirArrows = 1
 
 " Show hidden files in nerdtree
-let NERDTreeShowHidden=1
+" let NERDTreeShowHidden=1
 
 " Enable spell checker on read only files
 let g:enable_spelunker_vim_on_readonly = 1

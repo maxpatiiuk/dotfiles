@@ -22,7 +22,7 @@ Should do these things before reinstalling the system:
 - Copy ~/site/git/custom_new_tab_page/imgs
 - Back up .idea directory for main projects
 - Check if PyCharm settings are being backed up correctly
-- Check checkout out git repositories. Make sure:
+- Check checked out git repositories. Make sure:
   - working tree is clean
   - there are no unpushed commits
   - there is no stashed code
@@ -30,7 +30,8 @@ Should do these things before reinstalling the system:
 - Check the content of docker containers and docker volumes
 - Screenshot system preferences
 - Back up iTerm settings
-  - Make sure it is setup to auto back up to private-dotfiles
+  - Back up Profiles to zsh/iterm2/Default.json
+  - Double check that settings (.plist) are being backed up
 - Back up Raycast settings
 - Go though all installed apps to check if
   - they are in install.sh
@@ -53,7 +54,7 @@ source <(curl -s https://raw.githubusercontent.com/maxxxxxdlp/dotfiles/main/inst
 ```
 
 Install
-[this font](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/RobotoMono/Regular/complete/Roboto%20Mono%20Nerd%20Font%20Complete.ttf)
+[this font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/RobotoMono/Regular)
 and set it as default in the terminal:
 
 Manually import the following extension into Chrome:
@@ -74,7 +75,8 @@ Manually download the following programs:
 - Adobe Photoshop (not available in Homebrew)
 - ExpressVPN (Homebrew version crashes)
 
-Import iTerm terminal config
+Configure iTerm to use zsh/iterm2 folder for storing configuration and
+import the zsh/iterm2/Deault.json profile
 
 Import Raycast config
 

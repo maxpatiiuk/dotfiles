@@ -758,7 +758,7 @@
 			<key>Log Directory</key>
 			<string>/Users/maxpatiiuk/.iterm/logs</string>
 			<key>Mouse Reporting</key>
-			<true/>
+			<false/>
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
