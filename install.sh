@@ -103,7 +103,7 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install --cask iterm2
   brew install --cask docker
   # NOTE: at one point browser integration was only available in the
-  # App Store version of bitwarden - check if that's still the case
+  # App Store version of bitwarden - check if that is still the case
   brew install --cask bitwarden
   brew install --cask google-chrome-beta
   brew install --cask firefox-developer-edition
@@ -174,13 +174,13 @@ pyenv version
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+echo Install global Python dependencies
+pip install wheel
+
 echo Install global NPM dependencies
 npm install -g npm-check-updates
 npm install -g clipboardy
 npm install -g typescript-language-server
-
-echo Install global Python dependencies
-pip install wheel
 
 echo Installing oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -195,8 +195,6 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${PWD}/zsh/cust
 
 echo Installing other ZSH plugins
 git clone https://github.com/zsh-users/zsh-autosuggestions ${PWD}/zsh/custom/plugins/zsh-autosuggestions
-
-echo Installing zsh-vi-mode
 git clone https://github.com/jeffreytse/zsh-vi-mode "${PWD}/zsh/custom/plugins/zsh-vi-mode"
 
 echo Replacing the default Git Config
