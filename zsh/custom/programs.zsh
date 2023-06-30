@@ -5,13 +5,12 @@
 # on the current or provided branch
 # OR open local file/directory based on GitHub URL
 g() {
-  output=`python3 ~/site/git/code_share/Python/github/github.py $@`
+  local dir=~/site/javascript/github-resolver
+  local output=$(node "${dir}/dist/main.js" $@)
   if [[ "${output}" =~ "^cd " ]]; then
-    # Running in Github URL to CLI mode
     eval ${output}
   else
-    # Running in CLI to GitHub mode
-    echo ${output}
+    echo "${output}"
   fi
 }
 
@@ -67,6 +66,12 @@ alias t='npm run test'
 # project in PyCharm
 pycharm() {
   open -na "PyCharm.app" --args $(python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo "") $@
+}
+
+# Find the `.idea/` directory among parent directories and open that
+# project in WebStorm
+webstorm() {
+  open -na "WebStorm.app" --args $(python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo "") $@
 }
 
 # Find the `.idea/` directory among parent directories and open that
