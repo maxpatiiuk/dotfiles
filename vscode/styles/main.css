@@ -1,0 +1,22 @@
+/*
+ * Hide editor title bar until
+ * https://github.com/microsoft/vscode/issues/33607 is fixed
+ *
+ * The code is as per comment I left:
+ * https://github.com/microsoft/vscode/issues/33607#issuecomment-1663235122
+ */
+.title.show-file-icons {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    opacity: 0.5;
+}
+
+.title.show-file-icons:hover {
+    opacity: 1;
+}
+
+.title.show-file-icons .label-container {
+    display: none !important;
+}
