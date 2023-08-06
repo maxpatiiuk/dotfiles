@@ -6,3 +6,4 @@
 *.bak
 nohup.out
 .python-version
+.vscode

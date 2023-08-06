@@ -20,3 +20,20 @@
 .title.show-file-icons .label-container {
     display: none !important;
 }
+
+/*
+ * Hide line and column numbers from "Problems" view to save on space
+ */
+#workbench\.parts\.auxiliarybar .markers-panel .marker-line {
+    display: none;
+}
+
+/* Align all error source names to the end */
+#workbench\.parts\.auxiliarybar .markers-panel .marker-message {
+    flex: 1;
+}
+
+/* Display more compact */
+#workbench\.parts\.auxiliarybar .markers-panel .monaco-tl-twistie {
+    padding: 0 !important;
+}

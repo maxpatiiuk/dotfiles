@@ -107,15 +107,14 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install --cask bitwarden
   brew install --cask google-chrome-beta
   brew install --cask firefox-developer-edition
+  brew install --cask visual-studio-code
   brew install --cask vlc
   brew install --cask obs
-  # This keeps on crashing, needed to install directly from website
-  # brew install --cask expressvpn
+  brew install --cask surfshark
   brew install --cask zoom
   brew install --cask jetbrains-toolbox
   brew install --cask vnc-viewer
   brew install --cask transmission
-  brew install --cask expressvpn
   brew install --cask raycast
 
   # These are needed to make pyenv work on m1 macs

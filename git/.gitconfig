@@ -1,74 +1,79 @@
 [filter "lfs"]
-clean = git-lfs clean -- %f
-smudge = git-lfs smudge -- %f
-process = git-lfs filter-process
-required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [user]
-name = Max Patiiuk
-email = max@patii.uk
-signingkey = 446EFFF9D86ADA79
+  name = Max Patiiuk
+  email = max@patii.uk
+  signingkey = 446EFFF9D86ADA79
 [core]
-autocrlf = input
-editor = vim
-whitespace = tab-in-indent,blank-at-eol,-blank-at-eof
-attributesfile = ~/site/git/dotfiles/git/.gitattributes
-excludesfile = ~/site/git/dotfiles/git/.gitignore_global
-hooksPath = ~/site/git/pre-commit-tools/pre-commit-tools
-untrackedCache = true
+  autocrlf = input
+  editor = code --wait
+  whitespace = tab-in-indent,blank-at-eol,-blank-at-eof
+  attributesfile = ~/site/git/dotfiles/git/.gitattributes
+  excludesfile = ~/site/git/dotfiles/git/.gitignore_global
+  hooksPath = ~/site/git/pre-commit-tools/pre-commit-tools
+  untrackedCache = true
 [apply]
-whitespace = fix
+  whitespace = fix
 [branch]
-sort = -committerdate
+  sort = -committerdate
 [commit]
   gpgsign = true
 [diff]
-tool = vimdiff
-mnemonicPrefix = true
-colorMoved = default
-renames = copies
+  tool = default-difftool
+  mnemonicPrefix = true
+  colorMoved = default
+  renames = copies
+[difftool "default-difftool"]
+  cmd = code --wait --diff $LOCAL $REMOTE
 [init]
-defaultBranch = main
+  defaultBranch = main
 [pull]
-rebase = true
+  rebase = true
 [merge]
-tool = vimdiff
+  tool = code
+[mergetool "code"]
+  cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [rerere]
-enabled = true
+  enabled = true
 [blame]
-date = relative
-coloring = highlightRecent
+  date = relative
+  coloring = highlightRecent
 [submodule]
-recurse = true
+  recurse = true
 [credential]
-helper = !git credential-$([ "$(uname 2> /dev/null)" = "Darwin" ] && echo "osxkeychain" || echo "store") "$@"
+  helper = !git credential-$([ "$(uname 2> /dev/null)" = "Darwin" ] && echo "osxkeychain" || echo "store") "$@"
 [help]
-autocorrect = 1
+  autocorrect = 1
 [color "status"]
-header = cyan
-untracked = white bold red
+  header = cyan
+  untracked = white bold red
 [color "branch"]
-upstream = cyan
+  upstream = cyan
 [core "whitespace"]
-tabwidth = 2
+  tabwidth = 2
 [fetch]
-recurseSubmodules = on-demand
+  recurseSubmodules = on-demand
 [log]
-abbrevCommit = true
+  abbrevCommit = true
 [push]
-followTags = true
+  followTags = true
+  autoSetupRemote = true
 [status]
-submoduleSummary = true
+  submoduleSummary = true
 [tag]
-sort = version:refname
+  sort = version:refname
 [versionsort]
-prereleaseSuffix = -pre
-prereleaseSuffix = .pre
-prereleaseSuffix = -beta
-prereleaseSuffix = .beta
-prereleaseSuffix = -rc
-prereleaseSuffix = .rc
+  prereleaseSuffix = -pre
+  prereleaseSuffix = .pre
+  prereleaseSuffix = -beta
+  prereleaseSuffix = .beta
+  prereleaseSuffix = -rc
+  prereleaseSuffix = .rc
 [filter "t2s"]
-clean = expand -t 2
+  clean = expand -t 2
 [gpg]
   program = gpg
 [advice]

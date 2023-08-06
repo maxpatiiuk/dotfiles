@@ -92,6 +92,18 @@ clion() {
   open -na "CLion.app" --args $(python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo "") $@
 }
 
+# Find the `.vscode/` directory among parent directories and open that
+# project in VS Code
+c() {
+  if [ $# -eq 0 ]
+  then
+    code $(node ~/site/git/code_share/javascript/projects/finder/finder.js .vscode || echo "./")
+  else
+    code $@
+  fi
+}
+compdef c=code
+
 alias mariadb="docker run \
   -p 127.0.0.1:3306:3306 \
   -v test-db:/var/lib/mysql \
