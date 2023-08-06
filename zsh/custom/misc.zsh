@@ -12,6 +12,7 @@ function cl() {
   fi
   builtin cd "${DIR}" && l
 }
+compdef cl=cd
 
 ### one line servers
 alias python_server="sudo python3 -m http.server 80"

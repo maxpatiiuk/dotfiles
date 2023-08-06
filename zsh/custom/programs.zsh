@@ -65,31 +65,31 @@ alias t='npm run test'
 # Find the `.idea/` directory among parent directories and open that
 # project in PyCharm
 pycharm() {
-  open -na "PyCharm.app" --args $(python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo "") $@
+  open -na "PyCharm.app" --args $(node ~/site/git/code_share/javascript/projects/finder/finder.js .idea || echo "") $@
 }
 
 # Find the `.idea/` directory among parent directories and open that
 # project in WebStorm
 webstorm() {
-  open -na "WebStorm.app" --args $(python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo "") $@
+  open -na "WebStorm.app" --args $(node ~/site/git/code_share/javascript/projects/finder/finder.js .idea || echo "") $@
 }
 
 # Find the `.idea/` directory among parent directories and open that
 # project in PhpStorm
 phpstorm() {
-  open -na "PhpStorm.app" --args $(python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo "") $@
+  open -na "PhpStorm.app" --args $(node ~/site/git/code_share/javascript/projects/finder/finder.js .idea || echo "") $@
 }
 
 # Find the `.idea/` directory among parent directories and open that
 # project in IntelliJ
 intellij() {
-  open -na "IntelliJ IDEA Ultimate.app" --args $(python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo "") $@
+  open -na "IntelliJ IDEA Ultimate.app" --args $(node ~/site/git/code_share/javascript/projects/finder/finder.js .idea || echo "") $@
 }
 
 # Find the `.idea/` directory among parent directories and open that
 # project in CLion
 clion() {
-  open -na "CLion.app" --args $(python3 ~/site/git/code_share/Python/finder/finder.py .idea/ || echo "") $@
+  open -na "CLion.app" --args $(node ~/site/git/code_share/javascript/projects/finder/finder.js .idea || echo "") $@
 }
 
 # Find the `.vscode/` directory among parent directories and open that
@@ -113,18 +113,4 @@ alias mariadb="docker run \
   --rm \
   mariadb"
 
-alias tts="/Users/maxpatiiuk/site/javascript/tts-reader/node_modules/.bin/ts-node-esm /Users/maxpatiiuk/site/javascript/tts-reader/src/run.ts --input "
-
-alias openconnect="sudo openconnect \
-  --user=m001p596 \
-  --authgroup=Default \
-  https://kuanywhere.ku.edu"
-
-ovpn() {
-  sudo /usr/local/opt/openvpn/sbin/openvpn --config "${HOME}/Documents/ovpn/$1"
-}
-# Define autocomplete
-_ovpn() {
-  reply=($( (cd ~/Documents/ovpn/ && ls *.ovpn)))
-}
-compctl -K _ovpn ovpn
+alias tts="node --loader /Users/maxpatiiuk/site/javascript/tts-reader/node_modules/ts-node/esm/transpile-only.mjs /Users/maxpatiiuk/site/javascript/tts-reader/src/run.ts --split 32000 --input "

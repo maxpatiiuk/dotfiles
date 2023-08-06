@@ -23,7 +23,10 @@ alias gdcw="git diff --stat -p --cached"
 alias gdc="git diff --stat -p --word-diff=color --word-diff-regex=${regex} --cached"
 alias ga="git add"
 alias gap="git add --patch"
-alias gi="git add --interactive"
+gi() {
+ git add --interactive $@
+}
+compdef _git gi=git-add
 alias gri="git rebase --interactive"
 alias gc="git commit -v"
 alias gcae="git commit -v --amend"
@@ -88,6 +91,7 @@ gh() {
   ${EDITOR} ${TEMP_FILE}
   rm ${TEMP_FILE}
 }
+compdef _git gh=git-show
 
 # When merging and have conflicts, can use this to show the commits
 # that this branch has that the other doesn't for a given file
@@ -119,15 +123,16 @@ git_other_side() {
       cat "$(git rev-parse --show-toplevel)/.git/MERGE_HEAD" 2>/dev/null \
       || cat "$(git rev-parse --show-toplevel)/.git/rebase-merge/onto" 2>/dev/null \
     ) \
-    | # Filter out lines like "* (no branch, rebasing xml-editor)" \ 
+    | # Filter out lines like "* (no branch, rebasing xml-editor)" \
       grep -v "(" \
     | # Only take first line - any line should work, but we need just one \
       head -n 1 \
   )
 }
+compdef _git git_other_side=git-log
 git_current_side() {
   current_branch=$(git branch --show-current)
-  
+
   # If current_branch is empty, handle the detached HEAD case
   if [ -z "$current_branch" ]; then
     current_branch=$(cat "$(git rev-parse --show-toplevel)/.git/ORIG_HEAD")
@@ -135,3 +140,4 @@ git_current_side() {
 
   echo $current_branch
 }
+compdef _git git_current_side=git-log

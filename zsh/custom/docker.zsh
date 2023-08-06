@@ -19,23 +19,8 @@ ds_format='table {{"\033[35m"}}{{.ID}} {{if eq .State "exited"}}{{"\033[31m"}}{{
 alias ds='docker ps --format "${ds_format}"'
 alias dsa='docker ps -a --format "${ds_format}"'
 
-# Run the containers with the watcher script
-# More info:
-# https://github.com/specify/specify_tools/tree/main/docker_container
-dcu() {
-  scripts_location="~/site/git/specify_tools/docker_container/"
-  compose_location=$(python3 ~/site/git/code_share/Python/finder/finder.py docker-compose.yml)
-  if [ $? -ne 0 ]; then
-    echo "Unable to find 'docker-compose.yml"
-    return 1
-  fi
-  cd $compose_location
-  echo "" > nohup.out
-  watcher=(bash -c "${scripts_location}venv/bin/python ${scripts_location}watch.py")
-  nohup $watcher &
-  docker compose up $@
-  cd -
-}
+ZSHRC_LOCATION=$(dirname "$0")
+alias dcu="${ZSHRC_LOCATION}/dcu.sh "
 
 alias dl="docker logs -f"
 alias dcl="docker compose logs -f"
