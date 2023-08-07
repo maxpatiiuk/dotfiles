@@ -4,6 +4,7 @@
 # Open the current repository or one of it's files/directories in GitHub
 # on the current or provided branch
 # OR open local file/directory based on GitHub URL
+# Documentation: https://github.com/maxxxxxdlp/github-resolver
 g() {
   local dir=~/site/javascript/github-resolver
   local output=$(node "${dir}/dist/main.js" $@)
@@ -15,11 +16,12 @@ g() {
 }
 
 # Curses-based CLI file explorer
+# Documentation: https://github.com/maxxxxxdlp/dir_explorer
 f() {
   script_dir="${HOME}/site/python/dir_explorer/dir_explorer"
 
   # Create a temp file
-  export tempfile="/tmp/list_view_$RANDOM"
+  local tempfile="/tmp/list_view_$RANDOM"
 
   # Call the python script
   "${script_dir}/../venv/bin/python3" "${script_dir}/list_view.py" "$@"
@@ -48,8 +50,8 @@ f() {
 
 }
 
-export BROWSE_FILES='f';
-export LIST_FILES='l';
+export BROWSE_FILES='f'
+export LIST_FILES='l'
 
 # Play a notification sound. Useful when chained at the end of another
 # program
@@ -61,42 +63,42 @@ alias notify="afplay /System/Library/Sounds/Funk.aiff &>/dev/null &"
 alias yt='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4"'
 alias yta='yt -f "bestaudio[ext=m4a]"'
 alias t='npm run test'
+alias rr='npm run '
 
 # Find the `.idea/` directory among parent directories and open that
 # project in PyCharm
 pycharm() {
-  open -na "PyCharm.app" --args $(node ~/site/git/code_share/javascript/projects/finder/finder.js .idea || echo "") $@
+  open -na "PyCharm.app" --args $(node ~/site/git/code_share/javascript/projects/finder/finder.js .idea || echo "./") $@
 }
 
 # Find the `.idea/` directory among parent directories and open that
 # project in WebStorm
 webstorm() {
-  open -na "WebStorm.app" --args $(node ~/site/git/code_share/javascript/projects/finder/finder.js .idea || echo "") $@
+  open -na "WebStorm.app" --args $(node ~/site/git/code_share/javascript/projects/finder/finder.js .idea || echo "./") $@
 }
 
 # Find the `.idea/` directory among parent directories and open that
 # project in PhpStorm
 phpstorm() {
-  open -na "PhpStorm.app" --args $(node ~/site/git/code_share/javascript/projects/finder/finder.js .idea || echo "") $@
+  open -na "PhpStorm.app" --args $(node ~/site/git/code_share/javascript/projects/finder/finder.js .idea || echo "./") $@
 }
 
 # Find the `.idea/` directory among parent directories and open that
 # project in IntelliJ
 intellij() {
-  open -na "IntelliJ IDEA Ultimate.app" --args $(node ~/site/git/code_share/javascript/projects/finder/finder.js .idea || echo "") $@
+  open -na "IntelliJ IDEA Ultimate.app" --args $(node ~/site/git/code_share/javascript/projects/finder/finder.js .idea || echo "./") $@
 }
 
 # Find the `.idea/` directory among parent directories and open that
 # project in CLion
 clion() {
-  open -na "CLion.app" --args $(node ~/site/git/code_share/javascript/projects/finder/finder.js .idea || echo "") $@
+  open -na "CLion.app" --args $(node ~/site/git/code_share/javascript/projects/finder/finder.js .idea || echo "./") $@
 }
 
 # Find the `.vscode/` directory among parent directories and open that
 # project in VS Code
 c() {
-  if [ $# -eq 0 ]
-  then
+  if [ $# -eq 0 ]; then
     code $(node ~/site/git/code_share/javascript/projects/finder/finder.js .vscode || echo "./")
   else
     code $@

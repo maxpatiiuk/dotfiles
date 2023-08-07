@@ -1,4 +1,5 @@
 alias s="cd ~/site/"
+alias e="cd ~/site/javascript/arcgis-js-api-4/esri"
 alias sp="cd ~/site/python/"
 alias sj="cd ~/site/javascript/"
 alias sg="cd ~/site/git/"
