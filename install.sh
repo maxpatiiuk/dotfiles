@@ -82,7 +82,7 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install curl
   brew install wget
   brew install git
-  brew install node
+  brew install nvm
   brew install neovim
   brew install pre-commit
   brew install openvpn
@@ -165,6 +165,9 @@ echo 'use-agent' > ~/.gnupg/gpg.conf
 chmod -R 700 ~/.gnupg
 echo "pinentry-program ${PINETRY_LOCATION}" >> ~/.gnupg/gpg-agent.conf
 killall gpg-agent
+
+echo Installing Node.js
+nvm install 20
 
 echo Installing Python 3.11
 pyenv install 3.11
