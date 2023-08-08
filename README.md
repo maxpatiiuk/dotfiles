@@ -20,13 +20,12 @@ Should do these things before reinstalling the system:
     - others?
 - Back up files not in git (Downloads, Desktop, ~/, etc)
 - Copy ~/site/git/custom_new_tab_page/imgs
-- Back up .idea directory for main projects
-- Check if PyCharm settings are being backed up correctly
 - Check checked out git repositories. Make sure:
   - working tree is clean
   - there are no unpushed commits
   - there is no stashed code
   - files that are ignored by git are not important
+    - Back up .vscode directory for main projects
 - Check the content of docker containers and docker volumes
 - Screenshot system preferences
 - Back up iTerm settings
@@ -90,4 +89,3 @@ Configure the following terminal shortcuts:
 
 - `Shift+Up` `\033[1;2B`
 - `Shift+Down` `\033[1;2A`
-

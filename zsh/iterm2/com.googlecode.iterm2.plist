@@ -170,18 +170,18 @@
 			<key>Ansi 0 Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 				<key>Green Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 				<key>Red Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 			</dict>
 			<key>Ansi 1 Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 				<key>Green Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 				<key>Red Component</key>
 				<real>0.73333334922790527</real>
 			</dict>
@@ -190,7 +190,7 @@
 				<key>Blue Component</key>
 				<real>0.3333333432674408</real>
 				<key>Green Component</key>
-				<integer>1</integer>
+				<real>1</real>
 				<key>Red Component</key>
 				<real>0.3333333432674408</real>
 			</dict>
@@ -199,14 +199,14 @@
 				<key>Blue Component</key>
 				<real>0.3333333432674408</real>
 				<key>Green Component</key>
-				<integer>1</integer>
+				<real>1</real>
 				<key>Red Component</key>
-				<integer>1</integer>
+				<real>1</real>
 			</dict>
 			<key>Ansi 12 Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<integer>1</integer>
+				<real>1</real>
 				<key>Green Component</key>
 				<real>0.3333333432674408</real>
 				<key>Red Component</key>
@@ -215,43 +215,43 @@
 			<key>Ansi 13 Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<integer>1</integer>
+				<real>1</real>
 				<key>Green Component</key>
 				<real>0.3333333432674408</real>
 				<key>Red Component</key>
-				<integer>1</integer>
+				<real>1</real>
 			</dict>
 			<key>Ansi 14 Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<integer>1</integer>
+				<real>1</real>
 				<key>Green Component</key>
-				<integer>1</integer>
+				<real>1</real>
 				<key>Red Component</key>
 				<real>0.3333333432674408</real>
 			</dict>
 			<key>Ansi 15 Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<integer>1</integer>
+				<real>1</real>
 				<key>Green Component</key>
-				<integer>1</integer>
+				<real>1</real>
 				<key>Red Component</key>
-				<integer>1</integer>
+				<real>1</real>
 			</dict>
 			<key>Ansi 2 Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 				<key>Green Component</key>
 				<real>0.73333334922790527</real>
 				<key>Red Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 			</dict>
 			<key>Ansi 3 Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 				<key>Green Component</key>
 				<real>0.73333334922790527</real>
 				<key>Red Component</key>
@@ -260,7 +260,7 @@
 			<key>Ansi 4 Color</key>
 			<dict>
 				<key>Alpha Component</key>
-				<integer>1</integer>
+				<real>1</real>
 				<key>Blue Component</key>
 				<real>0.778076171875</real>
 				<key>Color Space</key>
@@ -275,7 +275,7 @@
 				<key>Blue Component</key>
 				<real>0.73333334922790527</real>
 				<key>Green Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 				<key>Red Component</key>
 				<real>0.73333334922790527</real>
 			</dict>
@@ -286,7 +286,7 @@
 				<key>Green Component</key>
 				<real>0.73333334922790527</real>
 				<key>Red Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 			</dict>
 			<key>Ansi 7 Color</key>
 			<dict>
@@ -313,7 +313,7 @@
 				<key>Green Component</key>
 				<real>0.3333333432674408</real>
 				<key>Red Component</key>
-				<integer>1</integer>
+				<real>1</real>
 			</dict>
 			<key>Automatically Log</key>
 			<true/>
@@ -322,11 +322,11 @@
 			<key>Background Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 				<key>Green Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 				<key>Red Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 			</dict>
 			<key>Background Image Location</key>
 			<string></string>
@@ -335,13 +335,13 @@
 				<key>Alpha Component</key>
 				<real>0.5</real>
 				<key>Blue Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
 				<real>0.14910027384757996</real>
 				<key>Red Component</key>
-				<integer>1</integer>
+				<real>1</real>
 			</dict>
 			<key>Blinking Cursor</key>
 			<false/>
@@ -350,11 +350,11 @@
 			<key>Bold Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<integer>1</integer>
+				<real>1</real>
 				<key>Green Component</key>
-				<integer>1</integer>
+				<real>1</real>
 				<key>Red Component</key>
-				<integer>1</integer>
+				<real>1</real>
 			</dict>
 			<key>Character Encoding</key>
 			<integer>4</integer>
@@ -378,7 +378,7 @@
 				<key>Alpha Component</key>
 				<real>0.25</real>
 				<key>Blue Component</key>
-				<integer>1</integer>
+				<real>1</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
@@ -389,11 +389,11 @@
 			<key>Cursor Text Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<integer>1</integer>
+				<real>1</real>
 				<key>Green Component</key>
-				<integer>1</integer>
+				<real>1</real>
 				<key>Red Component</key>
-				<integer>1</integer>
+				<real>1</real>
 			</dict>
 			<key>Cursor Type</key>
 			<integer>2</integer>
@@ -735,7 +735,7 @@
 			<key>Link Color</key>
 			<dict>
 				<key>Alpha Component</key>
-				<integer>1</integer>
+				<real>1</real>
 				<key>Blue Component</key>
 				<real>0.73422712087631226</real>
 				<key>Color Space</key>
@@ -743,13 +743,11 @@
 				<key>Green Component</key>
 				<real>0.35915297269821167</real>
 				<key>Red Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 			</dict>
 			<key>Log Directory</key>
 			<string>/Users/maxpatiiuk/.iterm/logs</string>
 			<key>Mouse Reporting</key>
-			<true/>
-			<key>Mouse Reporting allow clicks and drags</key>
 			<false/>
 			<key>Name</key>
 			<string>Default</string>
@@ -758,7 +756,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Monaco 12</string>
+			<string>RobotoMonoNF-Rg 12</string>
 			<key>Open Password Manager Automatically</key>
 			<true/>
 			<key>Option Key Sends</key>
@@ -776,16 +774,16 @@
 			<key>Selected Text Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 				<key>Green Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 				<key>Red Component</key>
-				<integer>0</integer>
+				<real>0.0</real>
 			</dict>
 			<key>Selection Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<integer>1</integer>
+				<real>1</real>
 				<key>Green Component</key>
 				<real>0.8353000283241272</real>
 				<key>Red Component</key>
@@ -803,7 +801,7 @@
 			<key>Send Code When Idle</key>
 			<false/>
 			<key>Session Close Undo Timeout</key>
-			<integer>60</integer>
+			<integer>20</integer>
 			<key>Shortcut</key>
 			<string></string>
 			<key>Show Status Bar</key>
@@ -930,17 +928,17 @@
 								<key>base: compression resistance</key>
 								<integer>1</integer>
 								<key>base: priority</key>
-								<integer>5</integer>
+								<real>5</real>
 								<key>iTermStatusBarGitComponentPollingIntervalKey</key>
-								<integer>2</integer>
+								<real>2</real>
 								<key>maxwidth</key>
-								<real>1.7976931348623157e+308</real>
+								<real>+infinity</real>
 								<key>minwidth</key>
 								<integer>0</integer>
 								<key>shared text color</key>
 								<dict>
 									<key>Alpha Component</key>
-									<integer>1</integer>
+									<real>1</real>
 									<key>Blue Component</key>
 									<real>0.25</real>
 									<key>Color Space</key>
@@ -973,7 +971,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<integer>0</integer>
+			<real>0.0</real>
 			<key>Triggers</key>
 			<array>
 				<dict>

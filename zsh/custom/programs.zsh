@@ -97,12 +97,18 @@ clion() {
 
 # Find the `.vscode/` directory among parent directories and open that
 # project in VS Code
-c() {
-  if [ $# -eq 0 ]; then
-    code $(node ~/site/git/code_share/javascript/projects/finder/finder.js .vscode || echo "./")
-  else
-    code $@
-  fi
+c () {
+	if [ $# -eq 0 ]
+	then
+		local dir=$(node ~/site/git/code_share/javascript/projects/finder/finder.js .vscode || echo "./")
+		if [[ "$dir" == "$HOME" ]]
+		then
+			dir="./"
+		fi
+		code $dir
+	else
+		code $@
+	fi
 }
 compdef c=code
 
