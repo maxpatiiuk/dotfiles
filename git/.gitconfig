@@ -6,7 +6,7 @@
 [user]
   name = Max Patiiuk
   email = max@patii.uk
-  signingkey = 446EFFF9D86ADA79
+  signingkey = D8E9A0875B6369D2
 [core]
   autocrlf = input
   editor = code --wait

@@ -21,6 +21,8 @@ regex="\"[a-zA-Z_][a-zA-Z0-9_]*|[-+0-9.e]+[jJlL]?|0[xX]?[0-9a-fA-F]+[lL]?|[-+*/<
 alias gd="git diff --stat -p --word-diff=color --word-diff-regex=${regex}"
 alias gdcw="git diff --stat -p --cached"
 alias gdc="git diff --stat -p --word-diff=color --word-diff-regex=${regex} --cached"
+alias gdbw='git diff $(git merge-base HEAD origin/$(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")) --cached --stat -p'
+alias gdb='git diff $(git merge-base HEAD origin/$(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")) --cached --stat -p --word-diff=color --word-diff-regex=${regex}'
 alias ga="git add"
 alias gap="git add --patch"
 gi() {
