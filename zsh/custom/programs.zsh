@@ -101,6 +101,17 @@ c () {
 	if [ $# -eq 0 ]
 	then
 		local dir=$(node ~/site/git/code_share/javascript/projects/finder/finder.js .vscode || echo "./")
+
+		if [[ "$dir" == "$HOME" ]]
+		then
+			dir="./"
+		fi
+
+		if [[ "$dir" == "./" ]]
+		then
+		  dir=$(node ~/site/git/code_share/javascript/projects/finder/finder.js .git || echo "./")
+		fi
+
 		if [[ "$dir" == "$HOME" ]]
 		then
 			dir="./"
