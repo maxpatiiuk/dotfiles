@@ -132,4 +132,15 @@ alias mariadb="docker run \
   --rm \
   mariadb"
 
-alias tts="node --loader /Users/maxpatiiuk/site/javascript/tts-reader/node_modules/ts-node/esm/transpile-only.mjs /Users/maxpatiiuk/site/javascript/tts-reader/src/run.ts --split 32000 --input "
+# Unfortunately, ts-node relies on current working directory for
+# resolving tsconfig.json, so must be executed from that location.
+#
+# If using "npx ts-node" syntax, can provide a custom location, but
+# can't use "npx ts-node" syntax because of a bug when using Node.js 20
+# (https://github.com/TypeStrong/ts-node/issues/1997)
+#
+# A possible hack until that is fixed would be for this function to
+# temporary copy tsconfig.json into the current directory
+tts() {
+  (cd node --loader ts-node/esm/transpile-only  && node --loader ./node_modules/ts-node/esm/transpile-only.mjs ./src/run.ts --split 32000 --input $@)
+}
