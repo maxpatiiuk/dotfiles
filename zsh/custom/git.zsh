@@ -127,6 +127,8 @@ git_other_side() {
     ) \
     | # Filter out lines like "* (no branch, rebasing xml-editor)" \
       grep -v "(" \
+    | # Replace "* main" with "main"
+      sed 's/^\* //' \
     | # Only take first line - any line should work, but we need just one \
       head -n 1 \
   )
