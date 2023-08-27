@@ -119,18 +119,7 @@ git_other_side() {
   # Helper function to get the full name of the other side branch in
   # a git merge or rebase
   echo $( \
-    git branch --all --contains \
-    $( \
-      # Handle the Merge and Pull request cases \
-      cat "$(git rev-parse --show-toplevel)/.git/MERGE_HEAD" 2>/dev/null \
-      || cat "$(git rev-parse --show-toplevel)/.git/rebase-merge/onto" 2>/dev/null \
-    ) \
-    | # Filter out lines like "* (no branch, rebasing xml-editor)" \
-      grep -v "(" \
-    | # Replace "* main" with "main"
-      sed 's/^\* //' \
-    | # Only take first line - any line should work, but we need just one \
-      head -n 1 \
+    git for-each-ref --format ' %(upstream:short)' $(git symbolic-ref -q HEAD) \
   )
 }
 compdef _git git_other_side=git-log
