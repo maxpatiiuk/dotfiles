@@ -76,7 +76,7 @@ repos:
       - id: pydocstyle
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.5.0
+    rev: v1.5.1
     hooks:
       - id: mypy
         exclude: ^docs/
@@ -92,7 +92,7 @@ repos:
       - id: setup-cfg-fmt
 
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.1
+    rev: v3.0.2
     hooks:
       - id: prettier
         additional_dependencies:
@@ -114,7 +114,7 @@ repos:
           - stylelint-config-standard@24.0.0
 
   - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v8.47.0
+    rev: v8.48.0
     hooks:
       - id: eslint
         types: [text]
