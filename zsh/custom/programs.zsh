@@ -65,6 +65,10 @@ alias yta='yt -f "bestaudio[ext=m4a]"'
 alias t='npm run test'
 alias rr='npm run '
 
+# Make rm safer. See:
+# https://github.com/sindresorhus/guides/blob/main/how-not-to-rm-yourself.md#safeguard-rm
+alias rm="/opt/homebrew/bin/grm -I"
+
 # Find the `.idea/` directory among parent directories and open that
 # project in PyCharm
 pycharm() {
