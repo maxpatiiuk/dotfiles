@@ -130,6 +130,7 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   # For Intel macs
   # PINETRY_LOCATION="/usr/local/bin/pinentry-mac"
 
+
 else
   echo "Invalid system name"
   exit 1
@@ -258,6 +259,10 @@ if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   echo Hard linking launchctl .plist file
   mkdir -p ${HOME}/Library/LaunchAgents/
   ln "${PWD}/scripts/ua.in.mambo.task.plist" "${HOME}/Library/LaunchAgents/"
+
+  echo Change VS Code Icon
+  mv "/Applications/Visual Studio Code.app/Contents/Resources/Code.icns" "/Applications/Visual Studio Code.app/Contents/Resources/Code_original.icns"
+  cp "./vscode/icon.icns" "/Applications/Visual Studio Code.app/Contents/Resources/Code.icns"
 fi
 
 echo \#\#\# Private part \#\#\#
