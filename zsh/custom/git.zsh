@@ -118,9 +118,7 @@ alias gmm='gl $(git_other_side) --not $(git_current_side) -p -- '
 git_other_side() {
   # Helper function to get the full name of the other side branch in
   # a git merge or rebase
-  echo $( \
-    git for-each-ref --format ' %(upstream:short)' $(git symbolic-ref -q HEAD) \
-  )
+  git for-each-ref --format ' %(upstream:short)' $(git symbolic-ref -q HEAD) | head -n 1
 }
 compdef _git git_other_side=git-log
 git_current_side() {
