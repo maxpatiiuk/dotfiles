@@ -45,7 +45,7 @@ repos:
           - --skip="./node_modules/,package-lock.json,./.idea/"
 
   - repo: https://github.com/psf/black
-    rev: 23.7.0
+    rev: 23.9.1
     hooks:
       - id: black
         args:
@@ -92,7 +92,7 @@ repos:
       - id: setup-cfg-fmt
 
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.2
+    rev: v3.0.3
     hooks:
       - id: prettier
         additional_dependencies:
@@ -114,7 +114,7 @@ repos:
           - stylelint-config-standard@24.0.0
 
   - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v8.48.0
+    rev: v8.49.0
     hooks:
       - id: eslint
         types: [text]
