@@ -24,9 +24,9 @@ alias gdc="git diff --stat -p --word-diff=color --word-diff-regex=${regex} --cac
 alias gdbw='git diff $(git merge-base HEAD origin/$(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")) --cached --stat -p'
 alias gdb='git diff $(git merge-base HEAD origin/$(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")) --cached --stat -p --word-diff=color --word-diff-regex=${regex}'
 alias ga="git add"
-alias gap="git add --patch"
+alias gap="git add --interactive"
 gi() {
- git add --interactive $@
+ git add --patch $@
 }
 compdef _git gi=git-add
 alias gri="git rebase --interactive"
