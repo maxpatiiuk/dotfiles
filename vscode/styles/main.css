@@ -28,6 +28,14 @@
     display: none;
 }
 
+/*
+ * Only display error source on hover - to have more space for long
+ * error message
+ */
+#workbench\.parts\.auxiliarybar .markers-panel .marker-message-line.details-container:not(:hover) > :not(.marker-message) {
+    display: none !important;
+}
+
 /* Align all error source names to the end */
 #workbench\.parts\.auxiliarybar .markers-panel .marker-message {
     flex: 1;
