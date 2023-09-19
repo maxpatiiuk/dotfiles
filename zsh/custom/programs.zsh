@@ -5,7 +5,7 @@
 # on the current or provided branch
 # OR open local file/directory based on GitHub URL
 # Documentation: https://github.com/maxxxxxdlp/github-resolver
-g() {
+gu() {
   local dir=~/site/javascript/github-resolver
   local output=$(node "${dir}/dist/main.js" $@)
   if [[ "${output}" =~ "^cd " ]]; then
