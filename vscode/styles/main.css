@@ -100,3 +100,12 @@
 .monaco-editor[data-uri*="file"] .margin-view-overlays .comment-range-glyph.line-hover {
     right: -5px !important;
 } */
+
+/* Hide the absolutely useless giant title bar on the right sidebar */
+.auxiliarybar .composite.title {
+    display: none !important;
+}
+/* Make the sidebar take the freed up height */
+.auxiliarybar, .auxiliarybar > .content {
+    height: 100%;
+}
