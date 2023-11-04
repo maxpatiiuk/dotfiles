@@ -756,7 +756,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>RobotoMonoNF-Rg 12</string>
+			<string>Menlo-Regular 11</string>
 			<key>Open Password Manager Automatically</key>
 			<true/>
 			<key>Option Key Sends</key>
@@ -809,7 +809,7 @@
 			<key>Show Timestamps</key>
 			<integer>2</integer>
 			<key>Silence Bell</key>
-			<false/>
+			<true/>
 			<key>Smart Selection Rules</key>
 			<array>
 				<dict>
@@ -1056,6 +1056,8 @@
 			<string>kNextWindowPointerAction</string>
 		</dict>
 	</dict>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>QuitWhenAllWindowsClosed</key>
 	<true/>
 	<key>SavePasteHistory</key>
