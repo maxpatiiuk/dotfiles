@@ -45,3 +45,4 @@ Makefile text
 *.tsx text
 package.json text eol=lf
 package-lock.json -diff
+yarn.lock -diff
