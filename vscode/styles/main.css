@@ -128,3 +128,15 @@
 .auxiliarybar, .auxiliarybar > .content {
     height: 100%;
 }
+
+/* Make use of space by TODO Tree less wastefull */
+.monaco-list[aria-label="TODOs"] .monaco-list-row .custom-view-tree-node-item {
+    padding-left: 0;
+    margin-left: -30px;
+}
+.monaco-list[aria-label="TODOs"] .monaco-list-row .monaco-tl-twistie.collapsible.codicon.codicon-tree-item-expanded {
+    opacity: 0;
+}
+.monaco-list[aria-label="TODOs"] .monaco-list-row .monaco-tl-indent {
+    margin-left: -15px;
+}
