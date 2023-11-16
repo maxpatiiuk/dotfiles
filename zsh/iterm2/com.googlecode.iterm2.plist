@@ -820,7 +820,7 @@
 					<key>precision</key>
 					<string>low</string>
 					<key>regex</key>
-					<string>[^\s\]\[\,\_\)\:]+</string>
+					<string>[^\s\]\[\,\)\:]+</string>
 				</dict>
 				<dict>
 					<key>notes</key>
