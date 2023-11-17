@@ -140,3 +140,8 @@
 .monaco-list[aria-label="TODOs"] .monaco-list-row .monaco-tl-indent {
     margin-left: -15px;
 }
+
+/* Hide briefly blinking badge when fetching from remote */
+.action-item[aria-label^="Source Control"] .badge.progress-badge {
+    display: none;
+}
