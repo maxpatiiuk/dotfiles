@@ -53,8 +53,8 @@ source <(curl -s https://raw.githubusercontent.com/maxxxxxdlp/dotfiles/main/inst
 ```
 
 Install
-[this font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/RobotoMono/Regular)
-and set it as default in the terminal:
+[JetBrains Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono/Ligatures)
+and set it as default in the terminal
 
 Manually import the following extension into Chrome:
 
