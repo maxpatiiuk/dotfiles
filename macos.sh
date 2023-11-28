@@ -333,7 +333,7 @@ defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
 ###############################################################################
 # VS Code                                                                     #
 ###############################################################################
-#
+
 # For VSCode
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 
@@ -355,8 +355,13 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
+
 # Disable horrible cursor blinking - so distracting
 defaults write -g NSAutomaticPeriodicTextDisplayEnabled -bool false
+
+# Disable Caps Lock/language indicator
+# From https://stackoverflow.com/a/77296786/8584605
+sudo defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO
 
 for app in "Activity Monitor" \
   "cfprefsd" \
