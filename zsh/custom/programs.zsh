@@ -60,7 +60,9 @@ alias notify="afplay /System/Library/Sounds/Funk.aiff &>/dev/null &"
 # Run a dockerized youtube-dl with some default parameters
 # Also, can be called like `yt <URL> && notify` to receive a
 # completion notification
-alias yt='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4"'
+#
+# Call with "--batch-file" to batch download multiple
+alias yt='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" --no-playlist'
 alias yta='yt -f "bestaudio[ext=m4a]"'
 alias t='npm run test'
 alias rr='npm run '
