@@ -100,8 +100,8 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install macos-trash
   # Used by Raycast
   brew install bitwarden-cli
-  # WARNING: this would install an Intel version of Docker
   brew install --cask iterm2
+  # WARNING: this would install an Intel version of Docker
   brew install --cask docker
   # NOTE: at one point browser integration was only available in the
   # App Store version of bitwarden - check if that is still the case
@@ -135,6 +135,9 @@ else
   echo "Invalid system name"
   exit 1
 fi
+
+echo Adding shortcut for Downloads directory
+ln -s "${HOME}/Downloads" "${HOME}/d"
 
 echo Creating directories
 mkdir -p "${HOME}/site/git"
