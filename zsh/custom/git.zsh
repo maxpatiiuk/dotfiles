@@ -33,6 +33,8 @@ alias gri="git rebase --interactive"
 alias gc="git commit -v"
 alias gcae="git commit -v --amend"
 alias gca="git commit -v --amend --no-edit"
+# Such commit is intended to be squashed using interactive rebase:
+alias gcf="git commit -v -m 'fixup'"
 alias gba="git branch -vv --all"
 alias gp="pre-commit run"
 alias gpa="pre-commit run --all-files"
