@@ -117,12 +117,27 @@ alias gm='gl $(git_current_side) --not $(git_other_side) -p -- '
 # gl branchB --not branchA -p -- components/Atoms/className.ts
 alias gmm='gl $(git_other_side) --not $(git_current_side) -p -- '
 
+# Helper function to get the other side commit in a git merge or rebase
 git_other_side() {
-  # Helper function to get the full name of the other side branch in
-  # a git merge or rebase
-  git for-each-ref --format ' %(upstream:short)' $(git symbolic-ref -q HEAD) | head -n 1
+    if [ -d ".git/rebase-merge" ]; then
+        # Rebasing (merge style)
+        cat ".git/rebase-merge/onto-name" 2>/dev/null || cat ".git/rebase-merge/onto" 2>/dev/null
+    elif [ -d ".git/rebase-apply" ]; then
+        # Rebasing (apply style) or applying a patch
+        cat ".git/rebase-apply/original-commit" 2>/dev/null || cat ".git/rebase-apply/onto" 2>/dev/null
+    elif [ -f ".git/MERGE_HEAD" ]; then
+        # Merging
+        git show -s --pretty=%D ".git/MERGE_HEAD" 2>/dev/null | awk -F', ' '{print $2}'
+    elif [ -f ".git/CHERRY_PICK_HEAD" ]; then
+        # Cherry-picking
+        git show -s --pretty=%H ".git/CHERRY_PICK_HEAD" 2>/dev/null
+    else
+        echo "Not in a middle of a known Git operation."
+        return 1
+    fi
 }
 compdef _git git_other_side=git-log
+
 git_current_side() {
   current_branch=$(git branch --show-current)
 
