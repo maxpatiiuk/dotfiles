@@ -49,7 +49,7 @@ at your own risk!
 ```
 
 ```zsh
-source <(curl -s https://raw.githubusercontent.com/maxxxxxdlp/dotfiles/main/install.sh)
+source <(curl -s https://raw.githubusercontent.com/maxpatiiuk/dotfiles/main/install.sh)
 ```
 
 Install
@@ -62,7 +62,7 @@ Manually import the following extension into Chrome:
 
 ### [macOS only]
 
-Configure `~/site/git/code_share/misc/vim_macos_associator`
+Configure `~/site/git/code-share/misc/vim_macos_associator`
 
 Associate `vim` with the files located in `common_plaintext_files`
 

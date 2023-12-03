@@ -148,20 +148,20 @@ echo Cloning Git repos
 (
   cd "${HOME}/site/python"
   git clone https://github.com/specify/specify7.git
-  git clone https://github.com/maxxxxxdlp/dir_explorer.git
+  git clone https://github.com/maxpatiiuk/dir-explorer.git
 )
 (
   cd "${HOME}/site/git"
-  git clone https://github.com/specify/specify_tools.git
-  git clone https://github.com/maxxxxxdlp/custom_new_tab_page.git
-  git clone https://github.com/maxxxxxdlp/code_share.git
-  git clone https://github.com/maxxxxxdlp/pre-commit.git
-  git clone https://github.com/maxxxxxdlp/dotfiles.git
+  git clone https://github.com/specify/specify-tools.git
+  git clone https://github.com/maxpatiiuk/custom-new-tab-page.git
+  git clone https://github.com/maxpatiiuk/code-share.git
+  git clone https://github.com/maxpatiiuk/pre-commit.git
+  git clone https://github.com/maxpatiiuk/dotfiles.git
 )
 (
   cd "${HOME}/site/javascript"
-  git clone https://github.com/maxxxxxdlp/max.patii.uk.git
-  git clone https://github.com/maxxxxxdlp/tts-reader.git
+  git clone https://github.com/maxpatiiuk/max.patii.uk.git
+  git clone https://github.com/maxpatiiuk/tts-reader.git
 )
 
 echo Configure GNU PGP
@@ -231,16 +231,16 @@ ln "${PWD}/misc/.editorconfig" "${HOME}/site"
 sudo mkdir -p "/etc/docker/"
 sudo ln "${PWD}/docker/daemon.json" "/etc/docker/"
 
-echo Hard linking common files from \`code_share\`
-ln "${HOME}/site/git/code_share/misc/images/mambo.jpg" "${HOME}/Documents/"
-ln "${HOME}/site/git/code_share/misc/images/max_patiiuk_old.jpg" "${HOME}/Documents/"
-ln "${HOME}/site/git/code_share/misc/images/max_patiiuk_1x1.jpg" "${HOME}/Documents/"
-ln "${HOME}/site/git/code_share/misc/images/max_patiiuk.jpg" "${HOME}/Documents/"
-ln "${HOME}/site/git/code_share/misc/images/wolf.jpg" "${HOME}/Documents/"
+echo Hard linking common files from \`code-share\`
+ln "${HOME}/site/git/code-share/misc/images/mambo.jpg" "${HOME}/Documents/"
+ln "${HOME}/site/git/code-share/misc/images/max_patiiuk_old.jpg" "${HOME}/Documents/"
+ln "${HOME}/site/git/code-share/misc/images/max_patiiuk_1x1.jpg" "${HOME}/Documents/"
+ln "${HOME}/site/git/code-share/misc/images/max_patiiuk.jpg" "${HOME}/Documents/"
+ln "${HOME}/site/git/code-share/misc/images/wolf.jpg" "${HOME}/Documents/"
 
 echo Initializing Dir Explorer
 (
-  cd "${HOME}/site/python/dir_explorer"
+  cd "${HOME}/site/python/dir-explorer"
   python -m venv venv
   venv/bin/pip install -r requirements.txt
 )
@@ -253,7 +253,7 @@ echo Initializing TTS Utility
 
 echo Installing Docker Watcher
 (
-  cd "${HOME}/site/git/specify_tools/docker_container"
+  cd "${HOME}/site/git/specify-tools/docker_container"
   python -m venv venv
   venv/bin/pip install -r requirements.txt
 )
@@ -261,7 +261,7 @@ echo Installing Docker Watcher
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   echo Hard linking launchctl .plist file
   mkdir -p ${HOME}/Library/LaunchAgents/
-  ln "${PWD}/scripts/ua.in.mambo.task.plist" "${HOME}/Library/LaunchAgents/"
+  ln "${PWD}/scripts/uk.patii.max.task.plist" "${HOME}/Library/LaunchAgents/"
 
   echo Change VS Code Icon
   mv "/Applications/Visual Studio Code.app/Contents/Resources/Code.icns" "/Applications/Visual Studio Code.app/Contents/Resources/Code_original.icns"
@@ -269,13 +269,13 @@ if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
 fi
 
 echo \#\#\# Private part \#\#\#
-echo This relies on a private \`maxxxxxdlp/private-dotfiles\` repository
+echo This relies on a private \`maxpatiiuk/private-dotfiles\` repository
 echo You should comment out this part or replace it with your own
 echo private repository
 
 (
   cd "${HOME}/site/git/"
-  git clone https://github.com/maxxxxxdlp/private-dotfiles.git
+  git clone https://github.com/maxpatiiuk/private-dotfiles.git
   cd private-dotfiles
   ./install.sh
 )

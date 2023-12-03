@@ -3,19 +3,19 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>ua.in.mambo.task</string>
+	<string>uk.patii.max.task</string>
   <key>WorkingDirectory</key>
-  <string>/Users/maxxxxxdlp/site/git/dotfiles/</string>
+  <string>/Users/maxpatiiuk/site/git/dotfiles/</string>
 	<key>ProgramArguments</key>
 	<array>
     <string>/bin/zsh</string>
     <string>-c</string>
-    <string>/Users/maxxxxxdlp/site/git/dotfiles/scripts/bi-monthly.sh</string>
+    <string>/Users/maxpatiiuk/site/git/dotfiles/scripts/bi-monthly.sh</string>
 	</array>
   <key>StandardOutPath</key>
-  <string>/Users/maxxxxxdlp/.logs/launchctl.log</string>
+  <string>/Users/maxpatiiuk/.logs/launchctl.log</string>
   <key>StandardErrorPath</key>
-  <string>/Users/maxxxxxdlp/.logs/launchctl.error.log</string>
+  <string>/Users/maxpatiiuk/.logs/launchctl.error.log</string>
 	<key>StartCalendarInterval</key>
 	<dict>
 		<key>Minute</key>

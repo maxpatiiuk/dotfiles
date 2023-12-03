@@ -1,17 +1,17 @@
 {
-  "name": "@maxxxxxdlp/dotfiles",
+  "name": "@maxpatiiuk/dotfiles",
   "version": "0.1.0",
   "private": true,
   "description": "A monorepo of my .dotfiles and .*rc files",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/maxxxxxdlp/dotfiles"
+    "url": "https://github.com/maxpatiiuk/dotfiles"
   },
   "author": "Max Patiiuk",
-  "homepage": "https://github.com/maxxxxxdlp/dotfiles/#readme",
+  "homepage": "https://github.com/maxpatiiuk/dotfiles/#readme",
   "bugs": {
-    "url": "https://github.com/maxxxxxdlp/dotfiles/issues"
+    "url": "https://github.com/maxpatiiuk/dotfiles/issues"
   },
   "devDependencies": {
     "@maxxxxxdlp/prettier-config": "^1.0.2"

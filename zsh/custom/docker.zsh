@@ -25,7 +25,7 @@ alias dcu="${ZSHRC_LOCATION}/dcu.sh "
 alias dl="docker logs -f"
 alias dcl="docker compose logs -f"
 
-alias dd="DOCKER_CONTEXT=maxxxxxdlp-pc "
+alias dd="DOCKER_CONTEXT=maxpatiiuk-pc "
 
 # Run Alpine Docker container with node
 alias dn="docker run --name test --rm -it -p 80:80 node:17.2.0-alpine3.14 /bin/sh"

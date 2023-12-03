@@ -5,7 +5,7 @@ Prettier.
 
 > NOTE:
 > This config does not provide React rules. There is a [separate
-configuration](https://www.npmjs.com/package/@maxxxxxdlp/eslint-react-config)
+configuration](https://www.npmjs.com/package/@maxxxxxdlp/eslint-config-react)
 > that complements this one with React-specific rules
 
 ## Usage
@@ -13,7 +13,7 @@ configuration](https://www.npmjs.com/package/@maxxxxxdlp/eslint-react-config)
 Install dependencies:
 
 ```sh
-npm install --save-dev @maxxxxxdlp/eslintrc globals
+npm install --save-dev @maxxxxxdlp/eslint-config globals
 ```
 
 Then, create `eslint.config.js` at the root directory of your project:

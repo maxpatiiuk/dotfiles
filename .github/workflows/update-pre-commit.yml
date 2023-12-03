@@ -17,7 +17,7 @@ jobs:
       - name: Checkout pre-commit-tools repository
         uses: actions/checkout@v2
         with:
-          repository: maxxxxxdlp/pre-commit-tools
+          repository: maxpatiiuk/pre-commit-tools
           path: ./pre-commit-tools
 
       - name: Install Node.JS

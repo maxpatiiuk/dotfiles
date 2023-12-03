@@ -7,12 +7,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/maxxxxxdlp/dotfiles",
+    "url": "https://github.com/maxpatiiuk/dotfiles",
     "directory": "npm/eslint-config"
   },
-  "homepage": "https://github.com/maxxxxxdlp/dotfiles/tree/main/npm/eslintrc/#readme",
+  "homepage": "https://github.com/maxpatiiuk/dotfiles/tree/main/npm/eslintrc/#readme",
   "bugs": {
-    "url": "https://github.com/maxxxxxdlp/dotfiles/issues"
+    "url": "https://github.com/maxpatiiuk/dotfiles/issues"
   },
   "main": "eslint.config.js",
   "files": [
