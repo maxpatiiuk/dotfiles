@@ -65,6 +65,7 @@
   submoduleSummary = true
 [tag]
   sort = version:refname
+  gpgSign = true
 [versionsort]
   prereleaseSuffix = -pre
   prereleaseSuffix = .pre
