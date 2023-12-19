@@ -758,7 +758,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>JetBrainsMonoNF-Regular 14</string>
+			<string>JetBrainsMonoNF-Regular 15</string>
 			<key>Open Password Manager Automatically</key>
 			<true/>
 			<key>Option Key Sends</key>
@@ -1070,6 +1070,8 @@
 	<false/>
 	<key>StatusBarPosition</key>
 	<integer>0</integer>
+	<key>SwapFindNextPrevious</key>
+	<false/>
 	<key>SynchronizeQueryWithFindPasteboard</key>
 	<false/>
 	<key>TabFlashAnimationDuration</key>
