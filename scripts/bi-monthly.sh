@@ -7,10 +7,12 @@ echo Updating pre-commit hooks
 /usr/local/bin/pre-commit gc
 
 echo Maintaining Homebrew
-/usr/local/bin/brew update
-/usr/local/bin/brew upgrade
-/usr/local/bin/brew cleanup
-/usr/local/bin/brew doctor
+/opt/homebrew/bin/brew update
+/opt/homebrew/bin/brew update --cask
+/opt/homebrew/bin/brew upgrade
+/opt/homebrew/bin/brew upgrade --cask
+/opt/homebrew/bin/brew cleanup
+/opt/homebrew/bin/brew doctor
 
 echo Calling additional scripts
 pre_commit_tools_dir="${HOME}/site/git/pre-commit-tools"
