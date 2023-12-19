@@ -20,9 +20,11 @@ alias gdw="git diff --stat -p"
 regex="\"[a-zA-Z_][a-zA-Z0-9_]*|[-+0-9.e]+[jJlL]?|0[xX]?[0-9a-fA-F]+[lL]?|[-+*/<>%&^|=!]=|//=?|<<=?|>>=?|\*\*=?|[^[:space:]]\""
 alias gd="git diff --stat -p --word-diff=color --word-diff-regex=${regex}"
 alias gdcw="git diff --stat -p --cached"
+alias gdwc="gdcw"
 alias gdc="git diff --stat -p --word-diff=color --word-diff-regex=${regex} --cached"
 alias gdbw='git diff $(git merge-base HEAD origin/$(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")) --cached --stat -p'
-alias gdb='git diff $(git merge-base HEAD origin/$(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")) --cached --stat -p --word-diff=color --word-diff-regex=${regex}'
+alias gdb='gdbw --word-diff=color --word-diff-regex=${regex}'
+alias gdu="git rebase $(git symbolic-ref refs/remotes/origin/HEAD --short)"
 alias ga="git add"
 alias gap="git add --interactive"
 gi() {
@@ -30,6 +32,7 @@ gi() {
 }
 compdef _git gi=git-add
 alias gri="git rebase --interactive"
+alias gru="git rebase $(git symbolic-ref refs/remotes/origin/HEAD --short)"
 alias gc="git commit -v"
 alias gcae="git commit -v --amend"
 alias gca="git commit -v --amend --no-edit"
