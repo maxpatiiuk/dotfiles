@@ -71,7 +71,7 @@ repos:
           - --skip="./node_modules/,package-lock.json,./.idea/"
 
   - repo: https://github.com/psf/black
-    rev: 24.1a1
+    rev: 24.1.1
     hooks:
       - id: black
         args:
@@ -130,7 +130,7 @@ repos:
           - prettier-plugin-firebase-database@1.0.1
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
-    rev: v1.3.2
+    rev: v1.3.3
     hooks:
       - id: python-safety-dependencies-check
 
