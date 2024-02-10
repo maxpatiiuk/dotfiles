@@ -226,6 +226,9 @@ call plug#end()
 syntax on
 colorscheme monokai
 
+" Increase color contrast for comments (make them green)
+hi Comment ctermfg=34
+
 " Make previous session open automatically
 let g:startify_session_persistence=1
 
