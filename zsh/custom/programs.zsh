@@ -18,10 +18,10 @@ gu() {
 # Curses-based CLI file explorer
 # Documentation: https://github.com/maxpatiiuk/dir-explorer
 f() {
-  script_dir="${HOME}/site/python/dir-explorer/dir-explorer"
+  script_dir="${HOME}/site/python/dir-explorer/dir_explorer"
 
   # Create a temp file
-  local tempfile="/tmp/list_view_$RANDOM"
+  export tempfile="/tmp/list_view_$RANDOM"
 
   # Call the python script
   "${script_dir}/../venv/bin/python3" "${script_dir}/list_view.py" "$@"

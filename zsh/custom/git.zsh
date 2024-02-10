@@ -124,6 +124,8 @@ alias gmm='gl $(git_other_side) --not $(git_current_side) -p -- '
 
 # Helper function to get the other side commit in a git merge or rebase
 git_other_side() {
+    original_pwd=$(pwd)
+    cd $(git rev-parse --show-toplevel)
     if [ -d ".git/rebase-merge" ]; then
         # Rebasing (merge style)
         cat ".git/rebase-merge/onto-name" 2>/dev/null || cat ".git/rebase-merge/onto" 2>/dev/null
@@ -138,8 +140,11 @@ git_other_side() {
         git show -s --pretty=%H ".git/CHERRY_PICK_HEAD" 2>/dev/null
     else
         echo "Not in a middle of a known Git operation."
+        cd "$original_pwd"
         return 1
     fi
+    cd "$original_pwd"
+
 }
 compdef _git git_other_side=git-log
 
