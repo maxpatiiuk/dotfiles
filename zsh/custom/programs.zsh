@@ -62,7 +62,7 @@ alias notify="afplay /System/Library/Sounds/Funk.aiff &>/dev/null &"
 # completion notification
 #
 # Call with "--batch-file" to batch download multiple
-alias yt='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" --no-playlist'
+alias yt='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" --no-playlist --sponsorblock-remove sponsor,intro,outro,selfpromo,interaction'
 alias yta='yt -f "bestaudio[ext=m4a]"'
 alias t='npm run test'
 alias rr='npm run '

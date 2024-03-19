@@ -96,7 +96,7 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install openssh
   brew install screen
   brew install terminal-notifier
-  brew install youtube-dl
+  brew install yt-dlp
   brew install macos-trash
   # Used by Raycast
   brew install bitwarden-cli
