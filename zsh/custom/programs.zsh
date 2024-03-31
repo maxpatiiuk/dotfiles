@@ -15,6 +15,12 @@ gu() {
   fi
 }
 
+x() {
+  command=$(node ~/site/git/code-share/javascript/projects/npm-run "$@")
+  echo "> $command"
+  eval $command
+}
+
 # Curses-based CLI file explorer
 # Documentation: https://github.com/maxpatiiuk/dir-explorer
 f() {

@@ -12,7 +12,7 @@ alias gll="git log --graph --stat --all --no-abbrev-commit"
 alias glu='git log --graph --stat --not $(git symbolic-ref refs/remotes/origin/HEAD --short)'
 alias g-="git switch -"
 alias g--="git switch"
-alias g-u='git switch $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")'
+alias g---='git switch $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")'
 alias g="git status --short --branch"
 alias gss="git status --branch"
 alias gsi="git status --branch --ignored"
@@ -26,7 +26,7 @@ alias gdwc="gdcw"
 alias gdc="git diff --stat -p --word-diff=color --word-diff-regex=${regex} --cached"
 alias gdbw='git diff $(git merge-base HEAD origin/$(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")) --cached --stat -p'
 alias gdb='gdbw --word-diff=color --word-diff-regex=${regex}'
-alias gdu='git diff --not $(git symbolic-ref refs/remotes/origin/HEAD --short)'
+alias gdu='git diff --stat -p --not $(git symbolic-ref refs/remotes/origin/HEAD --short)'
 alias ga="git add"
 alias gap="git add --interactive"
 gi() {
@@ -35,6 +35,9 @@ gi() {
 compdef _git gi=git-add
 alias gri="git rebase --interactive"
 alias gru='git rebase $(git symbolic-ref refs/remotes/origin/HEAD --short)'
+alias grc="git rebase --continue"
+alias gbc="git cherry-pick --continue"
+alias gmc="git merge --continue"
 alias gc="git commit -v"
 alias gcae="git commit -v --amend"
 alias gca="git commit -v --amend --no-edit"
