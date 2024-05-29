@@ -38,7 +38,7 @@ repos:
           - ~/site/git/dotfiles/git/regex-blacklist.txt
 
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.6
+    rev: v2.3.0
     hooks:
       - id: codespell
         args:
@@ -114,7 +114,7 @@ repos:
           - stylelint-config-standard@24.0.0
 
   - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v9.2.0
+    rev: v9.3.0
     hooks:
       - id: eslint
         types: [text]
