@@ -26,6 +26,7 @@
   mnemonicPrefix = true
   colorMoved = default
   renames = copies
+  noprefix = true
 [difftool "default-difftool"]
   cmd = code --wait --diff $LOCAL $REMOTE
 [init]
