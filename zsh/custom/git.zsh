@@ -6,7 +6,10 @@
 # thousands of keystokes yearly
 
 alias gg="git log --graph --oneline --pretty=format:\"%C(yellow)%h %Cgreen%an %Cblue%ar %Cred%s%Creset %C(auto)%d%Creset\""
+alias ggb='gg origin/$(git branch --show-current)'
 alias gl="git log --graph --stat"
+alias glb='gl origin/$(git branch --show-current)'
+alias glbc='gl origin/$(git branch --show-current) --stat -1 -p --pretty=fuller'
 alias glc="git log --graph --stat -1 -p --pretty=fuller"
 alias gll="git log --graph --stat --all --no-abbrev-commit"
 alias glu='git log --graph --stat --not $(git symbolic-ref refs/remotes/origin/HEAD --short)'
@@ -24,9 +27,11 @@ alias gd="git diff --stat -p --word-diff=color --word-diff-regex=${regex}"
 alias gdcw="git diff --stat -p --cached"
 alias gdwc="gdcw"
 alias gdc="git diff --stat -p --word-diff=color --word-diff-regex=${regex} --cached"
-alias gdbw='git diff $(git merge-base HEAD origin/$(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")) --cached --stat -p'
+alias gduw='git diff $(git merge-base HEAD $(git symbolic-ref refs/remotes/origin/HEAD)) --cached --stat -p'
+alias gdu='gduw --word-diff=color --word-diff-regex=${regex}'
+alias gdbw='git diff origin/$(git branch --show-current) --cached --stat -p'
 alias gdb='gdbw --word-diff=color --word-diff-regex=${regex}'
-alias gdu='git diff --stat -p --not $(git symbolic-ref refs/remotes/origin/HEAD --short)'
+alias gdn='git diff --stat -p --not $(git symbolic-ref refs/remotes/origin/HEAD --short)'
 alias ga="git add"
 alias gap="git add --interactive"
 gi() {
@@ -35,17 +40,20 @@ gi() {
 compdef _git gi=git-add
 alias gri="git rebase --interactive"
 alias gru='git rebase $(git symbolic-ref refs/remotes/origin/HEAD --short)'
-alias grc="git rebase --continue"
+# Do not open the editor to edit the commit message by default
+alias grc="GIT_EDITOR=: git rebase --continue"
+alias grce="git rebase --continue"
 alias gbc="git cherry-pick --continue"
 alias gmc="git merge --continue"
 alias gc="git commit -v"
 alias gcae="git commit -v --amend"
 alias gca="git commit -v --amend --no-edit"
 # Such commit is intended to be squashed using interactive rebase:
-alias gcf="git commit -v -m 'fixup'"
+alias gcf="git commit -v -m 'chore: fixup'"
 alias gba="git branch -vv --all"
-alias gp="pre-commit run"
-alias gpa="pre-commit run --all-files"
+alias gp="git cherry-pick"
+alias gpc="GIT_EDITOR=: git cherry-pick --continue"
+alias gpce="git cherry-pick --continue"
 alias ghs="git stash push"
 alias ghh="git stash show -p"
 alias ghp="git stash pop"

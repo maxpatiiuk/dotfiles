@@ -73,6 +73,9 @@ alias yta='yt -f "bestaudio[ext=m4a]"'
 alias t='npm run test'
 alias rr='npm run '
 
+alias y='yarn'
+alias grep='ggrep --color'
+
 # Make rm safer. See:
 # https://github.com/sindresorhus/guides/blob/main/how-not-to-rm-yourself.md#safeguard-rm
 alias rm="/opt/homebrew/bin/grm -I"
