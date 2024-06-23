@@ -1,6 +1,6 @@
 # A config file for pre-commit.com
 #
-# Documentation
+# Install pre-commit.com: https://pre-commit.com/#instation
 # https://github.com/specifysystems/code-principles/blob/main/pre-commit-hooks.md
 
 default_language_version:
@@ -35,7 +35,7 @@ repos:
       - id: tsc
       - id: regex-blacklist
         args:
-          - ~/site/git/dotfiles/git/regex-blacklist.txt
+          - ~/site/git/dotfiles/git/regex-blocklist.txt
 
   - repo: https://github.com/codespell-project/codespell
     rev: v2.3.0
@@ -96,12 +96,8 @@ repos:
     hooks:
       - id: prettier
         additional_dependencies:
-          - prettier@2.5.1
-          - '@prettier/plugin-xml@^0.13.1'
-          - prettier-plugin-package@1.3.0
-          - prettier-plugin-sh@0.8.1
-          - prettier-plugin-tailwind-css@1.5.0
-          - prettier-plugin-firebase-database@1.0.1
+          - prettier@3.3.1
+          - "@maxpatiiuk/prettier-config@^2.0.0"
 
   - repo: https://github.com/awebdeveloper/pre-commit-stylelint
     rev: 0.0.2
@@ -120,7 +116,7 @@ repos:
         types: [text]
         types_or: [javascript, jsx, ts, tsx]
         additional_dependencies:
-          - '@maxxxxxdlp/eslint-config@^1.0.9'
+          - "@maxpatiiuk/eslint-config@^6.0.0"
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
     rev: v1.3.3
