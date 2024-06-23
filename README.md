@@ -74,8 +74,8 @@ Manually download the following programs:
 - Adobe Photoshop (not available in Homebrew)
 - ExpressVPN (Homebrew version crashes)
 
-Configure iTerm to use zsh/iterm2 folder for storing configuration and
-import the zsh/iterm2/Deault.json profile
+Configure iTerm to use zsh/iterm2 folder for storing configuration and import
+the zsh/iterm2/Deault.json profile
 
 Import Raycast config
 

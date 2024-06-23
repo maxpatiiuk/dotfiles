@@ -6,12 +6,12 @@ const config = {
   // Single quote is more popular among JS libraries
   singleQuote: true,
   // GitHub renders Markdown in whitespace-insensitive way, so we should wrap prose
-  proseWrap: "always",
+  proseWrap: 'always',
   plugins: [
-    "@prettier/plugin-xml",
-    "prettier-plugin-package",
-    "prettier-plugin-sh",
-    "prettier-plugin-tailwindcss",
+    '@prettier/plugin-xml',
+    'prettier-plugin-package',
+    'prettier-plugin-sh',
+    'prettier-plugin-tailwindcss',
   ],
 };
 

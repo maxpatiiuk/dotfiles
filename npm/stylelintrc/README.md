@@ -10,7 +10,7 @@ Add this to your `package.json`:
 ```json
 {
   "devDependencies": {
-    "@maxxxxxdlp/stylelintrc": "^0.1.0"
+    "@maxpatiiuk/stylelintrc": "^0.1.0"
   }
 }
 ```
@@ -19,7 +19,7 @@ Then, create `.stylelintrc.js` at the root of your project:
 
 ```js
 module.exports = {
-  extends: ['@maxxxxxdlp/stylelintrc'],
+  extends: ['@maxpatiiuk/stylelintrc'],
   rules: {},
 };
 ```

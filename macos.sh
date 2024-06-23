@@ -347,14 +347,12 @@ defaults write com.visualstudio.code.oss ApplePressAndHoldEnabled -bool false
 # this is helpful if you're using Vim in a PWA like code-server
 defaults write -g ApplePressAndHoldEnabled -bool false
 
-
 ###############################################################################
 # Photos                                                                      #
 ###############################################################################
 
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
-
 
 # Disable horrible cursor blinking - so distracting
 defaults write -g NSAutomaticPeriodicTextDisplayEnabled -bool false

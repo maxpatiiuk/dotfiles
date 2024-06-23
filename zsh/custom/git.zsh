@@ -35,7 +35,7 @@ alias gdn='git diff --stat -p --not $(git symbolic-ref refs/remotes/origin/HEAD 
 alias ga="git add"
 alias gap="git add --interactive"
 gi() {
- git add --patch $@
+  git add --patch $@
 }
 compdef _git gi=git-add
 alias gri="git rebase --interactive"
@@ -84,7 +84,6 @@ $spacer|\
 %(contents:subject)
 $spacer|"
 
-
 alias gb='git for-each-ref \
     --color=always \
     --count=0 \
@@ -103,7 +102,7 @@ gh() {
   ARG=$1
   FILE_NAME="${ARG##*:}"
   FILE_EXTENSION="${FILE_NAME##*.}"
-  BARE_TEMP_FILE=`mktemp`
+  BARE_TEMP_FILE=$(mktemp)
   TEMP_FILE="${BARE_TEMP_FILE}.${FILE_EXTENSION}"
   mv ${BARE_TEMP_FILE} ${TEMP_FILE}
 
@@ -135,26 +134,26 @@ alias gmm='gl $(git_other_side) --not $(git_current_side) -p -- '
 
 # Helper function to get the other side commit in a git merge or rebase
 git_other_side() {
-    original_pwd=$(pwd)
-    cd $(git rev-parse --show-toplevel)
-    if [ -d ".git/rebase-merge" ]; then
-        # Rebasing (merge style)
-        cat ".git/rebase-merge/onto-name" 2>/dev/null || cat ".git/rebase-merge/onto" 2>/dev/null
-    elif [ -d ".git/rebase-apply" ]; then
-        # Rebasing (apply style) or applying a patch
-        cat ".git/rebase-apply/original-commit" 2>/dev/null || cat ".git/rebase-apply/onto" 2>/dev/null
-    elif [ -f ".git/MERGE_HEAD" ]; then
-        # Merging
-        git show -s --pretty=%D ".git/MERGE_HEAD" 2>/dev/null | awk -F', ' '{print $2}'
-    elif [ -f ".git/CHERRY_PICK_HEAD" ]; then
-        # Cherry-picking
-        git show -s --pretty=%H ".git/CHERRY_PICK_HEAD" 2>/dev/null
-    else
-        echo "Not in a middle of a known Git operation."
-        cd "$original_pwd"
-        return 1
-    fi
+  original_pwd=$(pwd)
+  cd $(git rev-parse --show-toplevel)
+  if [ -d ".git/rebase-merge" ]; then
+    # Rebasing (merge style)
+    cat ".git/rebase-merge/onto-name" 2> /dev/null || cat ".git/rebase-merge/onto" 2> /dev/null
+  elif [ -d ".git/rebase-apply" ]; then
+    # Rebasing (apply style) or applying a patch
+    cat ".git/rebase-apply/original-commit" 2> /dev/null || cat ".git/rebase-apply/onto" 2> /dev/null
+  elif [ -f ".git/MERGE_HEAD" ]; then
+    # Merging
+    git show -s --pretty=%D ".git/MERGE_HEAD" 2> /dev/null | awk -F', ' '{print $2}'
+  elif [ -f ".git/CHERRY_PICK_HEAD" ]; then
+    # Cherry-picking
+    git show -s --pretty=%H ".git/CHERRY_PICK_HEAD" 2> /dev/null
+  else
+    echo "Not in a middle of a known Git operation."
     cd "$original_pwd"
+    return 1
+  fi
+  cd "$original_pwd"
 
 }
 compdef _git git_other_side=git-log

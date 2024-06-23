@@ -130,8 +130,8 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   # For Intel macs
   # PINETRY_LOCATION="/usr/local/bin/pinentry-mac"
 
-
 else
+
   echo "Invalid system name"
   exit 1
 fi

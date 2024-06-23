@@ -1,27 +1,14 @@
 # Prettier Configuration
 
-A mostly-default prettier configuration with additional plugins for formatting
-`package.json`, `.xml`, shell files and Firebase Realtime Database Rules
+A mostly default prettier configuration with plugins for `package.json`,
+Tailwind class names, `.xml` files and shell files
 
 ## Usage
 
-Add this to your `package.json`:
+Install this config as a dev dependency:
 
-```json
-{
-  "prettier": "@maxpatiiuk/prettier-config"
-}
-```
-
-Alternatively, if you want to overwrite some options, you can add this
-repository as a devDependency:
-
-```json
-{
-  "devDependencies": {
-    "@maxpatiiuk/prettier-config": "^2.0.0"
-  }
-}
+```bash
+npm install -D @maxpatiiuk/prettier-config
 ```
 
 Then, create a `prettier.config.js` file at the root of your project:

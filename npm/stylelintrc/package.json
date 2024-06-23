@@ -1,5 +1,5 @@
 {
-  "name": "@maxxxxxdlp/stylelint-config",
+  "name": "@maxpatiiuk/stylelint-config",
   "version": "1.0.0",
   "private": false,
   "description": "A very strict configuration for Stylelint with support for CSS-in-JS and Prettier",

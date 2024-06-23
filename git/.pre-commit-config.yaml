@@ -97,7 +97,7 @@ repos:
       - id: prettier
         additional_dependencies:
           - prettier@3.3.1
-          - "@maxpatiiuk/prettier-config@^2.0.0"
+          - '@maxpatiiuk/prettier-config@^2.0.0'
 
   - repo: https://github.com/awebdeveloper/pre-commit-stylelint
     rev: 0.0.2
@@ -116,7 +116,7 @@ repos:
         types: [text]
         types_or: [javascript, jsx, ts, tsx]
         additional_dependencies:
-          - "@maxpatiiuk/eslint-config@^6.0.0"
+          - '@maxpatiiuk/eslint-config@^6.0.0'
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
     rev: v1.3.3

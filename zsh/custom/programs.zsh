@@ -112,29 +112,25 @@ clion() {
 
 # Find the `.vscode/` directory among parent directories and open that
 # project in VS Code
-c () {
-	if [ $# -eq 0 ]
-	then
-		local dir=$(node ~/site/git/code-share/javascript/projects/finder/finder.js .vscode || echo "./")
+c() {
+  if [ $# -eq 0 ]; then
+    local dir=$(node ~/site/git/code-share/javascript/projects/finder/finder.js .vscode || echo "./")
 
-		if [[ "$dir" == "$HOME" ]]
-		then
-			dir="./"
-		fi
+    if [[ "$dir" == "$HOME" ]]; then
+      dir="./"
+    fi
 
-		if [[ "$dir" == "./" ]]
-		then
-		  dir=$(node ~/site/git/code-share/javascript/projects/finder/finder.js .git || echo "./")
-		fi
+    if [[ "$dir" == "./" ]]; then
+      dir=$(node ~/site/git/code-share/javascript/projects/finder/finder.js .git || echo "./")
+    fi
 
-		if [[ "$dir" == "$HOME" ]]
-		then
-			dir="./"
-		fi
-		code $dir
-	else
-		code $@
-	fi
+    if [[ "$dir" == "$HOME" ]]; then
+      dir="./"
+    fi
+    code $dir
+  else
+    code $@
+  fi
 }
 compdef c=code
 
@@ -157,5 +153,5 @@ alias mariadb="docker run \
 # A possible hack until that is fixed would be for this function to
 # temporary copy tsconfig.json into the current directory
 tts() {
-  (cd node --loader ts-node/esm/transpile-only  && node --loader ./node_modules/ts-node/esm/transpile-only.mjs ./src/run.ts --split 32000 --input $@)
+  (cd node --loader ts-node/esm/transpile-only && node --loader ./node_modules/ts-node/esm/transpile-only.mjs ./src/run.ts --split 32000 --input $@)
 }
