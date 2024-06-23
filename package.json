@@ -1,6 +1,6 @@
 {
   "name": "@maxpatiiuk/dotfiles",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "description": "A monorepo of my .dotfiles and .*rc files",
   "license": "MIT",
@@ -14,9 +14,9 @@
     "url": "https://github.com/maxpatiiuk/dotfiles/issues"
   },
   "devDependencies": {
-    "@maxxxxxdlp/prettier-config": "^1.0.2"
+    "@maxpatiiuk/prettier-config": "^2.0.0"
   },
-  "prettier": "@maxxxxxdlp/prettier-config",
+  "prettier": "@maxpatiiuk/prettier-config",
   "workspaces": [
     "npm/*"
   ]
