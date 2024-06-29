@@ -1,9 +1,10 @@
 {
-  "name": "@maxxxxxdlp/eslint-config",
-  "version": "5.0.0",
+  "name": "@maxpatiiuk/eslint-config",
+  "version": "6.0.0",
   "private": false,
+  "type": "module",
   "author": "Max Patiiuk",
-  "description": "A very strict ESLint config with support for TypeScript and Prettier",
+  "description": "A 'best practices' ESLint config with support for TypeScript and Prettier",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -14,7 +15,21 @@
   "bugs": {
     "url": "https://github.com/maxpatiiuk/dotfiles/issues"
   },
+  "scripts": {
+    "build": "tsup",
+    "prepublish": "npm run build",
+    "publish": "npm publish --access public"
+  },
   "main": "eslint.config.js",
+  "module": "eslint.config.js",
+  "exports": {
+    ".": {
+      "types": "./eslint.config.d.ts",
+      "import": "./eslint.config.js",
+      "require": "./eslint.config.cjs",
+      "default": "./eslint.config.js"
+    }
+  },
   "files": [
     "eslint.config.js",
     "LICENCE",
@@ -27,42 +42,40 @@
     "eslint-config"
   ],
   "peerDependencies": {
-    "@rushstack/eslint-patch": "^1.1.0",
     "eslint": ">= 8"
   },
   "dependencies": {
-    "@eslint/eslintrc": "^2.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.55.0",
-    "@typescript-eslint/parser": "^5.55.0",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.5.0",
+    "@types/confusing-browser-globals": "^1.0.3",
+    "@types/eslint__js": "^8.42.3",
+    "@types/eslint-plugin-markdown": "^2.0.2",
     "confusing-browser-globals": "^1.0.11",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-array-func": "^3.1.8",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-define-config": "^2.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-array-func": "^5.0.1",
     "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-functional": "^4.4.1",
-    "eslint-plugin-jest": "^27.2.1",
-    "eslint-plugin-jest-dom": "^4.0.3",
-    "eslint-plugin-markdown": "^3.0.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-regexp": "^1.11.0",
-    "eslint-plugin-simple-import-sort": "^8.0.0",
-    "eslint-plugin-sonarjs": "^0.17.0",
-    "eslint-plugin-tsdoc": "0.2.17",
-    "eslint-plugin-unicorn": "^45.0.2",
-    "eslint-plugin-write-good-comments": "^0.1.4",
-    "globals": "^13.19.0"
+    "eslint-plugin-functional": "^6.6.0",
+    "eslint-plugin-jest": "^28.6.0",
+    "eslint-plugin-jest-dom": "^5.4.0",
+    "eslint-plugin-markdown": "^5.0.0",
+    "eslint-plugin-promise": "^6.2.0",
+    "eslint-plugin-regexp": "^2.6.0",
+    "eslint-plugin-simple-import-sort": "^12.1.0",
+    "eslint-plugin-sonarjs": "^1.0.3",
+    "eslint-plugin-tsdoc": "0.3.0",
+    "eslint-plugin-unicorn": "^54.0.0",
+    "eslint-plugin-write-good-comments": "^0.2.0",
+    "globals": "^15.6.0",
+    "typescript-eslint": "^8.0.0-alpha.10"
   },
   "devDependencies": {
-    "@maxxxxxdlp/prettier-config": "^1.0.4",
-    "@types/confusing-browser-globals": "^1.0.0",
-    "@types/eslint-plugin-markdown": "^2.0.0",
-    "@typescript-eslint/parser": "^5.48.0",
-    "eslint": "^8.31.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-define-config": "^1.14.0",
-    "eslint-import-resolver-typescript": "^3.5.2",
-    "prettier": "^2.7.1",
-    "tsutils": "^3.21.0",
-    "typescript": "^4.9.4"
+    "@maxpatiiuk/prettier-config": "^2.0.0",
+    "eslint": "^9.5.0",
+    "prettier": "^3.3.2",
+    "tsup": "^8.1.0",
+    "typescript": "^5.5.2"
   },
-  "prettier": "@maxxxxxdlp/prettier-config"
+  "prettier": "@maxpatiiuk/prettier-config"
 }
