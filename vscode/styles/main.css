@@ -128,3 +128,11 @@
 .auxiliarybar .composite.header-or-footer {
   display: none !important;
 }
+
+/*
+ * Taken from
+ * https://github.com/yoavbls/pretty-ts-errors/blob/main/docs/pretty-ts-errors-hack.css
+ */
+.codicon-none {
+  user-select: text !important;
+}
