@@ -20,7 +20,6 @@ if [ "$(uname 2> /dev/null)" = "Linux" ]; then
     nodejs \
     npm \
     vim-gtk3 \
-    pre-commit \
     screen \
     openvpn \
     openssh-server \
@@ -84,7 +83,6 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install git
   brew install nvm
   brew install neovim
-  brew install pre-commit
   brew install openvpn
   brew install ffmpeg
   brew install pyenv
@@ -155,7 +153,6 @@ echo Cloning Git repos
   git clone https://github.com/specify/specify-tools.git
   git clone https://github.com/maxpatiiuk/custom-new-tab-page.git
   git clone https://github.com/maxpatiiuk/code-share.git
-  git clone https://github.com/maxpatiiuk/pre-commit.git
   git clone https://github.com/maxpatiiuk/dotfiles.git
 )
 (
