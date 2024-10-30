@@ -15,7 +15,7 @@ function cl() {
 compdef cl=cd
 
 ### one line servers
-alias python_server="sudo python3 -m http.server 80"
+alias python_server="python3 -m http.server 8080"
 
 ### shortcuts
 alias v="nvim"

@@ -72,6 +72,8 @@ alias yt='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" --no-playlist --
 alias yta='yt -f "bestaudio[ext=m4a]"'
 alias t='npm run test'
 alias rr='npm run '
+alias ch='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome '
+alias chb='/Applications/Google\ Chrome\ Beta.app/Contents/MacOS/Google\ Chrome\ Beta '
 
 alias y='yarn'
 alias grep='ggrep --color'
@@ -127,7 +129,10 @@ c() {
     if [[ "$dir" == "$HOME" ]]; then
       dir="./"
     fi
-    code $dir
+    # Hoping to workaround https://github.com/microsoft/vscode/issues/107016
+    # The --disable-render-accessibility flag seems to not fix the issue
+    # completely, but makes things better
+    code $dir --disable-renderer-accessibility
   else
     code $@
   fi

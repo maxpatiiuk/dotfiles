@@ -59,6 +59,10 @@ alias ghh="git stash show -p"
 alias ghp="git stash pop"
 alias ghl="git stash list"
 
+# Somewhat distractive actions, so using a longer alias
+alias gpush="git push"
+alias fpush="git push --force-with-lease"
+
 # I found myself accidentally running `git restore -W` when I meant to
 # call `git restore -S`. Thus, separate aliases that more explicitly
 # explain action of each command have been added
