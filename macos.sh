@@ -361,6 +361,9 @@ defaults write -g NSAutomaticPeriodicTextDisplayEnabled -bool false
 # From https://stackoverflow.com/a/77296786/8584605
 sudo defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO
 
+# Disable Spotlight indexing because I don't use it
+sudo mdutil -i off
+
 for app in "Activity Monitor" \
   "cfprefsd" \
   "Dock" \
