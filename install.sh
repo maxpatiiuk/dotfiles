@@ -96,6 +96,7 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install terminal-notifier
   brew install yt-dlp
   brew install macos-trash
+  brew install gh
   # Used by Raycast
   brew install bitwarden-cli
   brew install --cask iterm2

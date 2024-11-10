@@ -102,7 +102,7 @@ alias gb='git for-each-ref \
     --no-init'
 
 # Like "git show" but opens the file in editor with syntax highlighting
-gh() {
+gq() {
   ARG=$1
   FILE_NAME="${ARG##*:}"
   FILE_EXTENSION="${FILE_NAME##*.}"
@@ -114,7 +114,7 @@ gh() {
   ${EDITOR} ${TEMP_FILE}
   rm ${TEMP_FILE}
 }
-compdef _git gh=git-show
+compdef _git gq=git-show
 
 # When merging and have conflicts, can use this to show the commits
 # that this branch has that the other doesn't for a given file
