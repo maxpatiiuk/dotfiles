@@ -3,138 +3,74 @@ echo Read the contents of this file carefully before running it
 
 PWD="${HOME}/site/git/dotfiles"
 
-if [ "$(uname 2> /dev/null)" = "Linux" ]; then
-  echo Clearing desktop wallpaper
-  gsettings set org.gnome.desktop.background picture-uri ""
-  gsettings set org.gnome.desktop.background primary-color "#222222"
-
-  echo Installing essential dependencies
-  sudo apt-get upgrade
-  sudo apt-get autoremove
-  sudo apt-get autoclean
-  sudo apt-get install \
-    curl \
-    git \
-    build-essential \
-    wget \
-    nodejs \
-    npm \
-    vim-gtk3 \
-    screen \
-    openvpn \
-    openssh-server \
-    pinentry-curses \
-    libreadline6 \
-    libreadline6-dev \
-    libreadline-dev \
-    bzip2 \
-    ruby-rubygems
-
-  echo Installing pyenv
-  curl https://pyenv.run | bash
-  exec $SHELL
-
-  echo Installing Docker
-  sudo apt-get install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-  echo \
-    "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  sudo apt-get update
-  sudo apt-get install docker-ce docker-ce-cli containerd.io
-  sudo groupadd docker
-  sudo usermod -aG docker $USER
-  newgrp docker
-  sudo systemctl enable docker.service
-  sudo systemctl enable containerd.service
-  curl -L https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
-
-  echo Configuring SSH
-  sudo ufw allow ssh
-  sudo systemctl enable ssh
-
-  echo Installing ZSH
-  sudo apt install zsh
-
-  echo Hard linking misc files
-  sudo ln /usr/bin/gpg /usr/local/bin/gpg
-  sudo ln /usr/bin/vim /usr/local/bin/vim
-  PINETRY_LOCATION=$(which pinentry-curses)
-
-elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
-
-  echo Install xcode Developer Tools
-  xcode-select --install
-
-  echo Install Homebrew
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  brew update
-  brew doctor
-  brew tap homebrew/cask-versions
-
-  echo Install Homebrew Formulae and Casks
-  brew install curl
-  brew install wget
-  brew install git
-  brew install nvm
-  brew install neovim
-  brew install openvpn
-  brew install ffmpeg
-  brew install pyenv
-  brew install pyenv-virtualenv
-  brew install gnupg
-  brew install pinentry-mac
-  brew install coreutils
-  brew install grep
-  brew install openssh
-  brew install screen
-  brew install terminal-notifier
-  brew install yt-dlp
-  brew install awk
-  brew install macos-trash
-  brew install gh
-  # Used by Raycast
-  brew install bitwarden-cli
-  brew install --cask iterm2
-  # WARNING: this would install an Intel version of Docker
-  brew install --cask docker
-  # NOTE: at one point browser integration was only available in the
-  # App Store version of bitwarden - check if that is still the case
-  brew install --cask bitwarden
-  brew install --cask google-chrome-beta
-  brew install --cask firefox-developer-edition
-  brew install --cask visual-studio-code
-  brew install --cask vlc
-  brew install --cask obs
-  brew install --cask surfshark
-  brew install --cask zoom
-  brew install --cask jetbrains-toolbox
-  brew install --cask vnc-viewer
-  brew install --cask transmission
-  brew install --cask raycast
-
-  # These are needed to make pyenv work on m1 macs
-  brew install openssl readline sqlite3 xz zlib
-
-  # Set macOS defaults
-  "${PWD}./macos.sh"
-
-  # For silicon macs
-  PINETRY_LOCATION="/opt/homebrew/bin/pinentry-mac"
-
-  # For Intel macs
-  # PINETRY_LOCATION="/usr/local/bin/pinentry-mac"
-
-else
-
-  echo "Invalid system name"
+# If system is not Darwin, exit with code 1:
+if [ "$(uname 2> /dev/null)" != "Darwin" ]; then
+  echo "This install script works only on macOS."
+  echo "Modifications may be required to make it work on other platforms."
   exit 1
 fi
+
+echo Install xcode Developer Tools
+xcode-select --install
+
+echo Install Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew update
+brew doctor
+brew tap homebrew/cask-versions
+
+echo Install Homebrew Formulae and Casks
+brew install curl
+brew install wget
+brew install git
+brew install nvm
+brew install neovim
+brew install openvpn
+brew install ffmpeg
+brew install pyenv
+brew install pyenv-virtualenv
+brew install gnupg
+brew install pinentry-mac
+brew install coreutils
+brew install grep
+brew install openssh
+brew install screen
+brew install terminal-notifier
+brew install yt-dlp
+brew install awk
+brew install macos-trash
+brew install gh
+# Used by Raycast
+brew install bitwarden-cli
+brew install --cask iterm2
+# WARNING: this would install an Intel version of Docker
+brew install --cask docker
+# NOTE: at one point browser integration was only available in the
+# App Store version of bitwarden - check if that is still the case
+brew install --cask bitwarden
+brew install --cask google-chrome-beta
+brew install --cask firefox-developer-edition
+brew install --cask visual-studio-code
+brew install --cask vlc
+brew install --cask obs
+brew install --cask surfshark
+brew install --cask zoom
+brew install --cask jetbrains-toolbox
+brew install --cask vnc-viewer
+brew install --cask transmission
+brew install --cask raycast
+
+# These are needed to make pyenv work on m1 macs
+brew install openssl readline sqlite3 xz zlib
+
+# Set macOS defaults
+"${PWD}./macos.sh"
+
+# For silicon macs
+PINETRY_LOCATION="/opt/homebrew/bin/pinentry-mac"
+
+# For Intel macs
+# PINETRY_LOCATION="/usr/local/bin/pinentry-mac"
 
 echo Adding shortcut for Downloads directory
 ln -s "${HOME}/Downloads" "${HOME}/d"
@@ -250,15 +186,13 @@ echo Installing Docker Watcher
   venv/bin/pip install -r requirements.txt
 )
 
-if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
-  echo Linking launchctl .plist file
-  mkdir -p ${HOME}/Library/LaunchAgents/
-  ln -sf "${PWD}/scripts/uk.patii.max.task.plist" "${HOME}/Library/LaunchAgents/"
+echo Linking launchctl .plist file
+mkdir -p ${HOME}/Library/LaunchAgents/
+ln -sf "${PWD}/scripts/uk.patii.max.task.plist" "${HOME}/Library/LaunchAgents/"
 
-  echo Change VS Code Icon
-  mv "/Applications/Visual Studio Code.app/Contents/Resources/Code.icns" "/Applications/Visual Studio Code.app/Contents/Resources/Code_original.icns"
-  cp "./vscode/icon.icns" "/Applications/Visual Studio Code.app/Contents/Resources/Code.icns"
-fi
+echo Change VS Code Icon
+mv "/Applications/Visual Studio Code.app/Contents/Resources/Code.icns" "/Applications/Visual Studio Code.app/Contents/Resources/Code_original.icns"
+cp "./vscode/icon.icns" "/Applications/Visual Studio Code.app/Contents/Resources/Code.icns"
 
 echo \#\#\# Private part \#\#\#
 echo This relies on a private \`maxpatiiuk/private-dotfiles\` repository
