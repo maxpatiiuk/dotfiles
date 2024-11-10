@@ -1,25 +1,25 @@
-echo WARNING!
-echo Read the contents of this file carefully before running it
+echo 🔴 WARNING!
+echo 🔴 Read the contents of this file carefully before running it
 
 PWD="${HOME}/site/git/dotfiles"
 
 # If system is not Darwin, exit with code 1:
 if [ "$(uname 2> /dev/null)" != "Darwin" ]; then
-  echo "This install script works only on macOS."
-  echo "Modifications may be required to make it work on other platforms."
+  echo 🔴 This install script works only on macOS.
+  echo 🔴 Modifications may be required to make it work on other platforms.
   exit 1
 fi
 
-echo Install xcode Developer Tools
+echo 🔵 Install xcode Developer Tools
 xcode-select --install
 
-echo Install Homebrew
+echo 🔵 Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew update
 brew doctor
 brew tap homebrew/cask-versions
 
-echo Install Homebrew Formulae and Casks
+echo 🔵 Install Homebrew Formulae and Casks
 brew install curl
 brew install wget
 brew install git
@@ -72,15 +72,15 @@ PINETRY_LOCATION="/opt/homebrew/bin/pinentry-mac"
 # For Intel macs
 # PINETRY_LOCATION="/usr/local/bin/pinentry-mac"
 
-echo Adding shortcut for Downloads directory
+echo 🔵 Adding shortcut for Downloads directory
 ln -s "${HOME}/Downloads" "${HOME}/d"
 
-echo Creating directories
+echo 🔵 Creating directories
 mkdir -p "${HOME}/site/git"
 mkdir -p "${HOME}/site/python"
 mkdir -p "${HOME}/site/javascript"
 
-echo Cloning Git repos
+echo 🔵 Cloning Git repos
 (
   cd "${HOME}/site/python"
   git clone https://github.com/specify/specify7.git
@@ -96,53 +96,53 @@ echo Cloning Git repos
 (
   cd "${HOME}/site/javascript"
   git clone https://github.com/maxpatiiuk/max.patii.uk.git
-  git clone https://github.com/maxpatiiuk/tts-reader.git
+  git clone https://github.com/maxpatiiuk/text-hoarder.git
 )
 
-echo Configure GNU PGP
+echo 🔵 Configure GNU PGP
 mkdir -p ~/.gnupg
 echo 'use-agent' > ~/.gnupg/gpg.conf
 chmod -R 700 ~/.gnupg
-echo "pinentry-program ${PINETRY_LOCATION}" >> ~/.gnupg/gpg-agent.conf
+echo 🔵 "pinentry-program ${PINETRY_LOCATION}" >> ~/.gnupg/gpg-agent.conf
 killall gpg-agent
 
-echo Installing Node.js
+echo 🔵 Installing Node.js
 nvm install 20
 
-echo Installing Python 3.11
+echo 🔵 Installing Python 3.11
 pyenv install 3.11
 pyenv global 3.11
 pyenv version
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-echo Install global Python dependencies
+echo 🔵 Install global Python dependencies
 pip install wheel
 
-echo Install global NPM dependencies
+echo 🔵 Install global NPM dependencies
 npm install -g npm-check-updates
 npm install -g clipboardy
 npm install -g typescript-language-server
 
-echo Installing oh-my-zsh
+echo 🔵 Installing oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-echo Deleting default oh-my-zsh configs
+echo 🔵 Deleting default oh-my-zsh configs
 rm "${HOME}/.oh-my-zsh/lib/bzr.zsh"
 rm "${HOME}/.oh-my-zsh/lib/diagnostics.zsh"
 rm "${HOME}/.oh-my-zsh/lib/directories.zsh"
 rm "${HOME}/.oh-my-zsh/lib/key-bindings.zsh"
 
-echo Installing Powerlevel10k
+echo 🔵 Installing Powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${PWD}/zsh/custom/themes/powerlevel10k
 
-echo Installing other ZSH plugins
+echo 🔵 Installing other ZSH plugins
 git clone https://github.com/zsh-users/zsh-autosuggestions ${PWD}/zsh/custom/plugins/zsh-autosuggestions
 git clone https://github.com/jeffreytse/zsh-vi-mode "${PWD}/zsh/custom/plugins/zsh-vi-mode"
 
-echo Replacing the default Git Config
+echo 🔵 Replacing the default Git Config
 ln -sf "${PWD}/git/.gitconfig" "${HOME}"
 
-echo Configuring Vim
+echo 🔵 Configuring Vim
 mkdir -p "${HOME}/.vim/undo"
 mkdir -p "${HOME}/.vim/backups"
 mkdir -p "${HOME}/.vim/swaps"
@@ -150,7 +150,7 @@ ln -sf "${PWD}/vim/.vimrc" "${HOME}"
 ln -sf "${PWD}/vim/.ideavimrc" "${HOME}"
 ln -sf "${PWD}/vim/spell" "${HOME}/.vim/"
 
-echo Linking misc files
+echo 🔵 Linking misc files
 ln -sf "${PWD}/zsh/.zshrc" "${HOME}"
 ln -sf "${PWD}/zsh/.zprofile" "${HOME}"
 ln -sf "${PWD}/zsh/.p10k.zsh" "${HOME}"
@@ -159,45 +159,45 @@ ln -sf "${PWD}/misc/.editorconfig" "${HOME}/site"
 sudo mkdir -p "/etc/docker/"
 sudo ln "${PWD}/docker/daemon.json" "/etc/docker/"
 
-echo Hard linking common files from \`code-share\`
+echo 🔵 Hard linking common files from \`code-share\`
 ln "${HOME}/site/git/code-share/misc/images/mambo.jpg" "${HOME}/Documents/"
 ln "${HOME}/site/git/code-share/misc/images/max_patiiuk_old.jpg" "${HOME}/Documents/"
 ln "${HOME}/site/git/code-share/misc/images/max_patiiuk_1x1.jpg" "${HOME}/Documents/"
 ln "${HOME}/site/git/code-share/misc/images/max_patiiuk.jpg" "${HOME}/Documents/"
 ln "${HOME}/site/git/code-share/misc/images/wolf.jpg" "${HOME}/Documents/"
 
-echo Initializing Dir Explorer
+echo 🔵 Initializing Dir Explorer
 (
   cd "${HOME}/site/python/dir-explorer"
   python -m venv venv
   venv/bin/pip install -r requirements.txt
 )
 
-echo Initializing TTS Utility
+echo 🔵 Initializing Text Hoarder
 (
-  cd "${HOME}/site/javascript/tts-reader"
+  cd "${HOME}/site/javascript/text-hoarder"
   npm i
 )
 
-echo Installing Docker Watcher
+echo 🔵 Installing Docker Watcher
 (
   cd "${HOME}/site/git/specify-tools/docker_container"
   python -m venv venv
   venv/bin/pip install -r requirements.txt
 )
 
-echo Linking launchctl .plist file
+echo 🔵 Linking launchctl .plist file
 mkdir -p ${HOME}/Library/LaunchAgents/
 ln -sf "${PWD}/scripts/uk.patii.max.task.plist" "${HOME}/Library/LaunchAgents/"
 
-echo Change VS Code Icon
+echo 🔵 Update VS Code Icon
 mv "/Applications/Visual Studio Code.app/Contents/Resources/Code.icns" "/Applications/Visual Studio Code.app/Contents/Resources/Code_original.icns"
 cp "./vscode/icon.icns" "/Applications/Visual Studio Code.app/Contents/Resources/Code.icns"
 
-echo \#\#\# Private part \#\#\#
-echo This relies on a private \`maxpatiiuk/private-dotfiles\` repository
-echo You should comment out this part or replace it with your own
-echo private repository
+echo 🔴 \#\#\# Private part \#\#\#
+echo 🔴 This relies on a private \`maxpatiiuk/private-dotfiles\` repository
+echo 🔴 You should comment out this part or replace it with your own
+echo 🔴 private repository
 
 (
   cd "${HOME}/site/git/"
