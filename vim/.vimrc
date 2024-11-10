@@ -83,14 +83,14 @@ set hlsearch
 " Set default file encoding
 set encoding=UTF-8
 
-" Show that char on line breaks
+" Show this indicator on text wrapping
 set showbreak=…
 
-" Show vertical line past 72 chars
-set colorcolumn=72
+" Show vertical line past 80 chars
+set colorcolumn=80
 
-" Hard wrap text at 72 chars
-set textwidth=72
+" Hard wrap text at 80 chars
+set textwidth=80
 
 " Set the directory of the current file as path
 autocmd BufEnter * lcd %:p:h
@@ -107,7 +107,7 @@ set title
 " Wrap lines between words
 set linebreak
 
-" Soft wrap beyond 72 characters
+" Soft wrap beyond 80 characters
 set wrap
 
 " Map "insert single character" to the space key
