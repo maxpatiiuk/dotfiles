@@ -125,9 +125,9 @@ command Q q
 " Enable file type detection
 filetype on
 " Treat .json files as .js
-autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+" autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 " Treat .md files as Markdown
-autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+" autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 
 " Use ctrl+shift+6 as a "caps lock" toggle
 " Execute 'lnoremap x X' and 'lnoremap X x' for each letter a-z.
@@ -170,9 +170,6 @@ endif
 " INSTALL PLUGINS
 call plug#begin('~/.vim/plugged')
 
-" Start screen
-Plug 'mhinz/vim-startify'
-
 " Theme
 Plug 'crusoexia/vim-monokai'
 
@@ -203,9 +200,6 @@ Plug 'plasticboy/vim-markdown'
 " Add typescript syntax highlighting
 Plug 'leafgarland/typescript-vim'
 
-" TabbNine
-"Plug 'zxqfl/tabnine-vim'
-
 " Spell checker
 Plug 'kamykn/spelunker.vim'
 
@@ -228,25 +222,6 @@ colorscheme monokai
 
 " Increase color contrast for comments (make them green)
 hi Comment ctermfg=34
-
-" Make previous session open automatically
-let g:startify_session_persistence=1
-
-" Bookmark commonly used files
-let g:startify_bookmarks = [
-\ {'s':'~/site/git/private-dotfiles/notes/SPECIFY.md'},
-\ {'t':'~/site/git/private-dotfiles/notes/TEMP'},
-\ ]
-
-
-" Show only 5 files in Startify
-let g:startify_files_number = 5
-
-" Disable Startify header
-let g:startify_custom_header = []
-
-" Make Startify reopen last session
-let g:startify_session_persistence = 1
 
 " Toggle nerdtree
 map <C-n> :NERDTreeTabsToggle<CR>
