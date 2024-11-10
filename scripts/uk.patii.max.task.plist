@@ -2,29 +2,39 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN"
   "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>Label</key>
-	<string>uk.patii.max.task</string>
-  <key>WorkingDirectory</key>
-  <string>/Users/maxpatiiuk/site/git/dotfiles/</string>
-	<key>ProgramArguments</key>
-	<array>
-    <string>/bin/zsh</string>
-    <string>-c</string>
-    <string>/Users/maxpatiiuk/site/git/dotfiles/scripts/bi-monthly.sh</string>
-	</array>
-  <key>StandardOutPath</key>
-  <string>/Users/maxpatiiuk/.logs/launchctl.log</string>
-  <key>StandardErrorPath</key>
-  <string>/Users/maxpatiiuk/.logs/launchctl.error.log</string>
-	<key>StartCalendarInterval</key>
-	<dict>
-		<key>Minute</key>
-		<integer>0</integer>
-		<key>Hour</key>
-		<integer>10</integer>
-		<key>Weekday</key>
-		<integer>3</integer>
-	</dict>
-</dict>
+  <dict>
+    <!--
+
+On updates to this file, run the following:
+plutil ~/site/git/dotfiles/scripts/uk.patii.max.task.plist &&
+launchctl unload ~/Library/LaunchAgents/uk.patii.max.task.plist &&
+launchctl load ~/Library/LaunchAgents/uk.patii.max.task.plist
+
+To manually trigger this task:
+launchctl start uk.patii.max.task
+
+-->
+    <key>Label</key>
+    <string>uk.patii.max.task</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/bin/zsh</string>
+      <string>-l</string>
+      <string>-c</string>
+      <string>
+        mkdir -p "$HOME/.logs" &amp;&amp;
+        cd $HOME/site/git/dotfiles/scripts &amp;&amp;
+        ./weekly.sh >> "$HOME/.logs/launchctl.log" 2>> "$HOME/.logs/launchctl.error.log"
+      </string>
+    </array>
+    <key>StartCalendarInterval</key>
+    <dict>
+      <key>Minute</key>
+      <integer>0</integer>
+      <key>Hour</key>
+      <integer>10</integer>
+      <key>Weekday</key>
+      <integer>3</integer>
+    </dict>
+  </dict>
 </plist>

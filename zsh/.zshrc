@@ -1,7 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="/usr/local/bin:$PYENV_ROOT:/opt/homebrew/bin:$PATH"
-
 # From https://unix.stackexchange.com/a/273863/324980
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
@@ -107,8 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-export EDITOR='/usr/bin/vim'
+
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

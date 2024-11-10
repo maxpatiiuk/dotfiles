@@ -204,29 +204,22 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${PWD}/zsh/custom/plu
 git clone https://github.com/jeffreytse/zsh-vi-mode "${PWD}/zsh/custom/plugins/zsh-vi-mode"
 
 echo Replacing the default Git Config
-rm -f "${HOME}/.gitconfig"
-ln -s "${PWD}/git/.gitconfig" "${HOME}"
+ln -sf "${PWD}/git/.gitconfig" "${HOME}"
 
 echo Configuring Vim
-rm -f "${HOME}/.vimrc"
-rm -rf "${HOME}/.vim"
-rm -rf "${HOME}/.vim/spell"
 mkdir -p "${HOME}/.vim/undo"
 mkdir -p "${HOME}/.vim/backups"
 mkdir -p "${HOME}/.vim/swaps"
-ln "${PWD}/vim/.vimrc" "${HOME}"
-ln "${PWD}/vim/.ideavimrc" "${HOME}"
-ln -s "${PWD}/vim/spell" "${HOME}/.vim/"
+ln -sf "${PWD}/vim/.vimrc" "${HOME}"
+ln -sf "${PWD}/vim/.ideavimrc" "${HOME}"
+ln -sf "${PWD}/vim/spell" "${HOME}/.vim/"
 
-echo Hard linking misc files
-rm -f "${HOME}/.zshrc"
-ln -s "${PWD}/zsh/.zshrc" "${HOME}"
-rm -f "${HOME}/zsh/.zprofile"
-ln -s "${PWD}/zsh/.zprofile" "${HOME}"
-rm -f "${HOME}/.p10k.zsh"
-ln -s "${PWD}/zsh/.p10k.zsh" "${HOME}"
-ln "${PWD}/zsh/.screenrc" "${HOME}"
-ln "${PWD}/misc/.editorconfig" "${HOME}/site"
+echo Linking misc files
+ln -sf "${PWD}/zsh/.zshrc" "${HOME}"
+ln -sf "${PWD}/zsh/.zprofile" "${HOME}"
+ln -sf "${PWD}/zsh/.p10k.zsh" "${HOME}"
+ln -sf "${PWD}/zsh/.screenrc" "${HOME}"
+ln -sf "${PWD}/misc/.editorconfig" "${HOME}/site"
 sudo mkdir -p "/etc/docker/"
 sudo ln "${PWD}/docker/daemon.json" "/etc/docker/"
 
@@ -258,9 +251,9 @@ echo Installing Docker Watcher
 )
 
 if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
-  echo Hard linking launchctl .plist file
+  echo Linking launchctl .plist file
   mkdir -p ${HOME}/Library/LaunchAgents/
-  ln "${PWD}/scripts/uk.patii.max.task.plist" "${HOME}/Library/LaunchAgents/"
+  ln -sf "${PWD}/scripts/uk.patii.max.task.plist" "${HOME}/Library/LaunchAgents/"
 
   echo Change VS Code Icon
   mv "/Applications/Visual Studio Code.app/Contents/Resources/Code.icns" "/Applications/Visual Studio Code.app/Contents/Resources/Code_original.icns"
