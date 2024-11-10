@@ -1,11 +1,15 @@
 " PLUGIN INDEPENDENT
 
+" Disable start screen
+set shm+=I
+
 " Enable line numeration
 set number
 
 " Make file folding persistent
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview
+set viewoptions=folds,cursor,curdir
+autocmd BufWinLeave * mkview
+autocmd BufWinEnter * silent loadview
 
 " Change tabSize to 2
 filetype plugin indent on
