@@ -95,6 +95,7 @@ elif [ "$(uname 2> /dev/null)" = "Darwin" ]; then
   brew install screen
   brew install terminal-notifier
   brew install yt-dlp
+  brew install awk
   brew install macos-trash
   brew install gh
   # Used by Raycast
