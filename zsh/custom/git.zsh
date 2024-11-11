@@ -5,6 +5,15 @@
 # like having to type `git s` when I can just type `gs` and save
 # thousands of keystokes yearly
 
+g() {
+  if [[ $# -gt 0 ]]; then
+    git "$@"
+  else
+    git status --short --branch
+  fi
+}
+compdef g=git
+
 alias gg="git log --graph --oneline --pretty=format:\"%C(yellow)%h %Cgreen%an %Cblue%ar %Cred%s%Creset %C(auto)%d%Creset\""
 alias ggb='gg origin/$(git branch --show-current)'
 alias gl="git log --graph --stat"
@@ -16,7 +25,6 @@ alias glu='git log --graph --stat --not $(git symbolic-ref refs/remotes/origin/H
 alias g-="git switch -"
 alias g--="git switch"
 alias g---='git switch $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")'
-alias g="git status --short --branch"
 alias gss="git status --branch"
 alias gsi="git status --branch --ignored"
 alias gf="git fetch && git status"
@@ -90,7 +98,7 @@ alias gunstage="git restore -S"
 alias gdelete="git restore -W"
 alias gunstagedelete="git restore -SW"
 
-# Fix GPG not working on Ubuntu
+# https://stackoverflow.com/a/42265848/96656
 export GPG_TTY=$TTY
 
 # Adapted from:

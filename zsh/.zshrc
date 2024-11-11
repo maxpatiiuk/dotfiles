@@ -40,4 +40,3 @@ source $ZSH/oh-my-zsh.sh
 source ~/.p10k.zsh
 
 eval "$(fnm env --shell zsh --corepack-enabled)"
-
