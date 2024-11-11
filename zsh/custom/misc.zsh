@@ -21,7 +21,7 @@ alias python_server="python3 -m http.server 8080"
 alias v="nvim"
 alias neovim="nvim"
 alias vim="nvim"
-alias p="python"
+alias p="python3"
 alias n="node"
 alias vimdiff="nvim -d"
 

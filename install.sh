@@ -27,8 +27,6 @@ brew install nvm
 brew install neovim
 brew install openvpn
 brew install ffmpeg
-brew install pyenv
-brew install pyenv-virtualenv
 brew install gnupg
 brew install pinentry-mac
 brew install coreutils
@@ -40,6 +38,7 @@ brew install yt-dlp
 brew install awk
 brew install macos-trash
 brew install gh
+brew install python
 # Used by Raycast
 brew install bitwarden-cli
 brew install --cask iterm2
@@ -59,9 +58,6 @@ brew install --cask jetbrains-toolbox
 brew install --cask vnc-viewer
 brew install --cask transmission
 brew install --cask raycast
-
-# These are needed to make pyenv work on m1 macs
-brew install openssl readline sqlite3 xz zlib
 
 # Set macOS defaults
 "${PWD}./macos.sh"
@@ -108,13 +104,6 @@ killall gpg-agent
 
 echo 🔵 Installing Node.js
 nvm install 20
-
-echo 🔵 Installing Python 3.11
-pyenv install 3.11
-pyenv global 3.11
-pyenv version
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 echo 🔵 Install global Python dependencies
 pip install wheel
