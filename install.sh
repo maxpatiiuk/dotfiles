@@ -23,7 +23,7 @@ echo 🔵 Install Homebrew Formulae and Casks
 brew install curl
 brew install wget
 brew install git
-brew install nvm
+brew install fnm
 brew install neovim
 brew install openvpn
 brew install ffmpeg
@@ -54,7 +54,6 @@ brew install --cask vlc
 brew install --cask obs
 brew install --cask surfshark
 brew install --cask zoom
-brew install --cask jetbrains-toolbox
 brew install --cask vnc-viewer
 brew install --cask transmission
 brew install --cask raycast
@@ -103,7 +102,7 @@ echo 🔵 "pinentry-program ${PINETRY_LOCATION}" >> ~/.gnupg/gpg-agent.conf
 killall gpg-agent
 
 echo 🔵 Installing Node.js
-nvm install 20
+fnm install 20
 
 echo 🔵 Install global Python dependencies
 pip install wheel
