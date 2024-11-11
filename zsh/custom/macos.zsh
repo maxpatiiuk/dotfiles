@@ -16,3 +16,5 @@ function fcd() {
 function preview() {
   (($# > 0)) && qlmanage -p $* &> /dev/null &
 }
+
+# Tip: to open file in finder, run `open file`

@@ -56,22 +56,15 @@ f() {
 
 }
 
-export BROWSE_FILES='f'
-export LIST_FILES='l'
-
 # Play a notification sound. Useful when chained at the end of another
 # program
 alias notify="afplay /System/Library/Sounds/Funk.aiff &>/dev/null &"
 
-# Run a dockerized youtube-dl with some default parameters
-# Also, can be called like `yt <URL> && notify` to receive a
-# completion notification
+# Tip: call it like `yt <URL> && notify` to receive a completion notification
 #
 # Call with "--batch-file" to batch download multiple
 alias yt='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" --no-playlist --sponsorblock-remove sponsor,intro,outro,selfpromo,interaction'
 alias yta='yt -f "bestaudio[ext=m4a]"'
-alias t='npm run test'
-alias rr='npm run '
 alias ch='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome '
 alias chb='/Applications/Google\ Chrome\ Beta.app/Contents/MacOS/Google\ Chrome\ Beta '
 
@@ -81,36 +74,39 @@ alias grep='ggrep --color'
 # Make rm safer. See:
 # https://github.com/sindresorhus/guides/blob/main/how-not-to-rm-yourself.md#safeguard-rm
 alias rm="/opt/homebrew/bin/grm -I"
+# Prompt before overwriting existing files
+alias cp='cp -i'
+alias mv='mv -i'
 
 # Find the `.idea/` directory among parent directories and open that
 # project in PyCharm
-pycharm() {
-  open -na "PyCharm.app" --args $(node ~/site/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
-}
+# pycharm() {
+# open -na "PyCharm.app" --args $(node ~/site/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
+# }
 
 # Find the `.idea/` directory among parent directories and open that
 # project in WebStorm
-webstorm() {
-  open -na "WebStorm.app" --args $(node ~/site/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
-}
+# webstorm() {
+# open -na "WebStorm.app" --args $(node ~/site/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
+# }
 
 # Find the `.idea/` directory among parent directories and open that
 # project in PhpStorm
-phpstorm() {
-  open -na "PhpStorm.app" --args $(node ~/site/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
-}
+# phpstorm() {
+# open -na "PhpStorm.app" --args $(node ~/site/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
+# }
 
 # Find the `.idea/` directory among parent directories and open that
 # project in IntelliJ
-intellij() {
-  open -na "IntelliJ IDEA Ultimate.app" --args $(node ~/site/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
-}
+# intellij() {
+# open -na "IntelliJ IDEA Ultimate.app" --args $(node ~/site/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
+# }
 
 # Find the `.idea/` directory among parent directories and open that
 # project in CLion
-clion() {
-  open -na "CLion.app" --args $(node ~/site/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
-}
+# clion() {
+# open -na "CLion.app" --args $(node ~/site/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
+# }
 
 # Find the `.vscode/` directory among parent directories and open that
 # project in VS Code
@@ -139,24 +135,19 @@ c() {
 }
 compdef c=code
 
-alias mariadb="docker run \
-  -p 127.0.0.1:3306:3306 \
-  -v test-db:/var/lib/mysql \
-  -v ${HOME}/Downloads/:/sql/ \
-  -e MARIADB_ROOT_PASSWORD=root \
-  --name test \
-  --rm \
-  mariadb"
+# alias mariadb="docker run \
+# -p 127.0.0.1:3306:3306 \
+# -v test-db:/var/lib/mysql \
+# -v ${HOME}/Downloads/:/sql/ \
+# -e MARIADB_ROOT_PASSWORD=root \
+# --name test \
+# --rm \
+# mariadb"
 
-# Unfortunately, ts-node relies on current working directory for
-# resolving tsconfig.json, so must be executed from that location.
-#
-# If using "npx ts-node" syntax, can provide a custom location, but
-# can't use "npx ts-node" syntax because of a bug when using Node.js 20
-# (https://github.com/TypeStrong/ts-node/issues/1997)
-#
-# A possible hack until that is fixed would be for this function to
-# temporary copy tsconfig.json into the current directory
 tts() {
-  (cd node --loader ts-node/esm/transpile-only && node --loader ./node_modules/ts-node/esm/transpile-only.mjs ./src/run.ts --split 32000 --input $@)
+  npx text-hoarder process --output-dir text-hoarder-processed --force-output-dir --glob $@
+  for f in text-hoarder-processed/*.txt; do
+    say -r 250 -o "$f.flac" --progress "$(cat $f)"
+    rm "$f"
+  done
 }

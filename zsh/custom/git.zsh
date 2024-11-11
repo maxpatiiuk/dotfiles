@@ -63,6 +63,26 @@ alias ghl="git stash list"
 alias gpush="git push"
 alias fpush="git push --force-with-lease"
 
+gabort() {
+  gitdir="$(git rev-parse --git-dir)" || exit
+  opfound=
+  fcnt=
+
+  for i in cherry-pick merge rebase revert; do
+    # Convert to uppercase (works in both Bash and Zsh)
+    f=$(echo "${i}" | tr 'a-z' 'A-Z')
+    f=${f//-/_} # Replace hyphens with underscores
+    test -f "${gitdir}/${f}_HEAD" && fcnt=1$fcnt && opfound=$i
+  done
+
+  if [ "${fcnt}" != 1 ]; then
+    echo "I don't know what to abort" >&2
+    exit 1
+  fi
+
+  git "${opfound}" --abort
+}
+
 # I found myself accidentally running `git restore -W` when I meant to
 # call `git restore -S`. Thus, separate aliases that more explicitly
 # explain action of each command have been added
