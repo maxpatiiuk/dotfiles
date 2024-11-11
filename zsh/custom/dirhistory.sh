@@ -1,3 +1,6 @@
+# This file is imported by zsh-vi-mode.zsh
+# It replaced OMZ's default hey-bindings.zsh
+
 # Original source:
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dirhistory
 

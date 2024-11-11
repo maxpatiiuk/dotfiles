@@ -69,7 +69,6 @@ alias ch='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome '
 alias chb='/Applications/Google\ Chrome\ Beta.app/Contents/MacOS/Google\ Chrome\ Beta '
 
 alias y='yarn'
-alias grep='ggrep --color'
 
 # Make rm safer. See:
 # https://github.com/sindresorhus/guides/blob/main/how-not-to-rm-yourself.md#safeguard-rm

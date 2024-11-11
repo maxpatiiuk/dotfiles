@@ -1,3 +1,6 @@
+# Allow directory navigating without cd
+setopt auto_cd
+
 alias s="cd ~/site/"
 alias sp="cd ~/site/python/"
 alias sj="cd ~/site/javascript/"
