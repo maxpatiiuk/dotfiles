@@ -16,4 +16,8 @@ echo 🔵 Updating oh-my-zsh
 echo 🔵 Updating PowerLevel10k
 git -C ../zsh/custom/themes/powerlevel10k pull
 
+echo 🔵 Updating npm
+npm install npm -g
+npm update -g
+
 echo 🔵 Exit
