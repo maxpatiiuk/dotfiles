@@ -1,0 +1,9 @@
+# Don't execute the hook for merge or rebase commits.
+if [ -e ".git/MERGE_HEAD" ] || [ -d ".git/rebase-merge" ] || [ -d ".git/rebase-apply" ]; then
+  exit 0
+fi
+
+# Redirect output to stderr.
+exec 1>&2
+
+npx lint-staged --config lint-staged.config.js

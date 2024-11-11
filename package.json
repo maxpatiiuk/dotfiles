@@ -2,6 +2,7 @@
   "name": "@maxpatiiuk/dotfiles",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "description": "A monorepo of my .dotfiles and .*rc files",
   "license": "MIT",
   "repository": {
@@ -14,10 +15,15 @@
     "url": "https://github.com/maxpatiiuk/dotfiles/issues"
   },
   "devDependencies": {
-    "@maxpatiiuk/prettier-config": "^2.0.0"
+    "@maxpatiiuk/prettier-config": "^2.0.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10"
   },
   "prettier": "@maxpatiiuk/prettier-config",
   "workspaces": [
     "npm/*"
-  ]
+  ],
+  "scripts": {
+    "prepare": "husky"
+  }
 }
