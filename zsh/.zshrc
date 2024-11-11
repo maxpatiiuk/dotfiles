@@ -6,24 +6,17 @@ fi
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
-setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
-setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
-setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
-setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
-setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
-setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
-
-
-# Path to your oh-my-zsh installation.
-export ZSH="${HOME}/.oh-my-zsh"
+setopt EXTENDED_HISTORY       # Write the history file in the ":start:elapsed;command" format.
+setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS       # Don't record an entry that was just recorded again.
+setopt HIST_FIND_NO_DUPS      # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE      # Don't record an entry starting with a space.
+setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks before recording entry.
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
-
-# Uncomment the following line to automatically update without prompting.
-DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -41,12 +34,7 @@ COMPLETION_WAITING_DOTS="true"
 # I have a custom "l" command I built
 DISABLE_LS_COLORS="true"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
+# Display ISO date in the "history" command
 HIST_STAMPS="yyyy-mm-dd"
 
 # Which plugins would you like to load?
@@ -65,6 +53,10 @@ zstyle ':omz:lib:bzr' aliases no
 zstyle ':omz:lib:diagnostics' aliases no
 zstyle ':omz:lib:directories' aliases no
 zstyle ':omz:lib:key-bindings' aliases no
+
+# Disable checks for update on startup of each shell - I do it in a scheduled
+# job instead. This reduces startup time by 7ms.
+zstyle ':omz:update' mode disabled
 
 ZSH_CUSTOM="${HOME}/site/git/dotfiles/zsh/custom"
 source $ZSH/oh-my-zsh.sh

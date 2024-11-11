@@ -22,9 +22,9 @@ launchctl start uk.patii.max.task
       <string>-l</string>
       <string>-c</string>
       <string>
-        mkdir -p "$HOME/.logs" &amp;&amp;
+        mkdir -p "$HOME/.local/state" &amp;&amp;
         cd $HOME/site/git/dotfiles/scripts &amp;&amp;
-        ./weekly.sh >> "$HOME/.logs/launchctl.log" 2>> "$HOME/.logs/launchctl.error.log"
+        ./weekly.sh >> "$HOME/.local/state/launchctl.log" 2>> "$HOME/.local/state/launchctl.error.log"
       </string>
     </array>
     <key>StartCalendarInterval</key>
