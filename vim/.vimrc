@@ -95,12 +95,6 @@ set textwidth=80
 " Set the directory of the current file as path
 autocmd BufEnter * lcd %:p:h
 
-" Change misc directories
-set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
-set undodir=~/.vim/undo
-set viminfo+=n~/.vim/.viminfo
-
 " Show the filename in the window titlebar
 set title
 
@@ -175,7 +169,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Theme
-Plug 'crusoexia/vim-monokai'
+Plug 'loctvl842/monokai-pro.nvim'
 
 " Javascript syntax
 Plug 'pangloss/vim-javascript'
@@ -222,7 +216,7 @@ call plug#end()
 
 " Set theme
 syntax on
-colorscheme monokai
+colorscheme monokai-pro
 
 " Increase color contrast for comments (make them green)
 hi Comment ctermfg=34
