@@ -10,4 +10,7 @@ echo 🔵 Maintaining Homebrew
 /opt/homebrew/bin/brew cleanup
 /opt/homebrew/bin/brew doctor
 
-echo Exit
+echo 🔵 Updating PowerLevel10k
+git -C ../zsh/custom/themes/powerlevel10k pull
+
+echo 🔵 Exit

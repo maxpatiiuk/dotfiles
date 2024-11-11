@@ -1,3 +1,7 @@
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # From https://unix.stackexchange.com/a/273863/324980
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
@@ -8,10 +12,6 @@ setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded 
 setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
 setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
-
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 
 # Path to your oh-my-zsh installation.
@@ -95,33 +95,8 @@ plugins=(
 
 ZSH_CUSTOM="${HOME}/site/git/dotfiles/zsh/custom"
 source $ZSH/oh-my-zsh.sh
+source ~/.p10k.zsh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-#source ~/.powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source "${ZSH_CUSTOM}/themes/powerlevel10k/powerlevel9k.zsh-theme"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
