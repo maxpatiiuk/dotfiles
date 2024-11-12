@@ -22,28 +22,30 @@
 /*
   * Hide line and column numbers from "Problems" view to save on space
   */
-#workbench\.parts\.auxiliarybar .markers-panel .marker-line {
-  display: none;
-}
-/*
-  * Only display error source on hover - to have more space for long
-  * error message
-  */
-#workbench\.parts\.auxiliarybar
+[id^='workbench.parts.auxiliarybar'] {
+  .markers-panel .marker-line {
+    display: none;
+  }
+
+  /*
+   * Only display error source on hover - to have more space for long
+   * error message
+   */
   .markers-panel
-  .marker-message-line.details-container:not(:hover)
-  > :not(.marker-message) {
-  display: none !important;
-}
+    .marker-message-line.details-container:not(:hover)
+    > :not(.marker-message) {
+    display: none !important;
+  }
 
-/* Align all error source names to the end */
-#workbench\.parts\.auxiliarybar .markers-panel .marker-message {
-  flex: 1;
-}
+  /* Align all error source names to the end */
+  .markers-panel .marker-message {
+    flex: 1;
+  }
 
-/* Display more compact */
-#workbench\.parts\.auxiliarybar .markers-panel .monaco-tl-twistie {
-  padding: 0 !important;
+  /* Display more compact */
+  .markers-panel .monaco-tl-twistie {
+    padding: 0 !important;
+  }
 }
 
 /**
