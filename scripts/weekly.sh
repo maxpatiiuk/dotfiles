@@ -20,4 +20,7 @@ echo 🔵 Updating npm
 npm install npm -g
 npm update -g
 
+echo 🔵 Updating rust
+rustup update
+
 echo 🔵 Exit

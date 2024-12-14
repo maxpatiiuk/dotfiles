@@ -38,6 +38,7 @@ brew install yt-dlp
 brew install awk
 brew install macos-trash
 brew install gh
+brew install rustup
 brew install python
 # Used by Raycast
 brew install bitwarden-cli
@@ -103,6 +104,9 @@ killall gpg-agent
 
 echo 🔵 Installing Node.js
 fnm install 20
+
+echo 🔵 Installing Rust
+rustup default stable
 
 echo 🔵 Install global Python dependencies
 pip install wheel
