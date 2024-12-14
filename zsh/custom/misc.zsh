@@ -23,6 +23,7 @@ alias neovim="nvim"
 alias vim="nvim"
 alias p="python3"
 alias n="node"
+alias m="less"
 alias vimdiff="nvim -d"
 
 # make zsh know about hosts already accessed by SSH
