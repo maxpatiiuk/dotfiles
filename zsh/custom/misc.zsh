@@ -38,3 +38,16 @@ export LESS_TERMCAP_us=$'\e[01;32m'    # begin underline (green fg)
 export LESS_TERMCAP_me=$'\e[0m'        # reset bold/blink
 export LESS_TERMCAP_se=$'\e[0m'        # reset reverse video
 export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
+
+# Exit with the exit code of previous command
+# Usage:
+# You have a long running command already running
+# You want to queue-up another one to run only if previous one succeeds
+# While previous command is running, type "last && my new command"
+# Use cases:
+# - Run git push after git commit with pre commit hooks
+# - Run notify if previous command succeeds. Can also use || to provide the
+#   failure case
+good() {
+  return $?
+}
