@@ -23,6 +23,7 @@ echo 🔵 Install Homebrew Formulae and Casks
 brew install curl
 brew install wget
 brew install git
+brew install git-lfs
 brew install fnm
 brew install neovim
 brew install openvpn
@@ -40,8 +41,6 @@ brew install macos-trash
 brew install gh
 brew install rustup
 brew install python
-# Used by Raycast
-brew install bitwarden-cli
 brew install --cask iterm2
 # WARNING: this would install an Intel version of Docker
 brew install --cask docker

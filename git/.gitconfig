@@ -80,3 +80,8 @@
   program = gpg
 [advice]
   statusHints = false
+[lfs]
+  concurrenttransfers = 64
+  storage = /Users/mak13180/.cache/lfs
+[diff "lfs"]
+  textconv = cat

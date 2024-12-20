@@ -85,7 +85,7 @@ gabort() {
 
   if [ "${fcnt}" != 1 ]; then
     echo "I don't know what to abort" >&2
-    exit 1
+    return 1
   fi
 
   git "${opfound}" --abort
