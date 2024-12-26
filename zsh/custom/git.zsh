@@ -9,7 +9,14 @@ g() {
   if [[ $# -gt 0 ]]; then
     git "$@"
   else
-    git status --short --branch
+    if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+      git status --short --branch
+    else
+      # If not in a git repository, fallback to running improved ls.
+      # I have a muscle memory for running "g" to get the status of a directory,
+      # so falling back to ls is convenient
+      eval l
+    fi
   fi
 }
 compdef g=git
