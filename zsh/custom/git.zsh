@@ -30,7 +30,17 @@ alias glc="git log --graph --stat -1 -p --pretty=fuller"
 alias gll="git log --graph --stat --all --no-abbrev-commit"
 alias glu='git log --graph --stat --not $(git symbolic-ref refs/remotes/origin/HEAD --short)'
 alias g-="git switch -"
-alias g--="git switch"
+# If running with -c flag and the branch already exists, or if creating a new
+# branch and -c flag was forgotten, this command will print a barely noticeable
+# error message. Several times I accidentally pushed to main rather than a
+# branch because branch didn't get created and I didn't notice.
+# To workaround, I am making error case output red text to be more noticeable.
+g--() {
+  git switch "$@"
+  if [[ $? -ne 0 ]]; then
+    echo -e "\e[31mError: git switch failed.\e[0m"
+  fi
+}
 alias g---='git switch $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")'
 alias gss="git status --branch"
 alias gsi="git status --branch --ignored"
