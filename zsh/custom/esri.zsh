@@ -1,5 +1,6 @@
 alias e="cd ~/site/esri"
 alias ej="cd ~/site/esri/arcgis-js-api-4"
+alias ej2="cd ~/site/esri/arcgis-js-api-42"
 alias ew="cd ~/site/esri/arcgis-web-components"
 alias ewm="cd ~/site/esri/arcgis-web-components/packages/map-packages/map-components"
 # If I am working on multiple branches at once, or want to quickly test

@@ -58,6 +58,7 @@ alias gdbw='git diff origin/$(git branch --show-current) --cached --stat -p'
 alias gdb='gdbw --word-diff=color --word-diff-regex=${regex}'
 alias gdn='git diff --stat -p --not $(git symbolic-ref refs/remotes/origin/HEAD --short)'
 alias ga="git add"
+alias gaa="git add -A"
 alias gap="git add --interactive"
 gi() {
   git add --patch $@
@@ -83,10 +84,15 @@ alias ghs="git stash push"
 alias ghh="git stash show -p"
 alias ghp="git stash pop"
 alias ghl="git stash list"
+alias gpl="git pull"
 
-# Somewhat distractive actions, so using a longer alias
+# Somewhat destructive actions, so using a longer alias
 alias gpush="git push"
 alias fpush="git push --force-with-lease"
+
+# Prefixing wuth u for unsafe
+alias ugs1="git reset --soft HEAD~1"
+alias ugh1="git reset --hard HEAD~1"
 
 gabort() {
   gitdir="$(git rev-parse --git-dir)" || exit
