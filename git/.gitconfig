@@ -26,6 +26,7 @@
   mnemonicPrefix = true
   colorMoved = default
   renames = copies
+  algorithm = histogram
   noprefix = true
 [difftool "default-difftool"]
   cmd = code --wait --diff $LOCAL $REMOTE
@@ -33,6 +34,8 @@
   defaultBranch = main
 [pull]
   rebase = true
+[rebase]
+  autoStash = true
 [merge]
   tool = code
 [mergetool "code"]
@@ -48,7 +51,7 @@
 [credential]
   helper = !git credential-$([ "$(uname 2> /dev/null)" = "Darwin" ] && echo "osxkeychain" || echo "store") "$@"
 [help]
-  autocorrect = 1
+  autocorrect = immediate
 [color "status"]
   header = cyan
   untracked = white bold red
@@ -58,6 +61,7 @@
   tabwidth = 2
 [fetch]
   recurseSubmodules = on-demand
+  all = true
 [log]
   abbrevCommit = true
 [push]
