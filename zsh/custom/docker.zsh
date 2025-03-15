@@ -19,9 +19,6 @@ ds_format='table {{"\033[35m"}}{{.ID}} {{if eq .State "exited"}}{{"\033[31m"}}{{
 alias ds='docker ps --format "${ds_format}"'
 alias dsa='docker ps -a --format "${ds_format}"'
 
-ZSHRC_LOCATION=$(dirname "$0")
-alias dcu="${ZSHRC_LOCATION}/dcu.sh "
-
 alias dl="docker logs -f"
 alias dcl="docker compose logs -f"
 
@@ -40,3 +37,21 @@ alias dn="docker run --name test --rm -it -p 80:80 node:17.2.0-alpine3.14 /bin/s
 # quay.io/stephenh/mirror server'
 
 alias dr="docker container restart"
+
+function dcu() {
+  # Run the containers with the watcher script
+  # More info:
+  # https://github.com/specify/specify-tools/tree/main/docker_container
+  scripts_location="~/site/git/specify0tools/docker_container/"
+  compose_location=$(node ~/site/git/code-share/javascript/projects/finder/finder.js docker-compose.yml)
+  if [ $? -ne 0 ]; then
+    echo "Unable to find 'docker-compose.yml"
+    return 1
+  fi
+  cd $compose_location
+  echo "" > nohup.out
+  watcher=(bash -c "${scripts_location}venv/bin/python ${scripts_location}watch.py")
+  nohup $watcher &
+  docker compose up $@
+  cd -
+}

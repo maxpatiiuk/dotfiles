@@ -9,7 +9,7 @@ g() {
   if [[ $# -gt 0 ]]; then
     git "$@"
   else
-    if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
       git status --short --branch
     else
       # If not in a git repository, fallback to running improved ls.
@@ -42,6 +42,7 @@ g--() {
   fi
 }
 alias g---='git switch $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")'
+alias g-c="g-- -c"
 alias gss="git status --branch"
 alias gsi="git status --branch --ignored"
 alias gf="git fetch && git status"
@@ -49,6 +50,7 @@ alias gdw="git diff --stat -p"
 # The default regex breaks iTerm (default regex ends with |[<C0>-<FF>][<80>-<BF>]+)
 regex="\"[a-zA-Z_][a-zA-Z0-9_]*|[-+0-9.e]+[jJlL]?|0[xX]?[0-9a-fA-F]+[lL]?|[-+*/<>%&^|=!]=|//=?|<<=?|>>=?|\*\*=?|[^[:space:]]\""
 alias gd="git diff --stat -p --word-diff=color --word-diff-regex=${regex}"
+alias gdd="gd ."
 alias gdcw="git diff --stat -p --cached"
 alias gdwc="gdcw"
 alias gdc="git diff --stat -p --word-diff=color --word-diff-regex=${regex} --cached"
@@ -58,6 +60,8 @@ alias gdbw='git diff origin/$(git branch --show-current) --cached --stat -p'
 alias gdb='gdbw --word-diff=color --word-diff-regex=${regex}'
 alias gdn='git diff --stat -p --not $(git symbolic-ref refs/remotes/origin/HEAD --short)'
 alias ga="git add"
+alias gad="git add ."
+alias gau="git add -u"
 alias gaa="git add -A"
 alias gap="git add --interactive"
 gi() {
@@ -85,14 +89,19 @@ alias ghh="git stash show -p"
 alias ghp="git stash pop"
 alias ghl="git stash list"
 alias gpl="git pull"
+alias gin="git init"
+alias gcp="git clone"
 
 # Somewhat destructive actions, so using a longer alias
 alias gpush="git push"
+alias gpu="git push"
 alias fpush="git push --force-with-lease"
 
-# Prefixing wuth u for unsafe
+# Prefixing with u for unsafe
 alias ugs1="git reset --soft HEAD~1"
 alias ugh1="git reset --hard HEAD~1"
+alias ugcd="git clean -f ."
+alias ughd="git stash drop"
 
 gabort() {
   gitdir="$(git rev-parse --git-dir)" || exit
@@ -117,9 +126,18 @@ gabort() {
 # I found myself accidentally running `git restore -W` when I meant to
 # call `git restore -S`. Thus, separate aliases that more explicitly
 # explain action of each command have been added
-alias gunstage="git restore -S"
 alias gdelete="git restore -W"
+alias gunstage="git restore -S"
 alias gunstagedelete="git restore -SW"
+alias gww="git restore -W"
+alias ge="git restore -S"
+alias gwe="git restore -SW"
+alias gwwa="gww :/"
+alias gea="ge :/"
+alias gwea="gwe :/"
+alias gwd="gw ."
+alias ged="ge ."
+alias gwed="gwe ."
 
 # https://stackoverflow.com/a/42265848/96656
 export GPG_TTY=$TTY

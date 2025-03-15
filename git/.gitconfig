@@ -39,6 +39,7 @@
   cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [rerere]
   enabled = true
+  autoupdate = true
 [blame]
   date = relative
   coloring = highlightRecent

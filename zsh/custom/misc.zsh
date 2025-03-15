@@ -15,16 +15,29 @@ function cl() {
 compdef cl=cd
 
 ### one line servers
-alias python_server="python3 -m http.server 8080"
+alias pw="python3 -m http.server 8080"
 
 ### shortcuts
 alias v="nvim"
+alias vp="v package.json"
 alias neovim="nvim"
 alias vim="nvim"
 alias p="python3"
 alias n="node"
-alias m="less"
+alias ni="node --inspect"
+alias nib="node --inspect-brk"
 alias vimdiff="nvim -d"
+
+function m() {
+  if [ ! -t 0 ]; then
+    # stdin is piped into the function
+    more
+  elif [ "$#" -eq 0 ]; then
+    npm install
+  else
+    npm "$@"
+  fi
+}
 
 # make zsh know about hosts already accessed by SSH
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'

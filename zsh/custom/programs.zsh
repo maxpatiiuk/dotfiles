@@ -14,12 +14,24 @@ gu() {
     echo "${output}"
   fi
 }
+alias guu='gu $(git symbolic-ref refs/remotes/origin/HEAD --short)'
 
 x() {
   command=$(node ~/site/git/code-share/javascript/projects/npm-run "$@")
   echo "> $command"
   eval $command
 }
+alias xb="x build"
+alias xba="x build:all"
+alias xbd="x build-dev"
+alias xs="x start"
+alias xt="x test"
+alias xd="x dev"
+alias xw="x watch"
+alias xv="x vite"
+alias xvt="x vitest"
+alias tc="x tsc"
+alias tx="x tsx"
 
 # Curses-based CLI file explorer
 # Documentation: https://github.com/maxpatiiuk/dir-explorer
@@ -76,7 +88,11 @@ alias y='yarn'
 alias rm="/opt/homebrew/bin/grm -I"
 # Prompt before overwriting existing files
 alias cp='cp -i'
+alias cpd='cp -r'
 alias mv='mv -i'
+alias mvd='mv -f'
+
+alias rmrf='rm -rf'
 
 # Find the `.idea/` directory among parent directories and open that
 # project in PyCharm
