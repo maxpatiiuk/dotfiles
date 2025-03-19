@@ -22,11 +22,14 @@ g() {
 compdef g=git
 
 alias gg="git log --graph --oneline --pretty=format:\"%C(yellow)%h %Cgreen%an %Cblue%ar %Cred%s%Creset %C(auto)%d%Creset\""
+alias ggd="gg ."
 alias ggb='gg origin/$(git branch --show-current)'
 alias gl="git log --graph --stat"
+alias gld="gl ."
 alias glb='gl origin/$(git branch --show-current)'
 alias glbc='gl origin/$(git branch --show-current) --stat -1 -p --pretty=fuller'
 alias glc="git log --graph --stat -1 -p --pretty=fuller"
+alias glcd="glc ."
 alias gll="git log --graph --stat --all --no-abbrev-commit"
 alias glu='git log --graph --stat --not $(git symbolic-ref refs/remotes/origin/HEAD --short)'
 alias g-="git switch -"
@@ -47,13 +50,17 @@ alias gss="git status --branch"
 alias gsi="git status --branch --ignored"
 alias gf="git fetch && git status"
 alias gdw="git diff --stat -p"
+alias gdwd="gdw ."
 # The default regex breaks iTerm (default regex ends with |[<C0>-<FF>][<80>-<BF>]+)
 regex="\"[a-zA-Z_][a-zA-Z0-9_]*|[-+0-9.e]+[jJlL]?|0[xX]?[0-9a-fA-F]+[lL]?|[-+*/<>%&^|=!]=|//=?|<<=?|>>=?|\*\*=?|[^[:space:]]\""
 alias gd="git diff --stat -p --word-diff=color --word-diff-regex=${regex}"
 alias gdd="gd ."
 alias gdcw="git diff --stat -p --cached"
+alias gdcwd="gdwc ."
 alias gdwc="gdcw"
+alias gdwcd="gdwc ."
 alias gdc="git diff --stat -p --word-diff=color --word-diff-regex=${regex} --cached"
+alias gdcd="gdc ."
 alias gduw='git diff $(git merge-base HEAD $(git symbolic-ref refs/remotes/origin/HEAD)) --cached --stat -p'
 alias gdu='gduw --word-diff=color --word-diff-regex=${regex}'
 alias gdbw='git diff origin/$(git branch --show-current) --cached --stat -p'
@@ -68,6 +75,9 @@ gi() {
   git add --patch $@
 }
 compdef _git gi=git-add
+gid() {
+  git add --patch .
+}
 alias gri="git rebase --interactive"
 alias gru='git rebase $(git symbolic-ref refs/remotes/origin/HEAD --short)'
 # Do not open the editor to edit the commit message by default
@@ -135,7 +145,7 @@ alias gwe="git restore -SW"
 alias gwwa="gww :/"
 alias gea="ge :/"
 alias gwea="gwe :/"
-alias gwd="gw ."
+alias gwd="gww ."
 alias ged="ge ."
 alias gwed="gwe ."
 
