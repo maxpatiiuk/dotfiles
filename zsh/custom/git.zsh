@@ -32,20 +32,40 @@ alias glc="git log --graph --stat -1 -p --pretty=fuller"
 alias glcd="glc ."
 alias gll="git log --graph --stat --all --no-abbrev-commit"
 alias glu='git log --graph --stat --not $(git symbolic-ref refs/remotes/origin/HEAD --short)'
-alias g-="git switch -"
-# If running with -c flag and the branch already exists, or if creating a new
-# branch and -c flag was forgotten, this command will print a barely noticeable
-# error message. Several times I accidentally pushed to main rather than a
-# branch because branch didn't get created and I didn't notice.
-# To workaround, I am making error case output red text to be more noticeable.
-g--() {
-  git switch "$@"
+gt() {
+  # has one argument - create or switch branch
+  if [[ $# -eq 1 ]]; then
+    branch_name="$1"
+    re_is_number='^[0-9]+$'
+    # prepend first argument with "max/" if it is a number
+    if [[ $# -eq 1 && $branch_name =~ $re_is_number ]]; then
+      branch_name="max/$branch_name"
+    fi
+
+    # branch already exists
+    if git show-ref --verify --quiet refs/heads/"$branch_name"; then
+      git switch "$branch_name"
+    # branch does not exist
+    else
+      git switch -c "$branch_name"
+    fi
+  # has more than one argument - custom command
+  elif [[ $# -gt 0 ]]; then
+    git switch "$@"
+  # no arguments - switch to main
+  else
+    git switch $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")
+  fi
+
+  # If running with -c flag and the branch already exists, or if creating a new
+  # branch and -c flag was forgotten, this command will print a barely noticeable
+  # error message. Several times I accidentally pushed to main rather than a
+  # branch because branch didn't get created and I didn't notice.
+  # To workaround, I am making error case output red text to be more noticeable.
   if [[ $? -ne 0 ]]; then
     echo -e "\e[31mError: git switch failed.\e[0m"
   fi
 }
-alias g---='git switch $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")'
-alias g-c="g-- -c"
 alias gss="git status --branch"
 alias gsi="git status --branch --ignored"
 alias gf="git fetch && git status"
