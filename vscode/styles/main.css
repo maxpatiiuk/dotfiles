@@ -6,23 +6,23 @@
   * The code is as per comment I left:
   * https://github.com/microsoft/vscode/issues/33607#issuecomment-1663235122
   */
-.title.show-file-icons {
+.title.show-file-icons.breadcrumbs {
   position: absolute !important;
   top: 0;
   right: 0;
   z-index: 10;
   opacity: 0.5;
 }
-.title.show-file-icons:hover {
+.title.show-file-icons.breadcrumbs:hover {
   opacity: 1;
 }
-.title.show-file-icons .label-container {
+.title.show-file-icons.breadcrumbs .label-container {
   display: none !important;
 }
 /*
   * Hide line and column numbers from "Problems" view to save on space
   */
-[id^='workbench.parts.auxiliarybar'] {
+[id^="workbench.parts.auxiliarybar"] {
   .markers-panel .marker-line {
     display: none;
   }
@@ -96,21 +96,21 @@
 }
 
 /* Make use of space by TODO Tree less wastefull */
-.monaco-list[aria-label='TODOs'] .monaco-list-row .custom-view-tree-node-item {
+.monaco-list[aria-label="TODOs"] .monaco-list-row .custom-view-tree-node-item {
   padding-left: 0;
   margin-left: -30px;
 }
-.monaco-list[aria-label='TODOs']
+.monaco-list[aria-label="TODOs"]
   .monaco-list-row
   .monaco-tl-twistie.collapsible.codicon.codicon-tree-item-expanded {
   opacity: 0;
 }
-.monaco-list[aria-label='TODOs'] .monaco-list-row .monaco-tl-indent {
+.monaco-list[aria-label="TODOs"] .monaco-list-row .monaco-tl-indent {
   margin-left: -15px;
 }
 
 /* Hide briefly blinking badge when fetching from remote */
-.action-item[aria-label^='Source Control'] .badge.progress-badge {
+.action-item[aria-label^="Source Control"] .badge.progress-badge {
   display: none;
 }
 
