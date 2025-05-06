@@ -42,8 +42,9 @@ gt() {
       branch_name="max/$branch_name"
     fi
 
+    git fetch
     # branch already exists
-    if git show-ref --verify --quiet refs/heads/"$branch_name"; then
+    if git show-ref --verify --quiet "refs/heads/$branch_name" || git ls-remote --exit-code --heads origin refs/heads/"$branch_name"; then
       git switch "$branch_name"
     # branch does not exist
     else
@@ -66,6 +67,7 @@ gt() {
     echo -e "\e[31mError: git switch failed.\e[0m"
   fi
 }
+alias gtt="git switch -"
 alias gss="git status --branch"
 alias gsi="git status --branch --ignored"
 alias gf="git fetch && git status"
@@ -110,6 +112,8 @@ alias gcae="git commit -v --amend"
 alias gca="git commit -v --amend --no-edit"
 # Such commit is intended to be squashed using interactive rebase:
 alias gcf="git commit -v -m 'chore: fixup'"
+alias gcr="git commit -v -m 'refactor: respond to pull request feedback'"
+alias gcs="git commit -v -m 'refactor: do self-review"
 alias gba="git branch -vv --all"
 alias gp="git cherry-pick"
 alias gpc="GIT_EDITOR=: git cherry-pick --continue"
@@ -123,13 +127,19 @@ alias gin="git init"
 alias gcp="git clone"
 
 # Somewhat destructive actions, so using a longer alias
-alias gpush="git push"
 alias gpu="git push"
+alias gpuu="git push && gu"
 alias fpush="git push --force-with-lease"
 
 # Prefixing with u for unsafe
 alias ugs1="git reset --soft HEAD~1"
+alias ugs2="git reset --soft HEAD~3"
+alias ugs3="git reset --soft HEAD~3"
+alias ugs4="git reset --soft HEAD~4"
 alias ugh1="git reset --hard HEAD~1"
+alias ugh2="git reset --hard HEAD~2"
+alias ugh3="git reset --hard HEAD~3"
+alias ugh4="git reset --hard HEAD~4"
 alias ugcd="git clean -f ."
 alias ughd="git stash drop"
 

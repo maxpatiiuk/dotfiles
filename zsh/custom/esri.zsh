@@ -1,3 +1,5 @@
+export ESRI_RUN_PRE_COMMIT_ESLINT=1
+
 alias e="cd ~/site/esri"
 alias ej="cd ~/site/esri/arcgis-js-api-4"
 alias ej2="cd ~/site/esri/arcgis-js-api-42"

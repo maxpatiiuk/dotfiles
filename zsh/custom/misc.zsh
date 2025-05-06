@@ -1,3 +1,5 @@
+source ~/site/git/private-dotfiles/zsh/custom/env.sh
+
 ### basic
 alias ls="ls -G1"
 alias ll="ls -GahlFT%"

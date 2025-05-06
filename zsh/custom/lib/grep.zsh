@@ -4,3 +4,7 @@ function gred() {
   ggrep -rE --exclude-dir={.git,node_modules} --color=auto "$@" .
 }
 compdef _grep gred
+function fgred() {
+  ggrep -rF --exclude-dir={.git,node_modules} --color=auto "$@" .
+}
+compdef _grep fgred

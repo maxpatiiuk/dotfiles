@@ -151,6 +151,10 @@ c() {
 }
 compdef c=code
 
+ce() {
+  c $@ && exit
+}
+
 # alias mariadb="docker run \
 # -p 127.0.0.1:3306:3306 \
 # -v test-db:/var/lib/mysql \
