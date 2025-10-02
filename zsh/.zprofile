@@ -6,3 +6,5 @@ export VISUAL='/opt/homebrew/bin/nvim'
 
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
+
+export LESS="-R --mouse --wheel-lines=3"

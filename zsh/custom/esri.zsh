@@ -3,6 +3,8 @@ export ESRI_RUN_PRE_COMMIT_ESLINT=1
 alias e="cd ~/site/esri"
 alias ej="cd ~/site/esri/arcgis-js-api-4"
 alias ej2="cd ~/site/esri/arcgis-js-api-42"
+alias ej3="cd ~/site/esri/arcgis-js-api-43"
+alias ej4="cd ~/site/esri/arcgis-js-api-44"
 alias ejd="cd ~/site/esri/arcgis-js-sdk"
 alias ec="cd ~/site/esri/calcite-design-system/packages/calcite-components/src/components"
 alias ec2="cd ~/site/esri/calcite-design-system-2/packages/calcite-components/src/components"
@@ -60,8 +62,8 @@ function wc() {
     /usr/bin/wc "$@"
   fi
 }
-function wu() {
-  cdawc "packages/support-packages/components-utils"
+function wto() {
+  cdawc "packages/support-packages/toolkit"
 }
 function wb() {
   cdawc "packages/support-packages/components-build-utils"
@@ -69,16 +71,19 @@ function wb() {
 function wa() {
   cdawc "packages/support-packages/api-extractor"
 }
+function wja() {
+  cdawc "packages/support-packages/jsapi-extractor"
+}
 function wp() {
   cdawc "packages/support-packages/prettier-config"
 }
 function we() {
   cdawc "packages/support-packages/eslint-config"
 }
-function wt() {
+function wtt() {
   cdawc "packages/test-packages"
 }
-function wtt() {
+function wt() {
   cdawc "packages/test-packages/lit-test-components"
 }
 function wtc() {
@@ -107,4 +112,7 @@ function wmco() {
 }
 function wpo() {
   cdawc "packages/portal-packages/portal-components"
+}
+function wmb() {
+  cdawc "packages/map-packages/embeddable-components"
 }

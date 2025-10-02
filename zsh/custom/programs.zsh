@@ -26,12 +26,20 @@ alias xba="x build:all"
 alias xbd="x build-dev"
 alias xs="x start"
 alias xt="x test"
+# test debug
+alias xtd="x t-d"
+# test update or test unit
+alias xtu="x t-u"
+# test watch
+alias xtw="x t-w"
 alias xd="x dev"
 alias xw="x watch"
 alias xv="x vite"
 alias xvt="x vitest"
 alias tc="x tsc"
 alias tx="x tsx"
+alias txi="x tsx --inspect"
+alias txib="x tsx --inspect-brk"
 
 # Curses-based CLI file explorer
 # Documentation: https://github.com/maxpatiiuk/dir-explorer

@@ -23,6 +23,7 @@ compdef g=git
 
 alias gg="git log --graph --oneline --pretty=format:\"%C(yellow)%h %Cgreen%an %Cblue%ar %Cred%s%Creset %C(auto)%d%Creset\""
 alias ggd="gg ."
+alias ggu='gg $(git symbolic-ref refs/remotes/origin/HEAD --short)'
 alias ggb='gg origin/$(git branch --show-current)'
 alias gl="git log --graph --stat"
 alias gld="gl ."
@@ -113,7 +114,7 @@ alias gca="git commit -v --amend --no-edit"
 # Such commit is intended to be squashed using interactive rebase:
 alias gcf="git commit -v -m 'chore: fixup'"
 alias gcr="git commit -v -m 'refactor: respond to pull request feedback'"
-alias gcs="git commit -v -m 'refactor: do self-review"
+alias gcs="git commit -v -m 'refactor: do self-review'"
 alias gba="git branch -vv --all"
 alias gp="git cherry-pick"
 alias gpc="GIT_EDITOR=: git cherry-pick --continue"
@@ -133,7 +134,7 @@ alias fpush="git push --force-with-lease"
 
 # Prefixing with u for unsafe
 alias ugs1="git reset --soft HEAD~1"
-alias ugs2="git reset --soft HEAD~3"
+alias ugs2="git reset --soft HEAD~2"
 alias ugs3="git reset --soft HEAD~3"
 alias ugs4="git reset --soft HEAD~4"
 alias ugh1="git reset --hard HEAD~1"
@@ -175,7 +176,8 @@ alias gwe="git restore -SW"
 alias gwwa="gww :/"
 alias gea="ge :/"
 alias gwea="gwe :/"
-alias gwd="gww ."
+# "gwd" was too similar to "gdw", but much more destructive, so doubled w
+alias gwwd="gww ."
 alias ged="ge ."
 alias gwed="gwe ."
 
