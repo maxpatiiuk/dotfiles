@@ -6,9 +6,9 @@ alias ej2="cd ~/site/esri/arcgis-js-api-42"
 alias ej3="cd ~/site/esri/arcgis-js-api-43"
 alias ej4="cd ~/site/esri/arcgis-js-api-44"
 alias ejd="cd ~/site/esri/arcgis-js-sdk"
-alias ec="cd ~/site/esri/calcite-design-system/packages/calcite-components/src/components"
-alias ec2="cd ~/site/esri/calcite-design-system-2/packages/calcite-components/src/components"
-alias ec3="cd ~/site/esri/calcite-design-system-3/packages/calcite-components/src/components"
+alias ec="cd ~/site/esri/calcite-design-system/packages/components/src/components"
+alias ec2="cd ~/site/esri/calcite-design-system-2/packages/components/src/components"
+alias ec3="cd ~/site/esri/calcite-design-system-3/packages/components/src/components"
 
 # If I am working on multiple branches at once, or want to quickly test
 # something, it is convenient to have multiple cloned instances, rather
@@ -71,7 +71,7 @@ function wb() {
 function wa() {
   cdawc "packages/support-packages/api-extractor"
 }
-function wja() {
+function wj() {
   cdawc "packages/support-packages/jsapi-extractor"
 }
 function wp() {

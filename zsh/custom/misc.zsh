@@ -33,11 +33,19 @@ alias vimdiff="nvim -d"
 function m() {
   if [ ! -t 0 ]; then
     # stdin is piped into the function
-    more
+    less
   elif [ "$#" -eq 0 ]; then
     npm install
   else
     npm "$@"
+  fi
+}
+
+function h() {
+  if [ "$#" -eq 0 ]; then
+    pnpm install
+  else
+    pnpm "$@"
   fi
 }
 

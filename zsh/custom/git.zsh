@@ -175,7 +175,15 @@ alias ge="git restore -S"
 alias gwe="git restore -SW"
 alias gwwa="gww :/"
 alias gea="ge :/"
-alias gwea="gwe :/"
+gwea() {
+  # Dangerous command. Sometimes accidentally called with gwe was meant.
+  # `gwea file` clears all changes, not just `file`. To guard, error explicitly:
+  if (( $# > 0 )); then
+    print -u2 "error: this command takes no arguments"
+    return 1
+  fi
+  gwe :/
+}
 # "gwd" was too similar to "gdw", but much more destructive, so doubled w
 alias gwwd="gww ."
 alias ged="ge ."

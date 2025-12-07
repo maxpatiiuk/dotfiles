@@ -17,10 +17,13 @@ gu() {
 alias guu='gu $(git symbolic-ref refs/remotes/origin/HEAD --short)'
 
 x() {
-  command=$(node ~/site/git/code-share/javascript/projects/npm-run "$@")
+  command=$(node ~/site/git/code-share/javascript/projects/npm-run/index.js "$@")
   echo "> $command"
   eval $command
 }
+alias xi="x --inspect"
+alias xiw="x --inspect-wait"
+alias xib="x --inspect-brk"
 alias xb="x build"
 alias xba="x build:all"
 alias xbd="x build-dev"
@@ -32,7 +35,8 @@ alias xtd="x t-d"
 alias xtu="x t-u"
 # test watch
 alias xtw="x t-w"
-alias xd="x dev"
+# dev or debug
+alias xd="x d"
 alias xw="x watch"
 alias xv="x vite"
 alias xvt="x vitest"
