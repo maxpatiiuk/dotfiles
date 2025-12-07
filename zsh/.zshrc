@@ -1,42 +1,52 @@
-# Don't need instant prompt because my prompt is very fast
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-# source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+#region Completions
+# Scan $fpath and build .zcompdump cache
+autoload -Uz compinit zrecompile
+compinit -u -d "${ZDOTDIR}/cache/.zcompdump"
+# Turn plaintext cache to binary for faster loading
+zrecompile -q -p "${ZDOTDIR}/cache/.zcompdump"
+# Cache command-level completions
+zstyle ':completion:*' use-cache yes
+zstyle ':completion:*' cache-path "${ZDOTDIR}/cache"
+# Enable fancier completion list (TODO: test what difference it makes)
+zmodload -i zsh/complist
+zstyle ':completion:*:*:*:*:*' menu select
+# Auto-open completions menu when there are multiple options
+setopt auto_menu
+# Allow completion anywhere in the line
+setopt complete_in_word
+# Move cursor to end after completion
+setopt always_to_end
+# Disable unused feature & keybindings
+unsetopt flowcontrol
+# Inherit ls colors for file completions
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+# Normalize-away double slashes during completion
+zstyle ':completion:*' squeeze-slashes true
+# When completing parent directories, exclude current directory to reduce noise
+zstyle ':completion:*' ignore-parents parent pwd
+#endregion
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# Ignore comments in interactive shell
+setopt interactivecomments
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# 🟥 lib
+source "${ZDOTDIR}/custom/directories.zsh"
+source "${ZDOTDIR}/custom/dirhistory.sh"
+source "${ZDOTDIR}/custom/docker.zsh"
+source "${ZDOTDIR}/custom/esri.zsh"
+source "${ZDOTDIR}/custom/git.zsh"
+source "${ZDOTDIR}/custom/grep.zsh"
+source "${ZDOTDIR}/custom/history.zsh"
+source "${ZDOTDIR}/custom/macos.zsh"
+source "${ZDOTDIR}/custom/misc.zsh"
+source "${ZDOTDIR}/custom/programs.zsh"
+source "${ZDOTDIR}/custom/specify.zsh"
+source "${ZDOTDIR}/custom/zsh-vi-mode.zsh"
+source "${ZDOTDIR}/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "${ZDOTDIR}/custom/plugins/zsh-vi-mode/zsh-vi-mode.zsh"
 
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
-# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  zsh-vi-mode
-  zsh-autosuggestions
-)
-
-# Disable checks for update on startup of each shell - I do it in a scheduled
-# job instead. This reduces startup time by 7ms.
-zstyle ':omz:update' mode disabled
-
-ZSH_CUSTOM="${HOME}/site/git/dotfiles/zsh/custom"
-source $ZSH/oh-my-zsh.sh
-source ~/.p10k.zsh
+# Load powerlevel10k theme
+source "${ZDOTDIR}/custom/themes/powerlevel10k/powerlevel10k.zsh-theme"
+source "${ZDOTDIR}/.p10k.zsh"
 
 eval "$(fnm env --shell zsh --corepack-enabled)"

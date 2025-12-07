@@ -1,3 +1,7 @@
-node_modules
-zsh/custom/plugins
-zsh/custom/themes
+/node_modules/
+/npm/eslint-config/node_modules/
+/npm/eslint-config-react/node_modules/
+/zsh/custom/plugins/
+/zsh/custom/themes/
+/zsh/.zsh_history
+/zsh/cache/

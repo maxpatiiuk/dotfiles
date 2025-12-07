@@ -115,14 +115,6 @@ npm install -g npm-check-updates
 npm install -g clipboardy
 npm install -g typescript-language-server
 
-echo 🔵 Installing oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-echo 🔵 Deleting default oh-my-zsh configs
-rm "${HOME}/.oh-my-zsh/lib/bzr.zsh"
-rm "${HOME}/.oh-my-zsh/lib/diagnostics.zsh"
-rm "${HOME}/.oh-my-zsh/lib/directories.zsh"
-rm "${HOME}/.oh-my-zsh/lib/key-bindings.zsh"
-
 echo 🔵 Installing Powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${PWD}/zsh/custom/themes/powerlevel10k
 
@@ -142,11 +134,8 @@ ln -sf "${PWD}/vim/.ideavimrc" "${HOME}"
 ln -sf "${PWD}/vim/spell" "${HOME}/.vim/"
 
 echo 🔵 Linking misc files
-ln -sf "${PWD}/zsh/.zshrc" "${HOME}"
-ln -sf "${PWD}/zsh/.zprofile" "${HOME}"
-ln -sf "${PWD}/zsh/.p10k.zsh" "${HOME}"
+ln -sf "${PWD}/zsh/.zshenv" "${HOME}"
 ln -sf "${PWD}/zsh/.screenrc" "${HOME}"
-ln -sf "${PWD}/misc/.editorconfig" "${HOME}/site"
 sudo mkdir -p "/etc/docker/"
 sudo ln "${PWD}/docker/daemon.json" "/etc/docker/"
 

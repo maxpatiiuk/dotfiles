@@ -1,6 +1,5 @@
 # See https://unix.stackexchange.com/a/273863/324980
 
-HISTFILE="$HOME/.zsh_history"
 HISTSIZE=1000000
 SAVEHIST=1000000
 

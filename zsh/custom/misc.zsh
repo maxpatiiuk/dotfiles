@@ -1,5 +1,10 @@
 source ~/site/git/private-dotfiles/zsh/custom/env.sh
 
+# Clipboard:
+# pbcopy < input.txt
+# echo "text" | pbcopy
+# pbpaste > output.txt
+
 ### basic
 alias ls="ls -G1"
 alias ll="ls -GahlFT%"
