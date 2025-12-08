@@ -6,7 +6,7 @@
     <!--
 
 On updates to this file, run the following:
-plutil ~/site/git/dotfiles/scripts/uk.patii.max.task.plist &&
+plutil ~/s/git/dotfiles/scripts/uk.patii.max.task.plist &&
 launchctl unload ~/Library/LaunchAgents/uk.patii.max.task.plist &&
 launchctl load ~/Library/LaunchAgents/uk.patii.max.task.plist
 
@@ -23,7 +23,7 @@ launchctl start uk.patii.max.task
       <string>-c</string>
       <string>
         mkdir -p "$HOME/.local/state" &amp;&amp;
-        cd $HOME/site/git/dotfiles/scripts &amp;&amp;
+        cd $HOME/s/git/dotfiles/scripts &amp;&amp;
         ./weekly.sh >> "$HOME/.local/state/launchctl.log" 2>> "$HOME/.local/state/launchctl.error.log"
       </string>
     </array>

@@ -203,7 +203,7 @@
   },
   "workbench.editor.showTabs": "single",
   "vscode_custom_css.imports": [
-    "file:///Users/maxpatiiuk/site/git/dotfiles/vscode/styles/main.css"
+    "file:///Users/maxpatiiuk/s/git/dotfiles/vscode/styles/main.css"
   ],
   "editor.formatOnSave": true,
   "editor.overviewRulerBorder": false,
@@ -1717,7 +1717,7 @@
     { "domain": "github.com", "type": "GitHub", "name": "GitHub" },
     { "domain": "devtopia.esri.com", "type": "GitHub", "name": "DevTopia" }
   ],
-  "turbo.path": "/Users/mak13180/site/esri/arcgis-web-components/node_modules/turbo/bin/turbo",
+  "turbo.path": "/Users/mak13180/s/esri/arcgis-web-components/node_modules/turbo/bin/turbo",
   "workbench.statusBar.visible": false,
   "workbench.activityBar.location": "hidden",
   "typescript.preferences.preferTypeOnlyAutoImports": true,
@@ -1730,7 +1730,7 @@
   "gitlens.advanced.messages": {
     "suppressIntegrationRequestTimedOutWarning": true
   },
-  "git.defaultCloneDirectory": "~/site/git/",
+  "git.defaultCloneDirectory": "~/s/git/",
   "vim.neovimPath": "/opt/homebrew/bin/nvim",
   "files.dialog.defaultPath": "/Users/maxpatiiuik/Downloads",
   "window.zoomLevel": 1,

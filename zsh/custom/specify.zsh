@@ -1,1 +1,1 @@
-alias ss="cd ~/site/python/specify7/specifyweb/frontend/js_src/lib"
+alias ss="cd ~/s/python/specify7/specifyweb/frontend/js_src/lib"

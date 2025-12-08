@@ -42,8 +42,8 @@ function dcu() {
   # Run the containers with the watcher script
   # More info:
   # https://github.com/specify/specify-tools/tree/main/docker_container
-  scripts_location="~/site/git/specify0tools/docker_container/"
-  compose_location=$(node ~/site/git/code-share/javascript/projects/finder/finder.js docker-compose.yml)
+  scripts_location="~/s/git/specify0tools/docker_container/"
+  compose_location=$(node ~/s/git/code-share/javascript/projects/finder/finder.js docker-compose.yml)
   if [ $? -ne 0 ]; then
     echo "Unable to find 'docker-compose.yml"
     return 1

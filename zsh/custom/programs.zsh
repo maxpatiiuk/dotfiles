@@ -6,7 +6,7 @@
 # OR open local file/directory based on GitHub URL
 # Documentation: https://github.com/maxpatiiuk/github-resolver
 gu() {
-  local dir=~/site/javascript/github-resolver
+  local dir=~/s/javascript/github-resolver
   local output=$(node "${dir}/dist/main.js" $@)
   if [[ "${output}" =~ "^cd " ]]; then
     eval ${output}
@@ -17,7 +17,7 @@ gu() {
 alias guu='gu $(git symbolic-ref refs/remotes/origin/HEAD --short)'
 
 x() {
-  command=$(node ~/site/git/code-share/javascript/projects/npm-run/index.js "$@")
+  command=$(node ~/s/git/code-share/javascript/projects/npm-run/index.js "$@")
   echo "> $command"
   eval $command
 }
@@ -48,7 +48,7 @@ alias txib="x tsx --inspect-brk"
 # Curses-based CLI file explorer
 # Documentation: https://github.com/maxpatiiuk/dir-explorer
 f() {
-  script_dir="${HOME}/site/python/dir-explorer/dir_explorer"
+  script_dir="${HOME}/s/python/dir-explorer/dir_explorer"
 
   # Create a temp file
   export tempfile="/tmp/list_view_$RANDOM"
@@ -109,45 +109,45 @@ alias rmrf='rm -rf'
 # Find the `.idea/` directory among parent directories and open that
 # project in PyCharm
 # pycharm() {
-# open -na "PyCharm.app" --args $(node ~/site/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
+# open -na "PyCharm.app" --args $(node ~/s/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
 # }
 
 # Find the `.idea/` directory among parent directories and open that
 # project in WebStorm
 # webstorm() {
-# open -na "WebStorm.app" --args $(node ~/site/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
+# open -na "WebStorm.app" --args $(node ~/s/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
 # }
 
 # Find the `.idea/` directory among parent directories and open that
 # project in PhpStorm
 # phpstorm() {
-# open -na "PhpStorm.app" --args $(node ~/site/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
+# open -na "PhpStorm.app" --args $(node ~/s/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
 # }
 
 # Find the `.idea/` directory among parent directories and open that
 # project in IntelliJ
 # intellij() {
-# open -na "IntelliJ IDEA Ultimate.app" --args $(node ~/site/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
+# open -na "IntelliJ IDEA Ultimate.app" --args $(node ~/s/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
 # }
 
 # Find the `.idea/` directory among parent directories and open that
 # project in CLion
 # clion() {
-# open -na "CLion.app" --args $(node ~/site/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
+# open -na "CLion.app" --args $(node ~/s/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
 # }
 
 # Find the `.vscode/` directory among parent directories and open that
 # project in VS Code
 c() {
   if [ $# -eq 0 ]; then
-    local dir=$(node ~/site/git/code-share/javascript/projects/finder/finder.js .vscode || echo "./")
+    local dir=$(node ~/s/git/code-share/javascript/projects/finder/finder.js .vscode || echo "./")
 
     if [[ "$dir" == "$HOME" ]]; then
       dir="./"
     fi
 
     if [[ "$dir" == "./" ]]; then
-      dir=$(node ~/site/git/code-share/javascript/projects/finder/finder.js .git || echo "./")
+      dir=$(node ~/s/git/code-share/javascript/projects/finder/finder.js .git || echo "./")
     fi
 
     if [[ "$dir" == "$HOME" ]]; then
@@ -184,5 +184,5 @@ tts() {
   done
 }
 
-alias tts-nn="~/site/python/tts-nn/venv/bin/python3 ~/site/python/tts-nn/kokoro-onnx/examples/tool.py"
+alias tts-nn="~/s/python/tts-nn/venv/bin/python3 ~/s/python/tts-nn/kokoro-onnx/examples/tool.py"
 alias NODE_COMPILE_CACHE="$HOME/.cache/node/compile-cache"

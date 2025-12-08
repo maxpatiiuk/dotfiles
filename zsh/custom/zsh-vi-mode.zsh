@@ -5,7 +5,7 @@ ZVM_VI_HIGHLIGHT_BACKGROUND=green
 # Custom key bindings
 # (default zsh key bindings are reset by the zsh-vi-mode plugin)
 function zvm_after_init() {
-  source ~/site/git/dotfiles/zsh/custom/dirhistory.zsh
+  source ~/s/git/dotfiles/zsh/custom/dirhistory.zsh
 
   bindkey "^[[A" history-beginning-search-backward
   bindkey "^[[B" history-beginning-search-forward

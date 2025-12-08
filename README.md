@@ -19,7 +19,7 @@ Should do these things before reinstalling the system:
     - Calendar Plus
     - others?
 - Back up files not in git (Downloads, Desktop, ~/, etc)
-- Copy ~/site/git/custom_new_tab_page/imgs
+- Copy ~/s/git/custom_new_tab_page/imgs
 - Check checked out git repositories. Make sure:
   - working tree is clean
   - there are no unpushed commits
@@ -58,11 +58,11 @@ and set it as default in the terminal
 
 Manually import the following extension into Chrome:
 
-- ~/site/git/custom_new_tab_page/
+- ~/s/git/custom_new_tab_page/
 
-### [macOS only]
+### (macOS only)
 
-Configure `~/site/git/code-share/misc/vim_macos_associator`
+Configure `~/s/git/code-share/misc/vim_macos_associator`
 
 Associate `vim` with the files located in `common_plaintext_files`
 

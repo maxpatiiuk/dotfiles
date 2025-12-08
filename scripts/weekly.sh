@@ -10,9 +10,6 @@ echo 🔵 Maintaining Homebrew
 /opt/homebrew/bin/brew cleanup
 /opt/homebrew/bin/brew doctor
 
-echo 🔵 Updating PowerLevel10k
-git -C ../zsh/custom/themes/powerlevel10k pull
-
 echo 🔵 Updating npm
 npm install npm -g
 npm update -g
