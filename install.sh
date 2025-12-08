@@ -115,12 +115,9 @@ npm install -g npm-check-updates
 npm install -g clipboardy
 npm install -g typescript-language-server
 
-echo 🔵 Installing Powerlevel10k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${PWD}/zsh/custom/themes/powerlevel10k
-
 echo 🔵 Installing other ZSH plugins
-git clone https://github.com/zsh-users/zsh-autosuggestions ${PWD}/zsh/custom/plugins/zsh-autosuggestions
-git clone https://github.com/jeffreytse/zsh-vi-mode "${PWD}/zsh/custom/plugins/zsh-vi-mode"
+git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ${PWD}/zsh/custom/plugins/zsh-autosuggestions
+git clone --depth=1 https://github.com/jeffreytse/zsh-vi-mode "${PWD}/zsh/custom/plugins/zsh-vi-mode"
 
 echo 🔵 Replacing the default Git Config
 ln -sf "${PWD}/git/.gitconfig" "${HOME}"

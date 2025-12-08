@@ -2,6 +2,9 @@
 /npm/eslint-config/node_modules/
 /npm/eslint-config-react/node_modules/
 /zsh/custom/plugins/
-/zsh/custom/themes/
 /zsh/.zsh_history
 /zsh/cache/
+/zsh/*.zwc
+/zsh/*.zwc.old
+/zsh/custom/*.zwc
+/zsh/custom/*.zwc.old

@@ -26,8 +26,6 @@ alias pw="python3 -m http.server 8080"
 
 ### shortcuts
 alias v="nvim"
-alias vp="v package.json"
-alias neovim="nvim"
 alias vim="nvim"
 alias p="python3"
 alias n="node"

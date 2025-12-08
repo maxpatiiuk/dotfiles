@@ -194,9 +194,9 @@ export GPG_TTY=$TTY
 
 # Adapted from:
 # https://github.com/paulirish/git-recent/blob/master/git-recent
-branch='%(color:yellow)%(refname:short)%(color:reset)'
-spacer='%(color:black) %(color:reset)'
-format="\
+local branch='%(color:yellow)%(refname:short)%(color:reset)'
+local spacer='%(color:black) %(color:reset)'
+local format="\
 %(HEAD) \
 $branch|\
 %(color:bold red)%(objectname:short)%(color:reset) \
