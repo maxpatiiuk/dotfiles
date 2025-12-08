@@ -1,14 +1,14 @@
 export ESRI_RUN_PRE_COMMIT_ESLINT=1
 
-alias e="cd ~/s/esri"
-alias ej="cd ~/s/esri/arcgis-js-api-4"
-alias ej2="cd ~/s/esri/arcgis-js-api-42"
-alias ej3="cd ~/s/esri/arcgis-js-api-43"
-alias ej4="cd ~/s/esri/arcgis-js-api-44"
-alias ejd="cd ~/s/esri/arcgis-js-sdk"
-alias ec="cd ~/s/esri/calcite-design-system/packages/components/src/components"
-alias ec2="cd ~/s/esri/calcite-design-system-2/packages/components/src/components"
-alias ec3="cd ~/s/esri/calcite-design-system-3/packages/components/src/components"
+alias e="cd ~/s/e"
+alias ej="cd ~/s/e/arcgis-js-api-4"
+alias ej2="cd ~/s/e/arcgis-js-api-42"
+alias ej3="cd ~/s/e/arcgis-js-api-43"
+alias ej4="cd ~/s/e/arcgis-js-api-44"
+alias ejd="cd ~/s/e/arcgis-js-sdk"
+alias ec="cd ~/s/e/calcite-design-system/packages/components/src/components"
+alias ec2="cd ~/s/e/calcite-design-system-2/packages/components/src/components"
+alias ec3="cd ~/s/e/calcite-design-system-3/packages/components/src/components"
 
 # If I am working on multiple branches at once, or want to quickly test
 # something, it is convenient to have multiple cloned instances, rather
@@ -16,19 +16,19 @@ alias ec3="cd ~/s/esri/calcite-design-system-3/packages/components/src/component
 # build all monorepo packages, and then back
 function w() {
   if [[ $# -eq 0 && -t 0 ]]; then
-    cd ~/s/esri/arcgis-web-components
+    cd ~/s/e/arcgis-web-components
   else
     /usr/bin/w "$@"
   fi
 }
-alias w2="cd ~/s/esri/arcgis-web-components-2"
-alias ww="cd ~/s/esri/arcgis-web-components-2"
-alias w3="cd ~/s/esri/arcgis-web-components-3"
-alias www="cd ~/s/esri/arcgis-web-components-3"
-alias w4="cd ~/s/esri/arcgis-web-components-4"
-alias wwww="cd ~/s/esri/arcgis-web-components-4"
-alias w5="cd ~/s/esri/arcgis-web-components-5"
-alias w6="cd ~/s/esri/arcgis-web-components-6"
+alias w2="cd ~/s/e/arcgis-web-components-2"
+alias ww="cd ~/s/e/arcgis-web-components-2"
+alias w3="cd ~/s/e/arcgis-web-components-3"
+alias www="cd ~/s/e/arcgis-web-components-3"
+alias w4="cd ~/s/e/arcgis-web-components-4"
+alias wwww="cd ~/s/e/arcgis-web-components-4"
+alias w5="cd ~/s/e/arcgis-web-components-5"
+alias w6="cd ~/s/e/arcgis-web-components-6"
 
 function cdawc() {
   local subpath=$1
@@ -37,7 +37,7 @@ function cdawc() {
   if [[ $PWD =~ '(.*/arcgis-web-components[^/]*)' ]]; then
     basepath=${match[1]}
   else
-    basepath="$HOME/s/esri/arcgis-web-components"
+    basepath="$HOME/s/e/arcgis-web-components"
   fi
 
   cd "${basepath:-$MATCH}/${subpath}" || echo "Directory not found: ${basepath}/$subpath"
