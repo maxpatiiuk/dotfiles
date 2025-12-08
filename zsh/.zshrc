@@ -1,6 +1,3 @@
-typeset -F SECONDS
-START_TIME=$SECONDS
-
 #region Completions
 # Disable /etc/zshrc lookup
 SKIP_GLOBAL_COMPINIT=1
@@ -62,9 +59,3 @@ setopt interactivecomments
 
 # Enable fast pure-like prompt
 source "${ZDOTDIR}/prompt.zsh"
-
-eval "$(fnm env --shell zsh --corepack-enabled)"
-
-END_TIME=$SECONDS
-DURATION=$(awk "BEGIN { print $END_TIME - $START_TIME }")
-echo "Execution time: ${DURATION} seconds"

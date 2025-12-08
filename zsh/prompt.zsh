@@ -2,7 +2,7 @@
 autoload -Uz add-zsh-hook
 
 # State variables
-typeset -g GIT_PROMPT_STATUS=""
+typeset -g GIT_PROMPT_STATUS="     "
 typeset -g ASYNC_PROC_PID=0
 
 # This function triggers when the background process finishes and sends SIGUSR1

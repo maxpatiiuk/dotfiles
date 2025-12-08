@@ -24,9 +24,9 @@ brew install curl
 brew install wget
 brew install git
 brew install git-lfs
-brew install fnm
+# And manually update to 24 in zsh/.zprofile
+brew install node24
 brew install neovim
-brew install openvpn
 brew install ffmpeg
 brew install gnupg
 brew install pinentry-mac
@@ -34,7 +34,6 @@ brew install coreutils
 brew install grep
 brew install openssh
 brew install screen
-brew install terminal-notifier
 brew install yt-dlp
 brew install awk
 brew install macos-trash
@@ -101,19 +100,11 @@ chmod -R 700 ~/.gnupg
 echo 🔵 "pinentry-program ${PINETRY_LOCATION}" >> ~/.gnupg/gpg-agent.conf
 killall gpg-agent
 
-echo 🔵 Installing Node.js
-fnm install 20
-
 echo 🔵 Installing Rust
 rustup default stable
 
 echo 🔵 Install global Python dependencies
 pip install wheel
-
-echo 🔵 Install global NPM dependencies
-npm install -g npm-check-updates
-npm install -g clipboardy
-npm install -g typescript-language-server
 
 echo 🔵 Installing other ZSH plugins
 git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ${PWD}/zsh/custom/plugins/zsh-autosuggestions
