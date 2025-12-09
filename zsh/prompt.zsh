@@ -53,9 +53,11 @@ function async_git_worker() {
   fi
 
   local branch=""
+  local action=""
   local ahead_behind_arrows=""
   # Read .git/HEAD file
-  local head_file="$dir/.git/HEAD"
+  local git_dir="$dir/.git"
+  local head_file="$git_dir/HEAD"
   if [[ -f "$head_file" ]]; then
     local ref=$(<"$head_file")
     if [[ "$ref" == ref:\ refs/heads/* ]]; then
@@ -79,9 +81,24 @@ function async_git_worker() {
         (( nums[1] > 0 )) && ahead_behind_arrows+="⇡"
       fi
 
+      if [[ -f "$git_dir/MERGE_HEAD" ]]; then
+        action="%F{red}merge"
+      elif [[ -f "$git_dir/CHERRY_PICK_HEAD" ]]; then
+        action="%F{red}pick"
+      elif [[ -f "$git_dir/REVERT_HEAD" ]]; then
+        action="%F{red}revert"
+      elif [[ -f "$git_dir/BISECT_LOG" ]]; then
+        action="%F{red}bisect"
+      fi
+
     elif [[ "$ref" =~ ^[0-9a-f]{40}$ ]]; then
       # If commit, read first 8 chars
       branch=${ref:0:8}
+
+      # If we are not on a branch, we might be in a middle of a rebase
+      if [[ -f "$git_dir/REBASE_HEAD" ]]; then
+        action="%F{red}rebase"
+      fi
     fi
   fi
 
@@ -94,7 +111,7 @@ function async_git_worker() {
     dirty_star="*"
   fi
 
-  local prompt_meta=" ${branch} ${dirty_star}${ahead_behind_arrows}${stash_count}"
+  local prompt_meta=" ${branch} ${action}${dirty_star}${ahead_behind_arrows}${stash_count}"
   # Write result and signal parent
   echo -n "$prompt_meta" > "$result_file"
   kill -s USR1 "$parent_pid"
