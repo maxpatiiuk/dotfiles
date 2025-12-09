@@ -2,32 +2,40 @@
 autoload -Uz add-zsh-hook
 
 # State variables
-typeset -g GIT_PROMPT_STATUS="     "
+typeset -g GIT_PROMPT_STATUS=""
 typeset -g ASYNC_PROC_PID=0
+
+# If opening a new tab in VSCode, it is most likely in the same Git repository.
+# To reduce layout shift, pre-load the last known Git prompt status.
+local result_file="/tmp/zsh_prompt_git"
+if [[ -f "$result_file" ]]; then
+  GIT_PROMPT_STATUS=$(<"$result_file")
+fi
 
 # This function triggers when the background process finishes and sends SIGUSR1
 function TRAPUSR1() {
-  # Read the result from the temporary file
-  local result_file="/tmp/zsh_prompt_git_$$"
-  
-  if [[ -f "$result_file" ]]; then
-    GIT_PROMPT_STATUS=$(<"$result_file")
-    rm -f "$result_file"
-  fi
-
   # Reset the async PID tracker
   ASYNC_PROC_PID=0
 
-  # Trigger a redraw of the prompt
-  # zle reset-prompt checks if the line editor is active before redrawing
-  zle && zle reset-prompt
+  # Read the result from the temporary file
+  local new_status=""
+  if [[ -f "$result_file" ]]; then
+    new_status=$(<"$result_file")
+    if [[ "$new_status" != "$GIT_PROMPT_STATUS" ]]; then
+      GIT_PROMPT_STATUS="$new_status"
+
+      # Trigger a redraw of the prompt
+      # zle reset-prompt checks if the line editor is active before redrawing
+      zle && zle reset-prompt
+    fi
+  fi
+
 }
 
 # 2. The Background Worker
 # This function runs inside a subshell
 function async_git_worker() {
-  local result_file=$1
-  local parent_pid=$2
+  local parent_pid=$1
   
   # Loop up till folder with .git folder is found
   local dir="$PWD"
@@ -97,11 +105,9 @@ function start_async_git_fetch() {
     kill -s TERM "$ASYNC_PROC_PID" 2>/dev/null
   fi
   
-  local result_file="/tmp/zsh_prompt_git_$$"
-  
   # Start the worker in background
   # Passing current PID ($$) so worker knows who to signal
-  async_git_worker "$result_file" "$$" &! 
+  async_git_worker "$$" &! 
   
   # Store the background PID
   ASYNC_PROC_PID=$!

@@ -31,6 +31,7 @@ setopt always_to_end
 # Disable unused feature & keybindings
 unsetopt flowcontrol
 # Inherit ls colors for file completions
+# TODO: set LS_COLORS via dir_colors(replace dir_explorer?)
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 # Normalize-away double slashes during completion
 zstyle ':completion:*' squeeze-slashes true
