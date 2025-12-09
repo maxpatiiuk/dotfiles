@@ -4,6 +4,8 @@ autoload -Uz add-zsh-hook
 # State variables
 typeset -g GIT_PROMPT_STATUS=""
 typeset -g ASYNC_PROC_PID=0
+typeset -g LAST_CMD_START_TIME=""
+typeset -g LAST_CMD_DURATION_PROMPT=""
 
 # If opening a new tab in VSCode, it is most likely in the same Git repository.
 # To reduce layout shift, pre-load the last known Git prompt status.
@@ -99,7 +101,10 @@ function async_git_worker() {
 }
 
 # Runs before every prompt display
-function start_async_git_fetch() {
+function precmd_work() {
+  # Update last command's duration
+  set_cmd_duration_prompt
+
   # Kill previous background process if it's still running (user typed fast)
   if [[ $ASYNC_PROC_PID -ne 0 ]]; then
     kill -s TERM "$ASYNC_PROC_PID" 2>/dev/null
@@ -113,11 +118,37 @@ function start_async_git_fetch() {
   ASYNC_PROC_PID=$!
 }
 
+# Record start time before each command runs
+function record_cmd_start_time() {
+  LAST_CMD_START_TIME=$SECONDS
+}
+
+# Compute and set duration segment if command > 5s
+function set_cmd_duration_prompt() {
+  integer elapsed
+  typeset -g LAST_CMD_DURATION_PROMPT=
+  local start=${LAST_CMD_START_TIME:-$SECONDS}
+  (( elapsed = SECONDS - start ))
+  if (( elapsed > 5 )); then
+    local days=$(( elapsed / 60 / 60 / 24 ))
+    local hours=$(( elapsed / 60 / 60 % 24 ))
+    local minutes=$(( elapsed / 60 % 60 ))
+    local seconds=$(( elapsed % 60 ))
+    LAST_CMD_DURATION_PROMPT="%F{yellow}"
+    (( days > 0 )) && LAST_CMD_DURATION_PROMPT+="${days}d "
+    (( hours > 0 )) && LAST_CMD_DURATION_PROMPT+="${hours}h "
+    (( minutes > 0 )) && LAST_CMD_DURATION_PROMPT+="${minutes}m "
+    LAST_CMD_DURATION_PROMPT+="${seconds}s%f"
+  fi
+}
+
 # Update prompt before any command
-add-zsh-hook precmd start_async_git_fetch
+add-zsh-hook precmd precmd_work
+add-zsh-hook preexec record_cmd_start_time
 
 # Allow prompt variable substitution
 setopt prompt_subst
 
 # Make prompt character red if previous command exited with non-zero
 PROMPT='%F{blue}%~%f${GIT_PROMPT_STATUS}%(?.%F{135}.%F{red})❯%f '
+RPROMPT='${LAST_CMD_DURATION_PROMPT}'
