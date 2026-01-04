@@ -1,43 +1,34 @@
 {
+  // Retrieved by running the following in an exported profile
+  // node -e 'const fs=require("fs");const p="~/d/dev.code-profile";const outer=JSON.parse(fs.readFileSync(p,"utf8"));const ext=JSON.parse(outer.extensions||"[]");const names=[...new Set(ext.filter(e=>!e.disabled).map(e=>(e.displayName||"").trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b,undefined,{sensitivity:"base"}));process.stdout.write(names.join("\n"));'
   "meta.extensions": [
+    "Code Spell Checker",
     "Custom CSS and JS Loader",
-    "Shell Syntax",
-    "Tailwind CSS IntelliSense",
     "ESLint",
-    "GitLens — Git supercharged",
-    "Prettier - Code formatter",
-    "LintLens — ESLint rules made easier",
+    "GitHub Actions",
     "GitHub Copilot",
     "GitHub Copilot Chat",
-    "GitHub Actions",
-    "Pylance",
-    "Remote - SSH",
-    "Remote - SSH: Editing Configuration Files",
-    "Remote Explorer",
-    "YAML",
-    "rust-analyzer",
-    "Code Spell Checker",
-    "Stylelint",
-    "Vitest",
-    "Vim",
-    "TODO Highlight",
-    "Pretty TypeScript Errors",
     "Markdown All in One",
-    "Monokai Light"
+    "Monokai Light",
+    "Prettier - Code formatter",
+    "Pretty TypeScript Errors",
+    "rust-analyzer",
+    "Search node_modules",
+    "TODO Highlight",
+    "Vim",
+    "YAML"
   ],
   "editor.accessibilityPageSize": 1,
   "editor.accessibilitySupport": "off",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "notebook.formatOnSave.enabled": true,
   "editor.inlineSuggest.enabled": true,
-  "tabnine.experimentalAutoImports": true,
   "files.defaultLanguage": "markdown",
   "editor.minimap.enabled": false,
   "editor.formatOnType": true,
   "editor.mouseWheelScrollSensitivity": 0.5,
   "editor.scrollBeyondLastLine": false,
   "workbench.list.mouseWheelScrollSensitivity": 0.5,
-  "terminal.integrated.mouseWheelScrollSensitivity": 0.7,
   "workbench.reduceMotion": "on",
   "editor.linkedEditing": true,
   "emmet.triggerExpansionOnTab": true,
@@ -48,6 +39,9 @@
   "editor.tabSize": 2,
   "editor.renderWhitespace": "trailing",
   "vim.normalModeKeyBindingsNonRecursive": [
+    // Make soft-wrap usable
+    { "before": ["j"], "after": ["g", "j"] },
+    { "before": ["k"], "after": ["g", "k"] },
     {
       // Disable shift+J (joined lines) as I keep triggering it accidentally
       "before": ["J"],
@@ -70,6 +64,10 @@
     // Navigation
     {
       "before": ["g", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["h", "g"],
       "commands": ["workbench.action.quickOpen"]
     },
     {
@@ -154,7 +152,9 @@
     }
   ],
   "vim.handleKeys": {
-    "<C-l>": false
+    "<C-l>": false,
+    "j": false,
+    "k": false
   },
   "explorer.compactFolders": false,
   "editor.rulers": [80],
@@ -193,6 +193,8 @@
     "**/*.js": {
       "when": "$(basename).ts"
     },
+    "**/*.zwc": true,
+    "**/*.zwc.old": true,
     "**/*.js.map": true,
     "**/*.min.js": true,
     "**/**.js": {
@@ -1097,7 +1099,6 @@
   "todo-tree.tree.buttons.groupByTag": false,
   "todo-tree.regex.regex": "(^|//|#|<!--|\\*|/\\*|^[ \\t]*(-|\\d+.))\\s*($TAGS).*(\\n\\s*//\\s{2,}.*)*",
   "todo-tree.tree.scanMode": "workspace only",
-  "git.openRepositoryInParentFolders": "always",
   "window.newWindowDimensions": "fullscreen",
   "editor.suggest.localityBonus": true,
   "grammarly.config.suggestions.SentenceVariety": false,
@@ -1198,7 +1199,7 @@
   "terminal.external.osxExec": "iTerm.pp",
   "githubPullRequests.fileListLayout": "tree",
   "githubIssues.issueBranchTitle": "${user}/#${issueNumber}",
-  "terminal.integrated.scrollback": 40000,
+  "terminal.integrated.scrollback": 80000,
   "debug.confirmOnExit": "always",
   "terminal.integrated.confirmOnExit": "hasChildProcesses",
   "editor.cursorBlinking": "solid",
@@ -1219,9 +1220,8 @@
   "editor.scrollbar.horizontalScrollbarSize": 6,
   "editor.scrollBeyondLastColumn": 2,
   "editor.unfoldOnClickAfterEndOfLine": true,
-  "editor.wrappingIndent": "indent",
+  "editor.wrappingIndent": "deepIndent",
   "editor.cursorSurroundingLines": 8,
-  "editor.find.autoFindInSelection": "multiline",
   "editor.find.seedSearchStringFromSelection": "selection",
   "diffEditor.experimental.showMoves": true,
   "diffEditor.experimental.useVersion2": true,
@@ -1253,7 +1253,6 @@
   "search.defaultViewMode": "tree",
   "search.searchEditor.doubleClickBehaviour": "openLocationToSide",
   "search.sortOrder": "type",
-  "debug.console.acceptSuggestionOnEnter": "on",
   "debug.onTaskErrors": "showErrors",
   "testing.automaticallyOpenPeekView": "failureAnywhere",
   "scm.alwaysShowActions": true,
@@ -1269,7 +1268,7 @@
   "github.copilot.enable": {
     "*": true,
     "plaintext": true,
-    "markdown": true,
+    "markdown": false,
     "scminput": false
   },
   "browse-lite.chromeExecutable": "/Applications/Google Chrome Beta.app/Contents/MacOS/Google Chrome Beta",
@@ -1428,7 +1427,6 @@
   "vite.https": true,
   "redhat.telemetry.enabled": true,
   "yaml.format.enable": false,
-  "js/ts.implicitProjectConfig.checkJs": true,
   "abracadabra.addNumericSeparator.showInQuickFix": false,
   "abracadabra.convertForEachToForOf.showInQuickFix": false,
   "abracadabra.convertIfElseToSwitch.showInQuickFix": false,
@@ -1457,7 +1455,6 @@
   "csv-preview.resizeColumns": "all",
   "githubPullRequests.commentExpandState": "collapseAll",
   "stylelint.validate": ["css", "less", "postcss", "scss"],
-  "explorer.confirmDragAndDrop": false,
   "editor.suggest.showIcons": false,
   "workbench.editorAssociations": {
     "git-rebase-todo": "default"
@@ -1704,7 +1701,7 @@
   "cloudcode.project": "crafty-nova-423423-i2",
   "cloudcode.duetAI.project": "crafty-nova-423423-i2",
   "cloudcode.autoDependencies": "off",
-  "prettier.proseWrap": "always",
+  /*"prettier.proseWrap": "always",*/
   "vitest.configSearchPatternExclude": "**/{node_modules,tests,.*}/**",
   "workbench.editor.customLabels.patterns": {
     "**/src/**/index.{ts,tsx}": "${dirname}/${filename}",
@@ -1717,23 +1714,19 @@
     { "domain": "github.com", "type": "GitHub", "name": "GitHub" },
     { "domain": "devtopia.esri.com", "type": "GitHub", "name": "DevTopia" }
   ],
-  "turbo.path": "/Users/mak13180/s/esri/arcgis-web-components/node_modules/turbo/bin/turbo",
+  "turbo.path": "/Users/mak13180/s/e/arcgis-web-components/node_modules/turbo/bin/turbo",
   "workbench.statusBar.visible": false,
-  "workbench.activityBar.location": "hidden",
   "typescript.preferences.preferTypeOnlyAutoImports": true,
   "diffEditor.renderSideBySide": false,
   "search-node-modules.useLastFolder": true,
   "window.autoDetectHighContrast": false,
   "typescript.tsc.autoDetect": "off",
   "diffEditor.experimental.useTrueInlineView": true,
-  "terminal.integrated.suggest.enabled": true,
+  "terminal.integrated.suggest.enabled": false,
   "gitlens.advanced.messages": {
     "suppressIntegrationRequestTimedOutWarning": true
   },
-  "git.defaultCloneDirectory": "~/s/git/",
   "vim.neovimPath": "/opt/homebrew/bin/nvim",
-  "files.dialog.defaultPath": "/Users/maxpatiiuik/Downloads",
-  "window.zoomLevel": 1,
   "todohighlight.include": [
     "**/*.js",
     "**/*.ts",
@@ -1848,13 +1841,9 @@
     "packages/**/storybook-static-external",
     "packages/**/storybook-static-composite",
     "packages/**/.turbo",
-    "packages/coding-packages/coding-components/.monaco-workers/",
     ".turbo",
-    ".yarn",
-    ".vscode/**",
-    ".github/**"
+    ".yarn"
   ],
-  "breadcrumbs.enabled": false,
   "npm.autoDetect": "off",
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
@@ -1863,5 +1852,62 @@
   "window.customTitleBarVisibility": "never",
   "testing.automaticallyOpenTestResults": "openExplorerOnTestStart",
   "editor.pasteAs.preferences": ["text.updateImports"],
-  "eslint.problems.shortenToSingleLine": true
+  "eslint.problems.shortenToSingleLine": true,
+  "window.newWindowProfile": "Default",
+  "debug.allowBreakpointsEverywhere": true,
+  "lldb.library": "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
+  "lldb.launch.expressions": "native",
+  "git.blame.statusBarItem.enabled": false,
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "Use conventional commit message format like kind(scope): lowercase subject. Kind can be one of: feat fix chore docs revert refactor build ci perf style test. Common sscopes include short package names and folder names"
+    }
+  ],
+  "accessibility.voice.speechTimeout": 1500,
+  "editor.emptySelectionClipboard": false,
+  "git.openRepositoryInParentFolders": "never",
+  "git.replaceTagsWhenPull": true,
+  "cSpell.enabledNotifications": {
+    "Maximum Word Length Exceeded": false,
+    "Average Word Length too Long": false,
+    "Lines too Long": false
+  },
+  "eslint.workingDirectories": ["Frontend"],
+  "workbench.secondarySideBar.defaultVisibility": "visible",
+  "github.copilot.nextEditSuggestions.fixes": true,
+  "explorer.autoRevealExclude": {
+    "**/bower_components": false,
+    "**/node_modules": false
+  },
+  "rewrap.autoWrap.enabled": true,
+  "rewrap.autoWrap.notification": "text",
+  "workbench.activityBar.location": "hidden",
+  "todohighlight.isEnable": false,
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  "git.blame.editorDecoration.enabled": false,
+  "gitBlameW77.decorationShowHash": false,
+  "betterGitLineBlame.showInlineAnnotations": true,
+  "update.mode": "start",
+  "workbench.tree.stickyScrollMaxItemCount": 15,
+  "git.blame.editorDecoration.template": "${subject}, ${authorName} ${authorDateAgo} https://devtopia.esri.com/WebGIS/arcgis-web-components/commit/${hashShort}",
+  "docker.extension.enableComposeLanguageServer": false,
+  "terminal.integrated.mouseWheelScrollSensitivity": 0.1,
+  "editor.stickyScroll.maxLineCount": 15,
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "js/ts.implicitProjectConfig.checkJs": true,
+  "github.copilot.nextEditSuggestions.allowWhitespaceOnlyChanges": false,
+  "js/ts.hover.maximumLength": 800,
+  "typescript.tsserver.maxTsServerMemory": 4096,
+  "explorer.openEditors.visible": 10,
+  "terminal.integrated.shellIntegration.decorationsEnabled": "never"
 }
