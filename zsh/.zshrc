@@ -60,3 +60,14 @@ setopt interactivecomments
 
 # Enable fast pure-like prompt
 source "${ZDOTDIR}/prompt.zsh"
+
+# Enable VSCode shell integration. Primarily because if you don't do this,
+# VSCode uses slower fallback integration
+if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+  # Use Portable VSCode if it exists.
+  if [[ -r "$HOME/Documents/code/Code.app/Contents/Resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-rc.zsh" ]]; then
+    . "$HOME/Documents/code/Code.app/Contents/Resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-rc.zsh"
+  elif [[ -r "/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-rc.zsh" ]]; then
+    . "/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-rc.zsh"
+  fi
+fi

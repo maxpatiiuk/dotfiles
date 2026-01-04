@@ -4,6 +4,7 @@
 /zsh/custom/plugins/
 /zsh/.zsh_history
 /zsh/cache/
+/zsh/.zsh_sessions/
 /zsh/*.zwc
 /zsh/*.zwc.old
 /zsh/custom/*.zwc

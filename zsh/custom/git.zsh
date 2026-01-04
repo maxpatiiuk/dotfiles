@@ -103,6 +103,7 @@ gid() {
 }
 alias gri="git rebase --interactive"
 alias gru='git rebase $(git symbolic-ref refs/remotes/origin/HEAD --short)'
+alias gr='git rebase '
 # Do not open the editor to edit the commit message by default
 alias grc="GIT_EDITOR=: git rebase --continue"
 alias grce="git rebase --continue"

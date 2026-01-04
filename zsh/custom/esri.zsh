@@ -89,6 +89,9 @@ function wt() {
 function wtc() {
   cdawc "packages/test-packages/lit-package-consumer"
 }
+function wch() {
+  cdawc "packages/charts-packages/charts-components"
+}
 function wco() {
   cdawc "packages/coding-packages/coding-components"
 }
@@ -107,7 +110,7 @@ function wi() {
 function wia() {
   cdawc "packages/instant-apps-packages/instant-apps-components"
 }
-function wmco() {
+function wmc() {
   cdawc "packages/map-config-packages/map-config-components"
 }
 function wpo() {
