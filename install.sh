@@ -57,6 +57,9 @@ brew install --cask vnc-viewer
 brew install --cask transmission
 brew install --cask raycast
 
+echo 🔵 Install pnpm
+npm install --global pnpm
+
 # Set macOS defaults
 "${PWD}./macos.sh"
 

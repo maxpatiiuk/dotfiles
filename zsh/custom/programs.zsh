@@ -39,6 +39,8 @@ alias xtw="x t-w"
 alias xd="x d"
 alias xw="x watch"
 alias xv="x vite"
+alias xvb="x vite build"
+alias xivb="xi vite build"
 alias xvt="x vitest"
 alias tc="x tsc"
 alias tx="x tsx"
@@ -185,4 +187,5 @@ tts() {
 }
 
 alias tts-nn="~/s/python/tts-nn/venv/bin/python3 ~/s/python/tts-nn/kokoro-onnx/examples/tool.py"
-alias NODE_COMPILE_CACHE="$HOME/.cache/node/compile-cache"
+
+export NODE_COMPILE_CACHE=/tmp/node-compile-cache

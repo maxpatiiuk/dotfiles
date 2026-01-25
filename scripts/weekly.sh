@@ -14,6 +14,9 @@ echo 🔵 Updating npm
 npm install npm -g
 npm update -g
 
+echo 🔵 Updating pnpm
+pnpm self-update
+
 echo 🔵 Updating rust
 rustup update
 
