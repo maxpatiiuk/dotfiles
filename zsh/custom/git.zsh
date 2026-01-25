@@ -183,7 +183,7 @@ gwea() {
     print -u2 "error: this command takes no arguments"
     return 1
   fi
-  gwe :/
+  git restore -SW :/
 }
 # "gwd" was too similar to "gdw", but much more destructive, so doubled w
 alias gwwd="gww ."

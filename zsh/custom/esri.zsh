@@ -16,11 +16,12 @@ alias ec3="cd ~/s/e/calcite-design-system-3/packages/components/src/components"
 # build all monorepo packages, and then back
 function w() {
   if [[ $# -eq 0 && -t 0 ]]; then
-    cd ~/s/e/arcgis-web-components
+    cdawc ""
   else
     /usr/bin/w "$@"
   fi
 }
+alias w1="cd ~/s/e/arcgis-web-components"
 alias w2="cd ~/s/e/arcgis-web-components-2"
 alias ww="cd ~/s/e/arcgis-web-components-2"
 alias w3="cd ~/s/e/arcgis-web-components-3"
@@ -57,7 +58,7 @@ function wll() {
 }
 function wc() {
   if [[ $# -eq 0 && -t 0 ]]; then
-    cdawc "packages/support-packages/components-controllers"
+    cdawc "packages/coding-packages/coding-components"
   else
     /usr/bin/wc "$@"
   fi
@@ -92,17 +93,14 @@ function wtc() {
 function wch() {
   cdawc "packages/charts-packages/charts-components"
 }
-function wco() {
-  cdawc "packages/coding-packages/coding-components"
-}
 function wd() {
   cdawc "packages/docs/project/docs"
 }
-function wcom() {
+function wco() {
   cdawc "packages/common-packages/common-components"
 }
 function wai() {
-  cdawc "packages/common-packages/ai-components"
+  cdawc "packages/ai-packages/ai-components"
 }
 function wi() {
   cdawc "packages/imagery-packages/imagery-components"
