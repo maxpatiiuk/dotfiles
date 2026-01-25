@@ -89,8 +89,8 @@ alias notify="afplay /System/Library/Sounds/Funk.aiff &>/dev/null &"
 # Tip: call it like `yt <URL> && notify` to receive a completion notification
 #
 # Call with "--batch-file" to batch download multiple
-alias yt='yt-dlp --no-playlist --sponsorblock-remove sponsor,intro,outro,selfpromo,interaction -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4"'
-alias yta='yt-dlp --no-playlist --sponsorblock-remove sponsor,intro,outro,selfpromo,interaction -f "bestaudio[acodec!=opus]/bestaudio/best" --extract-audio --audio-format m4a --audio-quality 0'
+alias yt='noglob yt-dlp --no-playlist --sponsorblock-remove sponsor,intro,outro,selfpromo,interaction -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4"'
+alias yta='noglob yt-dlp --no-playlist --sponsorblock-remove sponsor,intro,outro,selfpromo,interaction -f "bestaudio[acodec!=opus]/bestaudio/best" --extract-audio --audio-format m4a --audio-quality 0'
 alias ch='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome '
 alias chb='/Applications/Google\ Chrome\ Beta.app/Contents/MacOS/Google\ Chrome\ Beta '
 alias r='cargo'
