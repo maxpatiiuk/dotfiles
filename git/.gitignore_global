@@ -1,9 +1,3 @@
-*~
-*.swp
 .DS_Store
-.idea
-*.orig
-*.bak
 nohup.out
-.python-version
 .vscode

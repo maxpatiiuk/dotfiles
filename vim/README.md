@@ -1,5 +1,5 @@
 # Vim
 
-My vim setup
+My NeoVim setup
 
-I used `Plug` for plugin management
+Day to day, I mainly use VS Code with Vim keybindings extension.

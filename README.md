@@ -5,7 +5,7 @@ A monorepo containing my `.dotfiles` and `*.rc` dotfiles.
 It also contains a handy `install.sh` and reinstall checklist for speeding up
 the setup after system reinstall.
 
-All of these files were tested to work on macOS Big Sur and Ubuntu Linux.
+All of these files were tested to work on macOS Big Sur. Some also work on Ubuntu Linux.
 
 ## Pre-install
 
@@ -72,14 +72,13 @@ Manually download the following programs:
 
 - DaVinci Resolve - via App Store (not available in Homebrew)
 - Adobe Photoshop (not available in Homebrew)
-- ExpressVPN (Homebrew version crashes)
 
 Configure iTerm to use zsh/iterm2 folder for storing configuration and import
 the zsh/iterm2/Deault.json profile
 
 Import Raycast config
 
-### [Ubuntu only]
+### (Ubuntu only)
 
 Configure the terminal to use the same keyboard shortcuts and theme as macOS
 
