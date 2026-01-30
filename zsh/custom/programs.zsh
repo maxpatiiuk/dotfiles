@@ -43,9 +43,6 @@ alias xvb="x vite build"
 alias xivb="xi vite build"
 alias xvt="x vitest"
 alias tc="x tsc"
-alias tx="x tsx"
-alias txi="x tsx --inspect"
-alias txib="x tsx --inspect-brk"
 
 # Curses-based CLI file explorer
 # Documentation: https://github.com/maxpatiiuk/dir-explorer
@@ -108,36 +105,6 @@ alias mvd='mv -f'
 
 alias rmrf='rm -rf'
 
-# Find the `.idea/` directory among parent directories and open that
-# project in PyCharm
-# pycharm() {
-# open -na "PyCharm.app" --args $(node ~/s/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
-# }
-
-# Find the `.idea/` directory among parent directories and open that
-# project in WebStorm
-# webstorm() {
-# open -na "WebStorm.app" --args $(node ~/s/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
-# }
-
-# Find the `.idea/` directory among parent directories and open that
-# project in PhpStorm
-# phpstorm() {
-# open -na "PhpStorm.app" --args $(node ~/s/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
-# }
-
-# Find the `.idea/` directory among parent directories and open that
-# project in IntelliJ
-# intellij() {
-# open -na "IntelliJ IDEA Ultimate.app" --args $(node ~/s/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
-# }
-
-# Find the `.idea/` directory among parent directories and open that
-# project in CLion
-# clion() {
-# open -na "CLion.app" --args $(node ~/s/git/code-share/javascript/projects/finder/finder.js .idea || echo "./") $@
-# }
-
 # Find the `.vscode/` directory among parent directories and open that
 # project in VS Code
 c() {
@@ -168,15 +135,6 @@ compdef c=code
 ce() {
   c $@ && exit
 }
-
-# alias mariadb="docker run \
-# -p 127.0.0.1:3306:3306 \
-# -v test-db:/var/lib/mysql \
-# -v ${HOME}/Downloads/:/sql/ \
-# -e MARIADB_ROOT_PASSWORD=root \
-# --name test \
-# --rm \
-# mariadb"
 
 tts() {
   npx text-hoarder process --output-dir text-hoarder-processed --force-output-dir --glob $@
