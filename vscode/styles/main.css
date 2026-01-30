@@ -138,3 +138,10 @@
 .codicon-none {
   user-select: text !important;
 }
+
+/**
+ * Disable cursor blinking in PR review comments
+ */
+.cursor.monaco-mouse-cursor-text {
+  visibility: inherit !important;
+}
