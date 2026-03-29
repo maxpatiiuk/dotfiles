@@ -152,3 +152,4 @@ tts() {
 alias tts-nn="~/s/python/tts-nn/venv/bin/python3 ~/s/python/tts-nn/kokoro-onnx/examples/tool.py"
 
 export NODE_COMPILE_CACHE=/tmp/node-compile-cache
+export TURBO_CACHE_DIR=/tmp/.turbo-cache

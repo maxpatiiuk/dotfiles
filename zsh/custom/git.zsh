@@ -46,7 +46,7 @@ gt() {
     git fetch
     # branch already exists
     if git show-ref --verify --quiet "refs/heads/$branch_name" || git ls-remote --exit-code --heads origin refs/heads/"$branch_name"; then
-      git switch --ignore-other-worktrees "$branch_name"
+      git switch "$branch_name"
     # branch does not exist
     else
       git switch -c "$branch_name"
@@ -54,9 +54,27 @@ gt() {
   # has more than one argument - custom command
   elif [[ $# -gt 0 ]]; then
     git switch "$@"
-  # no arguments - switch to main
+  # no arguments - switch to default branch
   else
-    git switch --ignore-other-worktrees $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")
+    local default_branch_ref
+    default_branch_ref=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null)
+    local default_branch=${default_branch_ref#refs/remotes/origin/}
+
+    # If in worktree and there is a branch `default.worktreeId``, switch to it
+    # instead of `default`
+    local target_branch="$default_branch"
+    local git_dir
+    git_dir=$(git rev-parse --git-dir 2>/dev/null)
+    if [[ "$git_dir" == */.git/worktrees/* ]]; then
+      local worktree_git_id=${git_dir##*/}
+      local worktree_default_branch="${default_branch}.${worktree_git_id}"
+
+      if git show-ref --verify --quiet "refs/heads/$worktree_default_branch" || git ls-remote --exit-code --heads origin "refs/heads/$worktree_default_branch" >/dev/null 2>&1; then
+        target_branch="$worktree_default_branch"
+      fi
+    fi
+
+    git switch "$target_branch"
   fi
 
   # If running with -c flag and the branch already exists, or if creating a new

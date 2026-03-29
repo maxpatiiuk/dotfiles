@@ -15,6 +15,7 @@
   excludesfile = ~/s/git/dotfiles/git/.gitignore_global
   hooksPath = ~/s/git/pre-commit-tools/pre-commit-tools
   untrackedCache = true
+  fsmonitor = true
 [apply]
   whitespace = fix
 [branch]

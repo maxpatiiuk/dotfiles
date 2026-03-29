@@ -24,7 +24,7 @@ brew install curl
 brew install wget
 brew install git
 brew install git-lfs
-# And manually update to 24 in zsh/.zprofile
+# And manually update to 24 in scripts/weekly.sh
 brew install node24
 brew install neovim
 brew install ffmpeg
@@ -40,6 +40,8 @@ brew install macos-trash
 brew install gh
 brew install rustup
 brew install python
+# Used by Copilot
+brew install ripgrep
 brew install --cask iterm2
 # WARNING: this would install an Intel version of Docker
 brew install --cask docker
