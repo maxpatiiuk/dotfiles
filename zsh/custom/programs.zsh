@@ -37,6 +37,8 @@ alias xtu="x t-u"
 alias xtw="x t-w"
 # dev or debug
 alias xd="x d"
+# preview
+alias xp="x p"
 alias xw="x watch"
 alias xv="x vite"
 alias xvb="x vite build"
@@ -86,8 +88,11 @@ alias notify="afplay /System/Library/Sounds/Funk.aiff &>/dev/null &"
 # Tip: call it like `yt <URL> && notify` to receive a completion notification
 #
 # Call with "--batch-file" to batch download multiple
-alias yt='noglob yt-dlp --no-playlist --sponsorblock-remove sponsor,intro,outro,selfpromo,interaction -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4"'
-alias yta='noglob yt-dlp --no-playlist --sponsorblock-remove sponsor,intro,outro,selfpromo,interaction -f "bestaudio[acodec!=opus]/bestaudio/best" --extract-audio --audio-format m4a --audio-quality 0'
+# Using av1,webm,h265,h264 in priority. Using opus,mp4a audio
+# Using mkv container as it is flexible for different video/audio combinations
+# Unsetting env vars to avoid interference when run inside VSCode
+alias yt='noglob env -u NODE_OPTIONS -u VSCODE_INSPECTOR_OPTIONS yt-dlp --no-playlist --sponsorblock-remove sponsor,intro,outro,selfpromo,interaction --merge-output-format mkv -f "bestvideo[height<=1440][vcodec^=av01]+bestaudio[acodec^=opus]/bestvideo[height<=1440][vcodec^=vp9]+bestaudio[acodec^=opus]/bestvideo[height<=1440][vcodec^=avc1]+bestaudio[acodec^=mp4a]/best[height<=1440]"'
+alias yta='noglob env -u NODE_OPTIONS -u VSCODE_INSPECTOR_OPTIONS yt-dlp --no-playlist --sponsorblock-remove sponsor,intro,outro,selfpromo,interaction -f "bestaudio[acodec!=opus]/bestaudio/best" --extract-audio --audio-format m4a --audio-quality 0'
 alias ch='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome '
 alias chb='/Applications/Google\ Chrome\ Beta.app/Contents/MacOS/Google\ Chrome\ Beta '
 alias r='cargo'

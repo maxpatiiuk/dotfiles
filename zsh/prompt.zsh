@@ -39,13 +39,28 @@ function TRAPUSR1() {
 function async_git_worker() {
   local parent_pid=$1
   
-  # Loop up till folder with .git folder is found
+  # Loop up till folder with .git metadata is found
   local dir="$PWD"
-  while [[ "$dir" != "/" && ! -d "$dir/.git" ]]; do
+  local git_dir=""
+  local git_common_dir=""
+  while [[ "$dir" != "/" && "$(dirname "$dir")" != "/" ]]; do
+    if [[ -d "$dir/.git" ]]; then
+      git_dir="$dir/.git"
+      git_common_dir="$git_dir"
+      break
+    # non-main worktree
+    elif [[ -f "$dir/.git" ]]; then
+      local gitdir_ref
+      gitdir_ref=$(<"$dir/.git")
+      git_dir=${gitdir_ref#gitdir: }
+      git_common_dir="${git_dir%/.git/*}/.git"
+      break
+    fi
+
     dir=$(dirname "$dir")
   done
 
-  if [[ "$dir" == "/" ]]; then
+  if [[ -z "$git_dir" ]]; then
     # Not a git repo
     echo -n " " > "$result_file"
     kill -s USR1 "$parent_pid"
@@ -56,7 +71,6 @@ function async_git_worker() {
   local action=""
   local ahead_behind_arrows=""
   # Read .git/HEAD file
-  local git_dir="$dir/.git"
   local head_file="$git_dir/HEAD"
   if [[ -f "$head_file" ]]; then
     local ref=$(<"$head_file")
@@ -104,7 +118,10 @@ function async_git_worker() {
 
 
   # Count stashes
-  local stash_count=$(git rev-list --walk-reflogs --count refs/stash 2>/dev/null || echo "")
+  local stash_count=""
+  if [[ -f "$git_common_dir/logs/refs/stash" ]]; then
+    stash_count=${$(wc -l < "$git_common_dir/logs/refs/stash")//[[:space:]]/}
+  fi
   
   local dirty_star=""
   if ! git diff-index --quiet HEAD -- 2>/dev/null; then

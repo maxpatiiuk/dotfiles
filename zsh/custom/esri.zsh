@@ -69,8 +69,8 @@ function wb() {
 function wa() {
   cdawc "packages/support-packages/api-extractor"
 }
-function wj() {
-  cdawc "packages/support-packages/jsapi-extractor"
+function wai() {
+  cdawc "packages/ai-packages/ai-components"
 }
 function wp() {
   cdawc "packages/support-packages/prettier-config"

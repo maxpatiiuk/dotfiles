@@ -9,5 +9,7 @@ setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt share_history          # share command history data
+setopt append_history         # append to HISTFILE, don't overwrite
+setopt hist_fcntl_lock        # lock HISTFILE to reduce corruption in multi-shell use
 setopt hist_find_no_dups      # Do not display a line previously found.
 setopt hist_reduce_blanks     # Remove superfluous blanks before recording entry.

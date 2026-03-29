@@ -46,7 +46,7 @@ gt() {
     git fetch
     # branch already exists
     if git show-ref --verify --quiet "refs/heads/$branch_name" || git ls-remote --exit-code --heads origin refs/heads/"$branch_name"; then
-      git switch "$branch_name"
+      git switch --ignore-other-worktrees "$branch_name"
     # branch does not exist
     else
       git switch -c "$branch_name"
@@ -56,7 +56,7 @@ gt() {
     git switch "$@"
   # no arguments - switch to main
   else
-    git switch $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")
+    git switch --ignore-other-worktrees $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")
   fi
 
   # If running with -c flag and the branch already exists, or if creating a new
