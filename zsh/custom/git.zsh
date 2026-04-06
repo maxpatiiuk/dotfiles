@@ -148,7 +148,7 @@ alias gcp="git clone"
 
 # Somewhat destructive actions, so using a longer alias
 alias gpu="git push"
-alias gpuu="git push && gu"
+alias gpuu="git push && gu --pr"
 alias fpush="git push --force-with-lease"
 
 # Prefixing with u for unsafe
@@ -276,27 +276,32 @@ alias gmm='gl $(git_other_side) --not $(git_current_side) -p -- '
 
 # Helper function to get the other side commit in a git merge or rebase
 git_other_side() {
-  original_pwd=$(pwd)
-  cd $(git rev-parse --show-toplevel)
-  if [ -d ".git/rebase-merge" ]; then
+  local rebase_merge_path
+  local rebase_apply_path
+  local merge_head_path
+  local cherry_pick_head_path
+
+  rebase_merge_path=$(git rev-parse --git-path rebase-merge)
+  rebase_apply_path=$(git rev-parse --git-path rebase-apply)
+  merge_head_path=$(git rev-parse --git-path MERGE_HEAD)
+  cherry_pick_head_path=$(git rev-parse --git-path CHERRY_PICK_HEAD)
+
+  if [ -d "$rebase_merge_path" ]; then
     # Rebasing (merge style)
-    cat ".git/rebase-merge/onto-name" 2> /dev/null || cat ".git/rebase-merge/onto" 2> /dev/null
-  elif [ -d ".git/rebase-apply" ]; then
+    cat "$rebase_merge_path/onto-name" 2> /dev/null || cat "$rebase_merge_path/onto" 2> /dev/null
+  elif [ -d "$rebase_apply_path" ]; then
     # Rebasing (apply style) or applying a patch
-    cat ".git/rebase-apply/original-commit" 2> /dev/null || cat ".git/rebase-apply/onto" 2> /dev/null
-  elif [ -f ".git/MERGE_HEAD" ]; then
+    cat "$rebase_apply_path/original-commit" 2> /dev/null || cat "$rebase_apply_path/onto" 2> /dev/null
+  elif [ -f "$merge_head_path" ]; then
     # Merging
-    git show -s --pretty=%D ".git/MERGE_HEAD" 2> /dev/null | awk -F', ' '{print $2}'
-  elif [ -f ".git/CHERRY_PICK_HEAD" ]; then
+    cat "$merge_head_path"
+  elif [ -f "$cherry_pick_head_path" ]; then
     # Cherry-picking
-    git show -s --pretty=%H ".git/CHERRY_PICK_HEAD" 2> /dev/null
+    cat "$cherry_pick_head_path"
   else
     echo "Not in a middle of a known Git operation."
-    cd "$original_pwd"
     return 1
   fi
-  cd "$original_pwd"
-
 }
 compdef _git git_other_side=git-log
 
@@ -305,7 +310,7 @@ git_current_side() {
 
   # If current_branch is empty, handle the detached HEAD case
   if [ -z "$current_branch" ]; then
-    current_branch=$(cat "$(git rev-parse --show-toplevel)/.git/ORIG_HEAD")
+    current_branch=$(cat "$(git rev-parse --git-path ORIG_HEAD)")
   fi
 
   echo $current_branch

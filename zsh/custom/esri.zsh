@@ -71,6 +71,12 @@ function wa() {
 function wai() {
   cdawc "packages/ai-packages/ai-components"
 }
+function wsc() {
+  cdawc "packages/support-packages/monorepo-cli"
+}
+function wsm() {
+  cdawc "packages/support-packages/monorepo-config"
+}
 function wp() {
   cdawc "packages/support-packages/prettier-config"
 }
