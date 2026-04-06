@@ -37,11 +37,6 @@ gt() {
   # has one argument - create or switch branch
   if [[ $# -eq 1 ]]; then
     branch_name="$1"
-    re_is_number='^[0-9]+$'
-    # prepend first argument with "max/" if it is a number
-    if [[ $# -eq 1 && $branch_name =~ $re_is_number ]]; then
-      branch_name="max/$branch_name"
-    fi
 
     git fetch
     # branch already exists
