@@ -11,8 +11,6 @@
   autocrlf = input
   editor = code --wait
   whitespace = tab-in-indent,blank-at-eol,-blank-at-eof
-  attributesfile = ~/s/git/dotfiles/git/.gitattributes
-  excludesfile = ~/s/git/dotfiles/git/.gitignore_global
   hooksPath = ~/s/git/pre-commit-tools/pre-commit-tools
   untrackedCache = true
   fsmonitor = true
