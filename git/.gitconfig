@@ -11,7 +11,6 @@
   autocrlf = input
   editor = code --wait
   whitespace = tab-in-indent,blank-at-eol,-blank-at-eof
-  hooksPath = ~/s/git/pre-commit-tools/pre-commit-tools
   untrackedCache = true
   fsmonitor = true
 [apply]
@@ -72,14 +71,10 @@
   sort = version:refname
   gpgSign = true
 [versionsort]
-  prereleaseSuffix = -pre
-  prereleaseSuffix = .pre
-  prereleaseSuffix = -beta
-  prereleaseSuffix = .beta
+  prereleaseSuffix = -next
+  prereleaseSuffix = .next
   prereleaseSuffix = -rc
   prereleaseSuffix = .rc
-[filter "t2s"]
-  clean = expand -t 2
 [gpg]
   program = gpg
 [advice]
