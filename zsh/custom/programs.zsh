@@ -6,7 +6,7 @@
 # OR open local file/directory based on GitHub URL
 # Documentation: https://github.com/maxpatiiuk/github-resolver
 gu() {
-  local dir=~/s/javascript/github-resolver
+  local dir=~/j/github-resolver
   local output=$(node "${dir}/dist/main.js" $@)
   if [[ "${output}" =~ "^cd " ]]; then
     eval ${output}
@@ -16,10 +16,10 @@ gu() {
 }
 alias guu='gu $(git symbolic-ref refs/remotes/origin/HEAD --short)'
 
-alias sharp='node ~/s/git/code-share/javascript/projects/optimize-media/index.js'
+alias sharp='node ~/g/code-share/javascript/projects/optimize-media/index.js'
 
 x() {
-  command=$(~/s/git/code-share/rust/projects/npm-run/target/release/npm-run "$@")
+  command=$(~/g/code-share/rust/projects/npm-run/target/release/npm-run "$@")
   echo "> $command"
   eval $command
 }
@@ -50,7 +50,7 @@ alias tc="x tsc"
 # Curses-based CLI file explorer
 # Documentation: https://github.com/maxpatiiuk/dir-explorer
 f() {
-  script_dir="${HOME}/s/python/dir-explorer/dir_explorer"
+  script_dir="${HOME}/g/dir-explorer/dir_explorer"
 
   # Create a temp file
   export tempfile="/tmp/list_view_$RANDOM"
@@ -115,14 +115,14 @@ alias rmrf='rm -rf'
 # project in VS Code
 c() {
   if [ $# -eq 0 ]; then
-    local dir=$(node ~/s/git/code-share/javascript/projects/finder/finder.js .vscode || echo "./")
+    local dir=$(node ~/g/code-share/javascript/projects/finder/finder.js .vscode || echo "./")
 
     if [[ "$dir" == "$HOME" ]]; then
       dir="./"
     fi
 
     if [[ "$dir" == "./" ]]; then
-      dir=$(node ~/s/git/code-share/javascript/projects/finder/finder.js .git || echo "./")
+      dir=$(node ~/g/code-share/javascript/projects/finder/finder.js .git || echo "./")
     fi
 
     if [[ "$dir" == "$HOME" ]]; then
@@ -150,7 +150,7 @@ tts() {
   done
 }
 
-alias tts-nn="~/s/python/tts-nn/venv/bin/python3 ~/s/python/tts-nn/kokoro-onnx/examples/tool.py"
+alias tts-nn="~/g/tts-nn/venv/bin/python3 ~/g/tts-nn/kokoro-onnx/examples/tool.py"
 
 export NODE_COMPILE_CACHE=/tmp/node-compile-cache
 export TURBO_CACHE_DIR=/tmp/.turbo-cache

@@ -1,7 +1,7 @@
 echo 🔴 WARNING!
 echo 🔴 Read the contents of this file carefully before running it
 
-PWD="${HOME}/s/git/dotfiles"
+PWD="${HOME}/g/dotfiles"
 
 # If system is not Darwin, exit with code 1:
 if [ "$(uname 2> /dev/null)" != "Darwin" ]; then
@@ -75,25 +75,21 @@ echo 🔵 Adding shortcut for Downloads directory
 ln -s "${HOME}/Downloads" "${HOME}/d"
 
 echo 🔵 Creating directories
-mkdir -p "${HOME}/s/git"
-mkdir -p "${HOME}/s/python"
-mkdir -p "${HOME}/s/javascript"
+mkdir -p "${HOME}/g"
+mkdir -p "${HOME}/j"
 
 echo 🔵 Cloning Git repos
 (
-  cd "${HOME}/s/python"
+  cd "${HOME}/g"
   git clone https://github.com/specify/specify7.git
   git clone https://github.com/maxpatiiuk/dir-explorer.git
-)
-(
-  cd "${HOME}/s/git"
   git clone https://github.com/specify/specify-tools.git
   git clone https://github.com/maxpatiiuk/custom-new-tab-page.git
   git clone https://github.com/maxpatiiuk/code-share.git
   git clone https://github.com/maxpatiiuk/dotfiles.git
 )
 (
-  cd "${HOME}/s/javascript"
+  cd "${HOME}/j"
   git clone https://github.com/maxpatiiuk/max.patii.uk.git
   git clone https://github.com/maxpatiiuk/text-hoarder.git
 )
@@ -123,7 +119,6 @@ mkdir -p "${HOME}/.vim/undo"
 mkdir -p "${HOME}/.vim/backups"
 mkdir -p "${HOME}/.vim/swaps"
 ln -sf "${PWD}/vim/.vimrc" "${HOME}"
-ln -sf "${PWD}/vim/.ideavimrc" "${HOME}"
 ln -sf "${PWD}/vim/spell" "${HOME}/.vim/"
 
 echo 🔵 Linking misc files
@@ -133,28 +128,28 @@ sudo mkdir -p "/etc/docker/"
 sudo ln "${PWD}/docker/daemon.json" "/etc/docker/"
 
 echo 🔵 Hard linking common files from \`code-share\`
-ln "${HOME}/s/git/code-share/misc/images/mambo.jpg" "${HOME}/Documents/"
-ln "${HOME}/s/git/code-share/misc/images/max_patiiuk_old.jpg" "${HOME}/Documents/"
-ln "${HOME}/s/git/code-share/misc/images/max_patiiuk_1x1.jpg" "${HOME}/Documents/"
-ln "${HOME}/s/git/code-share/misc/images/max_patiiuk.jpg" "${HOME}/Documents/"
-ln "${HOME}/s/git/code-share/misc/images/wolf.jpg" "${HOME}/Documents/"
+ln "${HOME}/g/code-share/misc/images/mambo.jpg" "${HOME}/Documents/"
+ln "${HOME}/g/code-share/misc/images/max_patiiuk_old.jpg" "${HOME}/Documents/"
+ln "${HOME}/g/code-share/misc/images/max_patiiuk_1x1.jpg" "${HOME}/Documents/"
+ln "${HOME}/g/code-share/misc/images/max_patiiuk.jpg" "${HOME}/Documents/"
+ln "${HOME}/g/code-share/misc/images/wolf.jpg" "${HOME}/Documents/"
 
 echo 🔵 Initializing Dir Explorer
 (
-  cd "${HOME}/s/python/dir-explorer"
+  cd "${HOME}/g/dir-explorer"
   python -m venv venv
   venv/bin/pip install -r requirements.txt
 )
 
 echo 🔵 Initializing Text Hoarder
 (
-  cd "${HOME}/s/javascript/text-hoarder"
+  cd "${HOME}/j/text-hoarder"
   npm i
 )
 
 echo 🔵 Installing Docker Watcher
 (
-  cd "${HOME}/s/git/specify-tools/docker_container"
+  cd "${HOME}/g/specify-tools/docker_container"
   python -m venv venv
   venv/bin/pip install -r requirements.txt
 )
@@ -173,7 +168,7 @@ echo 🔴 You should comment out this part or replace it with your own
 echo 🔴 private repository
 
 (
-  cd "${HOME}/s/git/"
+  cd "${HOME}/g/"
   git clone https://github.com/maxpatiiuk/private-dotfiles.git
   cd private-dotfiles
   ./install.sh

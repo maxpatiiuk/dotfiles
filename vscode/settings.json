@@ -205,7 +205,7 @@
   },
   "workbench.editor.showTabs": "single",
   "vscode_custom_css.imports": [
-    "file:///Users/maxpatiiuk/s/git/dotfiles/vscode/styles/main.css"
+    "file:///Users/maxpatiiuk/g/dotfiles/vscode/styles/main.css"
   ],
   "editor.formatOnSave": true,
   "editor.overviewRulerBorder": false,
@@ -1535,7 +1535,6 @@
     { "domain": "github.com", "type": "GitHub", "name": "GitHub" },
     { "domain": "devtopia.esri.com", "type": "GitHub", "name": "DevTopia" }
   ],
-  "turbo.path": "/Users/mak13180/s/e/arcgis-web-components/node_modules/turbo/bin/turbo",
   "workbench.statusBar.visible": false,
   "typescript.preferences.preferTypeOnlyAutoImports": true,
   "diffEditor.renderSideBySide": false,

@@ -1,12 +1,12 @@
 export ESRI_RUN_PRE_COMMIT_ESLINT=1
 
-alias e="cd ~/s/e"
-alias ej="cd ~/s/e/arcgis-js-api"
-alias ej2="cd ~/s/e/arcgis-js-api.2"
-alias ej3="cd ~/s/e/arcgis-js-api.3"
-alias ejd="cd ~/s/e/arcgis-js-sdk"
-alias ec="cd ~/s/e/calcite-design-system/packages/components/src/components"
-alias ec2="cd ~/s/e/calcite-design-system-2/packages/components/src/components"
+alias e="cd ~/e"
+alias ej="cd ~/e/arcgis-js-api"
+alias ej2="cd ~/e/arcgis-js-api.2"
+alias ej3="cd ~/e/arcgis-js-api.3"
+alias ejd="cd ~/e/arcgis-js-sdk"
+alias ec="cd ~/e/calcite-design-system/packages/components/src/components"
+alias ec2="cd ~/e/calcite-design-system-2/packages/components/src/components"
 
 # If I am working on multiple branches at once, or want to quickly test
 # something, it is convenient to have multiple cloned instances, rather
@@ -19,22 +19,22 @@ function w() {
     /usr/bin/w "$@"
   fi
 }
-alias w1="cd ~/s/e/sdk"
-alias w2="cd ~/s/e/sdk.2"
-alias ww="cd ~/s/e/sdk.2"
-alias w3="cd ~/s/e/sdk.3"
-alias w4="cd ~/s/e/sdk.4"
-alias w5="cd ~/s/e/sdk.5"
-alias w6="cd ~/s/e/sdk.6"
+alias w1="cd ~/1"
+alias w2="cd ~/2"
+alias ww="cd ~/2"
+alias w3="cd ~/3"
+alias w4="cd ~/4"
+alias w5="cd ~/5"
+alias w6="cd ~/6"
 
 function cdawc() {
   local subpath=$1
   local basepath
 
-  if [[ $PWD =~ '(.*/sdk[^/]*)' ]]; then
+  if [[ $PWD =~ '(.*/sdk[^/]*)' || $PWD =~ "^($HOME/[0-9])$" ]]; then
     basepath=${match[1]}
   else
-    basepath="$HOME/s/e/sdk"
+    basepath="$HOME/1"
   fi
 
   cd "${basepath:-$MATCH}/${subpath}" || echo "Directory not found: ${basepath}/$subpath"
