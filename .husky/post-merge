@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+# Exit if ORIG_HEAD doesn't exist
+git rev-parse --verify ORIG_HEAD >/dev/null 2>&1 || exit 0
+
+if git diff --name-only --diff-filter=AMR ORIG_HEAD HEAD -- '*.zsh' | grep -q '.'; then
+	./zsh/compile.zsh
+fi

@@ -16,6 +16,8 @@ gu() {
 }
 alias guu='gu $(git symbolic-ref refs/remotes/origin/HEAD --short)'
 
+alias sharp='node ~/s/git/code-share/javascript/projects/optimize-media/index.js'
+
 x() {
   command=$(~/s/git/code-share/rust/projects/npm-run/target/release/npm-run "$@")
   echo "> $command"
