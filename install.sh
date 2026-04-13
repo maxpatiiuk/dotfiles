@@ -137,21 +137,13 @@ ln "${HOME}/g/code-share/misc/images/wolf.jpg" "${HOME}/Documents/"
 echo 🔵 Initializing Dir Explorer
 (
   cd "${HOME}/g/dir-explorer"
-  python -m venv venv
-  venv/bin/pip install -r requirements.txt
+  cargo build --release
 )
 
 echo 🔵 Initializing Text Hoarder
 (
   cd "${HOME}/j/text-hoarder"
   npm i
-)
-
-echo 🔵 Installing Docker Watcher
-(
-  cd "${HOME}/g/specify-tools/docker_container"
-  python -m venv venv
-  venv/bin/pip install -r requirements.txt
 )
 
 echo 🔵 Linking launchctl .plist file

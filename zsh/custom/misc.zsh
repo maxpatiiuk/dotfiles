@@ -5,12 +5,12 @@ source ~/g/private-dotfiles/zsh/custom/env.sh
 # echo "text" | pbcopy
 # pbpaste > output.txt
 
-### basic
-alias ls="ls -G1"
-alias ll="ls -GahlFT%"
-alias l="python3 ~/g/dir-explorer/dir_explorer/list_files.py"
+alias l="~/g/dir-explorer/target/release/dir-explorer"
+alias ll="l -l"
+alias lr="l -R"
+alias l0="l -0"
 
-### cd && l
+# cd && l
 function cl() {
   DIR="$*"
   # if no DIR given, go home
