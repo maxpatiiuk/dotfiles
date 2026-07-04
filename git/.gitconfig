@@ -65,6 +65,7 @@
 [push]
   followTags = true
   autoSetupRemote = true
+	default = upstream
 [status]
   submoduleSummary = true
 [tag]

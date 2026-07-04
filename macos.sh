@@ -391,6 +391,14 @@ sudo defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesig
 # Disable Spotlight indexing because I don't use it
 sudo mdutil -i off
 
+# Disable apple mail global keyboard shortcut
+defaults write com.google.Chrome NSUserKeyEquivalents -dict-add 'Email Page Location' '\0'
+defaults write com.google.Chrome.canary NSUserKeyEquivalents -dict-add 'Email Page Location' '\0'
+defaults write com.google.Chrome NSUserKeyEquivalents -dict-add 'Email Link' '\0'
+defaults write com.google.Chrome.canary NSUserKeyEquivalents -dict-add 'Email Link' '\0'
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add 'Email Link to This Page' '\0' 'Email This Page' '\0'
+
+
 for app in "Activity Monitor" \
   "cfprefsd" \
   "Dock" \

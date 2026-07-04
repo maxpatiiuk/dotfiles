@@ -41,10 +41,12 @@ alias xd="x d"
 # preview
 alias xp="x p"
 alias xw="x watch"
-alias xv="x vite"
-alias xvb="x vite build"
+alias vs="x vite"
+alias vb="x vite build"
 alias xivb="xi vite build"
-alias xvt="x vitest"
+alias vt="x vitest"
+alias vti="x vitest --inspect --no-fileParallelism"
+alias vtib="x vitest --inspect-brk --no-fileParallelism"
 alias tc="x tsc"
 
 # Curses-based CLI file explorer

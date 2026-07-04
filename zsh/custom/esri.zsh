@@ -1,10 +1,10 @@
-export ESRI_RUN_PRE_COMMIT_ESLINT=1
+# Temporary, till arcgis-js-sdk is merged into the monorepo
+export ESRI_AUTOFIX_LINT_ERRORS=1
 
 alias e="cd ~/e"
 alias ej="cd ~/e/arcgis-js-api"
 alias ej2="cd ~/e/arcgis-js-api.2"
 alias ej3="cd ~/e/arcgis-js-api.3"
-alias ejd="cd ~/e/arcgis-js-sdk"
 alias ec="cd ~/e/calcite-design-system/packages/components/src/components"
 alias ec2="cd ~/e/calcite-design-system-2/packages/components/src/components"
 
@@ -26,12 +26,13 @@ alias w3="cd ~/3"
 alias w4="cd ~/4"
 alias w5="cd ~/5"
 alias w6="cd ~/6"
+alias wv="cd /Volumes/v/1"
 
 function cdawc() {
   local subpath=$1
   local basepath
 
-  if [[ $PWD =~ '(.*/sdk[^/]*)' || $PWD =~ "^($HOME/[0-9])$" ]]; then
+  if [[ $PWD =~ "^(($HOME|/Volumes/v)/[0-9]+)(/.*)?$" ]]; then
     basepath=${match[1]}
   else
     basepath="$HOME/1"
@@ -68,8 +69,8 @@ function wb() {
 function wa() {
   cdawc "packages/support-packages/api-extractor"
 }
-function wai() {
-  cdawc "packages/ai-packages/ai-components"
+function waip() {
+  cdawc "packages/ai-packages/ai-playground"
 }
 function wsc() {
   cdawc "packages/support-packages/monorepo-cli"
@@ -96,10 +97,16 @@ function wch() {
   cdawc "packages/charts-packages/charts-components"
 }
 function wd() {
+  cdawc "packages/docs/app"
+}
+function wdd() {
   cdawc "packages/docs/project/docs"
 }
 function wco() {
   cdawc "packages/common-packages/common-components"
+}
+function wj() {
+  cdawc "packages/core-packages/core"
 }
 function wai() {
   cdawc "packages/ai-packages/ai-components"

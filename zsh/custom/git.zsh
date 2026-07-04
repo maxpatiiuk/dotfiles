@@ -55,7 +55,7 @@ gt() {
     default_branch_ref=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null)
     local default_branch=${default_branch_ref#refs/remotes/origin/}
 
-    # If in worktree and there is a branch `default.worktreeId``, switch to it
+    # If in worktree and there is a branch `default.worktreeId`, switch to it
     # instead of `default`
     local target_branch="$default_branch"
     local git_dir
@@ -129,6 +129,7 @@ alias gca="git commit -v --amend --no-edit"
 alias gcf="git commit -v -m 'chore: fixup'"
 alias gcr="git commit -v -m 'refactor: respond to pull request feedback'"
 alias gcs="git commit -v -m 'refactor: do self-review'"
+alias gcv="git commit -v -m 'fix: respond to ci feedback'"
 alias gba="git branch -vv --all"
 alias gp="git cherry-pick"
 alias gpc="GIT_EDITOR=: git cherry-pick --continue"
@@ -159,23 +160,27 @@ alias ugcd="git clean -f ."
 alias ughd="git stash drop"
 
 gabort() {
-  gitdir="$(git rev-parse --git-dir)" || exit
-  opfound=
-  fcnt=
+  git rev-parse --git-dir >/dev/null || exit
+  operation=
 
-  for i in cherry-pick merge rebase revert; do
-    # Convert to uppercase (works in both Bash and Zsh)
-    f=$(echo "${i}" | tr 'a-z' 'A-Z')
-    f=${f//-/_} # Replace hyphens with underscores
-    test -f "${gitdir}/${f}_HEAD" && fcnt=1$fcnt && opfound=$i
-  done
+  if test -f "$(git rev-parse --git-path rebase-apply/applying)"; then
+    operation=am
+  elif test -d "$(git rev-parse --git-path rebase-merge)" || test -d "$(git rev-parse --git-path rebase-apply)"; then
+    operation=rebase
+  elif test -f "$(git rev-parse --git-path CHERRY_PICK_HEAD)"; then
+    operation=cherry-pick
+  elif test -f "$(git rev-parse --git-path MERGE_HEAD)"; then
+    operation=merge
+  elif test -f "$(git rev-parse --git-path REVERT_HEAD)"; then
+    operation=revert
+  fi
 
-  if [ "${fcnt}" != 1 ]; then
+  if [ -z "${operation}" ]; then
     echo "I don't know what to abort" >&2
     return 1
   fi
 
-  git "${opfound}" --abort
+  git "${operation}" --abort
 }
 
 # I found myself accidentally running `git restore -W` when I meant to
