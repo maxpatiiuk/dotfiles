@@ -1,20 +1,20 @@
 {
-  // Retrieved by running the following in an exported profile
-  // node -e 'const fs=require("fs");const p="~/d/dev.code-profile";const outer=JSON.parse(fs.readFileSync(p,"utf8"));const ext=JSON.parse(outer.extensions||"[]");const names=[...new Set(ext.filter(e=>!e.disabled).map(e=>(e.displayName||"").trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b,undefined,{sensitivity:"base"}));process.stdout.write(names.join("\n"));'
+  // Unpack the profile using j=Object.fromEntries(Object.entries(j).map(([k,v])=>{try {return[k,JSON.parse(v)]}catch{return[k,v]}}))
+  // Then get meta.extensions:
+  // [...new Set(j.extensions.filter(e=>!e.disabled).map(e=>(e.displayName||"").trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b,undefined,{sensitivity:"base"}))
   "meta.extensions": [
+    "Astro",
     "Code Spell Checker",
-    "Custom CSS and JS Loader",
+    "Custom UI Style",
     "ESLint",
+    "Gemini CLI Companion",
     "GitHub Actions",
-    "GitHub Copilot",
-    "GitHub Copilot Chat",
+    "GitHub Pull Requests",
     "Markdown All in One",
-    "Monokai Light",
     "Prettier - Code formatter",
     "Pretty TypeScript Errors",
     "rust-analyzer",
-    "Search node_modules",
-    "TODO Highlight",
+    "TODO Highlight v2",
     "Vim",
     "YAML"
   ],
@@ -190,6 +190,9 @@
     "**/.hg": true,
     ".idea": true,
     "**/.svn": true,
+    "**/.astro/data-store.json": true,
+    "**/.astro/content-modules.mjs": true,
+    "**/.astro/integrations/_esri-dx_starship*": true,
     "**/*.js": {
       "when": "$(basename).ts"
     },
@@ -204,9 +207,6 @@
     "**/Thumbs.db": true
   },
   "workbench.editor.showTabs": "single",
-  "vscode_custom_css.imports": [
-    "file:///Users/maxpatiiuk/g/dotfiles/vscode/styles/main.css"
-  ],
   "editor.formatOnSave": true,
   "editor.overviewRulerBorder": false,
   "workbench.colorCustomizations": {
@@ -968,8 +968,6 @@
     ]
   },
   "editor.scrollbar.verticalScrollbarSize": 6,
-  "window.commandCenter": false,
-  "window.titleBarStyle": "native",
   "editor.codeActionsOnSave": {
     "source.addMissingImports": "always",
     "source.fixAll": "always",
@@ -1268,8 +1266,8 @@
   "github.copilot.enable": {
     "*": true,
     "plaintext": true,
-    "markdown": false,
-    "scminput": false
+    "scminput": false,
+    "markdown": true
   },
   "browse-lite.chromeExecutable": "/Applications/Google Chrome Beta.app/Contents/MacOS/Google Chrome Beta",
   "less.lint.float": "warning",
@@ -1277,16 +1275,6 @@
   "scss.lint.float": "warning",
   "scss.lint.ieHack": "warning",
   "vscode_custom_css.statusbar": false,
-  "eslint.probe": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "html",
-    "vue",
-    "markdown",
-    "css"
-  ],
   "git.allowForcePush": true,
   "git.branchProtection": [
     "main",
@@ -1453,7 +1441,6 @@
   "csv-preview.lineNumbers": "ordinal",
   "csv-preview.openStdin": true,
   "csv-preview.resizeColumns": "all",
-  "githubPullRequests.commentExpandState": "collapseAll",
   "stylelint.validate": ["css", "less", "postcss", "scss"],
   "editor.suggest.showIcons": false,
   "workbench.editorAssociations": {
@@ -1464,7 +1451,6 @@
   "typescript.preferences.jsxAttributeCompletionStyle": "braces",
   "javascript.preferences.jsxAttributeCompletionStyle": "braces",
   "comments.visible": false,
-  "window.density.editorTabHeight": "compact",
   "editor.acceptSuggestionOnCommitCharacter": false,
   "javascript.preferences.useAliasesForRenames": false,
   "typescript.preferences.useAliasesForRenames": false,
@@ -1503,24 +1489,14 @@
   },
   "workbench.quickOpen.preserveInput": true,
   "diffEditor.ignoreTrimWhitespace": false,
-  "githubPullRequests.focusedMode": "multiDiff",
   "editor.stickyScroll.enabled": false,
   "github-enterprise.uri": "https://devtopia.esri.com/",
   "lit-plugin.strict": true,
   "lit-plugin.rules.no-missing-element-type-definition": "error",
   "lit-plugin.rules.no-unknown-event": "error",
-  "apc.sidebar.titlebar": {
-    "height": 10
-  },
-  "apc.stylesheet": {
-    /*
-     * Moved into ./styles/main.css as I temporary disabled apc while it was broken.
-     */
-  },
   "search.quickAccess.preserveInput": true,
   "markdown.experimental.updateLinksOnPaste": true,
   "cloudcode.project": "crafty-nova-423423-i2",
-  "cloudcode.duetAI.project": "crafty-nova-423423-i2",
   "cloudcode.autoDependencies": "off",
   /*"prettier.proseWrap": "always",*/
   "vitest.configSearchPatternExclude": "**/{node_modules,tests,.*}/**",
@@ -1535,7 +1511,6 @@
     { "domain": "github.com", "type": "GitHub", "name": "GitHub" },
     { "domain": "devtopia.esri.com", "type": "GitHub", "name": "DevTopia" }
   ],
-  "workbench.statusBar.visible": false,
   "typescript.preferences.preferTypeOnlyAutoImports": true,
   "diffEditor.renderSideBySide": false,
   "search-node-modules.useLastFolder": true,
@@ -1546,7 +1521,6 @@
   "gitlens.advanced.messages": {
     "suppressIntegrationRequestTimedOutWarning": true
   },
-  "vim.neovimPath": "/opt/homebrew/bin/nvim",
   "todohighlight.include": [
     "**/*.js",
     "**/*.ts",
@@ -1669,7 +1643,6 @@
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
   "editor.rename.enablePreview": false,
-  "window.customTitleBarVisibility": "never",
   "testing.automaticallyOpenTestResults": "openExplorerOnTestStart",
   "editor.pasteAs.preferences": ["text.updateImports"],
   "eslint.problems.shortenToSingleLine": true,
@@ -1701,10 +1674,10 @@
   },
   "rewrap.autoWrap.enabled": true,
   "rewrap.autoWrap.notification": "text",
-  "workbench.activityBar.location": "hidden",
   "todohighlight.isEnable": false,
   "extensions.experimental.affinity": {
-    "vscodevim.vim": 1
+    "vscodevim.vim": 1,
+    "asvetliakov.vscode-neovim": 1
   },
   "git.blame.editorDecoration.enabled": false,
   "gitBlameW77.decorationShowHash": false,
@@ -1729,5 +1702,129 @@
   "js/ts.hover.maximumLength": 800,
   "typescript.tsserver.maxTsServerMemory": 4096,
   "explorer.openEditors.visible": 10,
-  "terminal.integrated.shellIntegration.decorationsEnabled": "never"
+  "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+  "diffEditor.maxComputationTime": 25000,
+  "chat.tools.terminal.autoApprove": {
+    "pnpm install": true,
+    "git add": true,
+    "/^gitdir=\\$\\(git rev-parse --git-dir\\); find \"\\$gitdir/rebase-apply\" -maxdepth 1 -type f \\| sed 's\\|\\.\\*/\\|\\|' \\| rg -v '\\^\\[0-9\\]\\{4\\}\\$' \\| sort$/": {
+      "approve": true,
+      "matchCommandLine": true
+    }
+  },
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "terminal.integrated.initialHint": false,
+  "prettier.enableDebugLogs": true,
+  "chat.useAgentSkills": true,
+  "githubPullRequests.defaultMergeMethod": "squash",
+  "githubPullRequests.deleteBranchAfterMerge": true,
+  "extensions.ignoreRecommendations": true,
+  "chat.tools.urls.autoApprove": {
+    "https://code.visualstudio.com": true,
+    "https://github.com/microsoft/vscode/wiki/*": true,
+    "https://docs.brew.sh": true,
+    "https://www.manpagez.com": true,
+    "http://localhost:8080": {
+      "approveRequest": false,
+      "approveResponse": true
+    },
+    "https://vite.dev": true,
+    "https://vitest.dev": {
+      "approveRequest": false,
+      "approveResponse": true
+    },
+    "https://man.freebsd.org": true,
+    "https://www.gnu.org": true,
+    "https://docs.astro.build": {
+      "approveRequest": true,
+      "approveResponse": false
+    },
+    "https://docs.astro.build/en/guides/images": {
+      "approveRequest": false,
+      "approveResponse": true
+    },
+    "https://caniuse.com": true,
+    "https://developer.mozilla.org": true,
+    "https://turborepo.com": true,
+    "https://turborepo.dev": true,
+    "https://kasper.github.io": true,
+    "https://www.typescriptlang.org": true,
+    "https://pnpm.io": true,
+    "https://docs.npmjs.com": true,
+    "https://webgis.esri.com": true
+  },
+  "claudeCode.preferredLocation": "panel",
+  "geminicodeassist.project": "gen-lang-client-0082817389",
+  "yaml.schemas": {
+    "file:///Users/mak13180/Documents/code/code-portable-data/extensions/continue.continue-1.2.15-darwin-arm64/config-yaml-schema.json": [
+      ".continue/**/*.yaml"
+    ],
+    "file:///Users/maxpatiiuk/.vscode/extensions/continue.continue-1.2.15-darwin-arm64/config-yaml-schema.json": [
+      ".continue/**/*.yaml"
+    ]
+  },
+  "github.copilot.chat.agent.autoFix": true,
+  "chat.agent.maxRequests": 100,
+  "chat.mcp.gallery.enabled": true,
+  "files.watcherExclude": {
+    "**/.turbo/**": true
+  },
+  "git.detectWorktrees": false,
+  "workbench.statusBar.visible": false,
+  "chat.tools.edits.autoApprove": {
+    "/tmp/**": true
+  },
+  "chat.tools.terminal.blockDetectedFileWrites": "never",
+  "window.density.editorTabHeight": "compact",
+  "workbench.navigationControl.enabled": false,
+  "window.title": "${rootName}${separator}${profileName}",
+  "window.titleSeparator": " -",
+  "workbench.layoutControl.enabled": false,
+  "workbench.browser.showInTitleBar": false,
+  "window.commandCenter": false,
+  "window.customTitleBarVisibility": "auto",
+  "custom-ui-style.electron": {
+    "frame": false
+    //"titleBarStyle": "hidden",
+  },
+  "custom-ui-style.watch": false,
+  "custom-ui-style.webview.enable": false,
+  "custom-ui-style.webview.removeCSP": false,
+  "custom-ui-style.extensions.enable": false,
+  "custom-ui-style.external.imports": [
+    "file://${userHome}/g/dotfiles/vscode/styles/main.css"
+  ],
+  "workbench.activityBar.location": "hidden",
+  "geminicodeassist.chat.automaticScrolling": false,
+  "geminicodeassist.inlineSuggestions.enableAuto": false,
+  "geminicodeassist.languages": [],
+  "js/ts.preferences.importModuleSpecifierEnding": "js",
+  "github.copilot.chat.additionalReadAccessPaths": ["/tmp", "~/e/"],
+  "github.copilot.chat.backgroundCompaction": true,
+  "workbench.colorTheme": "Visual Studio Dark",
+  "js/ts.tsc.autoDetect": "off",
+  "js/ts.preferences.importModuleSpecifier": "project-relative",
+  "js/ts.preferences.preferTypeOnlyAutoImports": true,
+  "js/ts.preferences.useAliasesForRenames": false,
+  "js/ts.format.enabled": false,
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "js/ts.inlayHints.enumMemberValues.enabled": true,
+  "js/ts.inlayHints.parameterNames.enabled": "literals",
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+  "js/ts.tsserver.maxMemory": 4096,
+  "js/ts.inlayHints.parameterTypes.enabled": true,
+  "window.zoomLevel": 1,
+  "git.ignoreLimitWarning": true,
+  "githubPullRequests.focusedMode": false,
+  "chat.viewSessions.orientation": "stacked",
+  "eslint.probe": [
+    "astro",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "markdown",
+    "json",
+    "css"
+  ]
 }
