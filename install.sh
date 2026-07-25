@@ -1,6 +1,9 @@
 echo 🔴 WARNING!
 echo 🔴 Read the contents of this file carefully before running it
 
+# Use strict error checking
+set -ue
+
 PWD="${HOME}/g/dotfiles"
 
 # If system is not Darwin, exit with code 1:
