@@ -1,9 +1,8 @@
 # Potentially destructive commands like rm, reset, restore, merge,
 # rebase, mv and push do not have aliases to prevent accidents
 
-# Also, I know that git has a native support for aliases, but I don't
-# like having to type `git s` when I can just type `gs` and save
-# thousands of keystokes yearly
+# git has a native support for aliases like `git s`. But direct shell aliases like
+# `gs` are shorter to type
 
 g() {
   if [[ $# -gt 0 ]]; then
@@ -87,20 +86,20 @@ alias gsi="git status --branch --ignored"
 alias gf="git fetch && git status"
 alias gdw="git diff --stat -p"
 alias gdwd="gdw ."
-# The default regex breaks iTerm (default regex ends with |[<C0>-<FF>][<80>-<BF>]+)
-regex="\"[a-zA-Z_][a-zA-Z0-9_]*|[-+0-9.e]+[jJlL]?|0[xX]?[0-9a-fA-F]+[lL]?|[-+*/<>%&^|=!]=|//=?|<<=?|>>=?|\*\*=?|[^[:space:]]\""
-alias gd="git diff --stat -p --word-diff=color --word-diff-regex=${regex}"
+# For finer-grained identifier and punctuation highlighting, consider:
+# --word-diff-regex='[[:alnum:]_]+|[^[:space:]]'
+alias gd="git diff --stat -p --word-diff=color"
 alias gdd="gd ."
 alias gdcw="git diff --stat -p --cached"
 alias gdcwd="gdwc ."
 alias gdwc="gdcw"
 alias gdwcd="gdwc ."
-alias gdc="git diff --stat -p --word-diff=color --word-diff-regex=${regex} --cached"
+alias gdc="git diff --stat -p --word-diff=color --cached"
 alias gdcd="gdc ."
 alias gduw='git diff $(git merge-base HEAD $(git symbolic-ref refs/remotes/origin/HEAD)) --cached --stat -p'
-alias gdu='gduw --word-diff=color --word-diff-regex=${regex}'
+alias gdu='gduw --word-diff=color'
 alias gdbw='git diff origin/$(git branch --show-current) --cached --stat -p'
-alias gdb='gdbw --word-diff=color --word-diff-regex=${regex}'
+alias gdb='gdbw --word-diff=color'
 alias gdn='git diff --stat -p --not $(git symbolic-ref refs/remotes/origin/HEAD --short)'
 alias ga="git add"
 alias gad="git add ."
@@ -135,7 +134,7 @@ alias gp="git cherry-pick"
 alias gpc="GIT_EDITOR=: git cherry-pick --continue"
 alias gpce="git cherry-pick --continue"
 alias ghs="git stash push"
-alias ghh="git stash show -p"
+alias ghh="git stash show -p --stat"
 alias ghp="git stash pop"
 alias ghl="git stash list"
 alias gpl="git pull"
@@ -146,6 +145,8 @@ alias gcp="git clone"
 alias gpu="git push"
 alias gpuu="git push && gu --pr"
 alias fpush="git push --force-with-lease"
+alias fpushu="git push --force-with-lease && gu --pr"
+alias Fpush="git push --force"
 
 # Prefixing with u for unsafe
 alias ugs1="git reset --soft HEAD~1"
@@ -156,22 +157,25 @@ alias ugh1="git reset --hard HEAD~1"
 alias ugh2="git reset --hard HEAD~2"
 alias ugh3="git reset --hard HEAD~3"
 alias ugh4="git reset --hard HEAD~4"
+alias ughh="git reset --hard"
+alias ughhu='git reset --hard $(git symbolic-ref refs/remotes/origin/HEAD --short)'
 alias ugcd="git clean -f ."
 alias ughd="git stash drop"
 
 gabort() {
   git rev-parse --git-dir >/dev/null || exit
   operation=
+  sequencer_todo="$(git rev-parse --git-path sequencer/todo)"
 
   if test -f "$(git rev-parse --git-path rebase-apply/applying)"; then
     operation=am
   elif test -d "$(git rev-parse --git-path rebase-merge)" || test -d "$(git rev-parse --git-path rebase-apply)"; then
     operation=rebase
-  elif test -f "$(git rev-parse --git-path CHERRY_PICK_HEAD)"; then
+  elif test -f "$(git rev-parse --git-path CHERRY_PICK_HEAD)" || { test -f "$sequencer_todo" && grep -q '^pick ' "$sequencer_todo"; }; then
     operation=cherry-pick
   elif test -f "$(git rev-parse --git-path MERGE_HEAD)"; then
     operation=merge
-  elif test -f "$(git rev-parse --git-path REVERT_HEAD)"; then
+  elif test -f "$(git rev-parse --git-path REVERT_HEAD)" || { test -f "$sequencer_todo" && grep -q '^revert ' "$sequencer_todo"; }; then
     operation=revert
   fi
 
@@ -195,7 +199,7 @@ alias gwe="git restore -SW"
 alias gwwa="gww :/"
 alias gea="ge :/"
 gwea() {
-  # Dangerous command. Sometimes accidentally called with gwe was meant.
+  # Dangerous command. Sometimes accidentally called when gwe was meant.
   # `gwea file` clears all changes, not just `file`. To guard, error explicitly:
   if (( $# > 0 )); then
     print -u2 "error: this command takes no arguments"
@@ -226,7 +230,13 @@ $spacer|\
 %(contents:subject)
 $spacer|"
 
-alias gb='git for-each-ref \
+gb() {
+  if (( $# > 0 )); then
+    git branch "$@"
+    return
+  fi
+
+  git for-each-ref \
     --color=always \
     --count=0 \
     --sort=-committerdate \
@@ -237,7 +247,9 @@ alias gb='git for-each-ref \
     --tabs=4 \
     --quit-if-one-screen \
     --RAW-CONTROL-CHARS \
-    --no-init'
+    --no-init
+  }
+compdef _git gb=git-branch
 
 # Like "git show" but opens the file in editor with syntax highlighting
 gq() {
@@ -264,7 +276,24 @@ compdef _git gq=git-show
 # gm components/Atoms/className.ts
 # Which translates into:
 # gl branchA --not branchB -p -- components/Atoms/className.ts
-alias gm='gl $(git_current_side) --not $(git_other_side) -p -- '
+gm() {
+  local current_side
+  local other_side
+  local conflict_path
+
+  current_side=$(git_current_side) || return
+  if other_side=$(git_other_side 2>/dev/null); then
+    gl "$current_side" --not "$other_side" -p -- "$@"
+  else
+    conflict_path=$(git ls-files --unmerged --full-name --format='%(path)' -- "$1" | head -n 1)
+    if [ -n "$conflict_path" ]; then
+      git diff --stat -p ":3:$conflict_path" ":2:$conflict_path"
+    else
+      git_other_side
+    fi
+  fi
+}
+compdef _git gm=git-log
 
 # Similar to gm, but flips the branches.
 #
@@ -272,7 +301,24 @@ alias gm='gl $(git_current_side) --not $(git_other_side) -p -- '
 # gm components/Atoms/className.ts
 # Which translates into:
 # gl branchB --not branchA -p -- components/Atoms/className.ts
-alias gmm='gl $(git_other_side) --not $(git_current_side) -p -- '
+gmm() {
+  local current_side
+  local other_side
+  local conflict_path
+
+  current_side=$(git_current_side) || return
+  if other_side=$(git_other_side 2>/dev/null); then
+    gl "$other_side" --not "$current_side" -p -- "$@"
+  else
+    conflict_path=$(git ls-files --unmerged --full-name --format='%(path)' -- "$1" | head -n 1)
+    if [ -n "$conflict_path" ]; then
+      git diff --stat -p ":2:$conflict_path" ":3:$conflict_path"
+    else
+      git_other_side
+    fi
+  fi
+}
+compdef _git gmm=git-log
 
 # Helper function to get the other side commit in a git merge or rebase
 git_other_side() {

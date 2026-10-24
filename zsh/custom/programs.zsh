@@ -15,19 +15,41 @@ gu() {
   fi
 }
 alias guu='gu $(git symbolic-ref refs/remotes/origin/HEAD --short)'
+alias gup='gu --pr'
 
 alias sharp='node ~/g/code-share/javascript/projects/optimize-media/index.js'
+
+alias q="node ~/j/q/dist/cli.js"
 
 x() {
   command=$(~/g/code-share/rust/projects/npm-run/target/release/npm-run "$@")
   echo "> $command"
   eval $command
 }
-alias xi="x --inspect"
-alias xiw="x --inspect-wait"
-alias xib="x --inspect-brk"
+alias xa="x a"
 alias xb="x build"
 alias xbd="x build-dev"
+alias xc="x c"
+# dev or debug
+alias xd="x d"
+alias xe="x e"
+alias xf="x f"
+alias xg="x g"
+alias xh="x h"
+alias xi="x --inspect"
+alias xib="x --inspect-brk"
+alias xivb="xi vite build"
+alias xiw="x --inspect-wait"
+alias xj="x j"
+alias xk="x k"
+alias xl="x l"
+alias xm="x m"
+alias xn="x n"
+alias xo="x o"
+# preview
+alias xp="x p"
+alias xq="x q"
+alias xr="x r"
 alias xs="x start"
 alias xt="x test"
 # test debug
@@ -36,14 +58,14 @@ alias xtd="x t-d"
 alias xtu="x t-u"
 # test watch
 alias xtw="x t-w"
-# dev or debug
-alias xd="x d"
-# preview
-alias xp="x p"
+alias xu="x u"
+alias xv="x v"
 alias xw="x watch"
+alias xx="x x"
+alias xy="x y"
+alias xz="x z"
 alias vs="x vite"
 alias vb="x vite build"
-alias xivb="xi vite build"
 alias vt="x vitest"
 alias vti="x vitest --inspect --no-fileParallelism"
 alias vtib="x vitest --inspect-brk --no-fileParallelism"

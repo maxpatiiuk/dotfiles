@@ -1,10 +1,8 @@
 #region Completions
-# Disable /etc/zshrc lookup
-SKIP_GLOBAL_COMPINIT=1
 # Scan $fpath and build .zcompdump cache
 autoload -Uz compinit zrecompile
 # Check if cache is out of date at most once per day
-if () { setopt local_options extendedglob; [[ -z "${ZDOTDIR}/cache/.zcompdump"(#qN.mh+24) ]] }; then
+if () { setopt local_options extendedglob; [[ -n "${ZDOTDIR}/cache/.zcompdump"(#qN.mh-24) ]] }; then
   # If the compdump was modified less than 24 hours ago, use the cached compdump, disable autodump
   compinit -C -d "${ZDOTDIR}/cache/.zcompdump" -D
 else

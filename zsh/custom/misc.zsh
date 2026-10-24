@@ -23,6 +23,7 @@ compdef cl=cd
 
 ### one line server
 alias pw="python3 -m http.server 8080"
+alias pw2="python3 -m http.server 8081"
 
 ### shortcuts
 alias v="nvim"

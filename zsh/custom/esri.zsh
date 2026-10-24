@@ -1,5 +1,4 @@
-# Temporary, till arcgis-js-sdk is merged into the monorepo
-export ESRI_AUTOFIX_LINT_ERRORS=1
+export WEBGIS_NO_AUTOINSTALL=1
 
 alias e="cd ~/e"
 alias ej="cd ~/e/arcgis-js-api"
@@ -63,8 +62,11 @@ function wc() {
 function wto() {
   cdawc "packages/support-packages/toolkit"
 }
+function wsn() {
+  cdawc "packages/support-packages/node-toolkit"
+}
 function wb() {
-  cdawc "packages/support-packages/components-build-utils"
+  cdawc "packages/ba-packages/ba-components"
 }
 function wa() {
   cdawc "packages/support-packages/api-extractor"
@@ -77,6 +79,12 @@ function wsc() {
 }
 function wsm() {
   cdawc "packages/support-packages/monorepo-config"
+}
+function wst() {
+  cdawc "packages/support-packages/monorepo-toolkit"
+}
+function wso() {
+  cdawc "packages/support-packages/codemod"
 }
 function wp() {
   cdawc "packages/support-packages/prettier-config"
@@ -101,6 +109,9 @@ function wd() {
 }
 function wdd() {
   cdawc "packages/docs/project/docs"
+}
+function wdm() {
+  cdawc "packages/docs/project-mcp"
 }
 function wco() {
   cdawc "packages/common-packages/common-components"

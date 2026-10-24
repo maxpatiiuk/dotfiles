@@ -163,6 +163,7 @@ function set_cmd_duration_prompt() {
   typeset -g LAST_CMD_DURATION_PROMPT=
   local start=${LAST_CMD_START_TIME:-$SECONDS}
   (( elapsed = SECONDS - start ))
+  LAST_CMD_START_TIME=""
   if (( elapsed > 5 )); then
     local days=$(( elapsed / 60 / 60 / 24 ))
     local hours=$(( elapsed / 60 / 60 % 24 ))
