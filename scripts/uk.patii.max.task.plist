@@ -7,11 +7,12 @@
 
 On updates to this file, run the following:
 plutil ~/g/dotfiles/scripts/uk.patii.max.task.plist &&
-launchctl unload ~/Library/LaunchAgents/uk.patii.max.task.plist &&
-launchctl load ~/Library/LaunchAgents/uk.patii.max.task.plist
+launchctl bootout "gui/$(id -u)" ~/Library/LaunchAgents/uk.patii.max.task.plist 2>/dev/null || true
+launchctl enable "gui/$(id -u)/uk.patii.max.task"
+launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/uk.patii.max.task.plist
 
 To manually trigger this task:
-launchctl start uk.patii.max.task
+launchctl kickstart -k "gui/$(id -u)/uk.patii.max.task"
 
 -->
     <key>Label</key>

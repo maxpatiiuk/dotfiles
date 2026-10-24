@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>uk.patii.max.vscode-serve-web</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/bin/zsh</string>
+      <string>-l</string>
+      <string>-c</string>
+      <string>
+        mkdir -p "$HOME/.local/state" &amp;&amp;
+        exec code serve-web \
+        --connection-token-file "$HOME/.ssh/vscode-serve-web-token" \
+        --accept-server-license-terms --port 48000 \
+        &gt;&gt; "$HOME/.local/state/vscode-serve-web.log" \
+        2&gt;&gt; "$HOME/.local/state/vscode-serve-web.error.log"
+      </string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <dict>
+      <key>SuccessfulExit</key>
+      <false/>
+    </dict>
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+  </dict>
+</plist>

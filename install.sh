@@ -128,7 +128,7 @@ echo 🔵 Linking misc files
 ln -sf "${PWD}/zsh/.zshenv" "${HOME}"
 ln -sf "${PWD}/zsh/.screenrc" "${HOME}"
 sudo mkdir -p "/etc/docker/"
-sudo ln "${PWD}/docker/daemon.json" "/etc/docker/"
+sudo ln -sf "${PWD}/docker/daemon.json" "/etc/docker/"
 
 echo 🔵 Hard linking common files from \`code-share\`
 ln "${HOME}/g/code-share/misc/images/mambo.jpg" "${HOME}/Documents/"
@@ -150,8 +150,31 @@ echo 🔵 Initializing Text Hoarder
 )
 
 echo 🔵 Linking launchctl .plist file
-mkdir -p ${HOME}/Library/LaunchAgents/
+mkdir -p ~/Library/LaunchAgents/
 ln -sf "${PWD}/scripts/uk.patii.max.task.plist" "${HOME}/Library/LaunchAgents/"
+user_id="$(id -u)"
+launchctl bootout "gui/${user_id}" "${HOME}/Library/LaunchAgents/uk.patii.max.task.plist" 2>/dev/null || true
+launchctl enable "gui/${user_id}/uk.patii.max.task"
+launchctl bootstrap "gui/${user_id}" "${HOME}/Library/LaunchAgents/uk.patii.max.task.plist"
+
+# I'm opening VSCode on the web
+echo 🔵 Linking VS Code web server launchctl .plist file
+mkdir -p ~/Library/LaunchAgents/
+plutil -lint ~/g/dotfiles/scripts/uk.patii.max.vscode-serve-web.plist
+ln -sf ~/g/dotfiles/scripts/uk.patii.max.vscode-serve-web.plist ~/Library/LaunchAgents/
+launchctl bootout "gui/$(id -u)/uk.patii.max.vscode-serve-web" 2>/dev/null || true
+launchctl enable "gui/$(id -u)/uk.patii.max.vscode-serve-web"
+launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/uk.patii.max.vscode-serve-web.plist
+
+if [ "${USER}" = "mak13180" ]; then
+  # Run as root
+  sudo ln -sf "${PWD}/scripts/killnessus/uk.patii.max.killnessus.plist" "/Library/LaunchDaemons/"
+  sudo chown root:wheel /Library/LaunchDaemons/uk.patii.max.killnessus.plist
+  sudo chmod 644 /Library/LaunchDaemons/uk.patii.max.killnessus.plist
+  sudo launchctl bootout system /Library/LaunchDaemons/uk.patii.max.killnessus.plist 2>/dev/null || true
+  sudo launchctl enable system/uk.patii.max.killnessus
+  sudo launchctl bootstrap system /Library/LaunchDaemons/uk.patii.max.killnessus.plist
+fi
 
 echo 🔵 Update VS Code Icon
 mv "/Applications/Visual Studio Code.app/Contents/Resources/Code.icns" "/Applications/Visual Studio Code.app/Contents/Resources/Code_original.icns"

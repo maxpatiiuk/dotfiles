@@ -82,5 +82,3 @@
   statusHints = false
 [lfs]
   concurrenttransfers = 64
-[diff "lfs"]
-  textconv = cat
