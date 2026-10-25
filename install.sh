@@ -152,17 +152,16 @@ echo 🔵 Initializing Text Hoarder
 echo 🔵 Linking launchctl .plist file
 mkdir -p ~/Library/LaunchAgents/
 ln -sf "${PWD}/scripts/uk.patii.max.task.plist" "${HOME}/Library/LaunchAgents/"
-user_id="$(id -u)"
-launchctl bootout "gui/${user_id}" "${HOME}/Library/LaunchAgents/uk.patii.max.task.plist" 2>/dev/null || true
-launchctl enable "gui/${user_id}/uk.patii.max.task"
-launchctl bootstrap "gui/${user_id}" "${HOME}/Library/LaunchAgents/uk.patii.max.task.plist"
+launchctl bootout "gui/$(id -u)" "${HOME}/Library/LaunchAgents/uk.patii.max.task.plist" 2>/dev/null || true
+launchctl enable "gui/$(id -u)/uk.patii.max.task"
+launchctl bootstrap "gui/$(id -u)" "${HOME}/Library/LaunchAgents/uk.patii.max.task.plist"
 
 echo "Installing daily mind sync LaunchAgent"
 plutil -lint "${PWD}/scripts/sync-mind/uk.patii.max.sync-mind.plist"
 ln -sf "${PWD}/scripts/sync-mind/uk.patii.max.sync-mind.plist" "${HOME}/Library/LaunchAgents/"
-launchctl bootout "gui/${user_id}/uk.patii.max.sync-mind" 2>/dev/null || true
-launchctl enable "gui/${user_id}/uk.patii.max.sync-mind"
-launchctl bootstrap "gui/${user_id}" "${HOME}/Library/LaunchAgents/uk.patii.max.sync-mind.plist"
+launchctl bootout "gui/$(id -u)/uk.patii.max.sync-mind" 2>/dev/null || true
+launchctl enable "gui/$(id -u)/uk.patii.max.sync-mind"
+launchctl bootstrap "gui/$(id -u)" "${HOME}/Library/LaunchAgents/uk.patii.max.sync-mind.plist"
 
 # I'm opening VSCode on the web
 echo 🔵 Linking VS Code web server launchctl .plist file
