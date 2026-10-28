@@ -10,6 +10,8 @@ I prefer it is Chrome tabs are less messy than macOS spaces, and give me more co
 - no transition animation
 - can have a browser extension arrange them for me or custom shortcut to go to a precise tab
 
+[A blog post about it](https://max.patii.uk/articles/google-chrome-is-my-window-manager/).
+
 ### Setup
 
 [The LaunchAgent](../scripts/uk.patii.max.vscode-serve-web.plist) runs `code serve-web`
@@ -21,6 +23,14 @@ Create the connection token once and restrict access to it.
 openssl rand -hex 24 > ~/.ssh/vscode-serve-web-token
 chmod 600 ~/.ssh/vscode-serve-web-token
 ```
+
+> Tip:
+>
+> Instead of opening `localhost:PORT` in your browser, open `vscode.localhost:PORT`.
+>
+> `ANYTHING.localhost` is a special domain that operating systems alias to
+> `localhost`. This provides a more readable address, and permits you to write
+> browser extensions that target only `vscode.localhost` and `vscode.dev`.
 
 ### Install Or Reload
 
